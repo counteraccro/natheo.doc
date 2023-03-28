@@ -1,6 +1,6 @@
 # natheo.doc
-documentation du projet Natheo
+Github Page regroupant la documentation du projet Natheo CMS
 
-test
+Retrouvez ici la documentation technique, fonctionnelle et des tutoriels sur les modules de Natheo CMS
 
-[test](index.md)
+URL du [Site](https://counteraccro.github.io/natheo.doc/)
