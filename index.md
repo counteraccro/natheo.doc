@@ -9,5 +9,5 @@ Retrouver ici la documentation technique et fonctionnelle de l'application ainsi
 - Prise en main
   - Installation environnement de développement
   - Installation du CMS
-- [Documentations fonctionnelles](Docs/Fonctionnelles/index.md)
-- [Documentations techniques](Docs/Techniques/index.md)
+- [Documentation fonctionnelle](Docs/Fonctionnelles/index.md)
+- [Documentation technique](Docs/Techniques/index.md)
