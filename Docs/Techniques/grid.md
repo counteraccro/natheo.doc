@@ -134,7 +134,6 @@ Pour la construction des liens d'actions
     {
             $action_disabled = [
                 'label' => '<i class="bi bi-eye-slash-fill"></i>',
-                'id' => $element->getId(),
                 'url' => $this->router->generate('route', ['id' => $element->getId()]),
                 'ajax' => true,
                 'confirm' => true,
@@ -142,7 +141,6 @@ Pour la construction des liens d'actions
             if ($element->isDisabled()) {
                 $action_disabled = [
                     'label' => '<i class="bi bi-eye-fill"></i>', 
-                    'id' => $element->getId(), 
                     'url' => $this->router->generate('route', ['id' => $element->getId()]), 
                     'ajax' => true
                 ];
@@ -151,9 +149,8 @@ Pour la construction des liens d'actions
         return $action;
     }
 ```
-Chaque bouton doit posséder les paramètres suivantes
-* Label : le texte ou l'icône présent dans le bouton
-* id : L'id de l'élément
+Chaque bouton doit posséder les paramètres suivants :
+* Label : le texte et/ou l'icône présent dans le bouton
 * url : la route de l'action
 * ajax : défini si l'action est un appel ajax ou direct
   * valeur : true ou false
