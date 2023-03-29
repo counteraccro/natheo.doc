@@ -9,7 +9,7 @@
 
 #### Tiwg
 Dans votre fichier twig, ajouter le composant VueJs
-``` vue
+```
 <div {{ vue_component('Admin/GenericGrid', {'url' : path('route'), 'page' : page, 'limit' : limit}) }}></div>
 ```
 Le composant GénericGrid prend 3 paramètres qui sont :
