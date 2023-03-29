@@ -7,3 +7,4 @@
 ## Général
 * [Présentation globale](description.md)
 * [Composants utilisés](composants.md)
+* [Commandes Symfony](commandes.md) utilisées pour le projet
