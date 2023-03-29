@@ -7,7 +7,7 @@
 ![Exemple de grid](files/exemple_grid.png)
 *Exemple de grid simple*
 
-#### Tiwg
+### Tiwg
 Dans votre fichier twig, ajouter le composant VueJs
 ```html
 <div  vue_component('Admin/GenericGrid', {'url' : path('route'), 'page' : page, 'limit' : limit}) ></div>
@@ -17,7 +17,7 @@ Le composant GénericGrid prend 3 paramètres qui sont :
 * page: La page courante
 * limit: Le nombre maximum d'éléments par page
 
-#### Controller
+### Controller
 
 Dans votre controller, créer la route pour récupérer les données
 ``` php
@@ -62,7 +62,7 @@ Affichage d'un message de réalisation et/ou d'erreur après une action
 
 ```
 
-#### Service
+### Service
 
 La méthode getAllFormatToGrid présent dans votre service
 ``` php
