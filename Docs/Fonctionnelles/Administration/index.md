@@ -4,11 +4,10 @@
 
 *Dans cette partie retrouver l'ensemble de la documentation fonctionnelle de l'administration*
 
-La documentation fonctionnelle du pro
 ## Générale
 * [Les rôles](roles.md)
 
-## Utilisateurs
+## Membres
 
 
 ## Systeme
@@ -16,5 +15,5 @@ La documentation fonctionnelle du pro
 * Gestion des utilisateurs
   * Options des utilisateurs
 * Gestion de la sidebar
-* Gestion des options
-* Logs 
+* [Gestion des options systèmes](options_system.md)
+* [Gestion des Logs](log.md) 
