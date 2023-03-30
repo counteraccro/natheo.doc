@@ -4,7 +4,7 @@
 
 *Dans cette partie retrouver l'ensemble de la documentation fonctionnelle de l'administration*
 
-## Générale
+## Général
 * [Les rôles](roles.md)
 
 ## Membres
