@@ -60,9 +60,10 @@ tableau GRID
 Actions et information disponible :
 * 1 : Information sur le fichier, affiche son nom, sa taille et son nombre de lignes
 * 2 : Permet d'effectuer une recherche sur les lignes affichées
-* 3 : Permet de supprimer le fichier de log, une confirmation est demandée avant toute action. La suppression est définitive.
+* 3 : 2 actions possibles qui sont :
+  * Suppression du fichier de log, une confirmation est demandée avant toute action. La suppression est définitive.
+  * Rechargement du fichier de log
 * 4 : Le tableau contenant les logs affiché de la façon suivante :
   * Le niveau : Défini le niveau d'importance du log (débug, notice, info, warning, error, critical, alert, emergency)
   * La date : Date d'enregistrement du loh
   * le message : Message du log
-
