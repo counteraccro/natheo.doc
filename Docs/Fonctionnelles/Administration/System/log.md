@@ -1,6 +1,6 @@
 # Gestion des logs
 
-[Index](../../index.md) > [Documentation fonctionnelle](../index.md) > [Administratoin](index.md) > Gestion des logs
+[Index](../../../../index.md) > [Documentation fonctionnelle](../../index.md) > [Administration](../index.md) > Gestion des logs
 
 *Natheo CMS propose un système d'enregistrement de log à plusieurs niveaux en fonction des [options systèmes](options_system.md) choisies*
 
@@ -26,7 +26,7 @@ Les logs ont une durée de vie de 10 jours pour éviter les saturations disques
 
 Droit d'accès : **ROLE_SUPER_ADMIN**
 
-![Log](files/logs/logs.png)
+![Log](../files/logs/logs.png)
 *Gestion des logs*
 
 ### Règles de gestion globales
@@ -40,12 +40,12 @@ Liste des règles de gestion globales
 
 #### Choix du log
 La lecture des logs ce fait par le choix du log depuis la liste déroulante "Choix du fichier de log".
-![choix log](files/logs/choix_log.png)
+![choix log](../files/logs/choix_log.png)
 Cette liste déroulante liste l'ensemble des logs stockés dans ``var/log/cms``
 
 #### Filtre des fichiers de logs
 Il est possible de filtrer les logs afin de réduire la liste de logs
-![filtre log](files/logs/filtre_log.png)
+![filtre log](../files/logs/filtre_log.png)
 Filtre possible :
 * Tous les logs : Affiche l'ensemble des logs
 * Aujourd'hui : Affiche uniquement les logs de la date du jour
@@ -55,7 +55,7 @@ Filtre possible :
 Une fois le log choisi depuis la liste déroulante "Choix du fichier de log", le contenu du fichier de log s'affiche dans un
 tableau GRID
 
-![read log](files/logs/log_read.png)
+![read log](../files/logs/log_read.png)
 
 Actions et information disponible :
 * 1 : Information sur le fichier, affiche son nom, sa taille et son nombre de lignes

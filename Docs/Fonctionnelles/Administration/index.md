@@ -15,5 +15,5 @@
 * Gestion des utilisateurs
   * Options des utilisateurs
 * Gestion de la sidebar
-* [Gestion des options systèmes](options_system.md)
-* [Gestion des Logs](log.md) 
+* [Gestion des options systèmes](System/options_system.md)
+* [Gestion des Logs](System/log.md) 
