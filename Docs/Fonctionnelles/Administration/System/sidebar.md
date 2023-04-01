@@ -9,9 +9,9 @@ fonctionnalités de l'administration.*
 
 ## Informations générales
 Sidebar : **Système > Sidebar**  
-Droit d'accès : **ROLE_SUPER_ADMIN**
+Droit d'accès : **ROLE_SUPER_ADMIN**  
 
-Nom entité : **SidebarElement**
+Nom entité : **SidebarElement**  
 Nom de la table en bdd : **natheo.sidebar_element**
 
 | Nom         | Type          | Null | Valeur par défaut  |
@@ -49,11 +49,11 @@ Nom de la table en bdd : **natheo.sidebar_element**
   - Si le champ lock est à true, aucun changement n'est possible
     - Un petit ![lock](../files/sidebar/lock.png) est affiché à côté de l'ID
   - Si le champ lock est à false, on peut changer la valeur de disabled 
-  - Si le champ disabled est à TRUE alors on le SidebarElement n'est pas visible 
-  - Si le champ disabled est à FALSE alors on le SidebarElement est visible dans le menu dans le cas ou l'utilisateur possède le bon rôle associé 
+  - Si le champ disabled est à TRUE alors le SidebarElement n'est pas visible dans le menu
+  - Si le champ disabled est à FALSE alors le SidebarElement est visible dans le menu dans le cas ou l'utilisateur possède le bon rôle associé 
   - Si le champ disabled change de valeur alors le champ update_at doit être mise à jour avec la date du jour au format [aaaa-mm-jj hh:mm:ss] 
   - Si le changement ce passe correctement 
-    - Rafraichissement du tableau et affichage du message "L'élément [sidebar] est maintenant [visible | non visible]" (en fonction de la valeur du champ disabled)
+    - Rafraichissement du tableau et affichage du message "L'élément *sidebar* est maintenant *visible | non visible*" (en fonction de la valeur du champ disabled)
   - Si le changement ne ce fait pas à cause d'une erreur 
     - Enregistrement dans les logs de l'erreur
 
