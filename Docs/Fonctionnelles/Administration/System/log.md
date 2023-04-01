@@ -2,9 +2,9 @@
 
 [Index](../../../../index.md) > [Documentation fonctionnelle](../../index.md) > [Administration](../index.md) > Gestion des logs
 
-*Natheo CMS propose un système d'enregistrement de log à plusieurs niveaux en fonction des [options systèmes](options_system.md) choisies*
+*Natheo CMS propose un système d'enregistrement de logs à plusieurs niveaux en fonction des [options systèmes](options_system.md) choisies*
 
-## Global
+## Informations générales
 L'ensemble des logs sont enregistrés dans le dossier : ``var/log/cms`` et rangés par environnement (dev pour la dev, prod pour la production etc..)
 
 Liste des logs disponibles :
@@ -24,6 +24,7 @@ Les logs ont une durée de vie de 10 jours pour éviter les saturations disques
 
 *Cette partie définie la gestion de logs ainsi que la consultation de ceux-ci*
 
+Sidebar : **Système > Logs**  
 Droit d'accès : **ROLE_SUPER_ADMIN**
 
 ![Log](../files/logs/logs.png)
