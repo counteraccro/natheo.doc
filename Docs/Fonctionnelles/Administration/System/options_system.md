@@ -49,6 +49,18 @@ Nom de la table en bdd : **natheo.option_system**
 - En modification seul le champ value est modifiable.
 - Les options sont générées via un fichier de config présent dans ``config/cms/options_system.yaml``
 
+## Accessibilité des options systèmes dans le code
+Le service OptionSystemService vous permet de pouvoir récupérer la valeur d'une option système à partir de sa clé
+``` php
+$this->optionSystemService->getValueByKey(OptionSystemService::OS_ALLOW_DELETE_DATA);
+```
+
+Il est possible de pouvoir récupérer la valeur d'une option système depuis une vue twig
+
+````php
+get_option_system_value_by_key(constant('App\\Service\\Admin\\OptionSystemService::OS_SITE_NAME'))
+````
+
 ## Fixtures
 Path du fichier de données : ``src/DataFixtures/data/option_system_fixtures_data.yaml``  
 Nom de la fixture : **OptionSystemFixtures**  
