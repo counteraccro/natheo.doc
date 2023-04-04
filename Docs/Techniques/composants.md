@@ -19,6 +19,8 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Service regroupant lregroupant le code fonctionnel pour l'entité [OptionUser](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/OptionUser.php)
 - [LoggerService](https://github.com/counteraccro/natheo/blob/master/src/Service/LoggerService.php) 
   - Service qui permet la centralisation, l'enregistrement, la lecture et suppression des logs de l'application
+- [TranslateService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/TranslateService.php)
+  - Service qui permet de gérer les données lié aux traductions
 
 ### Extension Twig
 - [SidebarExtension](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/Admin/SidebarExtensionRuntime.php) 
