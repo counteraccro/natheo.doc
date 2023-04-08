@@ -15,14 +15,16 @@ Cette partie du CMS permet de pouvoir gérer le paramétrage du CMS, son contenu
 Liste des fonctionnalités disponibles
 * Système
   * Fonctionnalités liées au fonctionnement du CMS
-  * Gestion des logs
+  * [Gestion des logs](Fonctionnelles/Administration/System/log.md)
     * Permet de consulter / supprimer les fichiers de logs de l'application
   * Gestion des utilisateurs
     * Permet de gérer (créer / éditer / supprimer) les personnes qui peuvent ce connecter à l'administration et participer l'ajout de contenu pour le CMS
-  * Options
+  * [Options](Fonctionnelles/Administration/System/options_system.md)
     * Permet de modifier les options du CMS
-  * Sidebar
+  * [Sidebar](Fonctionnelles/Administration/System/sidebar.md)
     * Permet de gérer le menu 'Sidebar' de l'administration
+  * [Traductions](Fonctionnelles/Administration/System/translation.md)
+    * Permet de pouvoir éditer en ligne l'ensemble des traductions du site
 
 ### Front
 *TODO A faire*
