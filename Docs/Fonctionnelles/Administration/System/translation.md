@@ -56,3 +56,22 @@ Liste des fichiers de traduction actuellement sur le site (uniquement pour le fr
   * Contient les traductions de la gestion des users
 * validators.fr.yaml
   * Contient les traductions des règles de validations ( propre à Symfony)
+
+## Règles de gestions globales
+* Seules les valeurs des traductions sont modifiables
+
+## Règles de gestion des actions
+* Choix de la langue
+  * Le choix de la langue est obligatoire et permet d'afficher dans la liste des traductions associées à la langue dans la liste déroulante de droite.
+* Choix du fichier
+  * La liste déroulante du choix du fichier est dépendant de la langue choisie.
+  * Le fichier sélectionné est alors chargé et chaque traduction est listé pour être édité
+* Bouton "Sauvegarder"
+  * Permet de pouvoir sauvegarder les traductions modifiées
+  * Uniquement clickable si au moins 1 traduction a été modifiée
+  * Le fichier est rechargé une fois la sauvegarde effectuée
+* Bouton "Mise à jour du cache"
+  * Permet de régénérer le cache applicatif
+* Lorsqu'une traduction est modifiée, mais non sauvegardé
+  * Une traduction modifiée, mais non sauvegardée est indiqué par une couleur orange ![edit](../files/translation/edit.png)
+  * Le lien "annuler" permet de rollback la modification
