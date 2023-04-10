@@ -56,6 +56,8 @@ Liste des fichiers de traduction actuellement sur le site (uniquement pour le fr
   * Contient les traductions de la gestion des users
 * validators.fr.yaml
   * Contient les traductions des règles de validations ( propre à Symfony)
+* mail+intl-icu.fr.yaml
+  * Contient les traductions pour le gestionnaire d'emails
 
 ## Règles de gestions globales
 * Seules les valeurs des traductions sont modifiables
