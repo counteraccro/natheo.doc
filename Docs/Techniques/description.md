@@ -39,7 +39,9 @@ Natheo CMS est un projet web développé avec PHP / HTML / CSS /JS
 ### Librairie JS
 *Librairie JS externe utilisées*
 
-| Nom	       | Version	 | Description                     |
-|------------|----------|---------------------------------|
-| axios	     | `1.3.4`	 | Permet de faire des appels AJAX |
-| vue-axios	 | `3.5.2`  | 	Axio pour vueJS                |
+| Nom	       | Version	  | Description                     |
+|------------|-----------|---------------------------------|
+| axios	     | `1.3.4`	  | Permet de faire des appels AJAX |
+| vue-axios	 | `3.5.2`   | 	Axio pour vueJS                |
+| lodash-es	 | `4.17.21` | 	Module ES                      |
+| marked	    | `4.3.0`   | 	Parser markdown                |
