@@ -30,11 +30,14 @@ Natheo CMS est un projet web développé avec PHP / HTML / CSS /JS
 ### Bundles ajoutés
 *Liste des bundles supplémentaires ajoutés à Symfony*
 
-| Nom	                            | Version	  | Description             |
-|---------------------------------|-----------|-------------------------|
-| stof/doctrine-extensions-bundle | 	`1.7.1`	 | Extension pour doctrine |
-| behat/transliterator            | 	`1.5.0`	 | Extension pour doctrine |
-| gedmo/doctrine-extensions       | 	`3.11.1` | Extension pour doctrine |
+| Nom	                            | Version	  | Description                                 |
+|---------------------------------|-----------|---------------------------------------------|
+| stof/doctrine-extensions-bundle | 	`1.7.1`	 | Extension pour doctrine                     |
+| behat/transliterator            | 	`1.5.0`	 | Extension pour doctrine                     |
+| gedmo/doctrine-extensions       | 	`3.11.1` | Extension pour doctrine                     |
+| league/commonmark               | 	`2.4`    | Parser markdown                             |
+| twig/markdown-extra             | 	`3.5`    | filtre twig pour convertir markdown en html |
+
 
 ### Librairie JS
 *Librairie JS externe utilisées*
