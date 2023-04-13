@@ -23,6 +23,8 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Service qui permet de gérer les données lié aux traductions
 - [CommandeService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/CommandService.php)
   - Service qui regroupe l'ensemble des commandes executable via la console
+- [MarkdownEditorService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/MarkdownEditorService.php)
+  - Service qui regroupe les traductions pour l'éditeur Markdown
 
 ### Extension Twig
 - [SidebarExtension](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/Admin/SidebarExtensionRuntime.php) 
