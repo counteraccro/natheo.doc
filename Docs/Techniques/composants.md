@@ -25,6 +25,8 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Service qui regroupe l'ensemble des commandes executable via la console
 - [MarkdownEditorService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/MarkdownEditorService.php)
   - Service qui regroupe les traductions pour l'éditeur Markdown
+- [Mailservice](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/MailService.php)
+  - Service qui regroupe l'ensemble des fonctions liées aux emails
 
 ### Extension Twig
 - [SidebarExtension](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/Admin/SidebarExtensionRuntime.php) 
