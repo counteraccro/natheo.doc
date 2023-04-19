@@ -2,15 +2,40 @@
 
 [Index](../../index.md) > [Documentation fonctionnelle](../index.md) > [Modules](index.md) > Editeur Markdown
 
-*L'accès à la partie admin du site ainsi qu'aux modules administratifs de gestion et contributions sont soumis à des restrictions d'accès par rôle*
+*L'éditeur Markdown permet de pouvoir mettre en forme un texte de façon simple avec la mise en forme Markdown*
 
-L'administration de Nathéo CMS possède 4 niveaux de rôles
-* **ROLE_USER**
-  * Rôle qui permet de ce connecter à l'administration et de pouvoir modifier ses options
-* **ROLE_CONTRIBTEUR**
-  * Rôle qui permet de voir ses statistiques et d'ajouter du contenu au site
-* **ROLE_ADMIN**
-  * Rôle qui permet de gérer les membres du CMS, voir les statistiques globales et ajouter du contenu au site
-* **ROLE_SUPER_ADMIN**
-  * Rôle le plus élevé, permet d'avoir accès à toute la partie administration du CMS 
-  * Il peut gérer les utilisateurs et changer leurs droits
+![editeur markdown](files/editeur_markdown/editeur_markdown.png)
+
+## Actions possibles
+
+Liste des actions possibles avec l'éditeur
+* Bouton "H1"
+  * Permet d'ajouter un titre H1 jusqu'à H6
+* Bouton "Mots clés"
+  * Permet d'ajouter des mots clés pour personnaliser le texte (disponible si le paramètre ``:me-key-words`` n'est pas vide)
+* Bouton "B"
+  * Permet de mettre le texte en gras
+* Bouton "*I*"
+  * Permet de mettre le texte en italique
+* Bouton "~~S~~"
+  * Permet de barrer un texte
+* Bouton " &bdquo; "
+  * Permet d'ajouter une citation
+* Bouton "liste"
+  * Permet d'ajouter une liste
+* Bouton "liste numéroté"
+  * Permet d'ajouter une liste numérotée
+* Bouton "Tableau"
+  * Permet d'ajouter un tableau
+* Bouton "lien"
+  * Permet d'ajouter un lien 
+* Bouton "image"
+  * Permet d'ajouter une image
+* Bouton "<>"
+  * Permet d'ajouter du code
+* Bouton "Sauvegarder"
+  * Permet de sauvegarder la donnée saisie (si le bouton est activé)
+
+## Prévisualisation
+La prévisualisation est en temps réel et affiche sous la forme HTML la mise en forme saisie dans l'éditeur
+
