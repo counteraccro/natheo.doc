@@ -43,6 +43,7 @@ Nom de la table en bdd : **natheo.option_system**
 | OS_THEME_SITE               | 	purple            | 	Défini la couleur de base du site, valeur utilisé comme valeur par défaut pour les options user                       |
 | OS_NB_ELEMENT               | 	20                | 	Défini le nombre d'élément à afficher dans les tableaux, valeur utilisé comme valeur par défaut pour les options user |
 | OS_LOG_DOCTRINE             | 	1                 | 	Défini si on log tout changement dans le bdd ou non                                                                   |
+| OS_MAIL_FROM                | info@natheo.fr     | Adresse email qui apparaitra comme expéditeur                                                                          |
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
