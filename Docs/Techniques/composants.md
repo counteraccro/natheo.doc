@@ -39,6 +39,8 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Permet de récupérer une option système en fonction de sa clé
 - [OptionUserExtension](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/Admin/OptionUserExtensionRuntime.php)
   - Extension qui permet de récupérer une option user en fonction de sa clé
+- [EncoreEntryCssSourceExtensionRuntime](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/EncoreEntryCssSourceExtensionRuntime.php)
+  - Transforme du CSS compilé par Webpack en ressource pour le convertir en inline
 
 
 ### EventSubscriber
