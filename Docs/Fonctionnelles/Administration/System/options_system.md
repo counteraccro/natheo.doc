@@ -28,23 +28,24 @@ Nom de la table en bdd : **natheo.option_system**
 
 ## Liste des options disponibles
 
-| Clé                         | 	Valeur par défaut | 	Description                                                                                                           |
-|-----------------------------|--------------------|------------------------------------------------------------------------------------------------------------------------|
-| OS_SITE_NAME                | 	Natheo            | 	Nom du site                                                                                                           |
-| OS_OPEN_SITE                | 	1                 | 	Défini si le site front est ouvert ou non                                                                             |
-| OS_LOGO_SITE                | 	bi-yin-yang       | 	Défini le logo à côté du nom du site                                                                                  |
-| OS_FRONT_SCRIPT_TOP         | 	                  | 	Script à insérer dans le header du site                                                                               |
-| OS_FRONT_SCRIPT_START_BODY	 | 	                  | Script à insérer au début de la balise body                                                                            |
-| OS_FRONT_SCRIPT_END_BODY    | 	                  | 	Script à insérer à la fin de la balise body                                                                           |
-| OS_REPLACE_DELETE_USER      | 	1	                | Défini si on supprime définitivement un utilisateur ou si on le remplace par un utilisateur fantôme                    |
-| OS_CONFIRM_LEAVE_FORM       | 	1                 | 	Affiche une confirmation si on quitte un formulaire                                                                   |
-| OS_ALLOW_DELETE_DATA        | 	0                 | 	Autorise ou non la suppression de données                                                                             |
-| OS_DEFAULT_LANGUAGE         | 	fr                | 	Défini la langue par défaut pour le site, valeur utilisé comme valeur par défaut pour les options user                |
-| OS_THEME_SITE               | 	purple            | 	Défini la couleur de base du site, valeur utilisé comme valeur par défaut pour les options user                       |
-| OS_NB_ELEMENT               | 	20                | 	Défini le nombre d'élément à afficher dans les tableaux, valeur utilisé comme valeur par défaut pour les options user |
-| OS_LOG_DOCTRINE             | 	1                 | 	Défini si on log tout changement dans le bdd ou non                                                                   |
-| OS_MAIL_FROM                | info@natheo.fr     | Adresse email qui apparaitra comme expéditeur                                                                          |
-| OS_MAIL_REPLY_TO            | support@natheo.fr  | Adresse email utilisé pour répondre                                                                                    |
+| Clé                         | 	Valeur par défaut            | 	Description                                                                                                           |
+|-----------------------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| OS_SITE_NAME                | 	Natheo                       | 	Nom du site                                                                                                           |
+| OS_OPEN_SITE                | 	1                            | 	Défini si le site front est ouvert ou non                                                                             |
+| OS_LOGO_SITE                | 	bi-yin-yang                  | 	Défini le logo à côté du nom du site                                                                                  |
+| OS_FRONT_SCRIPT_TOP         | 	                             | 	Script à insérer dans le header du site                                                                               |
+| OS_FRONT_SCRIPT_START_BODY	 | 	                             | Script à insérer au début de la balise body                                                                            |
+| OS_FRONT_SCRIPT_END_BODY    | 	                             | 	Script à insérer à la fin de la balise body                                                                           |
+| OS_REPLACE_DELETE_USER      | 	1	                           | Défini si on supprime définitivement un utilisateur ou si on le remplace par un utilisateur fantôme                    |
+| OS_CONFIRM_LEAVE_FORM       | 	1                            | 	Affiche une confirmation si on quitte un formulaire                                                                   |
+| OS_ALLOW_DELETE_DATA        | 	0                            | 	Autorise ou non la suppression de données                                                                             |
+| OS_DEFAULT_LANGUAGE         | 	fr                           | 	Défini la langue par défaut pour le site, valeur utilisé comme valeur par défaut pour les options user                |
+| OS_THEME_SITE               | 	purple                       | 	Défini la couleur de base du site, valeur utilisé comme valeur par défaut pour les options user                       |
+| OS_NB_ELEMENT               | 	20                           | 	Défini le nombre d'élément à afficher dans les tableaux, valeur utilisé comme valeur par défaut pour les options user |
+| OS_LOG_DOCTRINE             | 	1                            | 	Défini si on log tout changement dans le bdd ou non                                                                   |
+| OS_MAIL_FROM                | info@natheo.fr                | Adresse email qui apparaitra comme expéditeur                                                                          |
+| OS_MAIL_REPLY_TO            | support@natheo.fr             | Adresse email utilisé pour répondre                                                                                    |
+| OS_ADRESSE_SITE             | valeur défini automatiquement | URL de référence du CMS                                                                                                |
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
