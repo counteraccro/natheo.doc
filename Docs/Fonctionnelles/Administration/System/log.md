@@ -37,7 +37,7 @@ Liste des règles de gestion globales
 * Les fichiers de logs ne peuvent qu'être lu
 * Chaque log est enregistré dans un fichier au format [channel-log]-[date-du-jour].log au format Json
 
-### Règles de gestion de l'écran de gestion des logs
+### Règles de gestion pour l'écran de gestion des logs
 
 #### Choix du log
 La lecture des logs ce fait par le choix du log depuis la liste déroulante "Choix du fichier de log".
