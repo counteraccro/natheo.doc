@@ -18,3 +18,4 @@
 * [Gestion des options systèmes](System/options_system.md)
 * [Gestion des Logs](System/log.md)
 * [Gestion des traductions](System/translation.md)
+* [Gestion des emails](System/mail.md)
