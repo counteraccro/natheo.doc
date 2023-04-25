@@ -7,7 +7,7 @@
 ![mail_tableau](../files/mail/mail_tableau.png)
 
 ## Informations générales
-Sidebar : **Système > Sidebar**  
+Sidebar : **Système > Mail**  
 Droit d'accès : **ROLE_SUPER_ADMIN**
 
 Nom entité : **mail**  
@@ -48,7 +48,11 @@ Nom de la table en bdd : **natheo.mail_translation**
 - En modification seul les champs title et content de la table mailTranslation
 - Les mails sont générées via un fichier de fixture présent dans ``DataFixtures/data/mail_fixtures_data.yaml``
 
+### Liste des mails
 
+| Cle                  | Description                                                  |
+|----------------------|--------------------------------------------------------------|
+| MAIL_CHANGE_PASSWORD | Mail envoyé lors d'une demande de changement de mot de passe |
 
 ### Règle de gestion pour l'écran de listing
 
@@ -68,7 +72,7 @@ Cet écran permet de pouvoir modifier le contenu ainsi que le titre d'un email e
 Action possibles
 - Selection de la langue
   - Liste déroulante contenant les langues gérées par le site, le choix d'une langue charge le contenu du mail associé
-  - La langue par défaut affiché est la langue par défaut défini par l'option OS_DEFAULT_LANGUAGE
+  - La langue par défaut affichée est la langue par défaut défini par l'option OS_DEFAULT_LANGUAGE
 - Objet du mail
   - Champ input pour le titre du mail (dépendant de la langue sélectionnée)
 - Contenu du mail
@@ -77,6 +81,7 @@ Action possibles
 - Mots clés
   - Liste des mots clés associés au mail.
     - Les mots clés sont des éléments que l'on peut rajouter dans le contenu de l'email pour ajouter de la personnalisation
+    - Ces mots clés sont propres au mail
 - ![mail_save](../files/mail/mail_edit_save.png) - Sauvegarder
   - Permet de pouvoir sauvegarder le contenu et le titre de l'email en fonction de la langue
 - ![mail_demo](../files/mail/mail_edit_demo.png) - Tester l'email
