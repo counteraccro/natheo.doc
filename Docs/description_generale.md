@@ -25,6 +25,10 @@ Liste des fonctionnalités disponibles
     * Permet de gérer le menu 'Sidebar' de l'administration
   * [Traductions](Fonctionnelles/Administration/System/translation.md)
     * Permet de pouvoir éditer en ligne l'ensemble des traductions du site
+  * [Mail](Fonctionnelles/Administration/System/mail.md)
+    * Permet de pouvoir personnaliser le contenu des emails envoyés par le CMS
+  * [Log](Fonctionnelles/Administration/System/log.md)
+    * Permet de pouvoir consulter les logs du CMS
 
 ### Front
 *TODO A faire*
