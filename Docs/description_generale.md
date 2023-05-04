@@ -13,11 +13,13 @@ Le CMS est découpé en 2 parties distinctes :
 Cette partie du CMS permet de pouvoir gérer le paramétrage du CMS, son contenu ainsi que les membres et administrateurs
 
 Liste des fonctionnalités disponibles
+* [Mon profil](Fonctionnelles/Administration/mon_profil.md)
+  * Gestion des données personnelles de l'utilisateur connecté
 * Système
   * Fonctionnalités liées au fonctionnement du CMS
   * [Gestion des logs](Fonctionnelles/Administration/System/log.md)
     * Permet de consulter / supprimer les fichiers de logs de l'application
-  * Gestion des utilisateurs
+  * Gestion des utilisateurs 
     * Permet de gérer (créer / éditer / supprimer) les personnes qui peuvent ce connecter à l'administration et participer l'ajout de contenu pour le CMS
   * [Options](Fonctionnelles/Administration/System/options_system.md)
     * Permet de modifier les options du CMS

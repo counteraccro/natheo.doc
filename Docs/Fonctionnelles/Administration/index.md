@@ -6,6 +6,7 @@
 
 ## Général
 * [Les rôles](roles.md)
+* [Mon profil](mon_profil.md)
 
 ## Membres
 
