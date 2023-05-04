@@ -1,6 +1,6 @@
 # Les rôles de l'administration
 
-[Index](../../index.md) > [Documentation fonctionnelle](../index.md) > [Administratoin](index.md) > Les rôles
+[Index](index.md) > [Documentation fonctionnelle](../index.md) > [Administration](index.md) > Les rôles
 
 *L'accès à la partie admin du site ainsi qu'aux modules administratifs de gestion et contributions sont soumis à des restrictions d'accès par rôle*
 
