@@ -46,4 +46,21 @@ Les champs modifiables depuis cette page sont :
 
 ### Mon profil
 * Bouton "Modifier mon profil"
-    
+  - Au click sur le bouton "Modifier mon profil", les données suivantes : login / firstname / lastname sont mises à jour dans la base de donnée    
+
+### Changement de mot de passe
+* Bouton "Modifier"
+  * Le bouton est grisé par défaut
+    * Le bouton est actif uniquement dans le cas ou l'ensemble des règles de validation du champ mot de passe et du champ confirmer nouveau mot de passe
+    * Règle de validation des champs [voir règle de validation des champs](#règles-de-validation-des-champs)
+  * Au click sur le bouton "Modifier", le mot de passe est mis à jour dans la base de données
+
+### Zone de danger
+La zone de danger permet de pouvoir désactiver son compte ou le supprimer.
+
+* Bouton "Désactiver mon compte"
+  * Désactive le compte de l'utilisateur en mettant le champ disabled à 1
+
+* Le bouton "Anonymiser mon compte"
+  * N'apparait que si 
+
