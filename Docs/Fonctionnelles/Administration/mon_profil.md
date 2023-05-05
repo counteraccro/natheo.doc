@@ -62,5 +62,17 @@ La zone de danger permet de pouvoir désactiver son compte ou le supprimer.
   * Désactive le compte de l'utilisateur en mettant le champ disabled à 1
 
 * Le bouton "Anonymiser mon compte"
-  * N'apparait que si 
-
+  * N'apparait que si OS_ALLOW_DELETE_DATA = 1 et OS_REPLACE_DELETE_USER =1
+  * Après confirmation, le compte est anonymisé
+    * Le champ login est remplacé par la valeur "John Doe"
+    * Le champ firtname est replacé par la valeur "John"
+    * Le champ lastname est remplacé par la valeur "Doe"
+    * le champ role est remplacé par ROLE_USER
+    * le champ email est remplacé par une adresse email généré aléatoirement
+    * le champ mot de passe est remplacé par un mot de passe généré aléatoirement
+    * le champ disabled est passé à 1
+    * le champ anonymous est passé à 1
+    * l'ensemble des options users associées sont supprimées
+* Le bouton "Supprimer mon compte"
+  * N'apparait que si OS_ALLOW_DELETE_DATA = 1 et OS_REPLACE_DELETE_USER = 0
+  * Le compte est supprimé ainsi que l'ensemble des données associées
