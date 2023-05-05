@@ -50,9 +50,12 @@ Nom de la table en bdd : **natheo.mail_translation**
 
 ### Liste des mails
 
-| Cle                  | Description                                                  |
-|----------------------|--------------------------------------------------------------|
-| MAIL_CHANGE_PASSWORD | Mail envoyé lors d'une demande de changement de mot de passe |
+| Cle                      | Description                                                                         |
+|--------------------------|-------------------------------------------------------------------------------------|
+| MAIL_CHANGE_PASSWORD     | Mail envoyé lors d'une demande de changement de mot de passe                        |
+| MAIL_ACCOUNT_ADM_DISABLE | Mail envoyé lors de la désactivation d'un compte depuis la gestion des utilisateurs |
+| MAIL_ACCOUNT_ADM_ENABLE  | Mail envoyé lors de la réactivation d'un compte depuis la gestion des utilisateurs  |
+| MAIL_CREATE_ACCOUNT_ADM  | Mail envoyé lors de la création d'un compte depuis la gestion des utilisateurs      |
 
 ### Règle de gestion pour l'écran de listing
 
