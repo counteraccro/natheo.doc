@@ -46,6 +46,8 @@ Nom de la table en bdd : **natheo.option_system**
 | OS_MAIL_FROM                | info@natheo.fr                | Adresse email qui apparaitra comme expéditeur                                                                          |
 | OS_MAIL_REPLY_TO            | support@natheo.fr             | Adresse email utilisé pour répondre                                                                                    |
 | OS_ADRESSE_SITE             | valeur défini automatiquement | URL de référence du CMS                                                                                                |
+| OS_MAIL_SIGNATURE           | Cordialemnt                   | Signature présent en fin de mail                                                                                       |
+| OS_MAIL_NOTIFICATION        | 1                             | Envoyer une notification par email                                                                                     |
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
