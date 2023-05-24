@@ -18,3 +18,6 @@ Nom de la table en bdd : **natheo.notification**
 | content    | 	Text         | 	Non | 	Aucune            |
 | level      | 	int(1)       | 	Non | 	Aucune            |
 | created_at | 	datetime     | 	Non | 	CURRENT_TIMESTAMP |
+
+
+## Ajouter une nouvelle notification
