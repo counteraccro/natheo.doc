@@ -15,6 +15,8 @@ Cette partie du CMS permet de pouvoir gérer le paramétrage du CMS, son contenu
 Liste des fonctionnalités disponibles
 * [Mon profil](Fonctionnelles/Administration/mon_profil.md)
   * Gestion des données personnelles de l'utilisateur connecté
+* [Mes notifications](Fonctionnelles/Administration/Global/notifications.md)
+  * Gestion des notifications reçues par l'utilisateur
 * Système
   * Fonctionnalités liées au fonctionnement du CMS
   * [Gestion des logs](Fonctionnelles/Administration/System/log.md)
