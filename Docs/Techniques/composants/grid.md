@@ -1,10 +1,10 @@
 ### Mise en place d'un tableau GRID
 
-[Index](../../index.md) > [Documentation technique](index.md) > Tableau GRID
+[Index](../../../index.md) > [Documentation technique](../index.md) > Tableau GRID
 
 *Cette page vous explique comment mettre en place rapidement un tableau GRID générique*
 
-![Exemple de grid](files/exemple_grid.png)
+![Exemple de grid](../files/exemple_grid.png)
 *Exemple de grid simple*
 
 ### Tiwg

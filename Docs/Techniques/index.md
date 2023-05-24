@@ -12,5 +12,6 @@
 ## Composants récurrents
 *Aide à la mise en place des composants récurrents du projet*
 
-* [Tableau GRID](grid.md)
-* [Editeur Markdown](editeur-markdown.md)
+* [Tableau GRID](composants/grid.md)
+* [Editeur Markdown](composants/editeur-markdown.md)
+* [Nouvelle notification](composants/notification.md)

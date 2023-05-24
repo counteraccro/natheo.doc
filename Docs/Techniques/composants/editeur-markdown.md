@@ -1,10 +1,10 @@
 ### Editeur Markdown
 
-[Index](../../index.md) > [Documentation technique](index.md) > Editeur Markdown
+[Index](../../../index.md) > [Documentation technique](../index.md) > Editeur Markdown
 
 *Cette page vous explique comment mettre en place un éditeur markdown dans le CMS*
 
-![Editeur Markdown](files/editeur_markdown.png)
+![Editeur Markdown](../files/editeur_markdown.png)
 
 ### Mise en place
 L'éditeur markdown est un composant vuejs qui s'ajoute de la façon suivante :
