@@ -7,6 +7,11 @@
 ## Général
 * [Les rôles](roles.md)
 * [Mon profil](mon_profil.md)
+* [Mes notifications](mes_notification.md)
+
+## Global
+Fonctionnalités globale
+* [Notification](Global/notifications.md)
 
 ## Membres
 
