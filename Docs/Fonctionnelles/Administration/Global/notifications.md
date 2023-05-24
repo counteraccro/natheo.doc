@@ -19,5 +19,10 @@ Nom de la table en bdd : **natheo.notification**
 | level      | 	int(1)       | 	Non | 	Aucune            |
 | created_at | 	datetime     | 	Non | 	CURRENT_TIMESTAMP |
 
+### Règles de gestions globales
+- Un User peut posséder n notification
+- Une notification ne peut avoir qu'un seul user
+- Le champ created_at est mis à la date du jour à la création d'une option
 
 ## Ajouter une nouvelle notification
+[Voir ajout nouvelle notification](../../../Techniques/composants/notification.md)
