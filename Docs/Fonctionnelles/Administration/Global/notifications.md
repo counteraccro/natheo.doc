@@ -26,3 +26,12 @@ Nom de la table en bdd : **natheo.notification**
 
 ## Ajouter une nouvelle notification
 [Voir ajout nouvelle notification](../../../Techniques/composants/notification.md)
+
+## Liste des options disponibles
+
+| Clé                         | 	Description                                                                    |
+|-----------------------------|---------------------------------------------------------------------------------|
+| NOTIFICATION_WELCOME        | 	Notification envoyé à la personne à qui on à créé le compte                    |
+| NOTIFICATION_SELF_DISABLED  | 	Notification envoyé aux super admin lorsqu'un utilisateur désactive son compte |
+| NOTIFICATION_SELF_DELETE    | 	Notification envoyé aux super admin lorsqu'un utilisateur supprime son compte  |
+| NOTIFICATION_SELF_ANONYMOUS | 	Notification envoyé aux super admin lorsqu'un utilisateur anonymise son compte |
