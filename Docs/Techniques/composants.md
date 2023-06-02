@@ -43,6 +43,8 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Extension qui permet de récupérer une option user en fonction de sa clé
 - [EncoreEntryCssSourceExtensionRuntime](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/EncoreEntryCssSourceExtensionRuntime.php)
   - Transforme du CSS compilé par Webpack en ressource pour le convertir en inline
+- [DateExtensionRuntime](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/DateExtensionRuntime.php)
+  - Affichage la différence entre 2 dates sous la forme "il y'a x annee x mois x jours x heures x minutes x secondes"
 
 
 ### EventSubscriber
