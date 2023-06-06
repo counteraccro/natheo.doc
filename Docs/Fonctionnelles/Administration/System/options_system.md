@@ -50,6 +50,7 @@ Nom de la table en bdd : **natheo.option_system**
 | OS_MAIL_NOTIFICATION        | 1                             | Envoyer une notification par email                                                                                     |
 | OS_NOTIFICATION             | 1                             | Active les notifications                                                                                               |
 | OS_PURGE_NOTIFICATION       | 30                            | délai de purge des notifications                                                                                       |
+| OS_MAIL_RESET_PASSWORD_TIME | 20                            | Temps en minutes pour la validité du lien de changement de mot de passe                                                |
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
