@@ -18,8 +18,10 @@ Fonctionnalités globale
 
 ## Systeme
 *Ensemble des modules systèmes du CMS*
-* [Gestion des utilisateurs](System/user.md)
-  * [Options des utilisateurs](System/options_users.md)
+* [Gestion des utilisateurs](System/users/user.md)
+  * [Editer un utilisateur](System/users/edit_user.md)
+  * [Ajouter un utilisateur](System/users/new_user.md)
+  * [Options des utilisateurs](System/users/options_users.md)
 * [Gestion de la sidebar](System/sidebar.md)
 * [Gestion des options systèmes](System/options_system.md)
 * [Gestion des Logs](System/log.md)
