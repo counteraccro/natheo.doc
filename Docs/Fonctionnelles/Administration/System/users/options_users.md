@@ -1,10 +1,10 @@
 # Les options systèmes
 
-[Index](../../../../index.md) > [Documentation fonctionnelle](../../index.md) > [Administration](../index.md) > Les options users
+[Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) > Les options users
 
 *Permet aux utilisateurs de la partie admin du CMS de pouvoir configurer certaines options*
 
-![options_users](../files/options_users/options_users.png)
+![options_users](../../files/options_users/options_users.png)
 
 ## Informations générales
 Sidebar :   
@@ -43,4 +43,4 @@ Liste des options disponibles
 - En modification seul le champ value est modifiable.
 - Les options sont générées via un fichier de config présent dans ``config/cms/options_user.yaml``
 - Le fichier est construit de la façon suivante :
-  - Voir [fichier options systems](options_system.md#exemple-de-fichier-de-config)
+  - Voir [fichier options systems](../options_system.md#exemple-de-fichier-de-config)
