@@ -8,10 +8,10 @@
 
 ## Informations générales
 Droit d'accès : **ROLE_USER**  
-*Voir [Gestion des utilisateurs](System/user.md#informations-générales)*
+*Voir [Gestion des utilisateurs](System/users/user.md#informations-générales)*
 
 ## Règles de gestions globales
-*Voir [Gestion des utilisateurs](System/user.md#règles-de-gestions-globales)*
+*Voir [Gestion des utilisateurs](System/users/user.md#règles-de-gestions-globales)*
 
 ## Règles de validation des champs
 Les champs modifiables depuis cette page sont :
