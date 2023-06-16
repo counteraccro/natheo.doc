@@ -110,7 +110,7 @@ Groupe de fixtures : **user, registered**
 
 Commande pour lancer uniquement cette fixture : ``php bin/console doctrine:fixture:load --group=user``
 
-## Exemple de fichier de config
+## Exemple de fichier de liste d'utilisateur
 Le fichier de config pour générer les users est construit sous la forme suivante :
 Ce fichier n'est pas utilisé lors de l'installation du CMS
 ````yaml
