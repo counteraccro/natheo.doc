@@ -53,6 +53,12 @@ Nom de la table en bdd : **natheo.user_data**
 - Le champ created_at est mis à la date du jour à la création d'une option
 - Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss] à chaque modification de la valeur d'une option
 
+### Liste des clés utilisées pour UserData
+| Clé                | 	Valeur par défaut | 	Description                                                                |
+|--------------------|--------------------|-----------------------------------------------------------------------------|
+| KEY_RESET_PASSWORD | 	     Aucune       | 	Clé généré pour identifier la personne avant le changement de mot de passe |
+| KEY_LAST_CONNEXION | 	     Aucune       | 	Date de dernière connexion au format timestamp                             |
+
 ## Règles de gestions globales du tableau de données
 Le tableau de données regroupe l'ensemble des utilisateurs présent sur le site, le trie par défaut ce fait sur l'id du user.
 
