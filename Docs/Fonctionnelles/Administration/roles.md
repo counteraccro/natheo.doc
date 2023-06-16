@@ -14,3 +14,7 @@ L'administration de Nathéo CMS possède 4 niveaux de rôles
 * **ROLE_SUPER_ADMIN**
   * Rôle le plus élevé, permet d'avoir accès à toute la partie administration du CMS 
   * Il peut gérer les utilisateurs et changer leurs droits
+* **ROLE_FONDATEUR**
+  * Rôle caché et non modifiable
+  * Le role fondateur est attribué uniquement au premier compte crée à l'initialisation du CMS
+  * Ce rôle permet de protéger le compte de l'utilisateur de toute modification possible par les utilisateurs ayant le role **ROLE_SUPER_ADMIN**
