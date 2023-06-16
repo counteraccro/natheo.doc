@@ -6,3 +6,5 @@
 .idea/vcs.xml
 *.pb
 .idea/sonarlint/*
+.idea/*
+.idea/dataSources.xml
