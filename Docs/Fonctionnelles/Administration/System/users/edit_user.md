@@ -24,7 +24,7 @@ Liste des règles de gestion de la page
 Au submit du bouton "modifier" et si les règles de gestions du formulaire sont respecté :
 * Les données de l'utilisateur sont alors modifiés
 * Si le champ "désactiver l'utilisateur" est coché alors l'utilisateur ne pourra plus ce connecter à l'administration du CMS
-* Le champ create_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss]
+* Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss]
 
 ## Actions possibles
 Liste des actions possibles que l'on peut faire en plus de la modification des données de l'utilisateur

@@ -21,7 +21,7 @@ Au submit du bouton "Créer le nouvel utilisateur" et si les règles de gestions
   * Le compte est par défaut actif
   * Un mot de passe aléatoire est généré.
   * Un email est envoyé au nouvel utilisateur en utilisant l'adresse email saisie.
-  * Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss]
+  * Le champ create_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss]
 
 ## Email création nouvel utilisateur
 
