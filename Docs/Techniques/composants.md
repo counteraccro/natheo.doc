@@ -13,8 +13,10 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Service regroupant le code fonctionnel pour l'entité [OptionSystem](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/OptionSystem.php)
 - [GridService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/GridService.php) 
   - Service regroupant les méthodes pour l'aide à la génération d'un tableau grid générique
-- [UserService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/UserService.php) 
+- [UserService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/User/UserService.php) 
   - Service regroupant le code fonctionnel pour l'entité [User](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/User.php)
+- [Userdata](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/User/UserDataService.php)
+  - Service regroupant les données rattachés au user
 - [OptionUserService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/OptionUserService.php) 
   - Service regroupant lregroupant le code fonctionnel pour l'entité [OptionUser](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/OptionUser.php)
 - [LoggerService](https://github.com/counteraccro/natheo/blob/master/src/Service/LoggerService.php) 
@@ -28,7 +30,9 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
 - [Mailservice](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/MailService.php)
   - Service qui regroupe l'ensemble des fonctions liées aux emails
 - [NotificationService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/NotificationService.php)
-- Service qui regroupe l'ensemble des fonctions liées aux notifications
+  - Service qui regroupe l'ensemble des fonctions liées aux notifications
+- [TagService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/TagService.php)
+  - Service qui regroupe l'ensemble des fonctions liées aux Tags
 
 ### Extension Twig
 - [SidebarExtension](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/Admin/SidebarExtensionRuntime.php) 
