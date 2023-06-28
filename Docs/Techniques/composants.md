@@ -65,7 +65,11 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
 - [OptionSystemFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/OptionSystemFixtures.php)
   - Génère le jeu de données des options systèmes
 - [UserFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/UserFixtures.php) 
-  - Génère le jeu de données pour les users
+  - Génère le jeu de données pour les users et options_users
+- [MailFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/MailFixtures.php)
+  - Génère le jeu de données pour les emails
+- [TagFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/Content/TagFixtures.php)
+  - Génère le jeu de données pour les tags
 
 #### Groupe de fixtures existant
 - devTools 
@@ -81,3 +85,11 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Données insérées
     - user
     - option_user
+- content
+  - Ensemble des fixtures liées au contenu du site
+  - Données insérées
+    - tag
+- mail
+  - Ensemble des fixtures liées au contenu du mail du site
+  - Données insérées
+    - mail
