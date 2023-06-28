@@ -17,11 +17,14 @@ Liste des fonctionnalités disponibles
   * Gestion des données personnelles de l'utilisateur connecté
 * [Mes notifications](Fonctionnelles/Administration/Global/notifications.md)
   * Gestion des notifications reçues par l'utilisateur
+* Content
+  * [Tags](Fonctionnelles/Administration/Content/Tag/tag.md)
+    * Gestion des tags
 * Système
   * Fonctionnalités liées au fonctionnement du CMS
   * [Gestion des logs](Fonctionnelles/Administration/System/log.md)
     * Permet de consulter / supprimer les fichiers de logs de l'application
-  * Gestion des utilisateurs 
+  * [Gestion des utilisateurs](Fonctionnelles/Administration/System/users/user.md) 
     * Permet de gérer (créer / éditer / supprimer) les personnes qui peuvent ce connecter à l'administration et participer l'ajout de contenu pour le CMS
   * [Options](Fonctionnelles/Administration/System/options_system.md)
     * Permet de modifier les options du CMS
