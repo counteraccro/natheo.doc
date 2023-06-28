@@ -1,4 +1,4 @@
-# Ajout nouvel utilisateur
+# Changement de mot de passe
 
 [Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) > [Gestion des utilisateurs](user.md) > Changement de mot de passe
 

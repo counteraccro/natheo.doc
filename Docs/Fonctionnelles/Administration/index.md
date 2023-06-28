@@ -15,6 +15,8 @@ Fonctionnalités globale
 
 ## Membres
 
+## Content
+* [Gestion des tags]
 
 ## Systeme
 *Ensemble des modules systèmes du CMS*
