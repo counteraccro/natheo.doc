@@ -7,27 +7,27 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
 ### Services
 - [AdminAppService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/AppAdminService.php) 
   - Service global hérité de tous les services pour l'administration
-- [SidebarElementService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/SidebarElementService.php) 
-  - Service regroupant le code fonctionnel pour l'entité [SidebarElementService](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/SidebarElement.php)
-- [OptionSystemService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/OptionSystemService.php)
-  - Service regroupant le code fonctionnel pour l'entité [OptionSystem](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/OptionSystem.php)
+- [SidebarElementService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/SidebarElementService.php) 
+  - Service regroupant le code fonctionnel pour l'entité [SidebarElementService](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/System/SidebarElement.php)
+- [OptionSystemService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/OptionSystemService.php)
+  - Service regroupant le code fonctionnel pour l'entité [OptionSystem](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/System/OptionSystem.php)
 - [GridService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/GridService.php) 
   - Service regroupant les méthodes pour l'aide à la génération d'un tableau grid générique
-- [UserService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/User/UserService.php) 
-  - Service regroupant le code fonctionnel pour l'entité [User](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/User.php)
-- [Userdata](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/User/UserDataService.php)
+- [UserService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/User/UserService.php) 
+  - Service regroupant le code fonctionnel pour l'entité [User](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/System/User.php)
+- [Userdata](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/User/UserDataService.php)
   - Service regroupant les données rattachés au user
 - [OptionUserService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/OptionUserService.php) 
   - Service regroupant lregroupant le code fonctionnel pour l'entité [OptionUser](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/OptionUser.php)
 - [LoggerService](https://github.com/counteraccro/natheo/blob/master/src/Service/LoggerService.php) 
   - Service qui permet la centralisation, l'enregistrement, la lecture et suppression des logs de l'application
-- [TranslateService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/TranslateService.php)
+- [TranslateService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/TranslateService.php)
   - Service qui permet de gérer les données lié aux traductions
 - [CommandeService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/CommandService.php)
   - Service qui regroupe l'ensemble des commandes executable via la console
 - [MarkdownEditorService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/MarkdownEditorService.php)
   - Service qui regroupe les traductions pour l'éditeur Markdown
-- [Mailservice](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/MailService.php)
+- [Mailservice](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/MailService.php)
   - Service qui regroupe l'ensemble des fonctions liées aux emails
 - [NotificationService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/NotificationService.php)
   - Service qui regroupe l'ensemble des fonctions liées aux notifications
@@ -60,13 +60,13 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Appelé après chaque commit /update /delete d'une entité
 
 ### Fixtures
-- [SidebarElementFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/SidebarElementFixtures.php)
+- [SidebarElementFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/System/SidebarElementFixtures.php)
   - Génère le jeu de données pour la sidebar de l'administration
-- [OptionSystemFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/OptionSystemFixtures.php)
+- [OptionSystemFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/System/OptionSystemFixtures.php)
   - Génère le jeu de données des options systèmes
-- [UserFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/UserFixtures.php) 
+- [UserFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/System/UserFixtures.php) 
   - Génère le jeu de données pour les users et options_users
-- [MailFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/MailFixtures.php)
+- [MailFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/System/MailFixtures.php)
   - Génère le jeu de données pour les emails
 - [TagFixtures](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/Content/TagFixtures.php)
   - Génère le jeu de données pour les tags
