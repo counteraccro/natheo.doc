@@ -89,6 +89,7 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Ensemble des fixtures liées au contenu du site
   - Données insérées
     - tag
+    - media
 - mail
   - Ensemble des fixtures liées au contenu du mail du site
   - Données insérées
