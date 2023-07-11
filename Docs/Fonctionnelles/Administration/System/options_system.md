@@ -51,6 +51,10 @@ Nom de la table en bdd : **natheo.option_system**
 | OS_NOTIFICATION             | 1                             | Active les notifications                                                                                               |
 | OS_PURGE_NOTIFICATION       | 30                            | délai de purge des notifications                                                                                       |
 | OS_MAIL_RESET_PASSWORD_TIME | 20                            | Temps en minutes pour la validité du lien de changement de mot de passe                                                |
+| OS_MEDIA_FOLDER             | 1                             | Défini si on créer ou non des dossier physiques                                                                        |
+| OS_MEDIA_PATH               | public                        | Path pour le dossier média                                                                                             |
+| OS_MEDIA_URL                | http://dev.natheo             | Url public pour le dossier média                                                                                       |
+
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
