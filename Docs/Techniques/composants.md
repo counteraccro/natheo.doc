@@ -33,6 +33,8 @@ Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Exte
   - Service qui regroupe l'ensemble des fonctions liées aux notifications
 - [TagService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/TagService.php)
   - Service qui regroupe l'ensemble des fonctions liées aux Tags
+- [MediaFolderService](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Media/MediaFolderService.php)
+  - Service qui gère l'ensemble des fonctions liées au dossier de la médiathèque
 
 ### Extension Twig
 - [SidebarExtension](https://github.com/counteraccro/natheo/blob/master/src/Twig/Runtime/Admin/SidebarExtensionRuntime.php) 
