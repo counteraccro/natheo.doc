@@ -98,6 +98,7 @@ options_system:
         help: 'options_system.site_name_help'                                       # Message d'aide
         placeholder: 'options_system.site_name_placeholder'                         # Texte dans le placeholder
         success: 'options_system.site_name_msg_success'                             # Message quand l'option s'est bien enregistrée
+        disabled: true                                                              # Si true la valeur ne peut pas être modifiée
       OS_OPEN_SITE:
         type: 'boolean'
         label: 'options_system.open_site'
