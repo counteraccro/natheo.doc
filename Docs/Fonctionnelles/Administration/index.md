@@ -17,6 +17,7 @@ Fonctionnalités globale
 
 ## Content
 * [Gestion des tags](Content/Tag/tag.md)
+* [La médiathèque](Content/Mediateque/mediatheque.md)
 
 ## Systeme
 *Ensemble des modules systèmes du CMS*
