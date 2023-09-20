@@ -74,7 +74,7 @@ voir [Gestion des dossiers](gestion_folder.md#edition-dun-dossier) pour plus d'i
 
 ### Nouveau média
 Le bouton "nouveau média" permet de pouvoir uploader un nouveau média dans le dossier courant
-voir [Gestion des dossiers](gestion_media.md#nouveau-média) pour plus d'information
+voir [Gestion des médias](gestion_media.md#nouveau-média) pour plus d'information
 
 ### Editer un média
-voir [Gestion des dossiers](gestion_media.md#edition-dun-média) pour plus d'information
+voir [Gestion des médias](gestion_media.md#edition-dun-média) pour plus d'information
