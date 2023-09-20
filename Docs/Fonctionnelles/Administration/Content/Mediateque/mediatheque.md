@@ -67,4 +67,14 @@ utiliser ces médias dans la création du contenu de vos pages
 
 ### Nouveau dossier
 Le bouton "nouveau dossier" permet de pouvoir créer un nouveau dossier (MediaFolder)
-voir [Gestion des dossiers](gestion_folder.md) pour plus d'information
+voir [Gestion des dossiers](gestion_folder.md#nouveau-dossier) pour plus d'information
+
+### Editer un dossier
+voir [Gestion des dossiers](gestion_folder.md#edition-dun-dossier) pour plus d'information
+
+### Nouveau média
+Le bouton "nouveau média" permet de pouvoir uploader un nouveau média dans le dossier courant
+voir [Gestion des dossiers](gestion_media.md#nouveau-média) pour plus d'information
+
+### Editer un média
+voir [Gestion des dossiers](gestion_media.md#edition-dun-média) pour plus d'information
