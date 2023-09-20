@@ -38,18 +38,18 @@ Actuellement seuls les fichiers avec les extensions suivantes sont téléchargea
   - Pas de règle de gestion
 
 ### Actions possibles
-**Bouton "choisir un fichier**
+**Bouton "choisir un fichier**  
 `Permet de sélectionner un fichier depuis votre ordinateur
 
-**Bouton "télécharger"**
+**Bouton "télécharger"**  
 Si les règles de gestions sont valides, alors le fichier est téléchargé sur le serveur est un média est créé en base de donnée
 
 Dans le cas ou l'option OS_MEDIA_CREATE_PHYSICAL_FOLDER est à true alors l'image sera copier dans le dossier courant.
 
-**Bouton "Annuler"**
+**Bouton "Annuler"**  
 Retourne à l'état précédent, supprime l'aperçu du document ainsi que les données saisies
 
-**Bouton "Fermer"**
+**Bouton "Fermer"**  
 Ferme la modale et supprime l'aperçu du document ainsi que les données saisies
 
 
@@ -70,8 +70,8 @@ Ouverture de la modale "Editer un média"
 
 ### Actions possibles
 
-**Bouton "valider"**
+**Bouton "valider"**  
 Au click sur le bouton, met à jour le média concerné ainsi que le path et le webPath
 
-**Bouton "Annuler"**
+**Bouton "Annuler"**  
 Ferme la modale, aucune donnée n'est modifié
