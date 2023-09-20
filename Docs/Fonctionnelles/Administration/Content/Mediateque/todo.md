@@ -4,9 +4,11 @@
 
 *Liste des améliorations / idées pour la médiathèque*
 
-- Global
+- **Global**
   - Prise en charge des vidéos
   - Ajout d'un système de recherche
   - Mise en place d'une pagination (scroll infini)
-- Corbeille
+- **Nouveau dossier / edition**
+  - Améliorer les règles de gestions pour la saisie d'un nom de dossier
+- **Corbeille**
   - Ajout d'un bouton "Vider la corbeille"

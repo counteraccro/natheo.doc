@@ -64,3 +64,7 @@ La médiathèque permet de pouvoir stocker des médias (images / documents) dire
 utiliser ces médias dans la création du contenu de vos pages
 
 ## Règles de gestions globales de l'écran
+
+### Nouveau dossier
+Le bouton "nouveau dossier" permet de pouvoir créer un nouveau dossier (MediaFolder)
+voir [Gestion des dossiers](gestion_folder.md) pour plus d'information
