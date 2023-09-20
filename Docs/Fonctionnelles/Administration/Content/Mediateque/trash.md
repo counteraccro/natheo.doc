@@ -51,3 +51,5 @@ Un click sur "confirmer la suppression" lance la suppression de façon définiti
 
 Dans le cas d'un dossier, l'ensemble des éléments présent dans le dossier (média + sous dossier) seront aussi supprimés de façon
 définitive.
+
+Dans le cas ou l'option OS_MEDIA_CREATE_PHYSICAL_FOLDER est à true alors le média / dossier sera supprimé du disque
