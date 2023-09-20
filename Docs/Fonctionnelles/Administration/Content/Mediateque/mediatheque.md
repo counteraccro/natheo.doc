@@ -65,6 +65,22 @@ utiliser ces médias dans la création du contenu de vos pages
 
 ## Règles de gestions globales de l'écran
 
+### Barre de bouton à droite
+![Barre de bouton droite](../../files/mediatheque/barre_action_droite.png)
+
+De gauche à droite
+- Recherche : Permet de faire une recherche dans l'ensemble des dossiers et média (*fonctionnalité non implémenté*)
+- Trier par : Permet de pouvoir trier les média et dossier du dossier courant par :
+  - Date : date de création du média)
+  - Nom : nom du média
+  - Type : type du média (fichier, image, dossier etc...)
+- Par ordre : Permet de définir l'ordre du tri :
+  - Croissant
+  - Décroissant
+- Corbeille : voir [Corbeille](trash.md)
+- Affichage au format grid : Affiche les médias et dossiers sous la forme d'une grille
+- Affichage au format liste : Affiche les médias et dossiers sous la forme d'une liste
+
 ### Nouveau dossier
 Le bouton "nouveau dossier" permet de pouvoir créer un nouveau dossier (MediaFolder)
 voir [Gestion des dossiers](gestion_folder.md#nouveau-dossier) pour plus d'information
