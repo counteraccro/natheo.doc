@@ -1,4 +1,4 @@
-# Améliorations / idées pour la médiathèque
+# Gestion des dossiers médiathèque
 
 [Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) > [Médiathèque](mediatheque.md) > Gestion des dossiers
 
