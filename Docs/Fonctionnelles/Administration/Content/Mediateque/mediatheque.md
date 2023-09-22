@@ -108,9 +108,9 @@ Au click sur information une modale apparait indiquant les informations du médi
 Permet de pouvoir déplacer un dossier ou un média dans la médiathèque
 
 Pour pouvoir déplacer un dossier ou une image, cliquez sur "déplacer"
-![information](../../files/mediatheque/deplacer_btn.png)
+![déplacer](../../files/mediatheque/deplacer_btn.png)
 
 Au click sur "déplacer" une modale apparait permettant de sélectionner le dossier ou l'on souhaite déplacer le dossier ou média sélectionné
-![information](../../files/mediatheque/modale_deplacer.png)
+![déplacer](../../files/mediatheque/modale_deplacer.png)
 
 Dans le cas ou l'option OS_MEDIA_CREATE_PHYSICAL_FOLDER est à true alors le dossier ou média sera déplacé physiquement sur le disque
