@@ -22,6 +22,8 @@ Fonctionnalités globale
   * [Gestion des dossiers](Content/Mediateque/gestion_folder.md)
   * [Gestion des medias](Content/Mediateque/gestion_media.md)
   * [La corbeille](Content/Mediateque/trash.md)
+* [Gestion des pages](Content/Page/page.md)
+  * [Améliorations](Content/Page/todo.md)
 
 ## Systeme
 *Ensemble des modules systèmes du CMS*
