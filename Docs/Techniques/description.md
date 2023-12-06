@@ -7,9 +7,9 @@ Natheo CMS est un projet web développé avec PHP / HTML / CSS /JS
 ### Langage
 *Langage utilisé pour le développement du projet*
 
-| Langage      | Version      |
-|--------------|--------------|
-| PHP          | `8.1`        |
+| Langage      | Version |
+|--------------|---------|
+| PHP          | `8.2`   |
 
 ### SGBD compatible
 *Base de données testés*
@@ -23,7 +23,7 @@ Natheo CMS est un projet web développé avec PHP / HTML / CSS /JS
 
 | framework | Version |
 |-----------|---------|
-| Symfony   | `6.3.0` |
+| Symfony   | `6.4.0` |
 | Bootstrap | `5.3.0` |
 | VueJS     | `3.3.4` |
 
@@ -32,9 +32,7 @@ Natheo CMS est un projet web développé avec PHP / HTML / CSS /JS
 
 | Nom	                                    | Version	  | Description                                           |
 |-----------------------------------------|-----------|-------------------------------------------------------|
-| stof/doctrine-extensions-bundle         | 	`1.7.1`	 | Extension pour doctrine                               |
 | behat/transliterator                    | 	`1.5.0`	 | Extension pour doctrine                               |
-| gedmo/doctrine-extensions               | 	`3.11.1` | Extension pour doctrine                               |
 | league/commonmark                       | 	`2.4`    | Parser markdown                                       |
 | twig/markdown-extra                     | 	`3.5`    | filtre twig pour convertir markdown en html           |
 | martin-georgiev/postgresql-for-doctrine | `2.1`     | Ajoute le support de traitements postgres particulier |
