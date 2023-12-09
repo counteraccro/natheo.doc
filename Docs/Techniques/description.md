@@ -23,7 +23,7 @@ Natheo CMS est un projet web développé avec PHP / HTML / CSS /JS
 
 | framework | Version |
 |-----------|---------|
-| Symfony   | `6.4.0` |
+| Symfony   | `7.0.1` |
 | Bootstrap | `5.3.0` |
 | VueJS     | `3.3.4` |
 
