@@ -13,3 +13,5 @@
   - À développer
 - **Tag**
   - Revoir l'interface CSS de l'autocompletion
+- **Onglet sauvegarde**
+  - Ajouter un système de warning pour informer l'utilisateur que certaines données sont non saisi
