@@ -24,6 +24,7 @@ Fonctionnalités globale
   * [La corbeille](Content/Mediateque/trash.md)
 * [Gestion des pages](Content/Page/page.md)
   * [Améliorations](Content/Page/todo.md)
+* [Gestion des Faqs](Content/Faq/faq.md)
 
 ## Systeme
 *Ensemble des modules systèmes du CMS*
