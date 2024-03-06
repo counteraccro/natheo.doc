@@ -96,172 +96,198 @@ Nom de la table en bdd : **natheo.faq_statistique**
   - Le champ created_at est mis à la date du jour à la création d'une option
   - Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss] à chaque modification de la
     valeur d'une option
-- page_translation
-    - Une page_translation est lié à une page
-- page_content
-    - Une page_content est lié à une page
-    - Une page_content possède n page_content_translation
-- page_content_translation
-    - Une page_content_translation est lié à une page_content
-- page_statistique
-    - Une page_statistique est lié à une page
-- page_tag
-    - Une page_tag est lié à une page et à un tag
+- faq_translation
+  - Une faq_translation est lié à une faq
+- faq_category
+  - Une faq_category est lié à une faq
+  - Une faq_category peut posséder n faq_question
+  - Une faq_category possède n faq_category_translation
+- faq_category_translation
+  - Une faq_category_translation est lié à une faq_category
+- faq_question
+  - Une faq_question est lié à une faq_category
+  - Une faq_question possède n faq_question_translation
+- faq_question_translation
+  - Une faq_question_translation est lié à une faq_question
+- faq_statistique
 
 ## Définition
 
-La gestion des pages permet de créer le contenu du site que ce soit du texte ou l'affichage d'un module
-comme une FAQ ou un CV
+La gestion des Faqs permet de créer des FAqs permettant d'afficher sur le cms sous la forme de question/réponse des informations.
 
 ## Règles de gestions globales du tableau de données
 
-Le tableau de données regroupe l'ensemble des pages enregistrés en base de donnée, le trie par défaut ce fait sur l'id
-de la page.
-Pour chaque page on peut y voir son nombre de commentaires ainsi que ses statistiques
+Le tableau de données regroupe l'ensemble des faqs enregistrés en base de donnée, le trie par défaut ce fait sur l'id
+de la faq.
+Pour chaque FAQ, le nombre de question et de réponses sont affichés
 
 ### Liste des actions possibles
 
-Liste des actions possibles sur le listing des pages
+Liste des actions possibles sur le listing des faq
 
-![Listing](../../files/page/listing_help.png)
+![aide](../../files/faq/faq_aide.png)
 
-#### Désactiver une page
+#### Désactiver une faq
 
-Met le champ ``page.disabled à true``.   
-Une page désactivée n'apparait plus sur la partie public du site.
+Met le champ ``faq.disabled à true``.   
+Une faq désactivée n'apparait plus sur la partie public du site.
 Si on tente d'y accéder quand même via son url, une erreur de type 404 doit apparaitre
 
-#### Activer une page
+#### Activer une faq
 
-Met le champ ``page.disabled à false``.   
+Met le champ ``faq.disabled à false``.   
 Une page activée est accéssible depuis la partie public du site si celle-ci à le status publié.
 
-#### Supprimer une page
+#### Supprimer une faq
 
-Supprime définitivement la page de la base de donnée
-La suppression d'une page entraine la suppression des éléments suivants :
+Supprime définitivement la faq de la base de données
+La suppression d'une faq entraine la suppression des éléments suivants :
 
-* la page
-* les données page_translation associées
-* les données page_content associées
-* les données page_content_translation associées
-* les données page_commentaire associées
-* les données page_statistique associées
-* les données page_tag associées
+* la faq
+* les données faq_translation associées
+* les données faq_category associées
+* les données faq_category_translation associées
+* les données faq_question associées
+* les données faq_question_translation associées
+* les données faq_statistique associées
   Cette action est définitive et sans possibilité de retour.
 
-#### Modifier une page
+#### Modifier une faq
 
-Permet de pouvoir modifier une page
-Voir [Modifier une page](add_edit_page.md);
+Permet de pouvoir modifier une faq
+Voir [Modifier une faq](add_edit_faq.md);
 
-#### Créer un page
+#### Créer un faq
 
-Permet de pouvoir créer une nouvelle page
-Voir [Modifier une page](add_edit_page.md);
+Permet de pouvoir créer une nouvelle faq
+Voir [Modifier une page](add_edit_faq.md);
 
 ## Fixtures
 
-Path du fichier de données : ``src/DataFixtures/data/page_fixtures_data.yaml``  
-Nom de la fixture : **PageFixtures**  
-Groupe de fixtures : **content, page**
+Path du fichier de données : ``src/DataFixtures/data/faq_fixtures_data.yaml``
+Nom de la fixture : **FaqFixtures**  
+Groupe de fixtures : **content, faq**
 
-Commande pour lancer uniquement cette fixture : ``php bin/console doctrine:fixture:load --group=page``
+Commande pour lancer uniquement cette fixture : ``php bin/console doctrine:fixture:load --group=faq``
 
-## Exemple de fixture pour générer les pages
+## Exemple de fixture pour générer les faqs
 
 Le fichier de config pour générer les pages est construit sous la forme suivante :
 
 ````yaml
-pages:
-  Page_presentation:
+faq:
+  faq-1:
     user: Aymeric
-    render: 6
-    status: 1
-    tags:
-      - Tag_natheo
-      - Tag_evolution
-      - Tag_article
-    pageTranslation:
+    disabled: 0
+    faqTranslation:
       fr:
         locale: fr
-        titre: Bienvenue sur NatheoCMS
-        url: article/bienvenue
+        title: 'La FAQ de NatheoCMS'
       en:
         locale: en
-        titre: '[EN] Bienvenue sur NatheoCMS'
-        url: 'article-en/welcome'
+        title: '[EN] La FAQ de NatheoCMS'
       es:
         locale: es
-        titre: '[ES] Bienvenue sur NatheoCMS'
-        url: 'article-es/bienvenido'
-    pageContent:
-      presentation_content_1:
-        renderBlock: 1
+        title: '[ES] La FAQ de NatheoCMS'
+    faqStatistique:
+      FAQ_STAT_NB_CATEGORIES:
+        key: KEY_STAT_NB_CATEGORIES
+        value: 2
+      FAQ_STAT_NB_QUESTIONS:
+        key: KEY_STAT_NB_QUESTIONS
+        value: 4
+    faqCategory:
+      installation:
+        disabled: 0
         renderOrder: 1
-        type: 1
-        pageContentTranslation:
+        faqCategoryTranslation:
           fr:
             locale: fr
-            text: "# Félicitation ! Installation de nathéo CMS terminé\n\n
-            Bravo, si vous voyez cette page c'est que vous avez terminé l'installation de Natheo CMS sur votre environnement. Mais le travail n'est pas encore terminé pour autant, il va surement falloir configurer certains détail pour que ce site soit définitivement le votre
-            \n\n
-            ## Documentations\n\n
-            Retrouver l'ensemble de la documentation de <a href='http://dev.natheo/assets/natheotheque/documentations/documentation-natheo.pdf' target='_blank'>NatheoCMS</a> au format PDF
-            \n\n
-            ## Autres informations\n\n
-            Consulter notre site pour obtenir d'autres informations sur NatheoCMS"
+            title: 'Installation'
           en:
             locale: en
-            text: "# [EN]Félicitation ! Installation de nathéo CMS terminé\n\n
-            Bravo, si vous voyez cette page c'est que vous avez terminé l'installation de Natheo CMS sur votre environnement. Mais le travail n'est pas encore terminé pour autant, il va surement falloir configurer certains détail pour que ce site soit définitivement le votre
-            \n\n
-            ## Documentations\n\n
-            Retrouver l'ensemble de la documentation de <a href='http://dev.natheo/assets/natheotheque/documentations/documentation-natheo.pdf' target='_blank'>NatheoCMS</a> au format PDF
-            \n\n
-            ## Autres informations\n\n
-            Consulter notre site pour obtenir d'autres informations sur NatheoCMS"
+            title: '[EN] Installation'
           es:
             locale: es
-            text: "# [ES]Félicitation ! Installation de nathéo CMS terminé\n\n
-            Bravo, si vous voyez cette page c'est que vous avez terminé l'installation de Natheo CMS sur votre environnement. Mais le travail n'est pas encore terminé pour autant, il va surement falloir configurer certains détail pour que ce site soit définitivement le votre
-            \n\n
-            ## Documentations\n\n
-            Retrouver l'ensemble de la documentation de <a href='http://dev.natheo/assets/natheotheque/documentations/documentation-natheo.pdf' target='_blank'>NatheoCMS</a> au format PDF
-            \n\n
-            ## Autres informations\n\n
-            Consulter notre site pour obtenir d'autres informations sur NatheoCMS"
-      presentation_content_2:
-        renderBlock: 2
-        renderOrder: 1
-        type: 2
-        typeId: 1
-      presentation_content_3:
-        renderBlock: 3
-        renderOrder: 1
-        type: 1
-        pageContentTranslation:
+            title: '[ES] Installation'
+        faqQuestion:
+          q-installation-1:
+            disabled: 0
+            renderOrder: 1
+            faqQuestionTranslation:
+              fr:
+                locale: fr
+                title: 'Comment installer NatheoCMS'
+                answer: 'In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              en:
+                locale: en
+                title: '[EN] Comment installer NatheoCMS'
+                answer: '[EN] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              es:
+                locale: es
+                title: '[ES] Comment installer NatheoCMS'
+                answer: '[ES] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+          q-installation-2:
+            disabled: 0
+            renderOrder: 2
+            faqQuestionTranslation:
+              fr:
+                locale: fr
+                title: "Comment mettre à jour NateoCMS"
+                answer: 'In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              en:
+                locale: en
+                title: "[EN] Comment mettre à jour NateoCMS"
+                answer: '[EN] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              es:
+                locale: es
+                title: "[ES] Comment mettre à jour NateoCMS"
+                answer: '[ES] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+          q-installation-3:
+            disabled: 1
+            renderOrder: 3
+            faqQuestionTranslation:
+              fr:
+                locale: fr
+                title: "J'ai une erreur 500"
+                answer: 'In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              en:
+                locale: en
+                title: "[EN] J'ai une erreur 500"
+                answer: '[EN] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              es:
+                locale: es
+                title: "[ES] J'ai une erreur 500"
+                answer: '[ES] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+      miseAJour:
+        disabled: 0
+        renderOrder: 2
+        faqCategoryTranslation:
           fr:
             locale: fr
-            text: "# Pour les développeurs
-            \n\n
-            Vous souhaitez contribuer au développement du CMS ou tout simplement le modifier pour l'adapter à vos besoins, consulter [la documentation](https://counteraccro.github.io/natheo.doc/) technique."
+            title: 'Mise à jour'
           en:
             locale: en
-            text: "# [EN]Pour les développeurs
-            \n\n
-            Vous souhaitez contribuer au développement du CMS ou tout simplement le modifier pour l'adapter à vos besoins, consulter [la documentation](https://counteraccro.github.io/natheo.doc/) technique."
+            title: '[EN] Mise à jour'
           es:
             locale: es
-            text: "# [ES]Pour les développeurs
-            \n\n
-            Vous souhaitez contribuer au développement du CMS ou tout simplement le modifier pour l'adapter à vos besoins, consulter [la documentation](https://counteraccro.github.io/natheo.doc/) technique."
+            title: '[ES] Mise à jour'
+        faqQuestion:
+          q-installation-1:
+            disabled: 0
+            renderOrder: 1
+            faqQuestionTranslation:
+              fr:
+                locale: fr
+                title: 'Comment mettre à jour NatheoCMS'
+                answer: 'In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              en:
+                locale: en
+                title: '[EN] Comment mettre à jour NatheoCMS'
+                answer: '[EN] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
+              es:
+                locale: es
+                title: '[ES] Comment mettre à jour NatheoCMS'
+                answer: '[ES] In sed quam ac arcu fringilla vulputate vitae id est. Donec eleifend purus vel tincidunt ultricies. Integer dapibus erat eu ultrices aliquam. Pellentesque ut porta purus. Vestibulum porttitor vestibulum ante, a aliquam dui pretium sit amet. Aenean vitae mattis arcu. Curabitur semper lorem sed lacinia sodales. Integer et finibus erat. Aenean lectus augue, ullamcorper at felis non, egestas elementum felis. Proin a tortor feugiat, sagittis mi ut, pellentesque libero. Ut in justo eget libero vehicula elementum a ut magna. In quis tristique leo.'
 
-    pageStatistique:
-      PAGE_NB_VISITEUR:
-        key: PAGE_NB_VISITEUR
-        value: 100
-      PAGE_NB_READ:
-        key: PAGE_NB_READ
-        value: 30
 ````
