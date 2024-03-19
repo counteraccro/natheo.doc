@@ -160,7 +160,7 @@ Voir [Modifier une faq](add_edit_faq.md);
 #### Créer un faq
 
 Permet de pouvoir créer une nouvelle faq
-Voir [Modifier une page](add_edit_faq.md);
+Voir [Modifier une faq](add_edit_faq.md);
 
 ## Fixtures
 
