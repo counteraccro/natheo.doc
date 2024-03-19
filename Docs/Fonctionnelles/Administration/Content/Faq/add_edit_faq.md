@@ -1,4 +1,4 @@
-# Créer / Editer une page
+# Créer / Editer une faq
 
 [Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) > [Gestion des faqs](faq.md) > Créer / éditer une faq
 
