@@ -27,5 +27,13 @@ Une fois la Faq créée, vous êtes redirigé vers l'édition de la Faq.
 ## Edition d'une donnée
 
 ## Désactiver une question / catégorie
+Vous pouvez désactiver une question / catégorie en cliquant sur le bouton ![Edition d'une faq](../../files/generique/btn_disabled.png)
+Dans le cas d'une catégorie, cela désactive aussi l'ensemble des questions associées
+
+![Edition d'une faq](../../files/faq/desabled_question.png)
+*Exemple de question désactivée*
+
+## Activer une question / catégorie
+Vous pouvez activer une question / catégorie en cliquant sur le bouton ![Edition d'une faq](../../files/generique/btn_enabled.png)
 
 ## Déplacer une question / catégorie
