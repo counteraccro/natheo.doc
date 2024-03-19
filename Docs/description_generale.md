@@ -22,6 +22,10 @@ Liste des fonctionnalités disponibles
     * Gestion des tags
   * [Médiathèque](Fonctionnelles/Administration/Content/Mediateque/mediatheque.md)
     * La médiathèque
+  * [Pages](Fonctionnelles/Administration/Content/Page/page.md)
+    * Gestion des pages du cms
+  * [FAQ](Fonctionnelles/Administration/Content/Faq/faq.md)
+    * Gestion des Faqs
 * Système
   * Fonctionnalités liées au fonctionnement du CMS
   * [Gestion des logs](Fonctionnelles/Administration/System/log.md)
