@@ -25,6 +25,19 @@ Une fois la Faq créée, vous êtes redirigé vers l'édition de la Faq.
 ## Nouvelle question
 
 ## Edition d'une donnée
+Pour éditer une donnée, vous pouvez cliquer sur le bouton ![btn_down.png](../../files/generique/btn_edit.png)
+
+Un champ de saisie apparait alors pour pouvoir modifier la donnée
+![Edition d'une faq](../../files/faq/file_éditor.png)
+
+Dans le cas d'une annulation, la donnée précédente est restaurée
+
+*La donnée n'est pas sauvegardée de façon définitive, il faut pour cela cliquez sur le bouton "sauvegarder"*
+
+## Mettre à jour la FAQ
+Pour mettre à jour la FAQ de façon globale, il faut cliquer sur le bouton "sauvegarder"
+
+![Edition d'une faq](../../files/faq/info_save.png)
 
 ## Désactiver une question / catégorie
 Vous pouvez désactiver une question / catégorie en cliquant sur le bouton ![Edition d'une faq](../../files/generique/btn_disabled.png)
@@ -34,6 +47,9 @@ Dans le cas d'une catégorie, cela désactive aussi l'ensemble des questions ass
 *Exemple de question désactivée*
 
 ## Supprimer une question / catégorie
+Pour supprimer une question / catégorie vous pouvez cliquer sur le bouton ![btn_down.png](../../files/generique/btn_trash.png)
+
+La suppression d'une catégorie entraine la suppression de l'ensemble des questions associées
 
 ## Activer une question / catégorie
 Vous pouvez activer une question / catégorie en cliquant sur le bouton ![Edition d'une faq](../../files/generique/btn_enabled.png)
