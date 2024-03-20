@@ -33,7 +33,15 @@ Dans le cas d'une catégorie, cela désactive aussi l'ensemble des questions ass
 ![Edition d'une faq](../../files/faq/desabled_question.png)
 *Exemple de question désactivée*
 
+## Supprimer une question / catégorie
+
 ## Activer une question / catégorie
 Vous pouvez activer une question / catégorie en cliquant sur le bouton ![Edition d'une faq](../../files/generique/btn_enabled.png)
 
 ## Déplacer une question / catégorie
+Vous pouvez déplacer une question / catégorie vers le haut ou le bas en cliquant sur les boutons ![btn_down.png](../../files/generique/btn_up.png)
+ou ![btn_down.png](../../files/generique/btn_down.png)
+
+Au clic sur le bouton ![btn_down.png](../../files/generique/btn_up.png) permet de remonter une question/catégorie d'une place vers le haut
+
+Au clic sur le bouton ![btn_down.png](../../files/generique/btn_down.png) permet de descendre une question/catégorie d'une place vers le bas
