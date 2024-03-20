@@ -22,7 +22,25 @@ Une fois la Faq créée, vous êtes redirigé vers l'édition de la Faq.
 
 ## Nouvelle Catégorie
 
+Pour créer une nouvelle catégorie, cliquez sur le bouton "nouvelle catégorie"
+
+Cela ouvre une modale de création d'une catégorie
+![Nouvelle catégorie](../../files/faq/new_categorie.png)
+
+Vous pouvez choisir la position de celle-ci avant de la créer.
+
+A la création, les traductions sont automatiquement créées en fonction des langues définie dans l'administration
+
 ## Nouvelle question
+Pour créer une nouvelle question, cliquez sur le bouton ![btn_down.png](../../files/generique/btn_plus.png)
+
+Cela ouvre une modale de création d'une question
+![Nouvelle catégorie](../../files/faq/new_question.png)
+
+Vous pouvez choisir la position de celle-ci avant de la créer.
+
+A la création, les traductions sont automatiquement créées en fonction des langues définie dans l'administration
+
 
 ## Edition d'une donnée
 Pour éditer une donnée, vous pouvez cliquer sur le bouton ![btn_down.png](../../files/generique/btn_edit.png)
@@ -38,6 +56,8 @@ Dans le cas d'une annulation, la donnée précédente est restaurée
 Pour mettre à jour la FAQ de façon globale, il faut cliquer sur le bouton "sauvegarder"
 
 ![Edition d'une faq](../../files/faq/info_save.png)
+
+Si la FAQ a été modifiée sans être sauvegardé, un message d'information est indiqué
 
 ## Désactiver une question / catégorie
 Vous pouvez désactiver une question / catégorie en cliquant sur le bouton ![Edition d'une faq](../../files/generique/btn_disabled.png)
