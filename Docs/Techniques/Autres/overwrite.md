@@ -23,3 +23,65 @@ Chaque action qui doit être surchargé doit être configuré dans le fichier ``
 ```
 
 Pour chaque action qui doit être surchargé il faut défini la configuration suivante:
+ * ```controller:```  Le namespace du controller à overwrite
+ * ```route:``` La route de l'action à overwrite
+ * ```overwrite:```
+   * ```route:``` La nouvelle route
+   * ```parameters``` Dans le cas ou la route contenait des paramètres vous pouvez les transférés à la nouvelle route 
+avec des noms de paramètres différents sous la forme clé : valeur avec comme clé l'ancien paraètre et comme valeur le nom du nouveau paramètre
+
+## Architecture
+
+### Controller
+Les controllers créés pour la surcharge doivent **obligatoirement** être dans le dossier ```src/Overwrite/Controller```
+
+L'action surchargé doit être défini comme n'importe quelle action
+
+```php
+<?php
+
+/**
+ * Controller de test pour la surcharge
+ * @author Gourdon Aymeric
+ * @version 1.0
+ */
+
+namespace App\Overwrite\Controller\Admin\Tools;
+
+use App\Controller\Admin\AppAdminController;
+use App\Service\Admin\System\OptionSystemService;
+use App\Utils\Breadcrumb;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
+#[Route('/admin/{_locale}/overwrite', name: 'admin_overwrite_', requirements: ['_locale' => '%app.supported_locales%'])]
+#[IsGranted('ROLE_USER')]
+class TestOverwriteController extends AppAdminController
+{
+
+    /**
+     * Page Démo pour les elements html
+     * @param OptionSystemService $optionSystemService
+     * @param $id
+     * @return Response
+     */
+    #[IsGranted('ROLE_SUPER_ADMIN')]
+    #[Route('/page-demo/{id}', name: 'page_demo')]
+    public function pageDemo(OptionSystemService $optionSystemService, $id): Response
+    {
+        $breadcrumb = [
+            Breadcrumb::DOMAIN => 'message',
+            Breadcrumb::BREADCRUMB => [
+                'pagedemo.element.html' => '#'
+            ]
+        ];
+
+        return $this->render('overwrite/admin/tools/page_demo.html.twig', ['breadcrumb' => $breadcrumb, 'id' => $id]);
+    }
+}
+
+
+```
+
+### les vues
