@@ -15,3 +15,6 @@
 * [Tableau GRID](composants/grid.md)
 * [Editeur Markdown](composants/editeur-markdown.md)
 * [Nouvelle notification](composants/notification.md)
+
+## Autres
+* [Surcharge des controllers](Autres/overwrite.md)
