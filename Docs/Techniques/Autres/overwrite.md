@@ -85,3 +85,4 @@ class TestOverwriteController extends AppAdminController
 ```
 
 ### les vues
+Les vues surchargées doivent être misent dans le dossier **templates/overwrite**
