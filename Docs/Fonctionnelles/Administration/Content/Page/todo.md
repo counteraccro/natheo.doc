@@ -15,3 +15,4 @@
   - Revoir l'interface CSS de l'autocompletion
 - **Onglet sauvegarde**
   - Ajouter un système de warning pour informer l'utilisateur que certaines données sont non saisi
+  - ~~Mise en place du lien avec les menus~~ (fait le 09/08/2024)
