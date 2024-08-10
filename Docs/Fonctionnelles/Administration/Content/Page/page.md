@@ -2,13 +2,15 @@
 
 [Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) > Gestion des pages
 
-* Gestion des pages et contenu du CMS
+*Gestion des pages et contenu du CMS*
 
 ![Pages](../../files/page/listing.png)
 
 ## Informations générales
 Sidebar : **Content > Pages**  
 Droit d'accès : **ROLE_CONTRIBTEUR**
+
+## Base de données
 
 Nom entité : **Page**  
 Nom de la table en bdd : **natheo.page**
@@ -76,6 +78,14 @@ Nom de la table en bdd : **natheo.page_tag**
 | page_id | 	Int(11)      | 	Non | 	Aucune            |
 | tag_id  | 	Int(11)      | 	Non | 	Aucune            |
 
+Nom entité : **PageMenu**  
+Nom de la table en bdd : **natheo.page_menu**
+
+| Nom     | Type          | Null | Valeur par défaut  |
+|---------|---------------|------|--------------------|
+| page_id | 	Int(11)      | 	Non | 	Aucune            |
+| menu_id | 	Int(11)      | 	Non | 	Aucune            |
+
 ### Règles de gestions globales
 - page
     - Une page peut posséder n page_content
@@ -84,7 +94,7 @@ Nom de la table en bdd : **natheo.page_tag**
     - Une page peut posséder n page_translation
     - Une page est lié à un utilisateur
     - Le champ created_at est mis à la date du jour à la création d'une option
-    - Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss] à chaque modification de la valeur d'une option
+    - Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss] à chaque modification de la valeur d'une page
 - page_translation
     - Une page_translation est lié à une page
 - page_content
@@ -95,7 +105,9 @@ Nom de la table en bdd : **natheo.page_tag**
 - page_statistique
     - Une page_statistique est lié à une page
 - page_tag
-    - Une page_tag est lié à une page et à un tag
+    - Une page_tag est lié à une page et à un tag 
+- page_menu
+    - Une page_menu est lié à une page et à un menu
 
 
 ## Définition
@@ -130,6 +142,7 @@ La suppression d'une page entraine la suppression des éléments suivants :
 * les données page_commentaire associées
 * les données page_statistique associées
 * les données page_tag associées
+* les données page_menu associées
 Cette action est définitive et sans possibilité de retour.
 
 #### Modifier une page
