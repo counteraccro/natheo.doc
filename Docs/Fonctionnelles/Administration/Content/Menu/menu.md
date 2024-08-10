@@ -71,7 +71,7 @@ La gestion des menus permet de créer des menus qui peuvent être rattaché à u
 ou encore un footer
 
 ## Règles de gestions globales du tableau de données
-Le tableau de données regroupe l'ensemble des meus enregistrés en base de donnée, le trie par défaut ce fait sur l'id du menu.
+Le tableau de données regroupe l'ensemble des menus enregistrés en base de donnée, le trie par défaut ce fait sur l'id du menu.
 
 ### Liste des actions possibles
 Liste des actions possibles sur le listing des menus
@@ -97,10 +97,10 @@ La suppression d'un menu entraine la suppression des éléments suivants :
   Cette action est définitive et sans possibilité de retour.
 
 #### Modifier un menu
-Permet de pouvoir modifier une page
+Permet de pouvoir modifier un menu 
 Voir [Modifier un menu](add_edit_menu.md);
 
 #### Créer un menu
-Permet de pouvoir créer une nouvelle page
+Permet de pouvoir créer un nouveau menu
 Voir [Créer un menu](add_edit_menu.md);
 
