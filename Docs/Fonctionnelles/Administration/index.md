@@ -23,7 +23,11 @@ Fonctionnalités globale
   * [Gestion des medias](Content/Mediateque/gestion_media.md)
   * [La corbeille](Content/Mediateque/trash.md)
 * [Gestion des pages](Content/Page/page.md)
+  * [Créer / Editer](Content/Page/add_edit_page.md)
   * [Améliorations](Content/Page/todo.md)
+* [Gestion des menus](Content/Menu/menu.md)
+  * [Créer / Editer](Content/Menu/add_edit_menu.md)
+  * [Amélioration](Content/Menu/todo.md)
 * [Gestion des Faqs](Content/Faq/faq.md)
 
 ## Systeme
@@ -38,3 +42,8 @@ Fonctionnalités globale
 * [Gestion des Logs](System/log.md)
 * [Gestion des traductions](System/translation.md)
 * [Gestion des emails](System/mail.md)
+
+## Tools
+* Options avancées
+* Gestionnaire SQL
+* Gestionnaire base de données
