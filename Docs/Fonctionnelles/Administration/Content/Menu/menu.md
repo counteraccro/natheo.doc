@@ -104,3 +104,63 @@ Voir [Modifier un menu](add_edit_menu.md);
 Permet de pouvoir créer un nouveau menu
 Voir [Créer un menu](add_edit_menu.md);
 
+## Fixtures
+Path du fichier de données : ``src/DataFixtures/data/content/menu/menu_fixtures_data.yaml``  
+Nom de la fixture : **MenuFixtures**  
+Groupe de fixtures : **content, menu**
+
+Commande pour lancer uniquement cette fixture : ``php bin/console doctrine:fixture:load --group=menu``
+
+## Exemple de fixture pour générer les pages
+Le fichier de config pour générer les pages est construit sous la forme suivante :
+````yaml
+  menu_generic_header:
+    user: Aymeric
+    name: Generic header
+    type: 3
+    position: 1
+    renderOrder: 1
+    disabled: 0
+    defaultMenu: true
+    menuElement:
+      listing:
+        page: ''
+        disabled: 0
+        columnPosition: 1
+        rowPosition: 1
+        linkTarget: '_blank'
+        menuElementTranslation:
+          fr:
+            locale: fr
+            textLink: 'Contenu'
+            externalLink: ''
+          es:
+            locale: es
+            textLink: 'es-contenu'
+            externalLink: ''
+          en:
+            locale: en
+            textLink: 'en-contenu'
+            externalLink: ''
+      listing_page:
+        page: 'Page_listing_page'
+        parent: listing
+        disabled: 0
+        columnPosition: 1
+        rowPosition: 1
+        linkTarget: '_blank'
+        menuElementTranslation:
+          fr:
+            locale: fr
+            textLink: 'Listing des pages'
+            externalLink: '#'
+          es:
+            locale: es
+            textLink: 'es-listing-page'
+            externalLink: '#'
+          en:
+            locale: en
+            textLink: 'en-listing-page'
+            externalLink: '#'
+````
+

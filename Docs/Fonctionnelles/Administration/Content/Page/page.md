@@ -154,7 +154,7 @@ Permet de pouvoir créer une nouvelle page
 Voir [Modifier une page](add_edit_page.md);
 
 ## Fixtures
-Path du fichier de données : ``src/DataFixtures/data/page_fixtures_data.yaml``  
+Path du fichier de données : ``src/DataFixtures/data/content/page/page_fixtures_data.yaml``  
 Nom de la fixture : **PageFixtures**  
 Groupe de fixtures : **content, page**
 
