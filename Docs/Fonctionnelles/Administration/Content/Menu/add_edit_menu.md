@@ -17,7 +17,7 @@ La page est découpés en différent module qui sont :
 Ce petit module permet de voir le rendu de votre menu en temps réel en fonction des données saisies
 
 *Un rendu pour un header*
-[![rendu header](../../files/menu/rendu_header.png)]
+![rendu header](../../files/menu/rendu_header.png)
 
 *Le même menu mais pour un menu à gauche*
 ![rendu menu gauche](../../files/menu/rendu_menu_gauche.png)
@@ -51,3 +51,22 @@ Un menu est défini avec un ensemble d'éléments :
 ![bouton new](../../files/menu/form_tree_btn_new.png) : Permet de créer un nouvel élement dans le parent courant
 
 ![bouton new child](../../files/menu/form_tree_btn_new_child.png) : Permet de créer un nouvel élement enfant à l'élément sélectionné
+
+![bouton edit](../../files/menu/form_tree_btn_edit.png) : Permet d'éditer l'élément courant
+
+![bouton delete](../../files/menu/form_tree_btn_delete.png) : Permet de supprimer l'élément courant. Tout enfant rattaché à cet élément sera aussi supprimé
+
+#### Edition d'un élement
+![Module edition](../../files/menu/form_module_edit.png)
+
+Ce module permet d'éditer un élément du menu. Le label ainsi que le lien est multi-langue, il possède plusieurs règles qui sont :
+* Le type d'url
+  * Si le type d'url est défini comme externe, alors vous pouvez saisir pour chaque langue une url personnalisable
+  * Si le type d'url est défini comme interne, alors c'est le choix de la page qui va définir l'url. Dans ce cas, l'url est non modifiable
+* La notion de parent
+  * Un élément de menu peut être parent d'un autre élement, mais il ne peux pas être enfant d'un élément dont il est lui même parent
+  * Lors d'un changement de parent, le numéro de ligne sera automatiquement le numéro de ligne le plus élevé.
+* La cible du lien
+  * Permet de définir si le lien ouvre un nouvel onglet ou reste sur la même page
+* Elément masqué / visible
+  * Permet de définir si cet élément est visible dans le menu ou non.
