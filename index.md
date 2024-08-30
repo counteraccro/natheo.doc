@@ -8,6 +8,8 @@ Retrouver ici la documentation technique et fonctionnelle de l'application ainsi
 - [Description générale](Docs/description_generale.md)
 - Prise en main
   - Installation environnement de développement
-  - Installation du CMS
+  - Installation du CMS dans un environnement de développement
+  - Installation du CMS dans un environnement de production
 - [Documentation fonctionnelle](Docs/Fonctionnelles/index.md)
 - [Documentation technique](Docs/Techniques/index.md)
+- [Mise à jour prévue](Docs/todo.md)
