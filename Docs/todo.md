@@ -6,6 +6,8 @@ Liste non exhaustive des futures évolutions du CMS
 
 ### Changement mineurs
 * Exportation / importation sous forme de CSV des traductions du contenu du site (en base de données)
+* Ajouter un champ dans page pour définir la page par défaut à afficher
+* Ajouter des liens de page dans l'éditeur de texte
 
 ### Changement majeur
 * Mise en place d'un système de versioning pour les pages
