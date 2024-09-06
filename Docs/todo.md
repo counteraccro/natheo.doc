@@ -4,6 +4,9 @@
 
 Liste non exhaustive des futures évolutions du CMS
 
+### Bugs
+* Sur l'éditeur de texte, la modale de confirmation pour quitter s'affiche lorsque l'on choisi un titre
+
 ### Changement mineurs
 * Exportation / importation sous forme de CSV des traductions du contenu du site (en base de données)
 * Ajouter un champ dans page pour définir la page par défaut à afficher
