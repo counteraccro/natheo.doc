@@ -13,6 +13,7 @@ Liste non exhaustive des futures évolutions du CMS
 * Editeur Markdown
   * Ajouter des liens de page dans l'éditeur de texte
   * Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu
+* Dans les listings, pouvoir filtrer uniquement avec ses contenus
 
 ### Changement majeur
 * Mise en place d'un système de versioning pour les pages
@@ -32,3 +33,5 @@ Liste non exhaustive des futures évolutions du CMS
 ### Divers
  * APIsation du back-office
  * Refonte design back-office
+ * Ajouter nouveau droit
+   * Ne vois que ses propres contenus créés.
