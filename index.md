@@ -7,9 +7,10 @@ Retrouver ici la documentation technique et fonctionnelle de l'application ainsi
 ### Liens rapides
 - [Description générale](Docs/description_generale.md)
 - Prise en main
-  - Installation environnement de développement
-  - Installation du CMS dans un environnement de développement
-  - Installation du CMS dans un environnement de production
+  - [Pré-requis pour que le site fonctionne](Docs/Installation/pre-requis.md)
+  - [Installation CMS mode développeur](Docs/Installation/install-dev.md)
+  - [Installation CMS via l'installeur](Docs/Installation/install-prod.md)
+  - [Configuration d'installation](Docs/Installation/config-install.md)
 - [Documentation fonctionnelle](Docs/Fonctionnelles/index.md)
 - [Documentation technique](Docs/Techniques/index.md)
 - [Mise à jour prévue](Docs/todo.md)
