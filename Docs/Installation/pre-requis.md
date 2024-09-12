@@ -1,6 +1,6 @@
 ## Les pré-requis pour le bon fonctionnement de Natheo CMS
 
-[Index](/index.md) > Les pré-requis
+[Index](../../index.md) > Les pré-requis
 
 Voici les pré-requis pour que Natheo CMS fonctionne correctement dans les meilleures conditions
 

@@ -1,6 +1,6 @@
 ## Options de configuration
 
-[Index](/index.md) > Options de configuration
+[Index](../../index.md > Options de configuration
 
 Voici les options qui peuvent influencer l'installation et le comportement de NatheoCMS
 
