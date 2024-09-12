@@ -14,6 +14,10 @@ Liste non exhaustive des futures évolutions du CMS
   * Ajouter des liens de page dans l'éditeur de texte
   * Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu
 * Dans les listings, pouvoir filtrer uniquement avec ses contenus
+* Dans le dashboard créer les blocks suivants :
+  * Derniers commentaires
+  * Mes dernières pages
+  * Mes notifications
 
 ### Changement majeur
 * Mise en place d'un système de versioning pour les pages
