@@ -55,6 +55,14 @@ Les champs modifiables depuis cette page sont :
     * Règle de validation des champs [voir règle de validation des champs](#règles-de-validation-des-champs)
   * Au click sur le bouton "Modifier", le mot de passe est mis à jour dans la base de données
 
+### Options diverses
+*Ne peut être vu que par le compte fondateur*
+
+Ce bloc permet d'activer ou désactiver certaines options supplémentaires
+
+* Bouton "Afficher l'aide de configuration"
+  * Permet d'afficher ou masquer le block aide à la configuration sur le dashboard
+
 ### Zone de danger
 La zone de danger permet de pouvoir désactiver son compte ou le supprimer.
 
