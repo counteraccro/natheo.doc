@@ -36,7 +36,7 @@ Une fois l'ensemble des étapes précédentes réalisé, en cliquant sur le lien
 
 ![installation-connecte-bdd.png](files/installation-connecte-bdd.png)
 
-La première étape est de testé la connection avec votre SGBD, pour le moment NatheoCMS ne prend en charge que PostgreSQL
+La première étape est de tester la connection avec votre SGBD, pour le moment NatheoCMS ne prend en charge que PostgreSQL
 
 #### Création de la base de données
 
@@ -60,5 +60,16 @@ La prochaine étape est de créer le compte fondateur, ce compte va posséder le
 vous connecter à l'administration du CMS une fois l'installation terminé.
 
 > Attention, si vous être en mode débug, ce sont les comptes de tests qui seront installés
-> ![installation-create-fondateur-debug.png](files%2Finstallation-create-fondateur-debug.png)
+> ![installation-create-fondateur-debug.png](files/installation-create-fondateur-debug.png)
 > Retrouvez les données (mot de passe et login) des comptes test ici  ```src/DataFixtures/data/system/user_demo_fixtures_data.yaml```
+
+#### Génération des données
+![installation-datas.png](files/installation-datas.png)
+
+Une fois que le compte fondateur est créé, il ne vous reste plus qu'à cliquer sur le bouton **'Finaliser l'installation'** pour terminer l'installation du CMS
+
+Une fois l'installation terminé, vous serez automatiquement redirigé vers l'authentification de la partie administration du site.
+
+#### Felicitation !
+Le CMS est maintenant correctement installé et vous pouvez dès à présent l'utiliser.
+Pour vous connecter, c'est simple, utiliser le compte fondateur que vous venez de créer.
