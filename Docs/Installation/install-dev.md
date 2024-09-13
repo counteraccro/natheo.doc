@@ -42,7 +42,7 @@ Sur votre environnement de développement
 
 Lancer les scrypts en async : ```php bin/console messenger:consume async -vv```
 
-Génération des traductions (fr|en|es) : ```php bin/console translation:extract --force --format=yaml en```
+Génération des traductions (fr - en - es) : ```php bin/console translation:extract --force --format=yaml en```
 
 Chargement des fixtures : ```php bin/console doctrine:fixtures:load```
 
