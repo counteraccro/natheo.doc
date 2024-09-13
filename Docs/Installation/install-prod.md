@@ -47,7 +47,18 @@ Une fois la connection faite avec succès, il vous faut maintenant créer votre 
 Pour cela, c'est très simple, saisissez le nom de votre base de données, la version du SGBD et le charset.
 Cliquez ensuite sur le bouton **"+ créer la base de données"**
 
-[!NOTE]
+
 > Il est possible de défini un schema SQL ainsi d'un préfix pour les tables de la base de données.
 > 
 > Par défaut le schéma SQL est natheo et les tables n'ont pas de préfix. Pour changer ces valeurs, consulter les [options de configurations](config-install.md)
+
+#### Création du compte fondateur
+
+![installation-create-fondateur.png](files/installation-create-fondateur.png)
+
+La prochaine étape est de créer le compte fondateur, ce compte va posséder les droits fondateurs, il va vous permettre de
+vous connecter à l'administration du CMS une fois l'installation terminé.
+
+> Attention, si vous être en mode débug, ce sont les comptes de tests qui seront installés
+> ![installation-create-fondateur-debug.png](files%2Finstallation-create-fondateur-debug.png)
+> Retrouvez les données (mot de passe et login) des comptes test ici  ```src/DataFixtures/data/system/user_demo_fixtures_data.yaml```
