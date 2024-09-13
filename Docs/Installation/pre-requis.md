@@ -4,11 +4,10 @@
 
 Voici les pré-requis pour que Natheo CMS fonctionne correctement dans les meilleures conditions
 
-### Base de données
-PostgreSQL version : PostgreSQL 15.2
-
-### PHP
-Version 8.3 ou +
+* PHP 8.3 ou +
+* Base de données : PostgresSql 15.2
+* Yarn 1.22.19 ou +
+* Composer 2.7.7 ou +
 
 ### Serveur web
-Apache version 2.4.58 ou +
+ * Testé sur Apache version 2.4.58 ou +
