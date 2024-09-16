@@ -9,6 +9,8 @@ Voici les options qui peuvent influencer l'installation et le comportement de Na
 Dans le fichier ``config/services.yaml`` retrouver les configurations suivantes :
 
 ````yaml
+app.ip_api_active_filter: true  #Si true alors filtre l'accès à l'API par les API défini dans app.ip_api_authorize
+app.ip_api_authorize: [127.0.0.1]
 app.default_database_prefix: '' # un "_" est ajouté par défaut, laissez vide si pas de prefix
 app.default_database_schema: 'natheo'  # schéma de la base de donnée
 app.version: 'dev-04-2024'
