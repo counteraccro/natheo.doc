@@ -2,7 +2,7 @@
 
 [Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) > Gestion des tokens
 
-*Permet de pouvoir gérer token d'accès aux API du CMS*
+*Permet de pouvoir gérer les tokens d'accès aux API du CMS*
 
 ![Listing](../../files/api_token/api_token_listing.png)
 
@@ -44,7 +44,7 @@ Voir [Création d'un ApiToken](new_apiToken.md)
 Met le champ ``api_token.disabled à true``, ce qui interdit tout accès aux APIs avec ce token
 
 #### Activer un token
-Met le champ ``user.disabled à false``, ce qui autorise tout accès aux APIs avec ce token en fonction de ses droits
+Met le champ ``api_token.disabled à false``, ce qui autorise tout accès aux APIs avec ce token en fonction de ses droits
 
 #### Supprimer un token
 Permet de supprimer de façon définitive un token, si le token est supprimé, toute application qui l'utilise verra ses accès révoqués de façon définitive
