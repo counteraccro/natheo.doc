@@ -42,6 +42,7 @@ Fonctionnalités globale
 * [Gestion des Logs](System/log.md)
 * [Gestion des traductions](System/translation.md)
 * [Gestion des emails](System/mail.md)
+* [Gestion des tokens d'accès API](System/ApiToken/apiToken.md)
 
 ## Tools
 * Options avancées
