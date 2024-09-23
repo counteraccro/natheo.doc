@@ -26,13 +26,13 @@ Ajouter / éditer un ApiToken
 Liste des actions possibles pour créer / éditer un token
 
 #### Créer un token
-Visible uniquement en création
+*Visible uniquement en création*
 
 Utilisable uniquement si l'ensemble des règles de gestions sont valides, permet de créer un token.
 Si l'action s'est correctement passé, redirige vers l'édition du token
 
 #### Editer un token
-Visible uniquement en édition
+*Visible uniquement en édition*
 
 Utilisable uniquement si l'ensemble des règles de gestions sont valides, permet d'éditer le token
 
@@ -40,5 +40,7 @@ Utilisable uniquement si l'ensemble des règles de gestions sont valides, permet
 Permet de créer un nouveau token avec une chaine de caractères aléatoire
 
 #### Copier 
+*Visible uniquement en édition*
+
 Permet de mettre le token dans le presse-papier
 
