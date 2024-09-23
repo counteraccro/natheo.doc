@@ -44,6 +44,15 @@ Liste des fonctionnalités disponibles
     * Permet de pouvoir personnaliser le contenu des emails envoyés par le CMS
   * [Log](Fonctionnelles/Administration/System/log.md)
     * Permet de pouvoir consulter les logs du CMS
+  * [Gestion des token](Fonctionnelles/Administration/System/ApiToken/apiToken.md)
+    * Permet de pouvoir gérer les tokens qui donne accès aux API du CMS
+* Tools
+  * Options avancées
+    * Permet de réinitialiser le CMS ou gérer le mode débug
+  * Gestionnaire SQL
+    * Permet d'exécuter des requêtes SQL simple directement depuis une interface web
+  * Gestionnaire base de données
+    * Permet d'avoir une vision de la base de données et de faire des sauvegardes de celle-ci
 
 ### Front
 *TODO A faire*
