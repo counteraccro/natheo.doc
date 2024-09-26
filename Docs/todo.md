@@ -18,6 +18,7 @@ Liste non exhaustive des futures évolutions du CMS
   * Derniers commentaires
   * Mes dernières pages
   * Mes notifications
+* Revoir le code dans DatabaseTablePrefixListener.php pour pouvoir proprement séparer le schéma SQL du nom de la base de données
 
 ### Changement majeur
 * Mise en place d'un système de versioning pour les pages
