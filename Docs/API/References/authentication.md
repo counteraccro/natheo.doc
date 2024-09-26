@@ -1,6 +1,6 @@
 ## Authentification
 
-[Index](../../../index.md) > Authentification
+[Index](../../../index.md) > [API](../index.md) > Authentification
 
 Permet de savoir si vous pouvez accéder à l'API de NatheoCMS
 
@@ -8,7 +8,8 @@ Si le token est bon, renvoi les roles d'accès
 
 **Requête CURL**
 `````shell
-curl --location '[url-de-mon-site]/api/1/authentication' \
+curl --request GET \
+--url '[url-de-mon-site]/api/1/authentication' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer [mon-token]'
 `````
