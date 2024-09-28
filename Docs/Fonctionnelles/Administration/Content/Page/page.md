@@ -15,15 +15,17 @@ Droit d'accès : **ROLE_CONTRIBTEUR**
 Nom entité : **Page**  
 Nom de la table en bdd : **natheo.page**
 
-| Nom        | Type      | Null | Valeur par défaut  |
-|------------|-----------|------|--------------------|
-| id         | 	Int(11)  | 	Non | 	Aucune            |
-| user_id    | 	Int(11)  | 	Non | 	Aucune            |
-| render     | 	Int(11)  | 	Non | 	Aucune            |
-| status     | 	Int(11)  | 	Non | 	Aucune            |
-| disabled   | 	boolean  | 	Non | 	Aucune            |
-| created_at | 	datetime | 	Non | 	CURRENT_TIMESTAMP |
-| update_at  | 	datetime | 	Oui | 	NULL              |
+| Nom          | Type      | Null | Valeur par défaut  |
+|--------------|-----------|------|--------------------|
+| id           | 	Int(11)  | 	Non | 	Aucune            |
+| user_id      | 	Int(11)  | 	Non | 	Aucune            |
+| render       | 	Int(11)  | 	Non | 	Aucune            |
+| status       | 	Int(11)  | 	Non | 	Aucune            |
+| disabled     | 	boolean  | 	Non | 	Aucune            |
+| category     | Int(11)   | non  | Aucune             |
+| landing_page | boolean   | non  | Aucune             |
+| created_at   | 	datetime | 	Non | 	CURRENT_TIMESTAMP |
+| update_at    | 	datetime | 	Oui | 	NULL              |
 
 Nom entité : **PageTranslation**  
 Nom de la table en bdd : **natheo.page_translation**
@@ -152,6 +154,11 @@ Voir [Modifier une page](add_edit_page.md);
 #### Créer un page
 Permet de pouvoir créer une nouvelle page
 Voir [Modifier une page](add_edit_page.md);
+
+#### Épingler
+Permet de définir la page comme landing-page. Cette page sera celle affichée par défaut sur votre page d'accueil.
+
+Il ne peut y avoir qu'une seule landing page
 
 ## Fixtures
 Path du fichier de données : ``src/DataFixtures/data/content/page/page_fixtures_data.yaml``  
