@@ -54,7 +54,7 @@ Nom de la table en bdd : **natheo.option_system**
 | OS_MEDIA_FOLDER                 | 1                             | Défini si on créer ou non des dossier physiques                                                                        |
 | OS_MEDIA_CREATE_PHYSICAL_FOLDER | assets                        | Path pour le dossier média                                                                                             |
 | OS_MEDIA_URL                    | http://dev.natheo             | Url public pour le dossier média                                                                                       |
-
+| OS_API_TIME_VALIDATE_USER_TOKEN | 60                            | Défini le temps de validité d'un token user (en minutes)                                                               |
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
