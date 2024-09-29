@@ -60,6 +60,8 @@ Nom de la table en bdd : **natheo.user_data**
 | KEY_RESET_PASSWORD       | 	     Aucune       | 	Clé généré pour identifier la personne avant le changement de mot de passe            |
 | KEY_LAST_CONNEXION       | 	     Aucune       | 	Date de dernière connexion au format timestamp                                        |
 | KEY_HELP_FIRST_CONNEXION | Aucune             | Généré lors de la création du compte fondateur, lance l'aide à la configuration du cms |
+| KEY_TOKEN_CONNEXION | Aucune             | Token généré lors de la connexion via API du user                                      |
+| TIME_VALIDATE_TOKEN | Aucune             | Temps de validité du token                                                             |
 
 ## Règles de gestions globales du tableau de données
 Le tableau de données regroupe l'ensemble des utilisateurs présent sur le site, le trie par défaut ce fait sur l'id du user.
