@@ -9,7 +9,7 @@ Si le token est bon, renvoi les roles d'accès
 **Requête CURL**
 `````shell
 curl --request GET \
---url '[url-de-mon-site]/api/1/authentication' \
+--url '[url-de-mon-site]/api/v1/authentication' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer [mon-token]'
 `````
@@ -29,6 +29,8 @@ curl --request GET \
 ````
 
 **Réponse 401**
+
+*Si le token est invalide*
 ````json
 {
   "code_http": 401,
