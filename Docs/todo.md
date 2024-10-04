@@ -9,7 +9,6 @@ Liste non exhaustive des futures évolutions du CMS
 
 ### Changement mineurs
 * Exportation / importation sous forme de CSV des traductions du contenu du site (en base de données)
-* Ajouter un champ dans page pour définir la page par défaut à afficher
 * Editeur Markdown
   * Ajouter des liens de page dans l'éditeur de texte
   * Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu
@@ -41,3 +40,8 @@ Liste non exhaustive des futures évolutions du CMS
  * Refonte design back-office
  * Ajouter nouveau droit
    * Ne vois que ses propres contenus créés.
+
+### Mises à jour faites :
+* [x] Ajouter un champ dans page pour définir la page par défaut à afficher
+  * Fait le 27 septembre
+  * Pull request : https://github.com/counteraccro/natheo/pull/37
