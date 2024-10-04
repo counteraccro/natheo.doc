@@ -43,4 +43,4 @@ Liste non exhaustive des futures évolutions du CMS
 
 ### Mises à jour faites :
 * ✅ Ajouter un champ dans page pour définir la page par défaut à afficher
-  * Fait le 27 septembre dans la pull request [#37]( https://github.com/counteraccro/natheo/pull/37)
+  * Fait le 27 septembre 2024 dans la pull request [#37]( https://github.com/counteraccro/natheo/pull/37)
