@@ -42,6 +42,5 @@ Liste non exhaustive des futures évolutions du CMS
    * Ne vois que ses propres contenus créés.
 
 ### Mises à jour faites :
-* [x] Ajouter un champ dans page pour définir la page par défaut à afficher
-  * Fait le 27 septembre
-  * Pull request : https://github.com/counteraccro/natheo/pull/37
+* :white_check_mark: Ajouter un champ dans page pour définir la page par défaut à afficher
+  * Fait le 27 septembre dans la pull request [#37]( https://github.com/counteraccro/natheo/pull/37)
