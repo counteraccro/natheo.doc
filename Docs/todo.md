@@ -44,3 +44,5 @@ Liste non exhaustive des futures évolutions du CMS
 ### Mises à jour faites :
 * ✅ Ajouter un champ dans page pour définir la page par défaut à afficher
   * Fait le 27 septembre 2024 dans la pull request [#37]( https://github.com/counteraccro/natheo/pull/37)
+* ✅ Il ne peut y avoir qu'un seul menu défaut en fonction de la position
+  * Fait le 05 octobre 2024 dans la pull request [#38]( https://github.com/counteraccro/natheo/pull/38)

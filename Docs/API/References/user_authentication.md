@@ -77,8 +77,7 @@ curl  --request POST \
 ````json
 {
   "code_http": 403,
-  "message": "error",
-  "data": [],
+  "message": "Ressource non accessible",
   "errors": [
     "Le paramètre attendu username n'est pas présent"
   ]
