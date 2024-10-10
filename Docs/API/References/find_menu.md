@@ -3,7 +3,7 @@
 [Index](../../../index.md) > [API](../index.md) > Find menu
 
 Permet de renvoyer un menu formaté en fonction de différents paramètres
-Si le user_token est présent et valide, renvoi le menu même si celui-ci est désactivé
+Si le User-Token est présent dans le header et valide, renvoi le menu même si celui-ci est désactivé
 
 Paramètres attendus :
 
@@ -12,14 +12,14 @@ Paramètres attendus :
 | id         | Integer | OUI         |                   | Obligatoire si page_slug non présent |
 | page_slug  | String  | OUI         |                   | Obligatoire si id non présent        |
 | position   | Integer | NON         | 1                 |                                      |
-| locale     | String  | NON         | fr                |                                      |
-| user_token | String  | NON         |                   |                                      |
+| locale     | String  | NON         | fr                |                                      | |
 
 **Requêtes CURL**
 `````shell
 curl --request GET \
 --url '[url-de-mon-site]/api/v1/menu/find?page_slug=page&position=2&locale=fr' \
 --header 'Accept: application/json' \
+--header 'User-Token: [user-token]' \
 --header 'Authorization: Bearer [mon-token]'
 `````
 
