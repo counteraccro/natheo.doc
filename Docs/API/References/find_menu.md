@@ -12,7 +12,7 @@ Paramètres attendus :
 | id         | Integer | OUI         |                   | Obligatoire si page_slug non présent |
 | page_slug  | String  | OUI         |                   | Obligatoire si id non présent        |
 | position   | Integer | NON         | 1                 |                                      |
-| locale     | String  | NON         | fr                |                                      | |
+| locale     | String  | NON         | fr                |                                      |
 
 **Requêtes CURL**
 `````shell
