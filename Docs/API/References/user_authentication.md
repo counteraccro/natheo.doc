@@ -7,10 +7,10 @@ Ce token à une date de validité défini par l'option ``OS_API_TIME_VALIDATE_US
 
 Paramètres attendus :
 
-| nom      | type   | obligatoire | commentaire |
-|----------|--------|-------------|-------------|
-| username | String | OUI         |             |
-| passowrd | String | OUI         |
+| nom      | type   | obligatoire | valeur par défaut | commentaire |
+|----------|--------|-------------|-------------------|-------------|
+| username | String | OUI         |                   |             |
+| passowrd | String | OUI         |                   |             |
 
 **Requête CURL**
 `````shell
