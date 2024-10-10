@@ -3,6 +3,7 @@
 [Index](../../../index.md) > [API](../index.md) > Find menu
 
 Permet de renvoyer un menu formaté en fonction de différents paramètres
+Si le user_token est présent et valide, renvoi le menu même si celui-ci est désactivé
 
 Paramètres attendus :
 
