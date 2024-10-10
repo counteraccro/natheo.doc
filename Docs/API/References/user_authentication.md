@@ -6,8 +6,11 @@ Permet d'authentifier un utilisateur, si tout est ok renvoi un user token pour i
 Ce token à une date de validité défini par l'option ``OS_API_TIME_VALIDATE_USER_TOKEN``
 
 Paramètres attendus :
-* username : string
-* password : string
+
+| nom      | type   | obligatoire | commentaire |
+|----------|--------|-------------|-------------|
+| username | String | OUI         |             |
+| passowrd | String | OUI         |
 
 **Requête CURL**
 `````shell
