@@ -11,5 +11,9 @@ Pour avoir accès aux API de natheo CMS il faut :
 
 ### Liste des APIs disponibles
 
+#### Authentification
 * [Authentification](References/authentication.md)
 * [User Authentification](References/user_authentication.md)
+
+#### Menu
+* [Find menu](References/find_menu.md)
