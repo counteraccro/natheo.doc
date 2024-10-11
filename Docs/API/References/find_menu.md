@@ -60,3 +60,14 @@ curl --request GET \
   ]
 }
 ````
+
+*Si le User-Token est présent mais faux et/ou périmé*
+````json
+{
+    "code_http": 403,
+    "message": "Ressource non accessible",
+    "errors": [
+        "Utilisateur non trouvé"
+    ]
+}
+````
