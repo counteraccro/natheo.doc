@@ -52,8 +52,7 @@ curl  --request POST \
 ````json
 {
   "code_http": 401,
-  "message": "error",
-  "data": [],
+  "message": "Accès non autorisé",
   "errors": [
     "Utilisateur non trouvé"
   ]
@@ -65,9 +64,8 @@ curl  --request POST \
 *Si un paramètre n'a pas le bon type*
 ````json
 {
-    "code_http": 403,
-    "message": "error",
-    "data": [],
+  "code_http": 403,
+  "message": "Ressource non accessible",
     "errors": [
         "Le paramètre password doit être de type string"
     ]

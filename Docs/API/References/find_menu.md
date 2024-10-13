@@ -71,3 +71,14 @@ curl --request GET \
     ]
 }
 ````
+
+*Si le menu n'existe pas*
+````json
+{
+    "code_http": 403,
+    "message": "Ressource non accessible",
+    "errors": [
+        "Menu non disponible"
+    ]
+}
+````
