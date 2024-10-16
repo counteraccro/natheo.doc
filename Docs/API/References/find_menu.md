@@ -14,6 +14,25 @@ Paramètres attendus :
 | position   | Integer | NON         | 1                 |                                      |
 | locale     | String  | NON         | fr                |                                      |
 
+### Informations
+Les types de menus existants :
+
+| Type | Correspondance                             |
+|------|--------------------------------------------|
+| 1    | Header side bar                            |
+| 2    | Header menu déroulant                      |
+| 3    | Header menu déroulant, big menu            |
+| 4    | Header menu déroulant, big menu 2 colonnes |
+| 5    | Header menu déroulant, big menu 3 colonnes |
+| 6    | Header menu déroulant, big menu 4 colonnes |
+| 11   | Left - Right, side-bar                     |
+| 12   | Left - Right, droite side-bar accordéon    |
+| 16   | Footer 4 colonnes                          |
+| 17   | Footer 1 ligne à droite                    |
+| 18   | Footer 1 ligne centrée                     |
+
+Les types de menus sont défini par le champ ```type```
+
 **Requêtes CURL**
 `````shell
 curl --request GET \
@@ -33,7 +52,31 @@ curl --request GET \
 **Réponse 200**
 ````json
 {
-   
+  "code_http": 200,
+  "message": "success",
+  "data": {
+    "position": "LEFT",
+    "type": 12,
+    "elements": [
+      {
+        "target": "_blank",
+        "label": "Pages",
+        "url": "#",
+        "elements": [
+          {
+            "target": "_blank",
+            "label": "Les nouveautées",
+            "url": "http://www.value-must-be-change.com/evolution/new-in-natheo-cms"
+          },
+          {
+            "target": "_blank",
+            "label": "Démonstration",
+            "url": "http://www.value-must-be-change.com/page/demo-page"
+          }
+        ]
+      }
+    ]
+  }
 }
 ````
 
