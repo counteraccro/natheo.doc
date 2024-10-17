@@ -34,6 +34,9 @@ curl --request GET \
 ````json
 {
   "code_http": 401,
-  "message": "Clé API Invalide"
+  "message": "Accès non autorisé",
+  "errors": [
+    "Token Invalide"
+  ]
 }
 ````
