@@ -79,6 +79,18 @@ curl --request GET \
   }
 }
 ````
+**Réponse 401**
+
+*Si le token n'est pas valide*
+````json
+{
+    "code_http": 401,
+    "message": "Accès non autorisé",
+    "errors": [
+        "Token Invalide"
+    ]
+}
+````
 
 **Réponse 403**
 
