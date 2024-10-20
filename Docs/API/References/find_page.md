@@ -7,12 +7,15 @@ Si le User-Token est présent dans le header et valide, permet de voir une page 
 
 Paramètres attendus :
 
-| nom        | type    | obligatoire | valeur par défaut | commentaire                          |
-|------------|---------|-------------|-------------------|--------------------------------------|
-| id         | Integer | OUI         |                   | Obligatoire si page_slug non présent |
-| page_slug  | String  | OUI         |                   | Obligatoire si id non présent        |
-| position   | Integer | NON         | 1                 |                                      |
-| locale     | String  | NON         | fr                |                                      |
+| nom           | type    | obligatoire | valeur par défaut | commentaire                                                                         |
+|---------------|---------|-------------|-------------------|-------------------------------------------------------------------------------------|
+| slug          | String  | OUI         |                   | Obligatoire                                                                         |
+| locale        | String  | NON         | fr                |                                                                                     |
+| page          | Integer | NON         | 1                 | Dans le cas d'éléments de page de type listing, affiche la page choisi              |
+| limit         | Integer | NON         | 25                | Dans le cas d'éléments de page de type listing, affiche le nombre d'éléments choisi |
+| show_menu     | boolean | NON         | true              | remonte ou non les menus associés à la page                                         |
+| menu_position | array   | NON         | 0                 | remonte uniquement les menus dans les positions demandés                            |
+
 
 ### Informations
 
@@ -20,15 +23,15 @@ Paramètres attendus :
 **Requêtes CURL**
 `````shell
 curl --request GET \
---url '[url-de-mon-site]/api/v1/menu/find?page_slug=page&position=2&locale=fr' \
+--url --location '[url-de-mon-site]/api/v1/page/find?slug=bienvenue' \
 --header 'Accept: application/json' \
---header 'User-Token: [user-token]' \
+--header 'User-Token: [user-token' \
 --header 'Authorization: Bearer [mon-token]'
 `````
 
 `````shell
 curl --request GET \
---url '[url-de-mon-site]/api/v1/menu/find?id=1' \
+--url --location '[url-de-mon-site/api/v1/page/find?slug=bienvenue&locale=es&page=10&limit=250&show_menu=false&menu_positions=2%2C3%2C4' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer [mon-token]'
 `````
@@ -53,24 +56,14 @@ curl --request GET \
 
 **Réponse 403**
 
-*Si le paramètre id et page_slug est présent*
-````json
-{
-  "code_http": 403,
-  "message": "Ressource non accessible",
-  "errors": [
-    "Le paramètre id et page_slug ne peuvent pas être mis ensemble"
-  ]
-}
-````
 
-*Si le paramètre id ou page_slug est absent*
+*Si le paramètre menu_position n'est pas valide*
 ````json
 {
   "code_http": 403,
   "message": "Ressource non accessible",
   "errors": [
-    "Le paramètre id ou page_slug doit être présent"
+    "Choisi une position entre 0 (tout) - 1 (haut) - 2 (droite) - 3 (bas) - 4 (gauche). Plusieurs choix possible "
   ]
 }
 ````
@@ -86,13 +79,13 @@ curl --request GET \
 }
 ````
 
-*Si le menu n'existe pas*
+*Si la page n'existe pas*
 ````json
 {
     "code_http": 403,
     "message": "Ressource non accessible",
     "errors": [
-        "Menu non disponible"
+        "Page non disponible"
     ]
 }
 ````
