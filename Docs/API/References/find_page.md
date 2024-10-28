@@ -7,14 +7,16 @@ Si le User-Token est présent dans le header et valide, permet de voir une page 
 
 Paramètres attendus :
 
-| nom           | type    | obligatoire | valeur par défaut | commentaire                                                                         |
-|---------------|---------|-------------|-------------------|-------------------------------------------------------------------------------------|
-| slug          | String  | OUI         |                   | Obligatoire                                                                         |
-| locale        | String  | NON         | fr                |                                                                                     |
-| page          | Integer | NON         | 1                 | Dans le cas d'éléments de page de type listing, affiche la page choisi              |
-| limit         | Integer | NON         | 25                | Dans le cas d'éléments de page de type listing, affiche le nombre d'éléments choisi |
-| show_menu     | boolean | NON         | true              | remonte ou non les menus associés à la page                                         |
-| menu_position | array   | NON         | 0                 | remonte uniquement les menus dans les positions demandés                            |
+| nom               | type    | obligatoire | valeur par défaut | commentaire                                                                         |
+|-------------------|---------|-------------|-------------------|-------------------------------------------------------------------------------------|
+| slug              | String  | OUI         |                   | Obligatoire                                                                         |
+| locale            | String  | NON         | fr                |                                                                                     |
+| page              | Integer | NON         | 1                 | Dans le cas d'éléments de page de type listing, affiche la page choisi              |
+| limit             | Integer | NON         | 25                | Dans le cas d'éléments de page de type listing, affiche le nombre d'éléments choisi |
+| show_menus        | boolean | NON         | true              | remonte ou non les menus associés à la page                                         |
+| show_tags         | boolean | NON         | true              | remonte ou non les tags associés à la page                                          |
+| show_statistiques | boolean | NON         | true              | remonte ou non les statistiques associés à la page                                  |
+| menu_position     | array   | NON         | 0                 | remonte uniquement les menus dans les positions demandés                            |
 
 
 ### Informations
