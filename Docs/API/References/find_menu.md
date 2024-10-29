@@ -66,12 +66,14 @@ curl --request GET \
           {
             "target": "_blank",
             "label": "Les nouveautées",
-            "url": "http://www.value-must-be-change.com/evolution/new-in-natheo-cms"
+            "url": "",
+            "slug": "new-in-natheo-cms"
           },
           {
             "target": "_blank",
             "label": "Démonstration",
-            "url": "http://www.value-must-be-change.com/page/demo-page"
+            "url": "",
+            "slug" : "demo-page"
           }
         ]
       }
