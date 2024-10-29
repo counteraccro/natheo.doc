@@ -11,8 +11,6 @@ Paramètres attendus :
 |-------------------|---------|-------------|-------------------|-------------------------------------------------------------------------------------|
 | slug              | String  | OUI         |                   | Obligatoire                                                                         |
 | locale            | String  | NON         | fr                |                                                                                     |
-| page              | Integer | NON         | 1                 | Dans le cas d'éléments de page de type listing, affiche la page choisi              |
-| limit             | Integer | NON         | 25                | Dans le cas d'éléments de page de type listing, affiche le nombre d'éléments choisi |
 | show_menus        | boolean | NON         | true              | remonte ou non les menus associés à la page                                         |
 | show_tags         | boolean | NON         | true              | remonte ou non les tags associés à la page                                          |
 | show_statistiques | boolean | NON         | true              | remonte ou non les statistiques associés à la page                                  |
@@ -39,9 +37,247 @@ curl --request GET \
 `````
 
 **Réponse 200**
-````json
 
+url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue
+````json
+{
+  "code_http": 200,
+  "message": "success",
+  "data": {
+    "page": {
+      "title": "Bienvenue sur NatheoCMS",
+      "render": 6,
+      "author": "user.demo@mail.fr",
+      "created": 1730096624,
+      "update": 1730096626,
+      "tags": [
+        {
+          "label": "Natheo",
+          "color": "#6F42C1"
+        },
+        {
+          "label": "Article",
+          "color": "#1188b4"
+        },
+        {
+          "label": "Evolution",
+          "color": "#b61114"
+        }
+      ],
+      "statistiques": {
+        "PAGE_NB_READ": "49"
+      },
+      "contents": [
+        {
+          "id": 92
+        },
+        {
+          "id": 93
+        },
+        {
+          "id": 94
+        }
+      ],
+      "menus": {
+        "LEFT": {
+          "position": "LEFT",
+          "type": 12,
+          "elements": [
+            {
+              "target": "_blank",
+              "label": "Pages",
+              "url": "#",
+              "slug": "",
+              "elements": [
+                {
+                  "target": "_blank",
+                  "label": "Listing des pages",
+                  "url": "",
+                  "slug": "pages"
+                },
+                {
+                  "target": "_blank",
+                  "label": "Les nouveautées",
+                  "url": "",
+                  "slug": "new-in-natheo-cms"
+                },
+                {
+                  "target": "_blank",
+                  "label": "Démonstration",
+                  "url": "",
+                  "slug": "demo-page"
+                }
+              ]
+            }
+          ]
+        },
+        "HEADER": {
+          "position": "HEADER",
+          "type": 3,
+          "elements": [
+            {
+              "target": "_blank",
+              "label": "Contenu",
+              "url": "",
+              "slug": "",
+              "elements": [
+                {
+                  "target": "_blank",
+                  "label": "Listing des pages",
+                  "url": "",
+                  "slug": "pages",
+                  "elements": [
+                    {
+                      "target": "_blank",
+                      "label": "Les nouveautées",
+                      "url": "",
+                      "slug": "new-in-natheo-cms"
+                    },
+                    {
+                      "target": "_blank",
+                      "label": "Démonstration",
+                      "url": "",
+                      "slug": "demo-page"
+                    }
+                  ]
+                },
+                {
+                  "target": "_blank",
+                  "label": "Liste des articles de blogs",
+                  "url": "",
+                  "slug": "blogs",
+                  "elements": [
+                    {
+                      "target": "_blank",
+                      "label": "Page de blog",
+                      "url": "",
+                      "slug": "article-blog"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "target": "_blank",
+              "label": "Documentation",
+              "url": "https://counteraccro.github.io/natheo.doc/",
+              "slug": ""
+            },
+            {
+              "target": "_blank",
+              "label": "Autre",
+              "url": "#",
+              "slug": "",
+              "elements": [
+                {
+                  "target": "_blank",
+                  "label": "Natheo",
+                  "url": "#",
+                  "slug": "",
+                  "elements": [
+                    {
+                      "target": "_blank",
+                      "label": "GitHub",
+                      "url": "https://github.com/counteraccro/natheo",
+                      "slug": ""
+                    },
+                    {
+                      "target": "_blank",
+                      "label": "Site officiel",
+                      "url": "#",
+                      "slug": ""
+                    }
+                  ]
+                },
+                {
+                  "target": "_blank",
+                  "label": "Partenaires",
+                  "url": "https://www.google.fr/",
+                  "slug": "",
+                  "elements": [
+                    {
+                      "target": "_blank",
+                      "label": "Natheo agency",
+                      "url": "https://www.natheo-agency.fr/",
+                      "slug": ""
+                    },
+                    {
+                      "target": "_blank",
+                      "label": "Natheo community",
+                      "url": "https://www.natheo-community.fr/",
+                      "slug": ""
+                    },
+                    {
+                      "target": "_blank",
+                      "label": "Natheo Book",
+                      "url": "https://www.natheo-book.fr/",
+                      "slug": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "FOOTER": {
+          "position": "FOOTER",
+          "type": 17,
+          "elements": [
+            {
+              "target": "_blank",
+              "label": "Site officiel",
+              "url": "https://www.google.fr",
+              "slug": ""
+            },
+            {
+              "target": "_blank",
+              "label": "Documentation",
+              "url": "https://github.com/counteraccro/natheo",
+              "slug": ""
+            },
+            {
+              "target": "_blank",
+              "label": "GitHub",
+              "url": "https://github.com/counteraccro/natheo",
+              "slug": ""
+            }
+          ]
+        }
+      }
+    }
+  }
+}
 ````
+**Réponse 200**
+
+url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue&locale=es&show_menus=false&show_tags=false,&show_statistiques=false
+````json
+{
+    "code_http": 200,
+    "message": "success",
+    "data": {
+        "page": {
+            "title": "[ES] Bienvenue sur NatheoCMS",
+            "render": 6,
+            "author": "user.demo@mail.fr",
+            "created": 1730096624,
+            "update": 1730096626,
+            "contents": [
+                {
+                    "id": 92
+                },
+                {
+                    "id": 93
+                },
+                {
+                    "id": 94
+                }
+            ]
+        }
+    }
+}
+````
+
 
 **Réponse 401**
 
