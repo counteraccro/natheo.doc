@@ -5,11 +5,13 @@
 Permet de renvoyer une page formatée en fonction de différents paramètres
 Si le User-Token est présent dans le header et valide, permet de voir une page en brouillon
 
+Si slug n'est pas précisé ou vide renvoi la landingPage si elle existe
+
 Paramètres attendus :
 
 | nom               | type    | obligatoire | valeur par défaut | commentaire                                                                         |
 |-------------------|---------|-------------|-------------------|-------------------------------------------------------------------------------------|
-| slug              | String  | OUI         |                   | Obligatoire                                                                         |
+| slug              | String  | NON         |                   | Obligatoire                                                                         |
 | locale            | String  | NON         | fr                |                                                                                     |
 | show_menus        | boolean | NON         | true              | remonte ou non les menus associés à la page                                         |
 | show_tags         | boolean | NON         | true              | remonte ou non les tags associés à la page                                          |
