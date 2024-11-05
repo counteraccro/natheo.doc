@@ -20,3 +20,4 @@ Pour avoir accès aux API de natheo CMS il faut :
 
 #### Page
 * [Find page](References/find_page.md)
+* [Find page content](References/find_page_content.md)
