@@ -23,4 +23,5 @@ Pour avoir accès aux API de natheo CMS il faut :
 * [Find page content](References/find_page_content.md)
 
 #### Listing
-* [Listing pages category](References/listing_pages_category)
+* [Listing pages par catégorie](References/listing_pages_category)
+* [Listing pages par tag](References/listing_pages_tags.md)
