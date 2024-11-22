@@ -25,7 +25,6 @@ Liste non exhaustive des futures évolutions du CMS
 * Gérer les mises à jour des traductions du CMS (fichier yaml)
   * Créer une copie des traductions actuelles pour les sauvegarder
   * Proposer un merge automatique des traductions actuelles vers les nouvelles pour ne pas perdre les éventuelles modifications faites par l'utilisateur.
-* Compatibilité avec Mysql comme base de données
 
 ### Nouveau module
 * Module calendrier
@@ -43,6 +42,8 @@ Liste non exhaustive des futures évolutions du CMS
 
 ### Mises à jour faites :
 * ✅ Ajouter un champ dans page pour définir la page par défaut à afficher
-  * Fait le 27 septembre 2024 dans la pull request [#37]( https://github.com/counteraccro/natheo/pull/37)
+  * Fait le 27 septembre 2024 [⤵️ #37]( https://github.com/counteraccro/natheo/pull/37)
 * ✅ Il ne peut y avoir qu'un seul menu défaut en fonction de la position
-  * Fait le 05 octobre 2024 dans la pull request [#38]( https://github.com/counteraccro/natheo/pull/38)
+  * Fait le 05 octobre 2024 [⤵️ #38]( https://github.com/counteraccro/natheo/pull/38)
+* ✅ Prise en charge de la base de donnée Mysql
+  * Fait le 19 novembre 2024 [⤵️ #41](https://github.com/counteraccro/natheo/pull/41)
