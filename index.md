@@ -14,4 +14,4 @@ Retrouver ici la documentation technique et fonctionnelle de l'application ainsi
 - [les API disponibles](Docs/API/index.md)
 - [Documentation fonctionnelle](Docs/Fonctionnelles/index.md)
 - [Documentation technique](Docs/Techniques/index.md)
-- [Mise à jour prévue](Docs/todo.md)
+- [Evolutions prévues et historique du CMS](Docs/todo.md)

@@ -1,8 +1,8 @@
 ## Idée pour l'avenir
 
-[Index](../index.md) > Todo list
+[Index](../index.md) > Evolution et Historique
 
-Liste non exhaustive des futures évolutions du CMS
+Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'évolution
 
 ### Bugs
 * [*Recherche en cours*...]
