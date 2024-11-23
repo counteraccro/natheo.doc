@@ -47,3 +47,7 @@ Liste non exhaustive des futures évolutions du CMS
   * Fait le 05 octobre 2024 [⤵️ #38]( https://github.com/counteraccro/natheo/pull/38)
 * ✅ Prise en charge de la base de donnée Mysql
   * Fait le 19 novembre 2024 [⤵️ #41](https://github.com/counteraccro/natheo/pull/41)
+
+### Corrections Bugs
+* ✅ Correction génération du dump SQL
+  * Fait le 23 novembre 2024 [⤵️ #43](https://github.com/counteraccro/natheo/pull/43)
