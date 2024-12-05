@@ -28,14 +28,22 @@ Liste des actions possibles avec l'éditeur
 * Bouton "Tableau"
   * Permet d'ajouter un tableau
 * Bouton "lien"
-  * Permet d'ajouter un lien 
+  * Permet d'ajouter un lien externe
+* Bouton "lien penché"
+  * Permet d'ajouter un lien interne de page
 * Bouton "image"
   * Permet d'ajouter une image
 * Bouton "<>"
   * Permet d'ajouter du code
 * Bouton "Sauvegarder"
   * Permet de sauvegarder la donnée saisie (si le bouton est activé)
+* Bouton "Préview"
+  * Permet d'ouvrir dans un autre onglet la préview de la saisie
+    * Les liens internes sont alors pris en comptes et correctement affichés
 
-## Prévisualisation
+## Prévisualisation en temps réel
 La prévisualisation est en temps réel et affiche sous la forme HTML la mise en forme saisie dans l'éditeur
+
+## Prévisualisation autre onglet
+Même chose que la prévisualisation en en temps réél mais affiche la vrai url des liens internes
 
