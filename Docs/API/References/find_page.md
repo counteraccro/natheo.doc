@@ -2,10 +2,13 @@
 
 [Index](../../../index.md) > [API](../index.md) > Find page
 
-Permet de renvoyer une page formatée en fonction de différents paramètres
+Permet de renvoyer une page formatée en fonction de différents paramètres.
+
 Si le User-Token est présent dans le header et valide, permet de voir une page en brouillon
 
 Si slug n'est pas précisé ou vide renvoi la landingPage si elle existe
+
+Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
 
 Paramètres attendus :
 
@@ -71,13 +74,19 @@ url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue
       },
       "contents": [
         {
-          "id": 92
+          "id": 92,
+          "type": 1,
+          "position": 1
         },
         {
-          "id": 93
+          "id": 93,
+          "type": 1,
+          "position": 2
         },
         {
-          "id": 94
+          "id": 94,
+          "type": 1,
+          "position": 3
         }
       ],
       "menus": {
@@ -266,13 +275,19 @@ url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue&locale=es&show_menus=fal
             "update": 1730096626,
             "contents": [
                 {
-                    "id": 92
+                    "id": 92,
+                    "type": 1,
+                    "position": 1
                 },
                 {
-                    "id": 93
+                    "id": 93,
+                    "type": 1,
+                    "position": 2
                 },
                 {
-                    "id": 94
+                    "id": 94,
+                    "type": 1,
+                    "position": 3
                 }
             ]
         }

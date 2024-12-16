@@ -6,6 +6,7 @@
 
 ## Général
 * [Présentation globale](description.md)
+* [Références globales](Références_globales.md)
 * [Composants utilisés](composants.md)
 * [Commandes Symfony](commandes.md) utilisées pour le projet
 

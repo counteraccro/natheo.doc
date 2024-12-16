@@ -5,6 +5,9 @@
 Permet de renvoyer un menu formaté en fonction de différents paramètres
 Si le User-Token est présent dans le header et valide, renvoi le menu même si celui-ci est désactivé
 
+Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+
+
 Paramètres attendus :
 
 | nom        | type    | obligatoire | valeur par défaut | commentaire                          |

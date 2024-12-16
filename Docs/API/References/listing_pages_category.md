@@ -4,6 +4,10 @@
 
 Permet de retourner un listing de pages par catégorie en fonction de différents paramètres
 
+
+
+Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+
 Paramètres attendus :
 
 | nom      | type   | obligatoire | valeur par défaut | commentaire |

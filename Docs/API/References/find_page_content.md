@@ -4,6 +4,9 @@
 
 Permet de renvoyer une le block d'une page formatée en fonction de différents paramètres
 
+
+Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+
 Paramètres attendus :
 
 | nom    | type   | obligatoire | valeur par défaut | commentaire |
