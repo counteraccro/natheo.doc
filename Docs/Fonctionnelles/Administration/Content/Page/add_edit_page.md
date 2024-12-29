@@ -74,4 +74,10 @@ L'état de la page peut être :
 
 Si la page est en état brouillon, elle ne peux pas être visible sur le front du site
 
+#### Bouton préview
+
+![Preview](../../files/page/preview.png)
+
+Le bouton préview permet d'avoir une préview de la page comprenant le contenu ainsi que les menus associés
+
 
