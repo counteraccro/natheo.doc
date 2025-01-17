@@ -51,6 +51,8 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
   * Fait le 04 décembre 2024 [⤵️ #45](https://github.com/counteraccro/natheo/pull/45)
 * ✅ Ajout filtre pour afficher uniquement ses données sur les listings
   * Fait le 04 décembre 2024 [⤵️ #46](https://github.com/counteraccro/natheo/pull/46)
+* ✅ Ajout Recherche globale dans tout le CMS
+  * Fait le 16 janvier 2025 [⤵️ #48](https://github.com/counteraccro/natheo/pull/48)
 
 ### Corrections Bugs
 * ✅ Correction génération du dump SQL
