@@ -1,6 +1,6 @@
 # Documentation fonctionnelle de l'Administration
 
-[Index](../../index.md) > [Documentation fonctionnelle](../index.md) > Administration
+[Index](../../../index.md) > [Documentation fonctionnelle](../index.md) > Administration
 
 *Dans cette partie retrouver l'ensemble de la documentation fonctionnelle de l'administration*
 
@@ -12,6 +12,7 @@
 ## Global
 Fonctionnalités globale
 * [Notification](Global/notifications.md)
+* [Recherche globale](Global/recherche.md)
 
 ## Membres
 
