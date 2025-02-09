@@ -9,10 +9,10 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
 
 ### Changement mineurs
 * Exportation / importation sous forme de CSV des traductions du contenu du site (en base de données)
-* Editeur Markdown
+* ~~Editeur Markdown~~ (voir [⤵️ #45](https://github.com/counteraccro/natheo/pull/45))
   * Ajouter des liens de page dans l'éditeur de texte
   * Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu
-* Dans les listings, pouvoir filtrer uniquement avec ses contenus
+* ~~Dans les listings, pouvoir filtrer uniquement avec ses contenus~~ ( [⤵️ #46](https://github.com/counteraccro/natheo/pull/46))
 * Dans le dashboard créer les blocks suivants :
   * Derniers commentaires
   * Mes dernières pages
@@ -37,8 +37,8 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
 ### Divers
  * APIsation du back-office
  * Refonte design back-office
- * Ajouter nouveau droit
-   * Ne vois que ses propres contenus créés.
+ * ~~Ajouter nouveau droit~~
+   * ~~Ne vois que ses propres contenus créés.~~( [⤵️ #46](https://github.com/counteraccro/natheo/pull/46))
 
 ### Mises à jour faites :
 * ✅ Ajouter un champ dans page pour définir la page par défaut à afficher
