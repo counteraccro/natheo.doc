@@ -3,7 +3,7 @@
 [Index](../../../../../index.md) > [Documentation fonctionnelle](../../../index.md) > [Administration](../../index.md) >
 Gestion des faqs
 
-* Gestion des faqs du CMS
+*Gestion des faqs du CMS*
 
 ![Pages](../../files/faq/linsting.png)
 
