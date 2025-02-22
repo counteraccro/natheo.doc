@@ -9,12 +9,12 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
 
 ### Changement mineurs
 * Exportation / importation sous forme de CSV des traductions du contenu du site (en base de données)
-* ~~Editeur Markdown~~ (voir [⤵️ #45](https://github.com/counteraccro/natheo/pull/45))
+* ~~Editeur Markdown~~ ([⤵️ #45](https://github.com/counteraccro/natheo/pull/45))
   * Ajouter des liens de page dans l'éditeur de texte
   * Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu
-* ~~Dans les listings, pouvoir filtrer uniquement avec ses contenus~~ ( [⤵️ #46](https://github.com/counteraccro/natheo/pull/46))
+* ~~Dans les listings, pouvoir filtrer uniquement avec ses contenus~~ ([⤵️ #46](https://github.com/counteraccro/natheo/pull/46))
 * Dans le dashboard créer les blocks suivants :
-  * Derniers commentaires
+  * ~~Derniers commentaires~~ ([⤵️ #49](https://github.com/counteraccro/natheo/pull/49))
   * Mes dernières pages
   * Mes notifications
 * Revoir le code dans DatabaseTablePrefixListener.php pour pouvoir proprement séparer le schéma SQL du nom de la base de données
@@ -53,6 +53,8 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
   * Fait le 04 décembre 2024 [⤵️ #46](https://github.com/counteraccro/natheo/pull/46)
 * ✅ Ajout Recherche globale dans tout le CMS
   * Fait le 16 janvier 2025 [⤵️ #48](https://github.com/counteraccro/natheo/pull/48)
+* ✅ Ajout Gestion des commentaires
+  * Fait le 15 février 2025 [⤵️ #49](https://github.com/counteraccro/natheo/pull/49)
 
 ### Corrections Bugs
 * ✅ Correction génération du dump SQL
