@@ -24,6 +24,8 @@ Liste des fonctionnalités disponibles
     * La médiathèque
   * [Pages](Fonctionnelles/Administration/Content/Page/page.md)
     * Gestion des pages du CMS
+  * [Commentaires](Fonctionnelles/Administration/Content/Comment/comment.md)
+    * Gestion des commentaires
   * [Menu](Fonctionnelles/Administration/Content/Menu/menu.md)
     * Gestion des menus du CMS
   * [FAQ](Fonctionnelles/Administration/Content/Faq/faq.md)

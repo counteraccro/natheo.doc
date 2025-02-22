@@ -35,8 +35,8 @@ Nom de la table en bdd : **natheo.comment**
 
 - Comment
   - Une page peut posséder n Comment
-  - Un comment ne peut appartenir qu'a 1 page
-  - Une page peut posséder 1 user (user_moderation_id)
+  - Un commentaire ne peut appartenir qu'a 1 page
+  - Un commentaire peut posséder 1 user (user_moderation_id)
   - Le champ created_at est mis à la date du jour à la création d'une option
   - Le champ update_at est mis à jour à la date du jour au format [aaaa-mm-jj hh:mm:ss] à chaque modification
 
