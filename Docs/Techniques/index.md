@@ -9,6 +9,7 @@
 * [Références globales](Références_globales.md)
 * [Composants utilisés](composants.md)
 * [Commandes Symfony](commandes.md) utilisées pour le projet
+* [Les tests unitaires](unit_test.md)
 
 ## Composants récurrents
 *Aide à la mise en place des composants récurrents du projet*

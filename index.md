@@ -12,6 +12,7 @@ Retrouver ici la documentation technique et fonctionnelle de l'application ainsi
   - [Installation CMS via l'installeur](Docs/Installation/install-prod.md)
   - [Configuration d'installation](Docs/Installation/config-install.md)
 - [les API disponibles](Docs/API/index.md)
+- [Les tests unitaires](Docs/Techniques/unit_test.md)
 - [Documentation fonctionnelle](Docs/Fonctionnelles/index.md)
 - [Documentation technique](Docs/Techniques/index.md)
 - [Evolutions prévues et historique du CMS](Docs/todo.md)
