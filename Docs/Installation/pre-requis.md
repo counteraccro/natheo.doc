@@ -4,7 +4,7 @@
 
 Voici les pré-requis pour que Natheo CMS fonctionne correctement dans les meilleures conditions
 
-* PHP 8.3,8.4.6 ou +
+* PHP 8.3, 8.4.6 ou +
 * Yarn 1.22.19 ou +
 * Composer 2.7.7 ou +
 
