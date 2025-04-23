@@ -45,4 +45,4 @@ L'ensemble des tests unitaires sont présent dans le dossier tests
 
 ### Statistiques
 
-Actuellement, **102** fonctions sont testés avec **542** tests
+Actuellement, **301** fonctions sont testés avec **2000** tests
