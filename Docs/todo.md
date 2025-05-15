@@ -55,6 +55,8 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
   * Fait le 16 janvier 2025 [⤵️ #48](https://github.com/counteraccro/natheo/pull/48)
 * ✅ Ajout Gestion des commentaires
   * Fait le 15 février 2025 [⤵️ #49](https://github.com/counteraccro/natheo/pull/49)
+* ✅ Ajout Test unitaires
+  * Fait le 13 mai 2025 [⤵️ #60](https://github.com/counteraccro/natheo/pull/60)
 
 ### Corrections Bugs
 * ✅ Correction génération du dump SQL

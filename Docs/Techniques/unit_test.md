@@ -37,12 +37,12 @@ Lancer un test unitaire
 L'ensemble des tests unitaires sont présent dans le dossier tests
 
 * tests
-  * Api : Test des API
   * Controller : Test des controllers
+    * Api : Test des API
   * Helper : Class utilitaires pour générer les données de tests
   * Service : Test des services
   * Utils : Test des class du dossier Utils
 
 ### Statistiques
 
-Actuellement, **301** fonctions sont testés avec **2000** tests
+Actuellement, **375** fonctions sont testés avec **2675** tests ce qui représente environs **92%** du backoffice testé
