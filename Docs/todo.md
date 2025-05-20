@@ -18,6 +18,8 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
   * Mes dernières pages
   * Mes notifications
 * Revoir le code dans DatabaseTablePrefixListener.php pour pouvoir proprement séparer le schéma SQL du nom de la base de données
+* Mise en place API pour les commentaires
+* Mise en place API pour les options systems
 
 ### Changement majeur
 * Mise en place d'un système de versioning pour les pages
@@ -61,3 +63,7 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
 ### Corrections Bugs
 * ✅ Correction génération du dump SQL
   * Fait le 23 novembre 2024 [⤵️ #43](https://github.com/counteraccro/natheo/pull/43)
+* ✅ Correction problème d'affichage de la modale de confirmation quand on change la couleur d'un tag
+  * Fait le 18 mai 2025 [⤵️ #66](https://github.com/counteraccro/natheo/pull/66)
+* ✅ Correction affichage des requêtes SQL dans le listing
+  * Fait le 19 mai 2025 [⤵️ #67](https://github.com/counteraccro/natheo/pull/67)
