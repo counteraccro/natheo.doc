@@ -344,3 +344,16 @@ url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue&locale=es&show_menus=fal
     ]
 }
 ````
+
+**Réponse 403**
+
+*Si l'API est fermée*
+````json
+{
+  "code_http": 403,
+  "message": "Ressource non accessible",
+  "errors": [
+    "Ressource non accessible - API fermée"
+  ]
+}
+````

@@ -40,3 +40,16 @@ curl --request GET \
   ]
 }
 ````
+
+**Réponse 403**
+
+*Si l'API est fermée*
+````json
+{
+  "code_http": 403,
+  "message": "Ressource non accessible",
+  "errors": [
+    "Ressource non accessible - API fermée"
+  ]
+}
+````

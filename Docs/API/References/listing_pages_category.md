@@ -117,3 +117,16 @@ url : [url-de-mon-site]/api/v1/page/category?category=blog
   ]
 }
 ````
+
+**Réponse 403**
+
+*Si l'API est fermée*
+````json
+{
+  "code_http": 403,
+  "message": "Ressource non accessible",
+  "errors": [
+    "Ressource non accessible - API fermée"
+  ]
+}
+````

@@ -165,3 +165,16 @@ url : [url-de-mon-site]/api/v1/page/content?id=85&locale=es
     ]
 }
 ````
+
+**Réponse 403**
+
+*Si l'API est fermée*
+````json
+{
+  "code_http": 403,
+  "message": "Ressource non accessible",
+  "errors": [
+    "Ressource non accessible - API fermée"
+  ]
+}
+````
