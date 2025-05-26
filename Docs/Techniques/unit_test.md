@@ -29,12 +29,12 @@ Lancer les tests unitaires uniquement sur un fichier
 
 ``php bin/phpunit  .\path\de\ma\class.php``
 
-Lancer un test unitaire
+Lancer un test unitaire sur une méthode précise dans un fichier précis
 
 ``php bin/phpunit --filter monTest .\path\de\ma\class.php``
 
 ### Description des tests
-L'ensemble des tests unitaires sont présent dans le dossier tests
+L'ensemble des tests unitaires sont présents dans le dossier tests
 
 * tests
   * Controller : Test des controllers
@@ -45,4 +45,4 @@ L'ensemble des tests unitaires sont présent dans le dossier tests
 
 ### Statistiques
 
-Actuellement, **375** fonctions sont testés avec **2675** tests ce qui représente environs **92%** du backoffice testé
+Actuellement, **384** fonctions sont testés avec **2782** tests ce qui représente environs **92%** du backoffice testé
