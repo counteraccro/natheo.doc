@@ -20,7 +20,7 @@
 * ✅ Ajout Test unitaires
     * Fait le 13 mai 2025 [⤵️ #60](https://github.com/counteraccro/natheo/pull/60)
 * ✅ Ajout API options system
-    * Fait le 25 mai 2025
+    * Fait le 25 mai 2025 [⤵️ #68](https://github.com/counteraccro/natheo/pull/68)
 
 ### Corrections Bugs
 * ✅ Correction génération du dump SQL
