@@ -39,5 +39,6 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
 ### Divers
  * APIsation du back-office
  * Refonte design back-office
+ * Utilisation des DTO au lieu des objets Doctrine pour les API
  * ~~Ajouter nouveau droit~~
    * ~~Ne vois que ses propres contenus créés.~~( [⤵️ #46](https://github.com/counteraccro/natheo/pull/46))
