@@ -45,4 +45,4 @@ L'ensemble des tests unitaires sont présents dans le dossier tests
 
 ### Statistiques
 
-Actuellement, **384** fonctions sont testés avec **2782** tests ce qui représente environs **92%** du backoffice testé
+Actuellement, **390** fonctions sont testés avec **2987** tests ce qui représente environs **92%** du backoffice testé
