@@ -21,6 +21,8 @@
     * Fait le 13 mai 2025 [⤵️ #60](https://github.com/counteraccro/natheo/pull/60)
 * ✅ Ajout API options system
     * Fait le 25 mai 2025 [⤵️ #68](https://github.com/counteraccro/natheo/pull/68)
+* ✅ Ajout API Commentaire
+    * Fait le 15 juin 2025 [⤵️ #83](https://github.com/counteraccro/natheo/pull/83) 
 
 ### Corrections Bugs
 * ✅ Correction génération du dump SQL
