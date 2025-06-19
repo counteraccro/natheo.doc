@@ -22,3 +22,4 @@ Retrouver ici la documentation technique et fonctionnelle de l'application ainsi
 - [Les tests unitaires](Docs/Techniques/unit_test.md)
 - [Evolutions prévues](Docs/todo.md)
 - [Historique des mises à jour](Docs/update.md)
+- [Version](Docs/version.md)
