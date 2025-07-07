@@ -28,33 +28,46 @@ Nom de la table en bdd : **natheo.option_system**
 
 ## Liste des options disponibles
 
-| Clé                             | 	Valeur par défaut            | 	Description                                                                                                           |
-|---------------------------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| OS_SITE_NAME                    | 	Natheo                       | 	Nom du site                                                                                                           |
-| OS_OPEN_SITE                    | 	1                            | 	Défini si le site front est ouvert ou non                                                                             |
-| OS_LOGO_SITE                    | 	bi-yin-yang                  | 	Défini le logo à côté du nom du site                                                                                  |
-| OS_FRONT_SCRIPT_TOP             | 	                             | 	Script à insérer dans le header du site                                                                               |
-| OS_FRONT_SCRIPT_START_BODY	     | 	                             | Script à insérer au début de la balise body                                                                            |
-| OS_FRONT_SCRIPT_END_BODY        | 	                             | 	Script à insérer à la fin de la balise body                                                                           |
-| OS_REPLACE_DELETE_USER          | 	1	                           | Défini si on supprime définitivement un utilisateur ou si on le remplace par un utilisateur fantôme                    |
-| OS_CONFIRM_LEAVE_FORM           | 	1                            | 	Affiche une confirmation si on quitte un formulaire                                                                   |
-| OS_ALLOW_DELETE_DATA            | 	1                            | 	Autorise ou non la suppression de données                                                                             |
-| OS_DEFAULT_LANGUAGE             | 	fr                           | 	Défini la langue par défaut pour le site, valeur utilisé comme valeur par défaut pour les options user                |
-| OS_THEME_SITE                   | 	purple                       | 	Défini la couleur de base du site, valeur utilisé comme valeur par défaut pour les options user                       |
-| OS_NB_ELEMENT                   | 	20                           | 	Défini le nombre d'élément à afficher dans les tableaux, valeur utilisé comme valeur par défaut pour les options user |
-| OS_LOG_DOCTRINE                 | 	1                            | 	Défini si on log tout changement dans le bdd ou non                                                                   |
-| OS_MAIL_FROM                    | info@natheo.fr                | Adresse email qui apparaitra comme expéditeur                                                                          |
-| OS_MAIL_REPLY_TO                | support@natheo.fr             | Adresse email utilisé pour répondre                                                                                    |
-| OS_ADRESSE_SITE                 | valeur défini automatiquement | URL de référence du CMS                                                                                                |
-| OS_MAIL_SIGNATURE               | Cordialement                  | Signature présent en fin de mail                                                                                       |
-| OS_MAIL_NOTIFICATION            | 1                             | Envoyer une notification par email                                                                                     |
-| OS_NOTIFICATION                 | 1                             | Active les notifications                                                                                               |
-| OS_PURGE_NOTIFICATION           | 30                            | délai de purge des notifications                                                                                       |
-| OS_MAIL_RESET_PASSWORD_TIME     | 20                            | Temps en minutes pour la validité du lien de changement de mot de passe                                                |
-| OS_MEDIA_FOLDER                 | 1                             | Défini si on créer ou non des dossier physiques                                                                        |
-| OS_MEDIA_CREATE_PHYSICAL_FOLDER | assets                        | Path pour le dossier média                                                                                             |
-| OS_MEDIA_URL                    | http://dev.natheo             | Url public pour le dossier média                                                                                       |
-| OS_API_TIME_VALIDATE_USER_TOKEN | 60                            | Défini le temps de validité d'un token user (en minutes)                                                               |
+| Clé                                  | 	Valeur par défaut            | 	Description                                                                                                           |
+|--------------------------------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| OS_SITE_NAME                         | 	Natheo                       | 	Nom du site                                                                                                           |
+| OS_OPEN_SITE                         | 	1                            | 	Défini si le site front est ouvert ou non                                                                             |
+| OS_LOGO_SITE                         | 	bi-yin-yang                  | 	Défini le logo à côté du nom du site                                                                                  |
+| OS_FRONT_SCRIPT_TOP                  | 	                             | 	Script à insérer dans le header du site                                                                               |
+| OS_FRONT_SCRIPT_START_BODY	          | 	                             | Script à insérer au début de la balise body                                                                            |
+| OS_FRONT_SCRIPT_END_BODY             | 	                             | 	Script à insérer à la fin de la balise body                                                                           |
+| OS_REPLACE_DELETE_USER               | 	1	                           | Défini si on supprime définitivement un utilisateur ou si on le remplace par un utilisateur fantôme                    |
+| OS_CONFIRM_LEAVE_FORM                | 	1                            | 	Affiche une confirmation si on quitte un formulaire                                                                   |
+| OS_ALLOW_DELETE_DATA                 | 	1                            | 	Autorise ou non la suppression de données                                                                             |
+| OS_DEFAULT_LANGUAGE                  | 	fr                           | 	Défini la langue par défaut pour le site, valeur utilisé comme valeur par défaut pour les options user                |
+| OS_THEME_SITE                        | 	purple                       | 	Défini la couleur de base du site, valeur utilisé comme valeur par défaut pour les options user                       |
+| OS_NB_ELEMENT                        | 	20                           | 	Défini le nombre d'élément à afficher dans les tableaux, valeur utilisé comme valeur par défaut pour les options user |
+| OS_LOG_DOCTRINE                      | 	1                            | 	Défini si on log tout changement dans le bdd ou non                                                                   |
+| OS_MAIL_FROM                         | info@natheo.fr                | Adresse email qui apparaitra comme expéditeur                                                                          |
+| OS_MAIL_REPLY_TO                     | support@natheo.fr             | Adresse email utilisé pour répondre                                                                                    |
+| OS_ADRESSE_SITE                      | valeur défini automatiquement | URL de référence du CMS                                                                                                |
+| OS_MAIL_SIGNATURE                    | Cordialement                  | Signature présent en fin de mail                                                                                       |
+| OS_MAIL_NOTIFICATION                 | 1                             | Envoyer une notification par email                                                                                     |
+| OS_NOTIFICATION                      | 1                             | Active les notifications                                                                                               |
+| OS_PURGE_NOTIFICATION                | 30                            | délai de purge des notifications                                                                                       |
+| OS_MAIL_RESET_PASSWORD_TIME          | 20                            | Temps en minutes pour la validité du lien de changement de mot de passe                                                |
+| OS_MEDIA_FOLDER                      | 1                             | Défini si on créer ou non des dossier physiques                                                                        |
+| OS_MEDIA_CREATE_PHYSICAL_FOLDER      | assets                        | Path pour le dossier média                                                                                             |
+| OS_MEDIA_URL                         | http://dev.natheo             | Url public pour le dossier média                                                                                       |
+| OS_API_TIME_VALIDATE_USER_TOKEN      | 60                            | Défini le temps de validité d'un token user (en minutes)                                                               |
+| OS_OPEN_COMMENT                      | 1                             | défini si les commentaires sont ouvert ou non                                                                          |
+| OS_NEW_COMMENT_WAIT_VALIDATION       | 1                             | Défini le status par défaut des nouveaux commentaires                                                                  |
+| OS_THEME_FRONT_SITE                  | natheo_horizon                | Thème par défaut du CMS                                                                                                |
+| OS_FRONT_FOOTER_TEXTE                |                               | Texte du footer                                                                                                        |
+| OS_FRONT_FOOTER_SOCIAL_GITHUB_URL    |                               | Url compte Github                                                                                                      |
+| OS_FRONT_FOOTER_SOCIAL_LINKEDIN_URL  |                               | Url compte Linkedin                                                                                                    |
+| OS_FRONT_FOOTER_SOCIAL_YOUTUBE_URL   |                               | Url compte youtube                                                                                                     |
+| OS_FRONT_FOOTER_SOCIAL_X_URL         |                               | Url compte X                                                                                                           |
+| OS_FRONT_FOOTER_SOCIAL_FACEBOOK_URL  |                               | Url compte Facebook                                                                                                    |
+| OS_FRONT_FOOTER_SOCIAL_INSTAGRAM_URL |                               | Url compte instagram                                                                                                   |
+| OS_FRONT_FOOTER_SOCIAL_TIKTOK_URL    |                               | Url compte tiktok                                                                                                      |
+
+
 
 ## Règles de gestions insertion / modification de donnée
 - Chaque option est définie par le champ key sous la forme de OS_{OPTION}
