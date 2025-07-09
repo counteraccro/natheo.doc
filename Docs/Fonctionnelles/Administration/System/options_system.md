@@ -66,6 +66,8 @@ Nom de la table en bdd : **natheo.option_system**
 | OS_FRONT_FOOTER_SOCIAL_FACEBOOK_URL  |                               | Url compte Facebook                                                                                                    |
 | OS_FRONT_FOOTER_SOCIAL_INSTAGRAM_URL |                               | Url compte instagram                                                                                                   |
 | OS_FRONT_FOOTER_SOCIAL_TIKTOK_URL    |                               | Url compte tiktok                                                                                                      |
+| OS_FRONT_ROBOT_NO_INDEX              | 0                             | Défini si on bloque l'indexation des robots                                                                            |
+| OS_FRONT_ROBOT_NO_FOLLOW             | 0                             | Défini si on bloque le suivi des liens ou non par les robots                                                           |
 
 
 
