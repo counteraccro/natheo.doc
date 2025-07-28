@@ -33,3 +33,6 @@ Pour avoir accès aux API de natheo CMS il faut :
 
 ### Options systems
 * [Options systems](References/option_system.md)
+
+### Divers
+* [Sitemap](References/sitemap.md)
