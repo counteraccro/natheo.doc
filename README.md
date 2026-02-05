@@ -167,3 +167,5 @@ Merci à tous ceux qui contribuent à améliorer cette documentation !
 [⬆ Retour en haut](#-documentation-nathéo-cms)
 
 </div>
+
+*Dernière mise à jour le 05/05/2026*
