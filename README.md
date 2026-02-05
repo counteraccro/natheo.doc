@@ -3,7 +3,7 @@
 # 📚 Documentation Nathéo CMS
 
 [![Documentation](https://img.shields.io/badge/Docs-En%20ligne-blue?style=flat-square)](https://counteraccro.github.io/natheo.doc/)
-[![CMS Version](https://img.shields.io/badge/CMS-v1.0.0-8b5cf6?style=flat-square)](https://github.com/counteraccro/natheo)
+[![CMS Version](https://img.shields.io/badge/Natheo-CMS-v2.0.0-8b5cf6?style=flat-square)](https://github.com/counteraccro/natheo)
 [![License](https://img.shields.io/badge/License-GNU-green?style=flat-square)](LICENSE)
 
 **Documentation technique et fonctionnelle complète de Nathéo CMS**
