@@ -187,7 +187,7 @@ Vous pouvez réorganiser, réduire ou étendre la toolbar en passant votre propr
 
 ## Mots-clés
 
-Les mots-clés sont des variables injectables dans le contenu (ex : `{{site_name}}`, `{{date}}`). Ils apparaissent dans un dropdown dédié si `me-key-words` est non vide.
+{% raw %}Les mots-clés sont des variables injectables dans le contenu (ex : `{{site_name}}`, `{{date}}`). Ils apparaissent dans un dropdown dédié si `me-key-words` est non vide.{% endraw %}
 
 ### Structure
 
@@ -200,6 +200,7 @@ interface KeyWord {
 
 ### Exemple
 
+{% raw %}
 ```vue
 <template>
   <MarkdownEditor
@@ -222,6 +223,7 @@ export default defineComponent({
 })
 </script>
 ```
+{% endraw %}
 
 ---
 
@@ -363,6 +365,7 @@ export const MyModule: EditorModule = {
 
 ### 2. Créer le composant modal
 
+{% raw %}
 ```vue
 <!-- src/vue/Components/Global/MarkdownEditor/MyModal.vue -->
 <template>
@@ -443,6 +446,7 @@ export default defineComponent({
 })
 </script>
 ```
+{% endraw %}
 
 ### 3. Enregistrer le module et la modal dans le parent
 

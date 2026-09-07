@@ -11,7 +11,7 @@ nav_order: 3
 >   lesquelles des « îlots » Vue sont montés via `vue_component()`
 >   (`symfony/ux-vue`), ex. :
 >   ```twig
->   <div {{ vue_component('Admin/Dashboard/Dashboard', { 'urls': urls, 'translate': translate, 'datas': datas }) }}></div>
+>   {% raw %}<div {{ vue_component('Admin/Dashboard/Dashboard', { 'urls': urls, 'translate': translate, 'datas': datas }) }}></div>{% endraw %}
 >   ```
 > * Convention des 3 groupes de props : `urls` (routes générées), `translate`
 >   (via une classe `AppTranslate`), `datas` (état serveur)
