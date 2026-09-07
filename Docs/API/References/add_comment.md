@@ -1,6 +1,8 @@
-## Ajouter un nouveau commentaire
-
-[Index](../../../index.md) > [API](../index.md) > Ajouter un nouveau commentaire
+---
+title: "Ajouter un nouveau commentaire"
+parent: "API"
+nav_order: 7
+---
 
 Permet d'ajouter un nouveau commentaire à la page défini par id ou page_slug et la locale
 Si tout est ok, retourne l'id du commentaire

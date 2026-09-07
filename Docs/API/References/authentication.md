@@ -1,6 +1,8 @@
-## Authentification
-
-[Index](../../../index.md) > [API](../index.md) > Authentification
+---
+title: "Authentification"
+parent: "API"
+nav_order: 1
+---
 
 Permet de savoir si vous pouvez accéder à l'API de NatheoCMS
 

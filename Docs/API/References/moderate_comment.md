@@ -1,6 +1,8 @@
-## Modération d'un commentaire
-
-[Index](../../../index.md) > [API](../index.md) > Modération d'un commentaire
+---
+title: "Modération d'un commentaire (API)"
+parent: "API"
+nav_order: 8
+---
 
 Permet de modérer un commentaire via son id
 
