@@ -1,25 +1,19 @@
-# Documentation du projet Natheo CMS
+---
+title: "Accueil"
+nav_order: 1
+---
 
-Bienvenue sur la documentation du CMS Natheo.
+Bienvenue sur la documentation du CMS Nathéo : documentation technique et fonctionnelle de l'application, ainsi que différents tutoriels d'utilisation de ses fonctionnalités.
 
-Retrouver ici la documentation technique et fonctionnelle de l'application ainsi que différents tutoriels d'utilisation des fonctionnalités du CMS
+> 🚧 **Documentation en cours de refonte pour la V2.** L'arborescence a été
+> réorganisée pour coller à la V2 du CMS ; certaines pages sont encore des
+> pages-jalons en attente de rédaction (repérables au bandeau 🚧 en haut de page).
+> Voir la [roadmap de la documentation](Docs/Projet/roadmap.md) pour le suivi.
 
-### Liens rapides
-- [Description générale](Docs/description_generale.md)
-- [Documentation fonctionnelle](Docs/Fonctionnelles/index.md)
-- [Documentation technique](Docs/Techniques/index.md)
+## Pour commencer
+- [Pré-requis](Docs/Demarrage/pre_requis.md) et [installation](Docs/Demarrage/installation_dev.md)
+- [Description générale du projet](Docs/Projet/description_generale.md)
+- [Les API disponibles](Docs/API/index.md)
 
-### Prise en main
-  - [Pré-requis pour que le site fonctionne](Docs/Installation/pre-requis.md)
-  - [Installation CMS mode développeur](Docs/Installation/install-dev.md)
-  - [Installation CMS via l'installeur](Docs/Installation/install-prod.md)
-  - [Configuration d'installation](Docs/Installation/config-install.md)
-
-### API
-- [les API disponibles](Docs/API/index.md)
-
-### Divers
-- [Les tests unitaires](Docs/Techniques/unit_test.md)
-- [Evolutions prévues](Docs/todo.md)
-- [Historique des mises à jour](Docs/update.md)
-- [Version](Docs/version.md)
+Utilisez le menu à gauche pour parcourir l'ensemble des sections : Démarrage,
+Architecture, Guide d'administration, Front, API et Projet.
