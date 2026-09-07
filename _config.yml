@@ -8,7 +8,7 @@ plugins:
 url: "https://counteraccro.github.io"
 baseurl: "/natheo.doc"
 
-color_scheme: nil
+color_scheme: light
 
 search_enabled: true
 search:
