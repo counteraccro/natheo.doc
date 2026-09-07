@@ -1,5 +1,39 @@
-remote_theme: pages-themes/leap-day@v0.2.0
-plugins:
-  - jekyll-remote-theme
 title: Natheo CMS
 description: Documentation du CMS Natheo
+
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+url: "https://counteraccro.github.io"
+baseurl: "/natheo.doc"
+
+color_scheme: nil
+
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 2
+  preview_words_before: 5
+  preview_words_after: 10
+  rel_url: true
+  button: false
+
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Retour en haut"
+
+nav_sort: case_insensitive
+
+aux_links:
+  "Nathéo CMS sur GitHub":
+    - "https://github.com/counteraccro/natheo"
+
+footer_content: "Distribué sous licence GNU-V3, comme le projet Nathéo CMS."
+
+last_edit_timestamp: false
+
+callouts:
+  warning:
+    title: Attention
+    color: yellow
