@@ -126,6 +126,26 @@
     color: #9ca3af !important;
   }
 
+  /* Panneau de résultats de recherche : le thème utilise $feedback-color
+     (une teinte dérivée de la sidebar sombre) pour le survol des résultats,
+     ce qui jure sur un panneau blanc — on harmonise avec le reste (gris clair
+     au survol, coins arrondis à 8px, léger espace sous le champ). */
+  .search-results {
+    margin-top: 0.4rem !important;
+    border: 1px solid #d1d5db;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08) !important;
+  }
+
+  .search-result:hover,
+  .search-result.active {
+    background-color: #f3f4f6 !important;
+  }
+
+  .search-result-highlight {
+    color: #8b5cf6;
+  }
+
   /* Lien GitHub de l'entête : le style "site-button" par défaut de
      just-the-docs est pensé pour la sidebar sombre (bouton menu mobile),
      pas pour un lien sur fond blanc — d'où le hover sombre "horrible" ici.
