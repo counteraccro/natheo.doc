@@ -1,4 +1,48 @@
 <style>
+  /* Mise en page façon back-office : sidebar collée à gauche, contenu fluide
+     (just-the-docs centre par défaut sidebar+contenu au-delà de ~1064px) */
+  @media (min-width: 50rem) {
+    .side-bar {
+      width: 256px !important;
+      left: 0 !important;
+    }
+
+    .main {
+      margin-left: 256px !important;
+    }
+  }
+
+  .main-content {
+    max-width: none !important;
+  }
+
+  /* Items de nav façon "pilule" (back-office Nathéo CMS) */
+  .nav-list-item .nav-list-link {
+    border-radius: 8px;
+    margin: 2px 0.5rem;
+  }
+
+  .nav-list-item .nav-list-link:hover,
+  .nav-list-item .nav-list-link.active {
+    background-image: none;
+    background-color: #374151; /* --sidebar-hover du CMS */
+    color: #fff;
+  }
+
+  .nav-list-item .nav-list-expander:hover {
+    background-image: none;
+    background-color: #374151;
+    border-radius: 8px;
+  }
+
+  .nav-list-item .nav-list .nav-list-link {
+    font-size: 0.875rem;
+  }
+
+  .nav-list-item > .nav-list {
+    padding-left: 1.75rem; /* indentation des sous-menus, façon ml-8 du CMS */
+  }
+
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
   .nav-list-link {
     display: flex;
