@@ -327,8 +327,8 @@
       });
     });
 
-    // Déplace le bloc "Pages de cette section" (généré par just-the-docs en
-    // bas de <main>) dans une colonne à droite, collante au défilement
+    /* Déplace le bloc "Pages de cette section" (généré par just-the-docs en
+       bas de <main>) dans une colonne à droite, collante au défilement */
     var tocHeading = document.querySelector('main h2.text-delta');
     if (tocHeading) {
       var tocList = tocHeading.nextElementSibling;
@@ -349,7 +349,7 @@
       }
     }
 
-    // Icône GitHub devant le lien "Nathéo CMS sur GitHub" de l'entête
+    /* Icône GitHub devant le lien "Nathéo CMS sur GitHub" de l'entête */
     var ghLink = document.querySelector('.aux-nav .site-button');
     if (ghLink && !ghLink.querySelector('.gh-icon')) {
       ghLink.insertAdjacentHTML(
