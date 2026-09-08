@@ -175,31 +175,34 @@
   }
 
   /* Bloc "Pages de cette section" : un unique conteneur (voir la surcharge
-     de components/children_nav.html) avec une seule bordure, flottant à
-     droite. On ne touche ni à <main> ni à aucun autre élément de la page —
-     sauf un clearfix (main::after) pour que <main> englobe correctement ce
-     flottant : sans ça, le pied de page se superpose avec le bloc au lieu
-     de s'afficher proprement en dessous. */
-  main::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
+     de components/children_nav.html), sorti de main-content-wrap par le
+     script ci-dessous et posé en position fixe par rapport à la fenêtre —
+     complètement indépendant du flux du contenu, ne peut plus traîner en
+     bas de page ni être comprimé par lui. */
   .page-toc {
     box-sizing: border-box;
     width: 260px;
-    margin: 0 0 1.5rem 1.5rem;
     padding: 0.75rem;
     background-color: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
   }
 
-  @media (min-width: 40rem) {
+  @media (min-width: 66.5rem) {
     .page-toc {
-      float: right;
-      clear: right;
+      position: fixed;
+      top: 5.5rem;
+      right: 1.5rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      z-index: 5;
+      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+    }
+  }
+
+  @media (max-width: 66.4rem) {
+    .page-toc {
+      margin: 2rem 0;
     }
   }
 
@@ -340,6 +343,15 @@
         overlay.classList.add('is-open');
       });
     });
+
+    /* Sort le bloc "Pages de cette section" de main-content-wrap : tant
+       qu'il reste dedans, il ne peut que suivre le flux du contenu (rester
+       en bas). On le rattache directement à .main, en position fixe. */
+    var pageToc = document.querySelector('.page-toc');
+    var mainEl = document.querySelector('.main');
+    if (pageToc && mainEl) {
+      mainEl.appendChild(pageToc);
+    }
 
     /* Icône GitHub devant le lien "Nathéo CMS sur GitHub" de l'entête */
     var ghLink = document.querySelector('.aux-nav .site-button');
