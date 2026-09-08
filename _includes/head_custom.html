@@ -1,0 +1,66 @@
+<style>
+  /* Captures d'écran : taille uniforme + clic pour agrandir */
+  .main-content img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    object-position: left center;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: zoom-in;
+    margin: 1.25rem 0;
+  }
+
+  #img-lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    padding: 3rem;
+  }
+
+  #img-lightbox-overlay.is-open {
+    display: flex;
+  }
+
+  #img-lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var overlay = document.createElement('div');
+    overlay.id = 'img-lightbox-overlay';
+    var overlayImg = document.createElement('img');
+    overlay.appendChild(overlayImg);
+    document.body.appendChild(overlay);
+
+    function closeLightbox() {
+      overlay.classList.remove('is-open');
+      overlayImg.src = '';
+    }
+
+    overlay.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.querySelectorAll('.main-content img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        overlayImg.src = img.currentSrc || img.src;
+        overlay.classList.add('is-open');
+      });
+    });
+  });
+</script>
