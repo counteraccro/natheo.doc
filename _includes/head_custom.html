@@ -17,30 +17,46 @@
   }
 
   /* Items de nav façon "pilule" (back-office Nathéo CMS) */
-  .nav-list-item .nav-list-link {
-    border-radius: 8px;
+  .side-bar .nav-list-link {
+    box-sizing: border-box;
+    width: 100%; /* la pilule occupe toute la largeur, item de niveau 1 ou sous-menu */
+    min-height: 0;
+    padding: 0.65rem 1rem;
     margin: 2px 0.5rem;
+    color: #e5e7eb; /* couleur par défaut identique à tous les niveaux (sinon fallback violet) */
+    font-size: 1rem;
+    border-radius: 8px;
   }
 
-  .nav-list-item .nav-list-link:hover,
-  .nav-list-item .nav-list-link.active {
+  .side-bar .nav-list-item .nav-list .nav-list-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .side-bar .nav-list-link:hover,
+  .side-bar .nav-list-link.active {
     background-image: none;
     background-color: #374151; /* --sidebar-hover du CMS */
     color: #fff;
   }
 
-  .nav-list-item .nav-list-expander:hover {
+  .side-bar .nav-list-expander {
+    color: #e5e7eb;
+  }
+
+  .side-bar .nav-list-expander:hover {
     background-image: none;
     background-color: #374151;
     border-radius: 8px;
   }
 
-  .nav-list-item .nav-list .nav-list-link {
-    font-size: 0.875rem;
+  .side-bar .nav-list-item > .nav-list {
+    padding-left: 1.25rem; /* indentation des sous-menus, façon ml-8 du CMS */
   }
 
-  .nav-list-item > .nav-list {
-    padding-left: 1.75rem; /* indentation des sous-menus, façon ml-8 du CMS */
+  /* laisse de la place pour le chevron sur les items dépliables */
+  .side-bar .nav-list-item:has(> .nav-list-expander) > .nav-list-link {
+    padding-right: 2.5rem;
   }
 
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */

@@ -1,4 +1,4 @@
-title: Natheo CMS
+title: "Nathéo CMS V2"
 description: Documentation du CMS Natheo
 
 remote_theme: just-the-docs/just-the-docs
@@ -9,7 +9,6 @@ url: "https://counteraccro.github.io"
 baseurl: "/natheo.doc"
 
 color_scheme: natheo
-logo: "/assets/images/natheo-logo.png"
 favicon_ico: "/favicon.ico"
 
 search_enabled: true
