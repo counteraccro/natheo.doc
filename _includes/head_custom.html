@@ -148,7 +148,13 @@
     align-items: center;
   }
 
+  .nav-label {
+    display: inline-block;
+    line-height: 1.2;
+  }
+
   .nav-icon {
+    display: block; /* évite les décalages liés au rendu "inline" par défaut d'un svg */
     width: 1.05em;
     height: 1.05em;
     margin-right: 0.55em;

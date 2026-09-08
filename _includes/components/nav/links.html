@@ -32,7 +32,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button>
       {%- endif -%}
-      <a href="{{ node.url | relative_url }}" class="nav-list-link">{%- if node.nav_icon -%}<svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ node.nav_icon }}"></path></svg>{%- endif -%}{{ node.title }}</a>
+      <a href="{{ node.url | relative_url }}" class="nav-list-link">{%- if node.nav_icon -%}<svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ node.nav_icon }}"></path></svg>{%- endif -%}<span class="nav-label">{{ node.title }}</span></a>
       {%- if nav_children.size >= 1 -%}
         {%- if node.child_nav_order == 'desc' or node.child_nav_order == 'reversed' -%}
           {%- assign nav_children = nav_children | reverse -%}
