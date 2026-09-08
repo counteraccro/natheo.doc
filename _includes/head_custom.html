@@ -176,12 +176,21 @@
 
   /* Bloc "Pages de cette section" : un unique conteneur (voir la surcharge
      de components/children_nav.html) avec une seule bordure, flottant à
-     droite. On ne touche ni à <main> ni à aucun autre élément de la page. */
+     droite. On ne touche ni à <main> ni à aucun autre élément de la page —
+     sauf un clearfix (main::after) pour que <main> englobe correctement ce
+     flottant : sans ça, le pied de page se superpose avec le bloc au lieu
+     de s'afficher proprement en dessous. */
+  main::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   .page-toc {
     box-sizing: border-box;
     width: 260px;
     margin: 0 0 1.5rem 1.5rem;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem;
     background-color: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
@@ -195,7 +204,7 @@
   }
 
   .page-toc h2.text-delta {
-    margin: 0;
+    margin: 0 0 0 0.6rem;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
     color: #6b7280;
@@ -203,22 +212,38 @@
 
   .page-toc ul {
     padding: 0 !important;
-    margin: 0.5rem 0 0;
+    margin: 0.4rem 0 0 !important;
     list-style: none !important;
+    list-style-type: none !important;
   }
 
   .page-toc li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 0 !important;
+    margin: 2px 0 !important;
     list-style: none !important;
+    list-style-type: none !important;
   }
 
-  .page-toc li:last-child {
-    border-bottom: none;
+  .page-toc li::marker {
+    content: none;
+  }
+
+  .page-toc li::before {
+    content: none !important;
   }
 
   .page-toc a {
+    display: block;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    color: #111827;
     font-weight: 600;
+    text-decoration: none;
+  }
+
+  .page-toc a:hover {
+    background-color: #f3f4f6; /* même logique de survol que la recherche/le lien GitHub */
+    color: #8b5cf6;
   }
 
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
