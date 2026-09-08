@@ -66,6 +66,36 @@ hiérarchie des rôles dans `config/packages/security.yaml`).
 | `admin_tag_search` | GET | Auto-complete par label + locale (ajax) |
 | `admin_tag_tag_by_name` | GET | Récupère (ou crée) un tag par son nom (ajax) |
 
+## Fixtures
+
+| | |
+|---|---|
+| Fichier de données | `src/DataFixtures/data/content/tag_fixtures_data.yaml` |
+| Classe de fixture | [`TagFixtures`](https://github.com/counteraccro/natheo/blob/master/src/DataFixtures/Admin/Content/TagFixtures.php) |
+| Groupes | `tag`, `content` |
+
+Charger uniquement les fixtures de tags :
+
+```bash
+php bin/console doctrine:fixtures:load --group=tag
+```
+
+Chaque tag est une entrée du fichier YAML, indexée par une clé de référence
+(réutilisable par d'autres fixtures, ex. pour associer des tags à une page) :
+
+```yaml
+tag:
+    Tag_natheo:
+        color: '#6F42C1'
+        translate:
+            - locale: fr
+              label: 'Natheo CMS'
+            - locale: es
+              label: 'Natheo CMS'
+            - locale: en
+              label: 'Natheo CMS'
+```
+
 ## Frontend
 
 | Composant | Rôle |

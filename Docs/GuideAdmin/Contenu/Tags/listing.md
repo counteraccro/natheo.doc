@@ -9,7 +9,8 @@ nav_order: 5
 Les tags vous permettent de classer et de regrouper les pages de votre site.
 Une fois créés, ils peuvent aussi servir de filtre pour vos visiteurs.
 
-Cette page est accessible aux contributeurs, administrateurs et super-administrateurs.
+Cette page est accessible aux contributeurs, administrateurs et super-administrateurs,
+à l'URL `/admin/{locale}/tag/`.
 
 ![Listing des tags](files/listing.png)
 
@@ -18,7 +19,7 @@ création et de mise à jour. Vous pouvez trier chaque colonne en cliquant sur
 son en-tête, et retrouver rapidement un tag grâce à la barre de recherche.
 
 Pour chaque tag, trois actions sont disponibles directement depuis la ligne :
-Tu
+
 - ✏️ **Modifier** — ouvre le tag pour changer sa couleur ou son libellé
 - 👁️ **Activer / Désactiver** — un tag désactivé disparaît du site, mais rien
   n'est supprimé : vous pouvez le réactiver à tout moment

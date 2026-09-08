@@ -8,7 +8,8 @@ nav_order: 1
 Ce formulaire permet de créer un nouveau tag ou de modifier un tag existant,
 depuis le [listing des tags](listing.md).
 
-Il est accessible aux contributeurs, administrateurs et super-administrateurs.
+Il est accessible aux contributeurs, administrateurs et super-administrateurs,
+aux URLs `/admin/{locale}/tag/add/` (création) et `/admin/{locale}/tag/update/{id}` (édition).
 
 ![Création d'un tag](files/creation.png)
 
