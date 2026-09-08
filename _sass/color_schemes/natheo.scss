@@ -1,0 +1,32 @@
+$color-scheme: light;
+
+// Palette Nathéo CMS — reprise de assets/styles/admin/variables.scss
+// (thème "violet" par défaut du back-office)
+$natheo-primary: #8b5cf6;
+$natheo-primary-hover: #7c3aed;
+$natheo-sidebar-bg: #1f2937;
+$natheo-sidebar-text: #e5e7eb;
+$natheo-bg-main: #f9fafb;
+$natheo-bg-card: #ffffff;
+$natheo-text-primary: #111827;
+$natheo-text-secondary: #6b7280;
+$natheo-border: #e5e7eb;
+$natheo-code-bg: #1e293b;
+$natheo-code-text: #e2e8f0;
+
+$body-background-color: $natheo-bg-main;
+$body-heading-color: $natheo-text-primary;
+$body-text-color: $natheo-text-primary;
+$link-color: $natheo-primary;
+$nav-child-link-color: $natheo-sidebar-text;
+$sidebar-color: $natheo-sidebar-bg;
+$base-button-color: $natheo-bg-card;
+$btn-primary-color: $natheo-primary;
+$code-background-color: $natheo-code-bg;
+$code-linenumber-color: $natheo-code-text;
+$feedback-color: darken($sidebar-color, 3%);
+$table-background-color: $natheo-bg-card;
+$search-background-color: $natheo-bg-card;
+$search-result-preview-color: $natheo-text-secondary;
+$border-color: $natheo-border;
+$border-radius: 8px;
