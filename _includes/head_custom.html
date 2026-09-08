@@ -293,20 +293,22 @@
     display: none !important;
   }
 
-  /* Captures d'écran : taille uniforme + clic pour agrandir */
+  /* Captures d'écran : hauteur uniforme + clic pour agrandir. La bordure
+     n'entoure que l'image elle-même (largeur naturelle à cette hauteur),
+     centrée dans la page — pas une bordure pleine largeur. */
   .main-content img {
     display: block;
-    width: 100%;
     height: 300px;
+    width: auto;
+    max-width: 100%;
     object-fit: contain;
-    object-position: center;
     background: #fff;
     border: 1px solid #d0d7de;
     border-radius: 8px;
     padding: 10px;
     box-sizing: border-box;
     cursor: zoom-in;
-    margin: 1.25rem 0;
+    margin: 1.25rem auto;
   }
 
   #img-lightbox-overlay {
