@@ -16,28 +16,44 @@
     max-width: none !important;
   }
 
-  /* Items de nav façon "pilule" (back-office Nathéo CMS) */
+  /* Titre "Nathéo CMS V2" en haut de la sidebar (le thème le colore avec
+     $body-heading-color, sombre chez nous → invisible sur fond sombre) */
+  .side-bar .site-title {
+    color: #fff !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* Items de nav façon "pilule" (back-office Nathéo CMS) : la pilule est
+     alignée sur la même marge que le titre (16px), pas collée au bord */
   .side-bar .nav-list-link {
-    box-sizing: border-box;
-    width: 100%; /* la pilule occupe toute la largeur, item de niveau 1 ou sous-menu */
     min-height: 0;
-    padding: 0.65rem 1rem;
-    margin: 2px 0.5rem;
-    color: #e5e7eb; /* couleur par défaut identique à tous les niveaux (sinon fallback violet) */
+    margin: 2px 1rem;
+    padding: 0.65rem 0.75rem;
+    color: #e5e7eb !important; /* couleur par défaut identique à tous les niveaux */
     font-size: 1rem;
     border-radius: 8px;
   }
 
   .side-bar .nav-list-item .nav-list .nav-list-link {
-    padding: 0.5rem 1rem;
+    margin: 2px 1rem;
+    padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
   }
 
-  .side-bar .nav-list-link:hover,
+  /* Survol = gris (comme le CMS) */
+  .side-bar .nav-list-link:hover {
+    background-image: none !important;
+    background-color: #374151 !important;
+    color: #fff !important;
+  }
+
+  /* Page courante = violet plein (comme le CMS) — après :hover dans l'ordre
+     des règles pour rester prioritaire même si l'item actif est survolé */
   .side-bar .nav-list-link.active {
-    background-image: none;
-    background-color: #374151; /* --sidebar-hover du CMS */
-    color: #fff;
+    background-image: none !important;
+    background-color: #8b5cf6 !important;
+    color: #fff !important;
   }
 
   .side-bar .nav-list-expander {
@@ -45,8 +61,8 @@
   }
 
   .side-bar .nav-list-expander:hover {
-    background-image: none;
-    background-color: #374151;
+    background-image: none !important;
+    background-color: #374151 !important;
     border-radius: 8px;
   }
 
