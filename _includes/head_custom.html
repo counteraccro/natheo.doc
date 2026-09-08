@@ -105,6 +105,9 @@
     left: 0 !important;
     right: 0 !important;
     margin: 0 auto !important; /* centre le champ dans l'espace disponible de l'entête */
+    height: 2.5rem !important; /* au lieu de 100% de l'entête, qui colle le champ aux bords */
+    top: 50% !important;
+    transform: translateY(-50%);
   }
 
   .search-input {
@@ -170,6 +173,14 @@
     margin-right: 0.55em;
     flex-shrink: 0 !important;
     opacity: 0.85;
+  }
+
+  /* just-the-docs génère le fil d'Ariane en réutilisant le HTML du menu
+     (découpage de la chaîne autour de <a class="nav-list-link">) : notre
+     icône s'y retrouve donc capturée aussi. On la masque à cet endroit,
+     le fil d'Ariane n'a jamais été prévu pour en afficher. */
+  .breadcrumb-nav-list-item .nav-icon {
+    display: none !important;
   }
 
   /* Captures d'écran : taille uniforme + clic pour agrandir */
