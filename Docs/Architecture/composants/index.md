@@ -2,7 +2,7 @@
 title: "Composants"
 parent: "Architecture"
 has_children: true
-nav_order: 9
+nav_order: 10
 ---
 
 Cette page regroupe l'ensemble de la liste des composants/services/fixtures/Extension défini pour le projet.
