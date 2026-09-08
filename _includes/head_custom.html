@@ -174,30 +174,18 @@
     flex-shrink: 0;
   }
 
-  /* Liste "Pages de cette section" : déplacée par le script ci-dessous dans
-     une colonne à droite, collante au défilement (position: sticky), pour
-     les pages de groupe (Tags, Guide d'administration...). Sur les pages
-     sans cette liste, #main-content garde son affichage normal (1 colonne). */
-  #main-content.has-page-toc {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 260px;
-    align-items: start;
-    gap: 2.5rem;
-  }
-
-  .page-toc-aside {
-    position: sticky;
-    top: 1.5rem;
-  }
-
-  .page-toc-aside h2.text-delta {
-    margin-top: 0;
+  /* Liste "Pages de cette section" en bas des pages de groupe (Tags, Guide
+     d'administration...) : par défaut un simple <ul> sans style. On l'habille
+     en petite carte, à l'endroit où just-the-docs la place (pas de déplacement
+     JS, uniquement du CSS — plus robuste). */
+  main h2.text-delta {
+    margin-top: 2.5rem;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
     color: #6b7280;
   }
 
-  .page-toc-aside ul {
+  main h2.text-delta + ul {
     padding: 0.25rem 1rem;
     margin: 0.6rem 0 0;
     list-style: none;
@@ -206,30 +194,17 @@
     border-radius: 8px;
   }
 
-  .page-toc-aside li {
+  main h2.text-delta + ul li {
     padding: 0.6rem 0;
     border-bottom: 1px solid #e5e7eb;
   }
 
-  .page-toc-aside li:last-child {
+  main h2.text-delta + ul li:last-child {
     border-bottom: none;
   }
 
-  .page-toc-aside a {
+  main h2.text-delta + ul a {
     font-weight: 600;
-  }
-
-  /* En dessous de la largeur "lg" (sidebar déjà repliée), pas assez de place
-     pour 2 colonnes : la liste repasse sous le contenu, en flux normal. */
-  @media (max-width: 66.4rem) {
-    #main-content.has-page-toc {
-      display: block;
-    }
-
-    .page-toc-aside {
-      position: static;
-      margin-top: 2rem;
-    }
   }
 
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
@@ -326,28 +301,6 @@
         overlay.classList.add('is-open');
       });
     });
-
-    /* Déplace le bloc "Pages de cette section" (généré par just-the-docs en
-       bas de <main>) dans une colonne à droite, collante au défilement */
-    var tocHeading = document.querySelector('main h2.text-delta');
-    if (tocHeading) {
-      var tocList = tocHeading.nextElementSibling;
-      var tocHr = tocHeading.previousElementSibling;
-      var mainContent = document.getElementById('main-content');
-      var aside = document.createElement('aside');
-      aside.className = 'page-toc-aside';
-      aside.appendChild(tocHeading);
-      if (tocList && tocList.tagName === 'UL') {
-        aside.appendChild(tocList);
-      }
-      if (tocHr && tocHr.tagName === 'HR') {
-        tocHr.remove();
-      }
-      if (mainContent) {
-        mainContent.appendChild(aside);
-        mainContent.classList.add('has-page-toc');
-      }
-    }
 
     /* Icône GitHub devant le lien "Nathéo CMS sur GitHub" de l'entête */
     var ghLink = document.querySelector('.aux-nav .site-button');
