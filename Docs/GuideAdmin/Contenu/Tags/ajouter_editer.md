@@ -1,7 +1,8 @@
 ---
 title: "Ajouter / Éditer un tag"
-parent: "Guide d'administration"
-nav_order: 7
+parent: "Tags"
+grand_parent: "Guide d'administration"
+nav_order: 1
 ---
 
 Ce formulaire permet de créer un nouveau tag ou de modifier un tag existant,

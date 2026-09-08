@@ -1,6 +1,7 @@
 ---
-title: "Listing des pages"
+title: "Pages"
 parent: "Guide d'administration"
+has_children: true
 nav_order: 4
 ---
 

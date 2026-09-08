@@ -1,7 +1,8 @@
 ---
-title: "Listing des tags"
+title: "Tags"
 parent: "Guide d'administration"
-nav_order: 6
+has_children: true
+nav_order: 5
 ---
 
 Les tags vous permettent de classer et de regrouper les pages de votre site.
