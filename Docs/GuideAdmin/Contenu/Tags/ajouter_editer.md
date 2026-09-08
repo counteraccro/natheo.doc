@@ -28,7 +28,7 @@ et quand il a été modifié pour la dernière fois.
 
 ![Édition d'un tag](files/edition.png)
 
-Une fois satisfait, ilPour  ne reste plus qu'à valider avec le bouton **Créer le
+Une fois satisfait, il ne reste plus qu'à valider avec le bouton **Créer le
 tag** (ou **Modifier**), ou à cliquer sur **Annuler** pour revenir au listing
 sans rien changer. En édition, un bouton **Supprimer** est également
 disponible — une confirmation vous sera demandée avant toute suppression.
@@ -38,3 +38,4 @@ disponible — une confirmation vous sera demandée avant toute suppression.
 
 ## Voir aussi
 - [Listing des tags](listing.md)
+- [Référence technique](technique.md) *(tables, services, routes)*

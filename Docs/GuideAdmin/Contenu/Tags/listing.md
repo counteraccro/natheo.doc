@@ -28,3 +28,4 @@ Et en haut de page, le bouton **Nouveau tag** ouvre le formulaire de création.
 
 ## Voir aussi
 - [Créer ou modifier un tag](ajouter_editer.md)
+- [Référence technique](technique.md) *(tables, services, routes)*
