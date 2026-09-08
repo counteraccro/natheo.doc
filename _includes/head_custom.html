@@ -15,8 +15,11 @@
     }
   }
 
+  .main,
   .main-content {
-    max-width: none !important;
+    max-width: none !important; /* .main a lui aussi un max-width fixe dans le thème,
+                                    pas seulement .main-content : sans ce correctif,
+                                    la page ne devient jamais vraiment fluide */
   }
 
   .side-bar,
@@ -211,8 +214,9 @@
      les pages qui ont ce bloc (classe posée par le script ci-dessous), pour
      que le texte ne passe pas dessous. Ailleurs, le contenu reste fluide. */
   @media (min-width: 66.5rem) {
-    .main-content-wrap.has-page-toc .main-content {
+    .main-content-wrap.has-page-toc {
       padding-right: 300px;
+      box-sizing: border-box;
     }
   }
 
