@@ -1,19 +1,29 @@
 <style>
-  /* Mise en page façon back-office : sidebar collée à gauche, contenu fluide
-     (just-the-docs centre par défaut sidebar+contenu au-delà de ~1064px) */
-  @media (min-width: 50rem) {
+  /* Mise en page façon back-office : sidebar collée à gauche, contenu fluide.
+     On ne touche à rien avant le point où just-the-docs se met lui-même à
+     centrer sidebar+contenu (son breakpoint "lg" = content-width + nav-width,
+     soit 66.5rem par défaut) : avant ça, son mode "md" (sidebar fixe déjà
+     collée à gauche) est correct tel quel, pas besoin d'intervenir plus tôt. */
+  @media (min-width: 66.5rem) {
     .side-bar {
-      width: 256px !important;
+      width: 18rem !important; /* un peu plus large que le CMS (256px) pour les libellés longs */
       left: 0 !important;
     }
 
     .main {
-      margin-left: 256px !important;
+      margin-left: 18rem !important;
     }
   }
 
   .main-content {
     max-width: none !important;
+  }
+
+  .side-bar,
+  .site-header,
+  .site-nav,
+  .site-footer {
+    border: 0 !important; /* pas de ligne de séparation entre le titre et le menu */
   }
 
   /* Titre "Nathéo CMS V2" en haut de la sidebar (le thème le colore avec
@@ -24,55 +34,62 @@
     font-weight: 700;
   }
 
-  /* Items de nav façon "pilule" (back-office Nathéo CMS) : la pilule est
-     alignée sur la même marge que le titre (16px), pas collée au bord */
-  .side-bar .nav-list-link {
-    min-height: 0;
+  /* Items de nav façon "pilule" (back-office Nathéo CMS). Le survol est posé
+     sur la LIGNE entière (li), pas sur le lien seul : le bouton d'ouverture
+     du sous-menu partage ainsi le même survol que le lien, au lieu d'avoir
+     son propre fond qui se chevauchait avec celui du lien. */
+  .side-bar .nav-list-item {
+    border-radius: 8px;
     margin: 2px 1rem;
-    padding: 0.65rem 0.75rem;
-    color: #e5e7eb !important; /* couleur par défaut identique à tous les niveaux */
-    font-size: 1rem;
+  }
+
+  .side-bar .nav-list-item .nav-list-item {
+    margin: 2px 1rem 2px 0; /* les sous-menus sont déjà indentés par leur conteneur */
+  }
+
+  .side-bar .nav-list-link,
+  .side-bar .nav-list-expander {
+    background-image: none !important;
     border-radius: 8px;
   }
 
-  .side-bar .nav-list-item .nav-list .nav-list-link {
-    margin: 2px 1rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
+  .side-bar .nav-list-link {
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0.7rem 0.75rem !important;
+    color: #e5e7eb !important; /* couleur par défaut identique à tous les niveaux */
+    font-size: 1rem !important;
   }
 
-  /* Survol = gris (comme le CMS) */
-  .side-bar .nav-list-link:hover {
-    background-image: none !important;
+  .side-bar .nav-list-item .nav-list .nav-list-link {
+    padding: 0.55rem 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Survol = gris, page courante = violet plein (comme le CMS) */
+  .side-bar .nav-list-item:hover > .nav-list-link,
+  .side-bar .nav-list-item:hover > .nav-list-expander {
     background-color: #374151 !important;
     color: #fff !important;
   }
 
-  /* Page courante = violet plein (comme le CMS) — après :hover dans l'ordre
-     des règles pour rester prioritaire même si l'item actif est survolé */
   .side-bar .nav-list-link.active {
-    background-image: none !important;
     background-color: #8b5cf6 !important;
     color: #fff !important;
   }
 
   .side-bar .nav-list-expander {
-    color: #e5e7eb;
-  }
-
-  .side-bar .nav-list-expander:hover {
-    background-image: none !important;
-    background-color: #374151 !important;
-    border-radius: 8px;
+    color: #e5e7eb !important;
   }
 
   .side-bar .nav-list-item > .nav-list {
-    padding-left: 1.25rem; /* indentation des sous-menus, façon ml-8 du CMS */
+    padding-left: 2rem; /* indentation des sous-menus, façon ml-8 du CMS */
+    padding-right: 0;
   }
 
   /* laisse de la place pour le chevron sur les items dépliables */
   .side-bar .nav-list-item:has(> .nav-list-expander) > .nav-list-link {
-    padding-right: 2.5rem;
+    padding-right: 2.5rem !important;
   }
 
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
