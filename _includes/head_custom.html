@@ -174,10 +174,41 @@
     flex-shrink: 0;
   }
 
-  /* Liste "Pages de cette section" en bas des pages de groupe (Tags, Guide
-     d'administration...) : par défaut un simple <ul> sans style. On l'habille
-     en petite carte, à l'endroit où just-the-docs la place (pas de déplacement
-     JS, uniquement du CSS — plus robuste). */
+  /* Liste "Pages de cette section" : ce sont toujours les 2 DERNIERS enfants
+     de <main> (le titre puis le <ul>, rien d'autre après). On transforme donc
+     <main> en grille à 2 colonnes, tout le contenu normal reste en colonne 1
+     (placement automatique), et seuls ces deux éléments passent en colonne 2,
+     collante au défilement — uniquement en CSS, pas de JS. */
+  @media (min-width: 66.5rem) {
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      align-items: start;
+      gap: 2.5rem;
+    }
+
+    main > * {
+      grid-column: 1;
+    }
+
+    main h2.text-delta,
+    main h2.text-delta + ul {
+      grid-column: 2;
+      align-self: start;
+      margin-top: 0;
+    }
+
+    main h2.text-delta {
+      position: sticky;
+      top: 1.5rem;
+    }
+
+    main h2.text-delta + ul {
+      position: sticky;
+      top: 3.25rem; /* juste sous le titre, les deux restent visibles ensemble */
+    }
+  }
+
   main h2.text-delta {
     margin-top: 2.5rem;
     font-size: 0.8rem;
