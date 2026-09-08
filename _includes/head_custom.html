@@ -206,6 +206,16 @@
     }
   }
 
+  /* Le bloc étant en position fixe (donc hors du flux), le contenu ne lui
+     réserve pas de place tout seul : on l'ajoute nous-même, uniquement sur
+     les pages qui ont ce bloc (classe posée par le script ci-dessous), pour
+     que le texte ne passe pas dessous. Ailleurs, le contenu reste fluide. */
+  @media (min-width: 66.5rem) {
+    .main-content-wrap.has-page-toc .main-content {
+      padding-right: 300px;
+    }
+  }
+
   .page-toc h2.text-delta {
     margin: 0 0 0 0.6rem;
     font-size: 0.8rem;
@@ -239,14 +249,13 @@
     display: block;
     padding: 0.5rem 0.6rem;
     border-radius: 6px;
-    color: #111827;
-    font-weight: 600;
+    color: #374151;
+    font-weight: 400;
     text-decoration: none;
   }
 
   .page-toc a:hover {
     background-color: #f3f4f6; /* même logique de survol que la recherche/le lien GitHub */
-    color: #8b5cf6;
   }
 
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
@@ -349,8 +358,12 @@
        en bas). On le rattache directement à .main, en position fixe. */
     var pageToc = document.querySelector('.page-toc');
     var mainEl = document.querySelector('.main');
+    var mainContentWrap = document.querySelector('.main-content-wrap');
     if (pageToc && mainEl) {
       mainEl.appendChild(pageToc);
+      if (mainContentWrap) {
+        mainContentWrap.classList.add('has-page-toc');
+      }
     }
 
     /* Icône GitHub devant le lien "Nathéo CMS sur GitHub" de l'entête */
