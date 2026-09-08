@@ -94,6 +94,10 @@
 
   /* Champ de recherche façon back-office : bordure + fond blanc visibles,
      au lieu de la simple ombre portée par défaut de just-the-docs */
+  .search {
+    padding: 0 1rem !important; /* évite que le champ touche les bords de l'entête */
+  }
+
   .search-input-wrap {
     border-radius: 8px !important;
     box-shadow: none !important;
@@ -147,12 +151,15 @@
 
   /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
   .nav-list-link {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    flex-wrap: nowrap !important; /* icône + libellé restent sur la même ligne */
+    align-items: center !important;
   }
 
   .nav-label {
     display: inline-block;
+    flex: 1 1 auto;
+    min-width: 0; /* autorise le texte à se réduire/passer à la ligne DANS son propre bloc plutôt que de pousser l'icône */
     line-height: 1.2;
   }
 
@@ -161,7 +168,7 @@
     width: 1.05em;
     height: 1.05em;
     margin-right: 0.55em;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
     opacity: 0.85;
   }
 
