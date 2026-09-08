@@ -1,5 +1,6 @@
 ---
 title: "Menus"
+nav_icon: "M5 7h14M5 12h14M5 17h14"
 parent: "Guide d'administration"
 has_children: true
 nav_order: 8

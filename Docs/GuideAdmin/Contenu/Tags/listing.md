@@ -1,5 +1,6 @@
 ---
 title: "Tags"
+nav_icon: "M15.2 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11.2a1 1 0 0 0 .747-.334l4.46-5a1 1 0 0 0 0-1.332l-4.46-5A1 1 0 0 0 15.2 6Z"
 parent: "Guide d'administration"
 has_children: true
 nav_order: 5
