@@ -410,6 +410,96 @@
   .changelog-badge:hover {
     opacity: 0.8;
   }
+
+  /* Versions : une carte par release GitHub, avec statut (stable/bêta) et
+     badges vers le code source et les notes de version. Même logique
+     visuelle que le changelog, avec un ruban pour la dernière version. */
+  .version-entry {
+    position: relative;
+    border-left: 3px solid #d1d5db;
+    background: #f9fafb;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .version-entry.is-latest {
+    border-left-color: #8b5cf6;
+    background: #f5f3ff;
+  }
+
+  .version-entry-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .version-entry-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #111827;
+    font-family: var(--mono-font, monospace);
+  }
+
+  .version-date {
+    color: #6b7280;
+    font-size: 0.85rem;
+  }
+
+  .version-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .version-tag-stable {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .version-tag-beta {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  .version-badge-latest {
+    background: #8b5cf6;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .version-entry-desc {
+    margin: 0 0 0.65rem 0;
+    color: #374151;
+  }
+
+  .version-entry-links {
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .version-badge-tree {
+    background: #e5e7eb;
+    color: #374151;
+  }
+
+  .version-badge-release {
+    background: #ede9fe;
+    color: #6d28d9;
+  }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
