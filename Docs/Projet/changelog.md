@@ -1,7 +1,7 @@
 ---
 title: "Changelog"
 parent: "Nathéo CMS"
-nav_order: 3
+nav_order: 2
 ---
 
 ### Mises à jour faites :

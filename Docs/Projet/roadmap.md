@@ -1,7 +1,7 @@
 ---
 title: "Roadmap"
 parent: "Nathéo CMS"
-nav_order: 2
+nav_order: 1
 ---
 
 Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'évolution

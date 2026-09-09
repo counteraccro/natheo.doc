@@ -13,7 +13,7 @@ Bienvenue sur la documentation du CMS Nathéo : documentation technique et fonct
 
 ## Pour commencer
 - [Pré-requis](Docs/Demarrage/pre_requis.md) et [installation](Docs/Demarrage/installation_dev.md)
-- [Description générale du projet](Docs/Projet/description_generale.md)
+- [Description générale du projet](Docs/Projet/index.md)
 - [Les API disponibles](Docs/API/index.md)
 
 Utilisez le menu à gauche pour parcourir l'ensemble des sections : Nathéo CMS,

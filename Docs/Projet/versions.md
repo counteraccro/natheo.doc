@@ -1,7 +1,7 @@
 ---
 title: "Versions"
 parent: "Nathéo CMS"
-nav_order: 4
+nav_order: 3
 ---
 
 ### Versions disponibles
