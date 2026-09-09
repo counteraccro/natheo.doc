@@ -559,6 +559,17 @@
     text-decoration: underline;
   }
 
+  /* Date de dernière mise à jour d'une page (roadmap...) */
+  .last-update {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: -0.5rem 0 1.5rem 0;
+  }
+
   /* Roadmap : une carte par catégorie, avec une checklist visuelle
      (terminé / à venir) au lieu de puces markdown brutes + barré. */
   .roadmap-section {
@@ -588,13 +599,30 @@
     margin: 0;
   }
 
-  .roadmap-list {
-    list-style: none;
+  .roadmap-list,
+  .roadmap-sublist {
+    list-style: none !important;
+    list-style-type: none !important;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .roadmap-list li,
+  .roadmap-sublist li {
+    list-style: none !important;
+  }
+
+  .roadmap-list li::marker,
+  .roadmap-sublist li::marker {
+    content: none;
+  }
+
+  .roadmap-list li::before,
+  .roadmap-sublist li::before {
+    content: none !important;
   }
 
   .roadmap-item {

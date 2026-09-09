@@ -6,6 +6,8 @@ nav_order: 1
 
 Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'évolution.
 
+<p class="last-update">Dernière mise à jour le 09/09/2026</p>
+
 <div class="roadmap-section">
 <h3 class="roadmap-section-title"><span class="roadmap-section-icon">🐛</span> Bugs</h3>
 <p class="roadmap-empty">Recherche en cours...</p>
@@ -23,8 +25,8 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
   <div class="roadmap-item-body">
     <span class="roadmap-item-text">Éditeur Markdown <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/45">PR #45</a></span>
     <ul class="roadmap-sublist">
-      <li class="roadmap-item is-pending"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Ajouter des liens de page dans l'éditeur de texte</span></li>
-      <li class="roadmap-item is-pending"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu</span></li>
+      <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Ajouter des liens de page dans l'éditeur de texte <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/225">PR #225</a></span></li>
+      <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Ajouter un bouton qui ouvre un nouvel onglet pour avoir un aperçu du rendu <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/225">PR #225</a></span></li>
     </ul>
   </div>
 </li>
@@ -38,22 +40,22 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
     <span class="roadmap-item-text">Dans le dashboard créer les blocks suivants :</span>
     <ul class="roadmap-sublist">
       <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Derniers commentaires <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/49">PR #49</a></span></li>
-      <li class="roadmap-item is-pending"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Mes dernières pages</span></li>
+      <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Mes dernières pages <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/329">PR #329</a></span></li>
       <li class="roadmap-item is-pending"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Mes notifications</span></li>
     </ul>
   </div>
 </li>
-<li class="roadmap-item is-pending">
+<li class="roadmap-item is-done">
   <span class="roadmap-item-icon"></span>
-  <span class="roadmap-item-text">Revoir le code dans <code>DatabaseTablePrefixListener.php</code> pour pouvoir proprement séparer le schéma SQL du nom de la base de données</span>
+  <span class="roadmap-item-text">Revoir le code dans <code>DatabaseTablePrefixListener.php</code> pour pouvoir proprement séparer le schéma SQL du nom de la base de données <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/319">PR #319</a></span>
 </li>
-<li class="roadmap-item is-pending">
+<li class="roadmap-item is-done">
   <span class="roadmap-item-icon"></span>
-  <span class="roadmap-item-text">Mise en place API pour les commentaires</span>
+  <span class="roadmap-item-text">Mise en place API pour les commentaires <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/83">PR #83</a></span>
 </li>
-<li class="roadmap-item is-pending">
+<li class="roadmap-item is-done">
   <span class="roadmap-item-icon"></span>
-  <span class="roadmap-item-text">Mise en place API pour les options systems</span>
+  <span class="roadmap-item-text">Mise en place API pour les options systems <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/68">PR #68</a></span>
 </li>
 </ul>
 </div>
@@ -116,11 +118,11 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
   <span class="roadmap-item-icon"></span>
   <span class="roadmap-item-text">APIsation du back-office</span>
 </li>
-<li class="roadmap-item is-pending">
+<li class="roadmap-item is-done">
   <span class="roadmap-item-icon"></span>
   <span class="roadmap-item-text">Refonte design back-office</span>
 </li>
-<li class="roadmap-item is-pending">
+<li class="roadmap-item is-done">
   <span class="roadmap-item-icon"></span>
   <span class="roadmap-item-text">Utilisation des DTO au lieu des objets Doctrine pour les API</span>
 </li>
