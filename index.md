@@ -6,6 +6,8 @@ nav_order: 1
 
 Bienvenue sur la documentation du CMS Nathéo : documentation technique et fonctionnelle de l'application, ainsi que différents tutoriels d'utilisation de ses fonctionnalités.
 
+<p class="home-current-version" markdown="1"><span class="version-badge-latest">Version actuelle</span><span class="version-entry-title">v2.0.0-beta.1</span><span class="version-tag version-tag-beta">Bêta</span><a href="Docs/Projet/versions.md">Voir toutes les versions →</a></p>
+
 > 🚧 **Documentation en cours de refonte pour la V2.** L'arborescence a été
 > réorganisée pour coller à la V2 du CMS ; certaines pages sont encore des
 > pages-jalons en attente de rédaction (repérables au bandeau 🚧 en haut de page).

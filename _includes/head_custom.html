@@ -500,6 +500,35 @@
     background: #ede9fe;
     color: #6d28d9;
   }
+
+  /* Bandeau "version actuelle" sur la page d'accueil : version compacte
+     des badges ci-dessus, en pilule. */
+  .home-current-version {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem 0.4rem 0.6rem;
+    margin: 0.25rem 0 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .home-current-version .version-entry-title {
+    font-size: 0.95rem;
+  }
+
+  .home-current-version a {
+    color: #6d28d9;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .home-current-version a:hover {
+    text-decoration: underline;
+  }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
