@@ -334,6 +334,35 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
 
+  /* Rangée de captures d'écran côte à côte, chacune avec sa légende alignée
+     juste en dessous (au lieu d'empiler des images pleine largeur). */
+  .screenshot-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.25rem 0;
+  }
+
+  .screenshot-row figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .screenshot-row img {
+    margin: 0 0 0.5rem 0 !important; /* remplace la marge verticale par défaut des images */
+  }
+
+  .screenshot-row figcaption {
+    max-width: 280px;
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: center;
+  }
+
   /* Changelog : une carte par entrée, avec badges Issue/PR au lieu de liens bruts. */
   .changelog-entry {
     border-left: 3px solid #8b5cf6;

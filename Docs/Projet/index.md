@@ -31,14 +31,20 @@ Le CMS est découpé en 2 parties distinctes :
 Cette partie du CMS permet de gérer le paramétrage du CMS, son contenu ainsi
 que les membres et administrateurs.
 
-![Tableau de bord de l'administration](files/dashboard.png)
-*Le tableau de bord : statistiques du site, derniers commentaires et pages les plus vues.*
-
-![Gestion des menus](files/gestion-menu.png)
-*Gestion des menus du site, avec un aperçu du rendu et l'architecture en arborescence.*
-
-![Options système](files/options-systems.png)
-*Options système générales : nom et URL du site, thème public, langue par défaut...*
+<div class="screenshot-row">
+  <figure>
+    <img src="files/dashboard.png" alt="Tableau de bord de l'administration">
+    <figcaption>Le tableau de bord : statistiques du site, derniers commentaires et pages les plus vues.</figcaption>
+  </figure>
+  <figure>
+    <img src="files/gestion-menu.png" alt="Gestion des menus">
+    <figcaption>Gestion des menus du site, avec un aperçu du rendu et l'architecture en arborescence.</figcaption>
+  </figure>
+  <figure>
+    <img src="files/options-systems.png" alt="Options système">
+    <figcaption>Options système générales : nom et URL du site, thème public, langue par défaut...</figcaption>
+  </figure>
+</div>
 
 Détail de chaque écran dans le [Guide d'administration](../GuideAdmin/index.md) :
 
