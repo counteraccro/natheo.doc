@@ -1,6 +1,6 @@
 ---
 title: "Changelog"
-parent: "Projet"
+parent: "Nathéo CMS"
 nav_order: 3
 ---
 

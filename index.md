@@ -16,5 +16,5 @@ Bienvenue sur la documentation du CMS Nathéo : documentation technique et fonct
 - [Description générale du projet](Docs/Projet/description_generale.md)
 - [Les API disponibles](Docs/API/index.md)
 
-Utilisez le menu à gauche pour parcourir l'ensemble des sections : Démarrage,
-Architecture, Guide d'administration, Front, API et Projet.
+Utilisez le menu à gauche pour parcourir l'ensemble des sections : Nathéo CMS,
+Démarrage, Architecture, Guide d'administration, Front et API.

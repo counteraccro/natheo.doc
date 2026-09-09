@@ -1,6 +1,6 @@
 ---
 title: "Versions"
-parent: "Projet"
+parent: "Nathéo CMS"
 nav_order: 4
 ---
 

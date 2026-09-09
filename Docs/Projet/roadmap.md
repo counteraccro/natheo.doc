@@ -1,6 +1,6 @@
 ---
 title: "Roadmap"
-parent: "Projet"
+parent: "Nathéo CMS"
 nav_order: 2
 ---
 

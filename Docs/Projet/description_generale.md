@@ -1,6 +1,6 @@
 ---
 title: "Description générale"
-parent: "Projet"
+parent: "Nathéo CMS"
 nav_order: 1
 ---
 
