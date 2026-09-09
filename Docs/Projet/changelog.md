@@ -4,6 +4,12 @@ parent: "Nathéo CMS"
 nav_order: 2
 ---
 
+## Septembre 2026
+- **Nouveaux blocs sur le tableau de bord** — ajout des blocs "Dernières pages" et "Pages les plus vues" (migration du code associé en TypeScript). ([Issue #326](https://github.com/counteraccro/natheo/issues/326), [PR #329](https://github.com/counteraccro/natheo/pull/329))
+
+## Août 2026
+- **Refonte de la commande d'installation** — blocage en environnement de production, prise en compte des migrations lors du lancement. ([Issue #321](https://github.com/counteraccro/natheo/issues/321), [PR #319](https://github.com/counteraccro/natheo/pull/319))
+
 ### Mises à jour faites :
 * ✅ Ajouter un champ dans page pour définir la page par défaut à afficher
     * Fait le 27 septembre 2024 [⤵️ #37]( https://github.com/counteraccro/natheo/pull/37)
