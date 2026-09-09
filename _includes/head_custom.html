@@ -333,6 +333,59 @@
     border-radius: 8px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
+
+  /* Changelog : une carte par entrée, avec badges Issue/PR au lieu de liens bruts. */
+  .changelog-entry {
+    border-left: 3px solid #8b5cf6;
+    background: #f9fafb;
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.15rem;
+    margin: 0 0 0.9rem 0;
+  }
+
+  .changelog-entry-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 0.35rem 0;
+    color: #111827;
+  }
+
+  .changelog-entry-desc {
+    margin: 0 0 0.65rem 0;
+    color: #374151;
+  }
+
+  .changelog-entry-links {
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .changelog-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    text-decoration: none !important;
+    line-height: 1.6;
+  }
+
+  .changelog-badge-issue {
+    background: #ede9fe;
+    color: #6d28d9;
+  }
+
+  .changelog-badge-pr {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .changelog-badge:hover {
+    opacity: 0.8;
+  }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
