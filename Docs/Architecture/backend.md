@@ -4,107 +4,95 @@ parent: "Architecture"
 nav_order: 2
 ---
 
-Le backend est découpé en 3 couches applicatives parallèles (Admin, Api,
-Front), chacune avec ses propres classes de base. Dans chaque couche, les
-controllers restent minces : la logique vit dans des classes `Service`, qui
-récupèrent leurs dépendances via un pattern d'injection différée commun à
-tout le projet.
+Le code backend de Nathéo est écrit en PHP avec le framework Symfony.
+Cette page explique les grandes règles d'organisation à connaître avant de
+modifier ou d'ajouter une fonctionnalité : comment le code est rangé,
+comment les différentes classes communiquent entre elles, et quels sont
+les mécanismes transverses (surcharge, événements) mis à disposition.
 
-## Les 3 couches
+## Trois univers séparés : Admin, Api, Front
 
-| Couche | Controller de base | Service de base | Usage |
-|---|---|---|---|
-| Admin | [`AppAdminController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/AppAdminController.php) | [`AppAdminService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/AppAdminService.php) → `AppAdminHandlerService` | Back-office (`src/Controller/Admin/...`) |
-| Api | [`AppApiController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Api/v1/AppApiController.php) → `AppApiHandlerController` | `AppApiService` → `AppApiHandlerService` | API JSON v1 (`src/Controller/Api/v1/...`) |
-| Front | [`AppFrontController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Front/AppFrontController.php) | `AppFrontService` → `AppFrontHandlerService` | Site public (`src/Controller/Front/...`) |
+Le code backend est divisé en trois univers qui ne se mélangent jamais :
 
-Chaque `App*Service` hérite d'un `App*HandlerService` propre à sa couche, qui
-porte uniquement la liste des dépendances disponibles (voir plus bas) et
-n'expose que des méthodes `getXxx()` vers le conteneur — les 3 couches ne
-partagent pas de handler commun, chacune redéclare ce dont elle a besoin. Un
-service concret (ex. `TagService`) n'étend que `AppAdminService` et n'a
-jamais à déclarer ses propres dépendances : tout transite par le handler de
-sa couche. En dehors de ces 3 couches, quelques services transverses
-(`LoggerService`, `SecurityService`, `DateService`) étendent directement
-[`AppService`](https://github.com/counteraccro/natheo/blob/master/src/Service/AppService.php),
-une base plus légère avec un socle de dépendances réduit (entity manager,
-translator, security, request stack).
+| Univers | À quoi il sert | Où le trouver |
+|---|---|---|
+| **Admin** | Le back-office, l'interface utilisée pour administrer le site | [`src/Controller/Admin/...`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/AppAdminController.php) |
+| **Api** | L'API JSON (v1), utilisée par le site public et par d'éventuelles applications externes | [`src/Controller/Api/v1/...`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Api/v1/AppApiController.php) |
+| **Front** | Les pages classiques du site public | [`src/Controller/Front/...`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Front/AppFrontController.php) |
 
-## Injection différée : `AutowireLocator`
+Chacun de ces trois univers a ses propres classes de base (un « Controller »
+et un « Service » de départ, dont héritent tous les autres). Un même besoin
+métier peut donc exister en plusieurs versions selon l'univers où il est
+utilisé, sans jamais partager de code directement entre les trois.
 
-Plutôt que d'injecter individuellement chaque dépendance dans le constructeur
-de chaque service, chaque `App*HandlerService` déclare une seule fois la
-liste de tout ce qui peut être utilisé dans sa couche, via l'attribut
-`#[AutowireLocator(self::HANDLERS)]` sur un unique paramètre
-`ContainerInterface $handlers` :
+Dans chaque univers, la règle est la même : les **controllers** restent
+volontairement simples (ils reçoivent la requête, appellent le bon service,
+renvoient la réponse), et toute la vraie logique métier vit dans des
+classes **Service**. C'est donc presque toujours dans un `Service` qu'il
+faut chercher ou ajouter du comportement, pas dans un `Controller`.
+
+## Comment un service accède à ses dépendances
+
+Un service a souvent besoin d'autres services pour fonctionner (accès à la
+base de données, aux traductions, à d'autres services métier...). Plutôt
+que de lister ces besoins un par un dans chaque classe, Nathéo utilise un
+mécanisme centralisé : chaque univers (Admin, Api, Front) possède **une
+seule liste**, qui recense tout ce qui est disponible pour les services de
+cet univers :
 
 ```php
 class AppAdminHandlerService
 {
     public const array HANDLERS = [
-        'logger' => LoggerInterface::class,
-        'entityManager' => EntityManagerInterface::class,
         'translator' => TranslatorInterface::class,
-        'router' => UrlGeneratorInterface::class,
-        'security' => Security::class,
-        'optionSystemService' => OptionSystemService::class,
-        'gridService' => GridService::class,
         'pageService' => PageService::class,
-        // ...
+        // ... tout ce qui peut être utilisé par un service admin
     ];
-
-    public function __construct(#[AutowireLocator(self::HANDLERS)] protected ContainerInterface $handlers) {}
-
-    protected function getPageService(): PageService
-    {
-        return $this->handlers->get('pageService');
-    }
-    // un getXxx() par entrée de HANDLERS
 }
 ```
 
-Une classe métier (`TagService extends AppAdminService`) appelle simplement
-`$this->getTranslator()`, `$this->getGridService()`, etc. — ces accesseurs
-sont hérités, elle n'a ni constructeur ni propriétés à déclarer pour ça.
+Un service métier concret (par exemple `TagService`) n'a donc jamais à
+déclarer lui-même ses dépendances : il hérite simplement de la classe de
+base de son univers, et peut appeler directement `$this->getPageService()`
+ou `$this->getTranslator()` — ces méthodes existent déjà, une par entrée de
+la liste ci-dessus.
 
-**Pour ajouter une nouvelle dépendance à un service admin**, il faut
-l'ajouter à `AppAdminHandlerService::HANDLERS` (et créer le `getXxx()`
-correspondant) plutôt que de l'injecter directement — c'est cette liste
-centrale qu'il faut regarder avant d'ajouter un collaborateur. `AppAdminController`
-utilise le même principe pour ses propres dépendances transverses
-(`OptionUserService`, `LoggerInterface`, ...), avec sa propre liste inline
-(pas de constante `HANDLERS` partagée avec les services).
+**Concrètement, pour ajouter une nouvelle dépendance à un service admin**,
+il faut l'ajouter à cette liste centrale (`AppAdminHandlerService::HANDLERS`)
+plutôt que de l'injecter directement dans le service qui en a besoin — c'est
+le premier endroit à regarder.
 
-## Découpage par domaine sous `src/`
+En dehors de ces trois univers, quelques services transverses utilisés
+partout (journalisation, sécurité, dates) reposent sur une base plus légère
+et continuent d'être injectés de façon classique.
 
-Chaque domaine fonctionnel est dupliqué à l'identique dans plusieurs arbres
-parallèles sous `src/` : `Controller/`, `Service/`, `Repository/`,
-`Entity/`, `Utils/Translate/`, généralement sous
-`Admin/Content/<Domaine>/…`, `Admin/System/…` ou `Admin/Tools/…` (+ arbres
-`Api/` et `Front/` pour ces couches-là). Exemple avec le domaine `Tag` :
+## Un dossier par fonctionnalité
+
+Chaque fonctionnalité du CMS (les tags, les pages, les menus...) est
+organisée de la même façon, avec les mêmes noms de sous-dossiers répétés
+dans plusieurs arborescences. Voici à quoi ça ressemble pour les tags :
 
 ```text
 src/Controller/Admin/Content/TagController.php
 src/Service/Admin/Content/Tag/TagService.php
 src/Repository/Admin/Content/Tag/TagRepository.php
-src/Repository/Admin/Content/Tag/TagTranslationRepository.php
 src/Entity/Admin/Content/Tag/Tag.php
-src/Entity/Admin/Content/Tag/TagTranslation.php
 src/Utils/Translate/Content/TagTranslate.php
 ```
 
-En ajoutant une fonctionnalité à un domaine existant, il faut donc
-généralement toucher le sous-dossier correspondant dans plusieurs de ces
-arbres en même temps. La liste des services/extensions Twig/fixtures
+Autrement dit : pas un gros dossier « tout le code des tags », mais un
+même nom de dossier (`Tag`) répété sous `Controller/`, `Service/`,
+`Repository/`, `Entity/`... En pratique, ajouter une fonctionnalité à un
+domaine existant demande donc de toucher plusieurs de ces arborescences en
+parallèle, chacune à son endroit habituel. La liste des services déjà
 existants (non exhaustive) est recensée dans [Composants](composants/index.md).
 
-## `Utils/Translate/<Domaine>Translate`
+## Préparer les textes envoyés à l'écran
 
-Les classes `Utils/Translate/<Domaine>/<Domaine>Translate.php` (qui étendent
-[`AppTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/AppTranslate.php))
-centralisent la construction du tableau de traductions passé en props aux
-composants Vue, pour éviter d'appeler le translator directement dans les
-controllers :
+Quand un écran d'administration doit afficher des textes traduits, le
+controller ne demande pas ces traductions une par une : il délègue ce
+travail à une classe dédiée, qui prépare d'un coup tout le tableau de
+textes nécessaires à l'écran :
 
 ```php
 class TagTranslate extends AppTranslate
@@ -119,25 +107,32 @@ class TagTranslate extends AppTranslate
 }
 ```
 
-Le controller instancie cette classe et passe son résultat comme prop
-`translate` au `vue_component()` (voir [Architecture frontend](frontend.md)).
+Ce tableau est ensuite transmis tel quel à la partie visuelle de la page
+(voir [Architecture frontend](frontend.md)), qui n'a donc jamais besoin
+d'aller chercher elle-même une traduction.
 
-## Surcharge de controllers
+## Adapter le CMS sans perdre son travail à chaque mise à jour
 
-Pour permettre des développements spécifiques sans perdre le travail à
-chaque mise à jour du CMS, Nathéo fournit un mécanisme de surcharge d'action
-de controller piloté par `config/cms/overwrite.yaml` (controllers dans
-`src/Overwrite/Controller/...`, vues dans `templates/overwrite/...`). Détail
-complet : [Surcharge des controllers](surcharge_controllers.md).
+Nathéo est livré comme un produit qu'on met régulièrement à jour. Pour
+permettre de personnaliser un comportement précis sans risquer de perdre
+cette personnalisation à la prochaine mise à jour, un mécanisme de
+« surcharge » permet de remplacer l'action d'un controller par une version
+maison, déclarée à part (dans `config/cms/overwrite.yaml`), sans toucher au
+fichier d'origine. Le détail complet est expliqué dans
+[Surcharge des controllers](surcharge_controllers.md).
 
-## Événements
+## Ce qui se déclenche automatiquement en coulisses
 
-| Listener | Déclenché sur | Rôle |
+Certaines actions se déclenchent automatiquement, en réaction à un
+événement, sans qu'aucun controller n'ait besoin de les appeler
+explicitement :
+
+| Ce qui se déclenche | Quand | À quoi ça sert |
 |---|---|---|
-| [`DatabaseActivityListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/DatabaseActivityListener.php) | `postPersist` / `postUpdate` / `postRemove` Doctrine | Journalise chaque création/modification/suppression d'entité via `LoggerService` |
-| [`OverwriteListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/OverwriteListener.php) | `kernel.controller` | Redirige vers l'action de surcharge définie dans `overwrite.yaml` (voir ci-dessus) |
-| [`DatabaseTablePrefixListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/DatabaseTablePrefixListener.php) | `loadClassMetadata` Doctrine | Ajoute un préfixe de table configurable (ex. isolation multi-instances sur un même schéma) |
-| [`LocaleSubscriber`](https://github.com/counteraccro/natheo/blob/master/src/EventSubscriber/LocaleSubscriber.php) | Avant chaque action de controller | Positionne la langue de la requête depuis l'option utilisateur |
+| Journalisation | À chaque création/modification/suppression d'une donnée | Garder une trace de qui a fait quoi |
+| Redirection de surcharge | Avant l'exécution d'un controller | Rediriger vers une version personnalisée si elle existe (voir ci-dessus) |
+| Préfixe de table | Au chargement du schéma de base de données | Permettre à plusieurs instances de Nathéo de partager une même base |
+| Choix de la langue | Avant chaque action d'un controller | Appliquer la langue préférée de l'utilisateur connecté |
 
-Voir aussi [Composants](composants/index.md) pour la liste des services,
-extensions Twig et fixtures.
+Voir aussi [Composants](composants/index.md) pour la liste complète des
+services, extensions et jeux de données de test existants.
