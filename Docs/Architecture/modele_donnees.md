@@ -109,7 +109,7 @@ erDiagram
 la première, jetons d'accès API pour la seconde) : elles ne référencent aucune
 autre table.
 
-> 🚧 Cette page liste les relations structurelles ; le détail de chaque
-> colonne (types, contraintes, index) pourra être ajouté plus tard si besoin,
-> par exemple via `php bin/console doctrine:mapping:info` ou un export du
-> schéma.
+> 💡 Cette page reste au niveau des relations entre tables. Le détail colonne
+> par colonne d'un domaine (types, contraintes...) vit dans sa page
+> « Référence technique » du Guide d'administration — voir par exemple
+> [celle des Tags](../GuideAdmin/Contenu/Tags/technique.md#tables).
