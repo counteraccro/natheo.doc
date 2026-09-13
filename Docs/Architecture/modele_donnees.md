@@ -37,8 +37,10 @@ erDiagram
 
 `page.render` et `page.category` sont des entiers référencés dans les
 [références globales](references_globales.md) (mode d'affichage, type de
-page...). `page.disabled`, `page.landing_page` et `page.is_open_comment`
-pilotent respectivement la visibilité, la page d'accueil et l'ouverture des
+page...). `page.status` (brouillon / publié / archivé) suit, lui, l'enum
+[`PageStatus`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Page/PageStatus.php).
+`page.disabled`, `page.landing_page` et `page.is_open_comment` pilotent
+respectivement la visibilité, la page d'accueil et l'ouverture des
 commentaires.
 
 ## Tags, menus & commentaires
@@ -52,7 +54,7 @@ erDiagram
     TAG ||--o{ TAG_TRANSLATION : "traductions"
 
     USER ||--o{ MENU : "auteur"
-    PAGE }o--o{ MENU : "menu_page"
+    PAGE }o--o{ MENU : "page_menu"
     MENU ||--o{ MENU_ELEMENT : "éléments"
     MENU_ELEMENT ||--o{ MENU_ELEMENT : "enfants"
     MENU_ELEMENT }o--o| PAGE : "cible (optionnel)"
