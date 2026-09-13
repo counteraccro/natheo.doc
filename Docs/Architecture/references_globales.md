@@ -4,78 +4,128 @@ parent: "Architecture"
 nav_order: 5
 ---
 
-[Index](../../index.md) > [Architecture](index.md) > Références globales
+Certains champs renvoyés par l'[API publique](../API/index.md) (ou attendus
+en paramètre) sont des valeurs numériques ou des mots-clés plutôt que du
+texte libre : le rendu d'une page, le type d'un menu, la position d'un
+bloc... Cette page fait le lien entre ces valeurs et l'**enum PHP** qui les
+définit réellement dans le code, pour que la correspondance ne repose pas
+sur une liste recopiée à la main (et donc potentiellement désynchronisée du
+code).
 
-*Liste des références sur le CMS*
+## Rendu de la page
 
-### Pour les Pages
+Défini par la clé `render` dans la réponse de [Find page](../API/References/find_page.md).
+Enum [`PageRender`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Page/PageRender.php) (`int`) :
 
-#### Rendu de la page
-Permet d'afficher le rendu général de la page. 
-Défini par la clé 'render' dans l'API [find page](../API/References/find_page.md)
+| Valeur | Cas PHP | Rendu |
+|---|---|---|
+| 1 | `ONE_BLOCK` | 1 bloc |
+| 2 | `TWO_BLOCK` | 2 blocs côte à côte |
+| 3 | `THREE_BLOCK` | 3 blocs côte à côte |
+| 4 | `TWO_BLOCK_BOTTOM` | 2 blocs, l'un en dessous de l'autre |
+| 5 | `THREE_BLOCK_BOTTOM` | 3 blocs, l'un en dessous de l'autre |
+| 6 | `ONE_TWO_BLOCK` | 1 bloc au-dessus, 2 blocs côte à côte en dessous |
+| 7 | `TWO_ONE_BLOCK` | 2 blocs côte à côte au-dessus, 1 bloc en dessous |
+| 8 | `TWO_TWO_BLOCK` | 2 blocs côte à côte au-dessus, 2 blocs côte à côte en dessous |
 
-* 1 => Affichage du rendu mode 1 block
-* 2 => Affichage du rendu mode 2 block côte à côte
-* 3 => Affichage du rendu mode 3 block côte à côte
-* 4 => Affichage du rendu mode 2 bloc l'un en dessous de l'autre
-* 5 => Affichage du rendu mode 3 bloc l'un en dessous de l'autre
-* 6 => Affichage du rendu mode 1 block au dessus + 2 block côte à côte dessous
-* 7 => Affichage du rendu mode 2 block côte à côte + 1 block en dessous
-* 8 => Affichage du rendu mode 2 block côte à côte + 2 block côte à côte en dessous
+## Type de contenu de page
 
-#### Les types de content
-Permet de définir le type de content à afficher. 
-Définie par la clé 'type' dans l'API [find page](../API/References/find_page.md), block 'contents'
+Défini par la clé `type` de chaque élément du bloc `contents`, dans la même
+réponse [Find page](../API/References/find_page.md).
+Enum [`PageContentType`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Page/PageContentType.php) (`int`) :
 
-* 1 => Type texte pour les pages contents
-* 2 => Type FAQ pour les pages contents
-* 3 => Type LISTING pour les pages contents
+| Valeur | Cas PHP | Type de contenu |
+|---|---|---|
+| 1 | `TEXT` | Texte (éditeur Markdown) |
+| 2 | `FAQ` | Bloc FAQ |
+| 3 | `LISTING` | Listing (d'articles, de pages...) |
 
-#### Catégorie de page
-Permet de définir le type de page.
+## Catégorie de page
 
-* 1 => Catégorie page
-* 2 => Catégorie article
-* 3 => Catégorie projet
-* 4 => Catégorie blog
-* 5 => Catégorie évènement
-* 6 => Catégorie news
-* 7 => Catégorie évolution
-* 8 => Catégorie documentation
-* 9 => Catégorie faq
+Enum [`PageCategory`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Page/PageCategory.php) (`int`) :
 
-### Pour les menus
+| Valeur | Cas PHP | Catégorie |
+|---|---|---|
+| 1 | `PAGE` | Page |
+| 2 | `ARTICLE` | Article |
+| 3 | `PROJET` | Projet |
+| 4 | `BLOG` | Blog |
+| 5 | `EVENEMENT` | Évènement |
+| 6 | `NEWS` | News |
+| 7 | `EVOLUTION` | Évolution |
+| 8 | `DOCUMENTATION` | Documentation |
+| 9 | `FAQ` | FAQ |
 
-#### Position globale du menu
-Défini la position globale du ménu
+> 💡 Contrairement aux autres valeurs de cette page, le paramètre `category`
+> de [Listing des pages par catégorie](../API/References/listing_pages_category.md)
+> ne prend pas l'identifiant numérique ci-dessus, mais le **libellé traduit**
+> de la catégorie (ex. `blog`), comparé sans tenir compte de la casse au
+> texte du domaine de traduction `page` (clé `page.category.*`).
 
-* 1 => Position header
-* 2 => Position droite
-* 3 => Position footer
-* 4 => Position gauche
+## Statistiques de page
 
-#### Type menu header
-Défini le type de menu header.
-Défini par la clé 'type' dans l'API  [find page](../API/References/find_menu.md), block 'type'
+Défini dans le bloc `statistiques` de [Find page](../API/References/find_page.md).
+Enum [`PageStatistics`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Page/PageStatistics.php) (`string`) :
 
-* 1 => Menu header de type side bar
-* 2 => Menu header de type menu déroulant
-* 3 => Menu header de type menu déroulant, big menu
-* 4 => Menu header de type menu déroulant, big menu 2 colonnes
-* 5 => Menu header de type menu déroulant, big menu 3 colonnes
-* 6 => Menu header de type menu déroulant, big menu 4 colonnes
+| Valeur | Cas PHP | Statistique |
+|---|---|---|
+| `PAGE_NB_VISITEUR` | `NB_VISITEUR` | Nombre de visiteurs uniques |
+| `PAGE_NB_READ` | `NB_READ` | Nombre de lectures |
 
-#### Type menu gauche / droite
-Défini le type de menu gauche ou droite.
-Défini par la clé 'type' dans l'API [find page](../API/References/find_menu.md), block 'type'
+## Position d'un menu
 
-* 11 => Menu gauche - droite side-bar
-* 12 => Menu gauche - droite side-bar accordéon
+Défini par la clé `position` dans [Find page](../API/References/find_page.md)
+(bloc `menus`) et [Find menu](../API/References/find_menu.md).
+Enum [`MenuPosition`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Menu/MenuPosition.php) (`int`) :
 
-#### Type menu footer
-Défini le type de menu footer.
-Défini par la clé 'type' dans l'API [find page](../API/References/find_menu.md), block 'type'
+| Valeur | Cas PHP | Position |
+|---|---|---|
+| 1 | `POSITION_HEADER` | En-tête |
+| 2 | `POSITION_RIGHT` | Droite |
+| 3 | `POSITION_FOOTER` | Pied de page |
+| 4 | `POSITION_LEFT` | Gauche |
 
-* 16 => Menu footer 4 colonnes
-* 17 => Menu footer 1 ligne à droite
-* 18 => Menu footer 1 ligne centrée
+> 💡 Dans les réponses de l'API, ce champ n'apparaît pas sous forme
+> numérique mais sous forme de mot-clé (`"HEADER"`, `"LEFT"`...) : c'est le
+> nom que renvoie `MenuPosition::getStringByPosition()`.
+
+## Type de menu
+
+Défini par la clé `type` dans [Find page](../API/References/find_page.md)
+(bloc `menus`) et [Find menu](../API/References/find_menu.md).
+Enum [`MenuType`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Menu/MenuType.php) (`int`) :
+
+| Valeur | Cas PHP | Type de menu |
+|---|---|---|
+| 1 | `HEADER_SIDE_BAR` | Header, side-bar |
+| 2 | `HEADER_MENU_DEROULANT` | Header, menu déroulant |
+| 3 | `HEADER_MENU_DEROULANT_BIG_MENU` | Header, menu déroulant, big menu |
+| 4 | `HEADER_MENU_DEROULANT_BIG_MENU_2_COLONNES` | Header, big menu 2 colonnes |
+| 5 | `HEADER_MENU_DEROULANT_BIG_MENU_3_COLONNES` | Header, big menu 3 colonnes |
+| 6 | `HEADER_MENU_DEROULANT_BIG_MENU_4_COLONNES` | Header, big menu 4 colonnes |
+| 11 | `LEFT_RIGHT_SIDE_BAR` | Gauche/droite, side-bar |
+| 12 | `LEFT_RIGHT_SIDE_BAR_ACCORDEON` | Gauche/droite, side-bar accordéon |
+| 16 | `FOOTER_COLONNES` | Footer, 4 colonnes |
+| 17 | `FOOTER_1_ROW_RIGHT` | Footer, 1 ligne à droite |
+| 18 | `FOOTER_1_ROW_CENTER` | Footer, 1 ligne centrée |
+
+> 💡 Les valeurs ne se suivent pas : chaque position de menu réserve une
+> plage de valeurs (1-6 pour le header, 11-12 pour gauche/droite, 16-18 pour
+> le footer), pour pouvoir ajouter de nouveaux types sans jamais faire
+> chevaucher les plages entre positions.
+
+## Cible d'un lien de menu
+
+Défini par la clé `target` de chaque élément d'un menu, dans
+[Find page](../API/References/find_page.md) et [Find menu](../API/References/find_menu.md).
+Enum [`MenuLinkTarget`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Menu/MenuLinkTarget.php) (`string`) :
+
+| Valeur | Cas PHP | Comportement |
+|---|---|---|
+| `_blank` | `LINK_TARGET_BLANK` | Ouvre le lien dans un nouvel onglet |
+| `_self` | `LINK_TARGET_SELF` | Ouvre le lien dans l'onglet courant |
+
+## Voir aussi
+- [Find page](../API/References/find_page.md)
+- [Find menu](../API/References/find_menu.md)
+- [Listing des pages par catégorie](../API/References/listing_pages_category.md)
