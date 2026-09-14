@@ -50,7 +50,7 @@ Détail de chaque écran dans le [Guide d'administration](../GuideAdmin/index.md
 
 | Domaine | Fonctionnalités |
 |---|---|
-| Général | [Mon compte](../GuideAdmin/MonCompte/profil.md) et [mes notifications](../GuideAdmin/MonCompte/notifications.md) |
+| Général | [Mon compte](../GuideAdmin/MonCompte/profil.md) et [mes notifications](../GuideAdmin/MonCompte/Notifications/notifications.md) |
 | Content | [Tags](../GuideAdmin/Contenu/Tags/listing.md), [Médiathèque](../GuideAdmin/Contenu/Mediatheque/mediatheque.md), [Pages](../GuideAdmin/Contenu/Pages/listing.md), [Commentaires](../GuideAdmin/Contenu/Commentaires/listing.md), [Menus](../GuideAdmin/Contenu/Menus/listing.md), [FAQ](../GuideAdmin/Contenu/Faq/listing.md) |
 | Système | [Utilisateurs et rôles](../GuideAdmin/Systeme/utilisateurs.md), [Options système](../GuideAdmin/Systeme/options.md), [Sidebar de l'administration](../GuideAdmin/Systeme/sidebar.md), [Traductions](../GuideAdmin/Systeme/traductions.md), [Emails](../GuideAdmin/Systeme/mail.md), [Logs](../GuideAdmin/Systeme/logs.md), [Jetons d'accès API](../GuideAdmin/Systeme/ApiToken/jetons_api.md) |
 | Outils | [Options avancées](../GuideAdmin/Outils/options_avancees.md) *(réinitialisation du CMS, mode debug)*, [Gestionnaire SQL](../GuideAdmin/Outils/gestionnaire_sql.md), [Gestionnaire base de données](../GuideAdmin/Outils/gestionnaire_bdd.md) |
