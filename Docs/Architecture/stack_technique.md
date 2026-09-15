@@ -31,7 +31,7 @@ pattern `AutowireLocator`, découpage par domaine) est détaillée dans
 | `symfony/mailer` + `symfony/notifier` | Envoi d'e-mails et de notifications |
 | `twig/markdown-extra` | Rendu Markdown dans les templates (éditeur de contenu) |
 | `twig/cssinliner-extra`, `twig/inky-extra` | Mise en forme des e-mails (CSS inline, layout responsive Inky) |
-| `martin-georgiev/postgresql-for-doctrine` | Fonctions DQL spécifiques PostgreSQL (`CONTAINS`, `TO_JSONB`, ...) |
+| `martin-georgiev/postgresql-for-doctrine` | Ajoute des fonctions propres à PostgreSQL (`CONTAINS`, `TO_JSONB`, ...) utilisables dans les requêtes Doctrine (DQL, l'équivalent du SQL mais écrit en fonction des entités plutôt que des tables) |
 | `amphp/http-client` | Client HTTP asynchrone (appels externes non bloquants) |
 | `phpdocumentor/reflection-docblock`, `phpstan/phpdoc-parser` | Introspection des docblocks (serializer, property-info) |
 | `fakerphp/faker` | Génération de données pour les fixtures |
@@ -52,11 +52,14 @@ conteneur PostgreSQL. Le détail des tables est dans le
 
 ## Asynchrone
 
-Les envois d'e-mails et notifications passent par **Symfony Messenger** sur
-un transport `async` (Doctrine, table `messenger_messages` par défaut :
-`MESSENGER_TRANSPORT_DSN=doctrine://default`) avec une stratégie de retry
-(3 tentatives, backoff x2) et un transport `failed` pour les messages en
-échec :
+Les envois d'e-mails et notifications passent par **Symfony Messenger** :
+plutôt que de les traiter immédiatement, le code les dépose dans une file
+d'attente (transport `async`, une table `messenger_messages` en base par
+défaut : `MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0`), et un
+processus à part vient régulièrement les en dépiler pour les exécuter pour de
+bon. Si l'envoi échoue, Messenger retente automatiquement (3 tentatives,
+en doublant le délai d'attente entre chaque essai), puis abandonne dans un
+transport `failed` dédié aux messages qui ont fini par échouer :
 
 ```bash
 php bin/console messenger:consume async -vv
@@ -68,7 +71,7 @@ php bin/console messenger:consume async -vv
 |---|---|---|
 | [Vue.js](https://vuejs.org/) | 3.4+ | Composants d'interface, montés en « îlots » dans le Twig admin |
 | [TypeScript](https://www.typescriptlang.org/) | 5.9 | Typage du code Vue/TS (`assets/ts/`, `vue-tsc`) |
-| [Vite](https://vitejs.dev/) | 8 | Bundler, dev server HMR |
+| [Vite](https://vitejs.dev/) | 8 | Outil de build : assemble et optimise le code Vue/TS pour le navigateur, avec un serveur de développement qui répercute chaque modification à l'écran sans recharger la page (HMR, *Hot Module Replacement*) |
 | [vite-plugin-symfony](https://github.com/lhapaipai/vite-plugin-symfony) | 8 | Pont Vite ↔ Symfony (manifest, entrypoints) |
 | [Tailwind CSS](https://tailwindcss.com/) | 4.1 | Framework utilitaire CSS de l'admin |
 | [Flowbite](https://flowbite.com/) | 3.1 | Composants UI (plugin Tailwind) |

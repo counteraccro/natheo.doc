@@ -132,7 +132,7 @@ explicitement :
 | Journalisation | À chaque création/modification/suppression d'une donnée | Garder une trace de qui a fait quoi |
 | Redirection de surcharge | Avant l'exécution d'un controller | Rediriger vers une version personnalisée si elle existe (voir ci-dessus) |
 | Préfixe de table | Au chargement du schéma de base de données | Permettre à plusieurs instances de Nathéo de partager une même base |
-| Choix de la langue | Avant chaque action d'un controller | Appliquer la langue préférée de l'utilisateur connecté |
+| Choix de la langue | Avant chaque action d'un controller | Appliquer la langue préférée de l'utilisateur connecté (ou la langue par défaut du site pour un visiteur anonyme) |
 
 Voir aussi [Composants](composants/index.md) pour la liste complète des
 services, extensions et jeux de données de test existants.
