@@ -4,80 +4,97 @@ parent: "Démarrage"
 nav_order: 2
 ---
 
-Procédure pour installer NatheoCMS sans passer par l'installateur.
-
-> 🚧 *Page reprise de la V1, à revalider dans le détail pour la V2 (les commandes ci-dessous ont déjà été mises à jour pour Vite, le reste est à vérifier).*
+Procédure pour installer Nathéo CMS en local pour du développement, sans passer par l'installeur graphique.
 
 ### Pré-requis
 [Voir les pré-requis](pre_requis.md)
 
-### Installation
+## Installation
 
-#### Étape 1 : cloner le dépôt GIT
+### Étape 1 : cloner le dépôt Git
 
-```https://github.com/counteraccro/natheo.git```
+```bash
+git clone https://github.com/counteraccro/natheo.git
+cd natheo
+```
 
-#### Étape 2 : Installer les dépendances PHP
+### Étape 2 : installer les dépendances PHP
 
-```composer install```
+```bash
+composer install
+```
 
-#### Étape 3 : Configuration .env
+### Étape 3 : configuration de l'environnement
 
-Créer une copie du fichier ```.env``` en ```.env.local```
+Créer une copie du fichier `.env` en `.env.local` (ce dernier n'est jamais versionné) :
 
-* Mettre la valeur ```dev``` à  ```APP_ENV```
-* Mettre la valeur ```1``` à ```APP_DEBUG```
-* Mettre la valeur ```[nom-de-votre-bdd]``` à ```NATHEO_SCHEMA```
+```bash
+cp .env .env.local
+```
 
-#### Étape 4 : Installation de natheo CMS
+Dans `.env.local`, ajuster au minimum :
 
-Cette commande permet de passer les étapes 5,6,7
+| Variable | Valeur | Rôle |
+|---|---|---|
+| `APP_ENV` | `dev` | Environnement de l'application |
+| `APP_DEBUG` | `1` | Active le mode debug Symfony |
+| `NATHEO_DBNAME` | *(ex: `natheo`)* | Nom de la base de données |
+| `NATHEO_DEBUG` | `true` | Active le mode debug applicatif ([voir les options de configuration](configuration_installation.md)) |
+| `DATABASE_URL` | *(à adapter)* | DSN Doctrine (login/mot de passe/port de votre SGBD) |
 
-```php bin/console natheo:install```
+> 💡 Par défaut le CMS est configuré pour MySQL. Pour utiliser PostgreSQL, voir la
+> [procédure de changement de base de données](base_de_donnees.md).
 
-#### Étape 5 : installer la base de données
+### Étape 4 : installation du CMS
 
-*A faire si vous souhaitez faire une installation point par point*
+```bash
+php bin/console natheo:install
+```
 
-```php bin/console doctrine:database:create```
+Cette commande automatise toute l'installation applicative :
 
-#### Étape 6 : récupération des tables de la base de données
+1. `doctrine:database:create` — création de la base de données
+2. `doctrine:migrations:sync-metadata-storage` puis `doctrine:migrations:migrate` — création du schéma via les [migrations Doctrine](https://symfony.com/doc/current/doctrine.html#migrations-creating-the-database-tables-schema)
+3. `doctrine:fixtures:load --append` — chargement des données de démonstration
+4. `cache:clear` — vidage du cache
 
-*A faire si vous souhaitez faire une installation point par point*
+Elle demande une confirmation avant de s'exécuter, et **refuse de tourner si `APP_ENV=prod`** (dans ce cas, passer par [l'installeur graphique](installation_prod.md)). Si une base de données existe déjà pour le projet, elle est supprimée puis recréée après confirmation.
 
-```php bin/console doctrine:schema:create```
+> 🔁 Cette commande est idempotente : vous pouvez la relancer à tout moment (par exemple pour repartir d'un jeu de données propre) — elle réinitialise entièrement la base.
 
-#### Étape 7 : installation des fixtures
-
-*A faire si vous souhaitez faire une installation point par point*
-
-```php bin/console doctrine:fixture:load```
-
-#### Étape 8 : Génération des assets
+### Étape 5 : génération des assets front
 
 ```bash
 yarn install
 yarn dev
 ```
 
-# Accès au site
-Sur votre environnement de développement
-* Créer un virtual host qui pointe vers le dossier suivant : ```[path-complet-vers-mon-dossier]\www\natheo\public```
-* Cliquez sur le lien ```http://[mon-virtual-host]/admin/fr/dashboard/index```
-* Authentifier vous avec le login/mot de passe suivant : ```superadmin@natheo.com/superadmin@natheo.com```
+`yarn dev` lance Vite en mode watch. Pour un build de production, voir la [commande `yarn build`](#commandes-utiles) ci-dessous.
 
-# Commande :
+## Accès au site
 
-Installation générale du CMS : ```php bin/console natheo:install```
+Sur votre environnement de développement :
 
-Lancer les scripts en async : ```php bin/console messenger:consume async -vv```
+1. Créer un virtual host qui pointe vers le dossier `[chemin-vers-natheo]/public`.
+2. Ouvrir `http://[mon-virtual-host]/admin/fr/dashboard/index`.
+3. S'authentifier avec le compte de démonstration : `user.demo@mail.fr` / `user.demo@mail.fr`.
 
-Génération des traductions (fr|en|es) : ```php bin/console translation:extract --force --format=yaml en```
+## Commandes utiles
 
-Chargement des fixtures : ```php bin/console doctrine:fixtures:load```
+| Commande | Effet |
+|---|---|
+| `php bin/console natheo:install` | Installation/réinitialisation complète du CMS |
+| `php bin/console natheo:install-bdd-test` | Crée/recrée la base de données dédiée aux tests (environnement `test`) |
+| `php bin/console messenger:consume async -vv` | Traite les tâches asynchrones en file d'attente |
+| `php bin/console doctrine:fixtures:load` | Recharge les fixtures |
+| `php bin/console translation:extract --force --format=yaml fr\|en\|es` | Génère/extrait les traductions manquantes pour la langue donnée |
+| `yarn dev` | Compilation JS/CSS en mode développement (avec watch) |
+| `yarn build` | Compilation JS/CSS pour la production (type-check inclus) |
+| `yarn type-check` | Vérification TypeScript seule |
+| `php bin/phpunit --display-deprecations` | Lancement des tests unitaires |
+| `php bin/phpunit --filter=nomDuTest --display-deprecations` | Lancement d'un test unitaire en particulier |
 
-Compilation du JS (dev, avec watch) : ```yarn dev```
-
-Compilation du JS (production) : ```yarn build```
-
-Lancement des tests unitaires : ```php bin/phpunit```
+## Voir aussi
+- [Installation via l'installeur](installation_prod.md)
+- [Options de configuration](configuration_installation.md)
+- [Bases de données prises en charge](base_de_donnees.md)
