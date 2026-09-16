@@ -8,28 +8,33 @@ Voici les pré-requis pour installer et faire fonctionner Nathéo CMS dans les m
 
 ## Serveur
 
-- **PHP** 8.4 ou supérieur
-- **Composer** 2.8.9 ou supérieur
-- **Yarn** 1.22.22 ou supérieur
+| Composant | Version requise | Notes |
+|---|---|---|
+| **PHP** | 8.4 ou supérieur | Extensions recommandées ci-dessous |
+| **Composer** | 2.8.9 ou supérieur | Gestionnaire de dépendances PHP |
+| **Yarn** | 1.22.22 ou supérieur | Gestionnaire de paquets JavaScript |
+| **Apache** | 2.4.58 ou supérieur | Version testée ; un autre serveur web compatible PHP-FPM devrait fonctionner |
 
 ### Extensions PHP recommandées
 
-`ext-ctype`, `ext-iconv`, `ext-pdo`, `ext-pdo_mysql`, `ext-json`, `ext-mbstring`
-
-### Serveur web
-
-- Testé sur Apache 2.4.58 ou supérieur
+| Extension | Rôle |
+|---|---|
+| `ext-ctype` | Validation de chaînes |
+| `ext-iconv` | Conversion d'encodages |
+| `ext-pdo` / `ext-pdo_mysql` | Accès base de données |
+| `ext-json` | (Dé)sérialisation JSON |
+| `ext-mbstring` | Chaînes multi-octets (UTF-8) |
 
 ## Base de données
 
-Nathéo CMS prend en charge plusieurs bases de données :
+Nathéo CMS prend en charge deux SGBD :
 
-- **MySQL** 8.2 ou supérieur *(par défaut)*
-  - Le storage engine doit être **InnoDB**
-  - Le CMS fonctionne avec MyISAM, mais certaines fonctionnalités peuvent ne plus fonctionner correctement (tests unitaires, etc.)
-- **PostgreSQL** 15.2 ou supérieur
+| SGBD | Version requise | Notes |
+|---|---|---|
+| **MySQL** | 8.2 ou supérieur | *Par défaut.* Storage engine **InnoDB** requis — MyISAM fonctionne mais certaines fonctionnalités (tests unitaires, etc.) peuvent être impactées |
+| **PostgreSQL** | 15.2 ou supérieur | Nécessite un changement de configuration |
 
-> 💡 Pour utiliser PostgreSQL à la place de MySQL, suivez la [procédure de changement de base de données](base_de_donnees.md).
+> 💡 **Astuce** — Pour utiliser PostgreSQL à la place de MySQL, suivez la [procédure de changement de base de données](base_de_donnees.md).
 
 ## Voir aussi
 - [Installation en mode développeur](installation_dev.md)
