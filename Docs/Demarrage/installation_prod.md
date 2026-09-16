@@ -34,7 +34,7 @@ yarn build
 ### Étape 4 : accès au site
 
 Créer un virtual host qui pointe vers le dossier `[chemin-vers-natheo]/public`, puis ouvrir
-`http://[mon-virtual-host]/fr/installation/`.
+`http://[mon-virtual-host]/fr/`.
 
 > 💡 Pour installer avec **PostgreSQL** plutôt que MySQL (valeur par défaut), adaptez `DATABASE_URL` dans le `.env`
 > *avant* de lancer l'installeur — voir la [procédure de changement de base de données](base_de_donnees.md). Le
