@@ -4,79 +4,95 @@ parent: "Démarrage"
 nav_order: 3
 ---
 
-> 🚧 *Page reprise de la V1 : les commandes ont été mises à jour pour Vite, mais le déroulé de l'installeur (captures ci-dessous) reste à revalider sur la V2.*
-
-Voici la procédure pour installer NatheoCMS avec l'installeur
-
-NatheoCMS propose un installeur pour aider à l'installation de celui-ci.
-
-Cette procédure nécessite tout de même quelques manipulations en ligne de commande pour être lancé.
+Nathéo CMS propose un installeur graphique en 5 étapes pour accompagner l'installation, sans avoir à taper de commandes Doctrine à la main.
 
 ### Pré-requis
 [Voir les pré-requis](pre_requis.md)
 
-### Installation du code
-Étape 1 : cloner le dépôt GIT
+## Installation du code
 
-```https://github.com/counteraccro/natheo.git```
+### Étape 1 : cloner le dépôt Git
 
-Étape 2 : Installer les dépendances PHP
+```bash
+git clone https://github.com/counteraccro/natheo.git
+cd natheo
+```
 
-```composer install```
+### Étape 2 : installer les dépendances PHP
 
-Étape 3 : Génération des assets
+```bash
+composer install
+```
+
+### Étape 3 : génération des assets
 
 ```bash
 yarn install
 yarn build
 ```
 
-### Accès au site
-Sur votre environnement
-* Créer un virtual host qui pointe vers le dossier suivant : ```[path-complet-vers-mon-dossier]\www\natheo\public```
-* Cliquez sur le lien ```http://[mon-virtual-host]fr/admin/login```
+### Étape 4 : accès au site
 
-### L'installeur
-Une fois l'ensemble des étapes précédentes réalisé, en cliquant sur le lien défini précédemment, vous devriez arriver sur cette page
+Créer un virtual host qui pointe vers le dossier `[chemin-vers-natheo]/public`, puis ouvrir
+`http://[mon-virtual-host]/fr/installation/`.
 
-#### Connection votre SGBD
+> 💡 Pour installer avec **PostgreSQL** plutôt que MySQL (valeur par défaut), adaptez `DATABASE_URL` dans le `.env`
+> *avant* de lancer l'installeur — voir la [procédure de changement de base de données](base_de_donnees.md). Le
+> type de SGBD affiché à l'étape 2 de l'installeur est en lecture seule : il reflète simplement ce DSN.
 
-![installation-connecte-bdd.png](files/installation-connecte-bdd.png)
+## L'installeur
 
-La première étape est de tester la connection avec votre SGBD, pour le moment NatheoCMS ne prend en charge que PostgreSQL
+### Étape 1 — Bienvenue
 
-#### Création de la base de données
+![Étape 1 : vérification des pré-requis](files/installation-step0-bienvenue.png)
 
-![installation-create-bdd.png](files/installation-create-bdd.png)
+L'installeur vérifie automatiquement l'environnement : version de PHP, extensions `pdo_mysql`/`gd`/`intl`, et droits
+d'écriture sur les dossiers nécessaires (`var/cache`, `var/log`, `var/sessions`, `public/uploads`,
+`public/assets/natheotheque`, `public/assets/thumbnails`). Le bouton **Commencer l'installation** reste désactivé
+tant qu'un de ces points est en erreur.
 
-Une fois la connection faite avec succès, il vous faut maintenant créer votre base de données.
+### Étape 2 — Connexion SGBD
 
-Pour cela, c'est très simple, saisissez le nom de votre base de données, la version du SGBD et le charset.
-Cliquez ensuite sur le bouton **"+ créer la base de données"**
+![Étape 2 : connexion au SGBD](files/installation-step1-connexion.png)
 
+Renseignez les identifiants de connexion à votre serveur MySQL ou PostgreSQL (login, mot de passe, IP, port), puis
+les options avancées (charset, version du SGBD). Le bouton **Créer la base de données** ne s'active qu'une fois la
+connexion testée avec succès.
 
-> Il est possible de défini un schema SQL ainsi d'un préfix pour les tables de la base de données.
-> 
-> Par défaut le schéma SQL est natheo et les tables n'ont pas de préfix. Pour changer ces valeurs, consulter les [options de configurations](configuration_installation.md)
+### Étape 3 — Création de la base de données
 
-#### Création du compte fondateur
+![Étape 3 : création de la base de données](files/installation-step2-creation-bdd.png)
 
-![installation-create-fondateur.png](files/installation-create-fondateur.png)
+Choisissez le nom de la base de données à créer. Le préfixe des tables suit la valeur de
+`app.default_database_prefix` dans `config/services.yaml` (vide par défaut). Cette étape crée la base, exécute les
+[migrations Doctrine](https://symfony.com/doc/current/doctrine.html#migrations-creating-the-database-tables-schema)
+pour générer le schéma, puis régénère `APP_SECRET`.
 
-La prochaine étape est de créer le compte fondateur, ce compte va posséder les droits fondateurs, il va vous permettre de
-vous connecter à l'administration du CMS une fois l'installation terminé.
+### Étape 4 — Compte fondateur et jeu de données
 
-> Attention, si vous être en mode débug, ce sont les comptes de tests qui seront installés
-> ![installation-create-fondateur-debug.png](files/installation-create-fondateur-debug.png)
-> Retrouvez les données (mot de passe et login) des comptes test ici  ```src/DataFixtures/data/system/user_demo_fixtures_data.yaml```
+![Étape 4 : création du compte fondateur](files/installation-step3-fondateur.png)
 
-#### Génération des données
-![installation-datas.png](files/installation-datas.png)
+Renseignez l'email, le login et le mot de passe (8 à 20 caractères, au moins une majuscule, une minuscule, un
+chiffre et un caractère spécial) du compte fondateur — il aura le rôle `ROLE_SUPER_ADMIN`.
 
-Une fois que le compte fondateur est créé, il ne vous reste plus qu'à cliquer sur le bouton **'Finaliser l'installation'** pour terminer l'installation du CMS
+> ⚠️ Si `NATHEO_DEBUG=true` dans le `.env`, un bandeau d'avertissement s'affiche : **les comptes de démonstration
+> seront installés à la place du compte fondateur saisi ici**. Pour désactiver ce comportement, passez
+> `NATHEO_DEBUG` à `false` dans le `.env` puis rafraîchissez la page avant de continuer.
 
-Une fois l'installation terminé, vous serez automatiquement redirigé vers l'authentification de la partie administration du site.
+![Compte créé, prêt pour la finalisation](files/installation-step3-compte-cree.png)
 
-#### Felicitation !
-Le CMS est maintenant correctement installé et vous pouvez dès à présent l'utiliser.
-Pour vous connecter, c'est simple, utiliser le compte fondateur que vous venez de créer.
+Une fois le compte créé, le bouton **Finaliser l'installation** charge les fixtures de démonstration puis vide le
+cache applicatif.
+
+### Étape 5 — Résumé
+
+![Étape 5 : résumé de l'installation](files/installation-step4-resume.png)
+
+Le résumé récapitule les quatre opérations réalisées (base de données créée, compte fondateur créé, données
+installées, cache nettoyé). Le bouton **Me connecter avec mon compte fondateur** redirige vers l'authentification
+du back-office.
+
+## Voir aussi
+- [Installation en mode développeur](installation_dev.md)
+- [Options de configuration](configuration_installation.md)
+- [Bases de données prises en charge](base_de_donnees.md)
