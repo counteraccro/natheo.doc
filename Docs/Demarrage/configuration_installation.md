@@ -29,20 +29,20 @@ Voici les options qui peuvent influencer l'installation et le comportement de Na
 ## Fichier `.env`
 
 ```dotenv
-###> symfony/framework-bundle ###
+###> Config environnement ###
 APP_ENV=prod                                    # dev (+ de logs) ou prod
 APP_DEBUG=0                                     # lié à APP_ENV
 APP_SECRET=93df0a91243d55a4d72a801726b38645     # généré automatiquement à l'installation
-###< symfony/framework-bundle ###
+##< Config environnement ###
 
 ###> NatheoCMS ###
 NATHEO_DBNAME='natheo'                          # nom de la base de données (app.default_database_name)
 NATHEO_DEBUG=false                              # active le mode debug du CMS (app.debug_mode)
 ###< NatheoCMS ###
 
-###> doctrine/doctrine-bundle ###
+###> Config database ###
 DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
-###< doctrine/doctrine-bundle ###
+###< Config database ###
 
 ###> symfony/messenger ###
 MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0
