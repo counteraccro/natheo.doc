@@ -51,7 +51,7 @@ Le bouton **Modifier mon profil**, en bas de la carte, envoie ces champs ainsi q
 
 ## Sécurité
 
-![Carte "Sécurité", ici sur un compte non super-administrateur (avec la zone de danger en dessous)](files/profil-securite-danger.png)
+![Carte "Sécurité" (ici sur un compte super-administrateur, d'où la présence d'"Autres options" juste en dessous plutôt que la zone de danger)](files/profil-securite-superadmin.png)
 
 Un formulaire dédié permet de changer son propre mot de passe, indépendamment du reste du profil (sauvegarde
 immédiate en Ajax, sans recharger la page).
@@ -73,7 +73,10 @@ toutes les règles ou que les deux champs ne sont pas identiques.
 ## Zone de danger
 
 *Visible uniquement si vous n'êtes **pas** `ROLE_SUPER_ADMIN`* (les fondateurs/super-administrateurs ne peuvent pas
-s'auto-désactiver ni s'auto-supprimer) — voir la capture ci-dessus, sous le bloc **Sécurité**.
+s'auto-désactiver ni s'auto-supprimer) — elle prend alors la place de la carte **Autres options** ci-dessous, juste
+après **Sécurité**.
+
+![Carte "Zone de danger"](files/profil-securite-danger.png)
 
 | Action | Effet |
 |---|---|
@@ -95,9 +98,8 @@ Le libellé et l'effet du deuxième bouton dépendent de deux options système
 ## Autres options
 
 *Visible uniquement si vous êtes `ROLE_SUPER_ADMIN`* — à l'inverse de la zone de danger ci-dessus : sur un compte
-super-administrateur, cette carte remplace la zone de danger juste après **Sécurité**.
-
-![Carte "Autres options", visible uniquement pour un compte super-administrateur (pas de zone de danger)](files/profil-securite-superadmin.png)
+super-administrateur, cette carte remplace la zone de danger juste après **Sécurité** (voir la capture dans la
+section **Sécurité** plus haut).
 
 Un unique bouton, **Afficher l'aide de configuration** / **Masquer l'aide de configuration**, contrôle si le bloc
 d'aide de première connexion s'affiche sur le tableau de bord.
