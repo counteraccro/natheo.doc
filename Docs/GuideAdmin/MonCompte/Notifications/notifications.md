@@ -56,8 +56,8 @@ Dans l'onglet **Toutes**, une case à cocher sur chaque ligne (et une case
 « tout cocher » dans l'en-tête) permet de sélectionner plusieurs notifications
 à la fois. Une fois une sélection faite, des boutons apparaissent pour :
 
-- les marquer comme **lues** (ou **non lues**, si toute la sélection est déjà
-  lue)
+- les marquer comme **lues** (ou **non lues**, si au moins une des
+  notifications sélectionnées est déjà lue)
 - les **supprimer** — une confirmation rappelle le nombre total de
   notifications concernées, et combien étaient non lues
 
@@ -78,7 +78,11 @@ a rien à lire.
 
 > 💡 Cette liste dépend uniquement du code du CMS : elle n'est pas
 > paramétrable depuis l'administration, en dehors de l'activation générale de
-> la fonctionnalité.
+> la fonctionnalité. Les notifications liées à la désactivation, la
+> suppression ou l'anonymisation d'un compte ne sont envoyées que si
+> l'utilisateur concerné **n'est pas lui-même super-administrateur** ; pour la
+> suppression/anonymisation, l'option système autorisant la suppression des
+> comptes doit en plus être activée.
 
 ## Voir aussi
 - [Référence technique](technique.md)

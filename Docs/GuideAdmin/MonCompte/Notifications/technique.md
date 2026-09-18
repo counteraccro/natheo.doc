@@ -56,6 +56,13 @@ titre/contenu :
 > ⚠️ Toutes les clés suivent la convention `NOTIFICATION_XXX`, sauf
 > `new_comment` (héritée d'une version antérieure).
 
+> ⚠️ `NOTIFICATION_SELF_DISABLED`, `NOTIFICATION_SELF_DELETE` et
+> `NOTIFICATION_SELF_ANONYMOUS` ne sont envoyées que si l'utilisateur qui agit
+> sur son propre compte n'a pas le rôle `ROLE_SUPER_ADMIN` (condition
+> `!$role->isSuperAdmin()` dans `UserController`). Les deux dernières exigent
+> en plus que l'option système `OS_ALLOW_DELETE_DATA` (`canDelete()`) soit
+> active.
+
 ## Backend
 
 | Classe | Rôle |
