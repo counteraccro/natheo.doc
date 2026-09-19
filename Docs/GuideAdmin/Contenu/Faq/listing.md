@@ -6,6 +6,34 @@ has_children: true
 nav_order: 9
 ---
 
-> 🚧 **Contenu en cours de réécriture pour la V2.** Cette page sera rédigée à partir du code de l'admin V2 ; les captures d'écran V1 ont été retirées et seront refaites dans une session dédiée.
+Une FAQ regroupe des questions/réponses organisées en catégories, affichées
+sur le site. Un site peut avoir plusieurs FAQ (chacune avec son propre titre,
+ses catégories et ses questions) ; chacune est visible ou non indépendamment
+des autres.
 
-*(à compléter)*
+Cette page est accessible aux contributeurs, administrateurs et
+super-administrateurs, à l'URL `/admin/{locale}/faq/`.
+
+![Listing des FAQ](files/listing.png)
+
+Le tableau liste toutes les FAQ existantes, avec leur nombre de catégories,
+leur nombre de questions et leur date de dernière modification. Vous pouvez
+trier chaque colonne en cliquant sur son en-tête, retrouver une FAQ grâce à
+la barre de recherche (sur le titre), et filtrer sur **Moi / Tous** pour
+n'afficher que les FAQ dont vous êtes l'auteur.
+
+Pour chaque FAQ, plusieurs actions sont disponibles directement depuis la
+ligne :
+
+- 👁️ **Activer / Désactiver** — une FAQ désactivée disparaît du site, mais
+  rien n'est supprimé : vous pouvez la réactiver à tout moment
+- 🗑️ **Supprimer** — retire définitivement la FAQ, avec l'ensemble de ses
+  catégories et questions
+- ✏️ **Modifier** — ouvre la FAQ pour l'éditer
+
+Et en haut de page, le bouton **Nouvelle Faq** ouvre le formulaire de
+création.
+
+## Voir aussi
+- [Créer ou éditer une FAQ](ajouter_editer.md)
+- [Référence technique](technique.md) *(tables, services, routes)*
