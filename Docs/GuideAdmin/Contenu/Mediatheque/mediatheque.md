@@ -6,6 +6,67 @@ has_children: true
 nav_order: 6
 ---
 
-> 🚧 **Contenu en cours de réécriture pour la V2.** Cette page sera rédigée à partir du code de l'admin V2 ; les captures d'écran V1 ont été retirées et seront refaites dans une session dédiée.
+La médiathèque centralise tous les fichiers internes de votre site (images,
+PDF, documents bureautiques…) que vous pouvez ensuite réutiliser dans vos
+pages, votre FAQ ou tout autre contenu passant par l'éditeur Markdown. Les
+fichiers sont organisés en dossiers, comme un explorateur de fichiers
+classique.
 
-*(à compléter)*
+Cette page est accessible aux contributeurs, administrateurs et
+super-administrateurs, à l'URL `/admin/{locale}/media/`.
+
+![La médiathèque](files/listing.png)
+
+## Navigation
+
+Le fil d'Ariane en haut du bloc (**Root** puis chaque sous-dossier traversé)
+permet de remonter à tout moment vers un dossier parent en cliquant dessus.
+Cliquer sur une **vignette de dossier** l'ouvre ; cliquer sur une **vignette de
+média** l'ouvre dans un nouvel onglet.
+
+![Navigation dans un dossier](files/navigation.png)
+
+Un dossier affiche un aperçu de son contenu directement sur sa vignette (les
+deux premiers éléments qu'il contient) ainsi que le nombre total d'éléments.
+Chaque type de fichier a sa propre icône générique lorsqu'il n'a pas de
+miniature (PDF, Word, Excel, PowerPoint…) — seules les images (`jpg`, `jpeg`,
+`png`, `gif`) ont une véritable miniature, générée automatiquement au moment
+de l'ajout.
+
+## Barre d'outils
+
+| Élément | Rôle |
+|---|---|
+| **Nouveau dossier** | Ouvre le formulaire de création d'un [dossier](dossiers.md) dans le dossier courant |
+| **Nouveau média** | Ouvre le formulaire d'[ajout d'un média](medias.md#ajouter-un-média) dans le dossier courant |
+| **Trier par** | Change le critère de tri : date de création, nom ou type |
+| Bouton d'inversion (flèches) | Inverse le sens du tri (croissant / décroissant) |
+| Icône corbeille (rouge) | Ouvre la [corbeille](deplacer_et_corbeille.md#la-corbeille) |
+| Icônes grille / liste | Bascule entre l'affichage en grille (vignettes) et en tableau |
+
+L'espace utilisé par la médiathèque (tous dossiers confondus) est affiché en
+haut à droite du bloc, et rappelé en bas de page pour le dossier courant.
+
+## Actions sur un élément
+
+Depuis le menu **…** de chaque dossier ou média (accessible en grille comme en
+liste), quatre actions sont proposées :
+
+| Action | Effet |
+|---|---|
+| ℹ️ **Information** | Affiche les [informations](medias.md#informations-dun-média) de l'élément (taille, date, URL…) |
+| ✏️ **Éditer** | [Renomme un dossier](dossiers.md#renommer-un-dossier) ou [modifie le nom/la description d'un média](medias.md#modifier-un-média) |
+| ⇄ **Déplacer** | [Déplace](deplacer_et_corbeille.md#déplacer-un-média-ou-un-dossier) l'élément vers un autre dossier |
+| 🗑️ **Corbeille** | [Met l'élément à la corbeille](deplacer_et_corbeille.md#la-corbeille) (suppression réversible) |
+
+Chaque action s'ouvre dans un panneau latéral à droite de la médiathèque, sans
+recharger la page.
+
+> Mettre un dossier à la corbeille y pousse aussi tous les dossiers et médias
+> qu'il contient.
+
+## Voir aussi
+- [Ajouter, informer et modifier un média](medias.md)
+- [Créer et renommer un dossier](dossiers.md)
+- [Déplacer et mettre à la corbeille](deplacer_et_corbeille.md)
+- [Référence technique](technique.md) *(tables, services, routes)*
