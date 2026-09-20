@@ -14,8 +14,8 @@ Ces écrans sont accessibles aux contributeurs, administrateurs et
 super-administrateurs, aux URLs `/admin/{locale}/faq/add/` (création) et
 `/admin/{locale}/faq/update/{id}` (édition). Si la FAQ demandée en édition
 n'existe plus (supprimée entre-temps), un message « Aucune FAQ trouvée »
-s'affiche à la place, avec un bouton pour revenir au listing ou en créer une
-nouvelle.
+s'affiche à la place, avec des boutons pour revenir au listing ou créer une
+nouvelle FAQ.
 
 ## Étape 1 : création
 
@@ -27,13 +27,19 @@ nouvelle.
 |---|---|---|
 | Titre de la Faq | Titre de la nouvelle FAQ | Oui |
 
-Ce titre est enregistré dans la langue par défaut du site ; pour les autres
-langues, il est pré-rempli avec la locale en préfixe (par exemple
+Ce titre est enregistré dans la langue de l'interface d'administration au
+moment de la création (le segment `{locale}` de l'URL) ; pour les autres
+langues du site, il est pré-rempli avec la locale en préfixe (par exemple
 `en-Mon titre`) en attendant d'être traduit depuis l'édition. Une fois
 **Créer la Faq** cliqué, vous êtes automatiquement redirigé vers l'écran
 d'édition complet de la FAQ qui vient d'être créée — avec une première
 catégorie et une première question déjà présentes, prêtes à être
 personnalisées.
+
+> ℹ️ Le texte d'aide affiché sous le champ parle de « langue par défaut du
+> site » ; en pratique, c'est la langue de l'écran d'administration au
+> moment de la création qui est utilisée (les deux coïncident tant que vous
+> n'avez pas changé la langue de l'interface).
 
 ## Étape 2 : édition complète
 
@@ -59,8 +65,7 @@ et **Sauvegarder**, désactivé tant qu'une erreur de validation subsiste.
 - **Titre de la FAQ** — texte affiché en haut de la FAQ publiée
 - Un sélecteur de langue, en haut à droite de la carte, permet de basculer
   entre les langues du site pour éditer les titres et réponses dans chacune
-  d'elles ; il est désactivé tant qu'une erreur de validation subsiste,
-  pour éviter de perdre de vue un champ invalide en changeant de langue
+  d'elles ; il est désactivé tant qu'une erreur de validation subsiste
 
 ### Catégories et questions
 
@@ -110,9 +115,11 @@ bas de l'écran, **Ajouter une catégorie** crée une nouvelle catégorie vide.
   automatiquement toutes ses questions. En revanche, **réactiver** une
   catégorie ne réactive pas ses questions : chacune doit être réactivée
   individuellement si besoin.
-- **Éléments non enregistrés** — tant qu'une FAQ n'a pas été sauvegardée, les
-  catégories et questions nouvellement ajoutées n'ont pas encore d'identifiant
-  définitif côté serveur (elles n'en obtiennent un qu'à l'enregistrement).
+- **Éléments non enregistrés** — une catégorie ou une question tout juste
+  ajoutée (boutons **Ajouter une catégorie** / **Ajouter une question**) n'a
+  pas encore d'identifiant définitif côté serveur, même si le reste de la FAQ
+  a déjà été sauvegardé auparavant : elle n'en obtient un qu'au prochain clic
+  sur **Sauvegarder**.
 - **Statistiques** — le nombre de catégories et de questions affiché dans le
   [listing](listing.md) est recalculé et figé à chaque sauvegarde, il ne
   reflète pas les changements en cours tant que vous n'avez pas cliqué sur

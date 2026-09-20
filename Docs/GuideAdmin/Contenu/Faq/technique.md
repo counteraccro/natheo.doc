@@ -185,8 +185,8 @@ faq:
 aussi la liste déroulante de sélection d'une FAQ dans l'onglet **Contenu**
 du formulaire d'édition d'une page (`PageService::getListeContentByType()`,
 type `PageContentType::FAQ`), qui permet d'insérer une FAQ existante comme
-bloc de contenu sur une page du site (au même titre qu'un bloc listing
-d'articles).
+bloc de contenu sur une page du site — au même titre qu'un bloc de texte
+(`PageContentType::TEXT`) ou un bloc listing (`PageContentType::LISTING`).
 
 ## Frontend
 

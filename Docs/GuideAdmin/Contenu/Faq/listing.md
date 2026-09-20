@@ -17,10 +17,12 @@ super-administrateurs, à l'URL `/admin/{locale}/faq/`.
 ![Listing des FAQ](files/listing.png)
 
 Le tableau liste toutes les FAQ existantes, avec leur nombre de catégories,
-leur nombre de questions et leur date de dernière modification. Vous pouvez
-trier chaque colonne en cliquant sur son en-tête, retrouver une FAQ grâce à
-la barre de recherche (sur le titre), et filtrer sur **Moi / Tous** pour
-n'afficher que les FAQ dont vous êtes l'auteur.
+leur nombre de questions et leur date de dernière modification. Seules les
+colonnes **#**, **Titre** et **Dernière modification** sont triables en
+cliquant sur leur en-tête (le nombre de catégories/questions ne l'est pas).
+Vous pouvez aussi retrouver une FAQ grâce à la barre de recherche (sur le
+titre), et filtrer sur **Moi / Tous** pour n'afficher que les FAQ dont vous
+êtes l'auteur.
 
 Pour chaque FAQ, plusieurs actions sont disponibles directement depuis la
 ligne :
