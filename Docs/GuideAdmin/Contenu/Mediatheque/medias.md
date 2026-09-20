@@ -41,6 +41,13 @@ vérifié (type MIME réel), pas seulement son extension.
 > pratique, un fichier non-image doit être choisi via un sélecteur système qui
 > ne filtre pas par type, ou glissé-déposé directement.
 
+> **Cas particulier du WebP** : le format `webp` est accepté à l'upload et
+> traité comme une image dans l'aperçu du panneau avant envoi, mais le
+> serveur ne sait générer de miniature que pour `jpg`, `jpeg`, `png` et
+> `gif`. Un média WebP est donc enregistré comme un fichier générique (pas
+> comme une image) et s'affiche avec l'icône de fichier par défaut dans la
+> médiathèque, plutôt qu'avec un véritable aperçu.
+
 ## Informations d'un média
 
 Le lien **Information** du menu **…** affiche, dans le panneau latéral, les

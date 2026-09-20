@@ -86,10 +86,10 @@ la place.
 |---|---|---|
 | `admin_media_index` | GET | Page d'accueil de la médiathèque |
 | `admin_media_load_medias` | GET | Contenu d'un dossier + données d'init (ajax) |
-| `admin_media_load_folder` | GET | Détail d'un dossier (ajax) |
+| `admin_media_load_folder` | GET | Détail d'un dossier (ajax) — générée (`urlActions.loadFolder`) mais jamais appelée depuis le front actuel |
 | `admin_media_save_folder` | POST | Crée ou renomme un dossier (ajax) |
 | `admin_media_upload` | POST | Ajoute un média (ajax, fichier en base64) |
-| `admin_media_load_media_edit` | GET | Nom/description d'un média (ajax) |
+| `admin_media_load_media_edit` | GET | Nom/description d'un média (ajax) — générée (`urlActions.loadMediaEdit`) mais jamais appelée non plus : `MediaEdit.vue` pré-remplit son formulaire directement depuis les données déjà chargées par le listing, sans requête dédiée |
 | `admin_media_save_media_edit` | POST | Sauvegarde nom/description d'un média (ajax) |
 | `admin_media_liste_move` | GET | Arborescence des dossiers pour le déplacement (ajax) |
 | `admin_media_move` | POST | Déplace un média ou un dossier (ajax) |

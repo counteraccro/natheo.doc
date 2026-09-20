@@ -28,11 +28,13 @@ que sur le disque si la création physique des dossiers est activée.
 
 ## La corbeille
 
-Mettre un élément à la corbeille (lien **Corbeille** du menu **…**, ou icône
-🗑️ en survol dans certains affichages) ne le supprime pas immédiatement : il
-reste stocké et physiquement présent sur le disque, mais disparaît du
-navigateur de la médiathèque. Mettre un **dossier** à la corbeille y pousse
-aussi, en cascade, tous les dossiers et médias qu'il contient.
+Mettre un élément à la corbeille (lien **Corbeille** du menu **…** en vue
+grille, ou icône 🗑️ directement dans la ligne en vue liste — voir
+[la médiathèque](mediatheque.md#actions-sur-un-élément) pour le détail des
+deux affichages) ne le supprime pas immédiatement : il reste stocké et
+physiquement présent sur le disque, mais disparaît du navigateur de la
+médiathèque. Mettre un **dossier** à la corbeille y pousse aussi, en cascade,
+tous les dossiers et médias qu'il contient.
 
 Le badge sur l'icône 🗑️ de la barre d'outils indique le nombre total
 d'éléments actuellement dans la corbeille (dossiers et médias confondus). Y

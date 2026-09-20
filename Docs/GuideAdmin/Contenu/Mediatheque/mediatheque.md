@@ -49,21 +49,38 @@ haut à droite du bloc, et rappelé en bas de page pour le dossier courant.
 
 ## Actions sur un élément
 
-Depuis le menu **…** de chaque dossier ou média (accessible en grille comme en
-liste), quatre actions sont proposées :
+Quatre actions sont disponibles sur chaque dossier ou média, mais leur accès
+diffère selon l'affichage :
 
 | Action | Effet |
 |---|---|
 | ℹ️ **Information** | Affiche les [informations](medias.md#informations-dun-média) de l'élément (taille, date, URL…) |
 | ✏️ **Éditer** | [Renomme un dossier](dossiers.md#renommer-un-dossier) ou [modifie le nom/la description d'un média](medias.md#modifier-un-média) |
 | ⇄ **Déplacer** | [Déplace](deplacer_et_corbeille.md#déplacer-un-média-ou-un-dossier) l'élément vers un autre dossier |
-| 🗑️ **Corbeille** | [Met l'élément à la corbeille](deplacer_et_corbeille.md#la-corbeille) (suppression réversible) |
+| 🗑️ **Corbeille** | [Met l'élément à la corbeille](deplacer_et_corbeille.md#la-corbeille) |
 
-Chaque action s'ouvre dans un panneau latéral à droite de la médiathèque, sans
-recharger la page.
+- En **vue grille**, ces quatre actions sont regroupées derrière le menu
+  **…** de chaque vignette, et la mise à la corbeille demande une
+  confirmation (Oui / Non) affichée directement sur la vignette avant d'être
+  effectuée.
+- En **vue liste**, les quatre actions sont représentées par des icônes
+  directement visibles dans la colonne *Actions* de chaque ligne — il n'y a
+  pas de menu **…**. La mise à la corbeille y est **immédiate, sans aucune
+  confirmation**, contrairement à la vue grille.
+
+Les panneaux Information/Éditer/Déplacer s'ouvrent dans un panneau latéral à
+droite de la médiathèque, sans recharger la page.
 
 > Mettre un dossier à la corbeille y pousse aussi tous les dossiers et médias
 > qu'il contient.
+
+> **Autre différence entre les deux affichages** : en vue liste, la colonne
+> *Nom* d'un média affiche son nom de fichier physique tel que stocké sur le
+> disque (avec le suffixe aléatoire ajouté à l'upload, ex.
+> `cup-of-coffee-3f9a2b1c….jpg`), alors que la vue grille affiche son titre
+> (ex. `cup-of-coffee.jpg`). De même, la colonne *Type* de la vue liste
+> n'affiche pas l'extension du fichier mais littéralement `media` ou
+> `folder`.
 
 ## Voir aussi
 - [Ajouter, informer et modifier un média](medias.md)
