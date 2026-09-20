@@ -1,6 +1,6 @@
 ---
 title: "Créer et renommer un dossier"
-parent: "Médiathèque"
+parent: "La médiathèque"
 grand_parent: "Guide d'administration"
 nav_order: 2
 ---

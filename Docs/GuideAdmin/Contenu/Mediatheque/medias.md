@@ -1,6 +1,6 @@
 ---
 title: "Ajouter, informer et modifier un média"
-parent: "Médiathèque"
+parent: "La médiathèque"
 grand_parent: "Guide d'administration"
 nav_order: 1
 ---
