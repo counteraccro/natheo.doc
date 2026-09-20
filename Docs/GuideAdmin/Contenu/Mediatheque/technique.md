@@ -55,14 +55,14 @@ dossier supprime tous ses sous-dossiers et médias.
 |---|---|
 | [`Media`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Media/Media.php) | Entité Doctrine (`media`) |
 | [`MediaFolder`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Media/MediaFolder.php) | Entité Doctrine (`media_folder`), arborescence auto-référencée |
-| [`MediaRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Media/MediaRepository.php) | Requêtes : médias d'un dossier, recherche par chemin, comptage corbeille |
-| [`MediaFolderRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Media/MediaFolderRepository.php) | Requêtes : sous-dossiers, arborescence pour le déplacement, comptage corbeille |
+| [`MediaRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Media/MediaRepository.php) | Requêtes : médias d'un dossier, recherche par chemin (via `PathPrefixQueryTrait`), comptage corbeille |
+| [`MediaFolderRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Media/MediaFolderRepository.php) | Requêtes : sous-dossiers, arborescence pour le déplacement, comptage corbeille, recherche d'un dossier par nom au sein d'un même parent (unicité) |
 | [`MediaFolderService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Media/MediaFolderService.php) | Gestion des dossiers : création/renommage/déplacement (BDD + disque), calcul de taille, arborescence |
 | [`MediaService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Media/MediaService.php) (étend `MediaFolderService`) | Gestion des médias : upload, déplacement, corbeille, miniatures |
 | [`MediaController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/MediaController.php) | Routes admin (`/admin/{_locale}/media/...`) |
 | [`MediaTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/MediaTranslate.php) | Construit le tableau de traductions passé au composant Vue `Mediatheque` |
 | [`Thumbnail`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/Thumbnail.php) | Génère une miniature JPEG (200px de large) pour les images (`jpg`, `jpeg`, `png`, `gif`) |
-| [`MediaConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/MediaConst.php) / [`MediaFolderConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/MediaFolderConst.php) | Constantes (types de média, chemins racine, dossier par défaut `natheotheque`) |
+| [`MediaConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/MediaConst.php) / [`MediaFolderConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/MediaFolderConst.php) | Constantes (types de média, extensions/MIME autorisées à l'upload, taille max 20 Mo, chemins racine, dossier par défaut `natheotheque`) |
 
 Le controller est protégé par `#[IsGranted('ROLE_CONTRIBUTEUR')]` (voir la
 hiérarchie des rôles dans `config/packages/security.yaml`), au niveau de la
@@ -86,17 +86,20 @@ la place.
 |---|---|---|
 | `admin_media_index` | GET | Page d'accueil de la médiathèque |
 | `admin_media_load_medias` | GET | Contenu d'un dossier + données d'init (ajax) |
-| `admin_media_load_folder` | GET | Détail d'un dossier (ajax) — générée (`urlActions.loadFolder`) mais jamais appelée depuis le front actuel |
 | `admin_media_save_folder` | POST | Crée ou renomme un dossier (ajax) |
 | `admin_media_upload` | POST | Ajoute un média (ajax, fichier en base64) |
-| `admin_media_load_media_edit` | GET | Nom/description d'un média (ajax) — générée (`urlActions.loadMediaEdit`) mais jamais appelée non plus : `MediaEdit.vue` pré-remplit son formulaire directement depuis les données déjà chargées par le listing, sans requête dédiée |
 | `admin_media_save_media_edit` | POST | Sauvegarde nom/description d'un média (ajax) |
 | `admin_media_liste_move` | GET | Arborescence des dossiers pour le déplacement (ajax) |
 | `admin_media_move` | POST | Déplace un média ou un dossier (ajax) |
-| `admin_media_update_trash` | POST | Met à la corbeille / restaure un élément (ajax) |
+| `admin_media_update_trash` | POST | Met à la corbeille / restaure un élément, en cascade sur ses descendants (ajax) |
 | `admin_media_nb_trash` | GET | Nombre d'éléments dans la corbeille (ajax) |
 | `admin_media_list_trash` | GET | Contenu de la corbeille (ajax) |
-| `admin_media_remove` | POST | Supprime définitivement un élément de la corbeille (ajax) |
+| `admin_media_remove` | POST | Supprime définitivement un élément de la corbeille (ajax) — refuse tout élément dont `trash` n'est pas déjà à `true` |
+
+Deux routes ont été supprimées lors de l'audit du 20/09 : `load-folder` et
+`load-media/{id}` (nom de route `load_media_edit`), générées côté back mais
+jamais appelées par le front (`MediaEdit.vue` se pré-remplit directement
+depuis les données déjà chargées par le listing).
 
 ## Fixtures
 

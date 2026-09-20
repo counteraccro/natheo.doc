@@ -29,17 +29,14 @@ pour les autres formats) avec deux champs facultatifs :
 Cliquer sur **Télécharger** envoie le fichier au serveur ; le panneau se ferme
 automatiquement une fois l'ajout confirmé et la médiathèque se recharge.
 
-Le panneau refuse côté navigateur tout fichier de plus de **20 Mo** (cette
-limite n'est pas revérifiée côté serveur). Le serveur, lui, n'accepte que les
-extensions suivantes : `jpg`, `jpeg`, `png`, `gif`, `webp`, `pdf`, `doc`,
-`docx`, `xls`, `xlsx`, `ppt`, `pptx` — le contenu du fichier est également
-vérifié (type MIME réel), pas seulement son extension.
-
-> **Incohérence relevée** : le sélecteur de fichier du panneau n'annonce que
-> `image/*` (il ne propose donc, dans le navigateur, que des fichiers image),
-> alors que le serveur accepte bien PDF, Word, Excel et PowerPoint. En
-> pratique, un fichier non-image doit être choisi via un sélecteur système qui
-> ne filtre pas par type, ou glissé-déposé directement.
+Le panneau refuse côté navigateur tout fichier de plus de **20 Mo** ; le
+serveur applique la même limite de son côté (rejet si dépassée, même en cas
+de contournement du contrôle client). Le serveur n'accepte que les extensions
+suivantes : `jpg`, `jpeg`, `png`, `gif`, `webp`, `pdf`, `doc`, `docx`, `xls`,
+`xlsx`, `ppt`, `pptx` — le contenu du fichier est également vérifié (type MIME
+réel attendu pour l'extension déclarée), pas seulement son extension. Le
+sélecteur de fichier du panneau filtre sur ce même ensemble de types
+(`image/*` + `.pdf`/`.doc`/`.docx`/`.xls`/`.xlsx`/`.ppt`/`.pptx`).
 
 > **Cas particulier du WebP** : le format `webp` est accepté à l'upload et
 > traité comme une image dans l'aperçu du panneau avant envoi, mais le

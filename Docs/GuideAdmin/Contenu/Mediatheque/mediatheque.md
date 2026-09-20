@@ -74,6 +74,13 @@ droite de la médiathèque, sans recharger la page.
 > Mettre un dossier à la corbeille y pousse aussi tous les dossiers et médias
 > qu'il contient.
 
+> L'action 🗑️ **Corbeille** (menu **…** ou icône directe selon l'affichage)
+> n'est visible que si l'option système *Autoriser la suppression des
+> données* (`OS_ALLOW_DELETE_DATA`) est activée. Si elle est désactivée, les
+> trois autres actions restent disponibles mais il devient impossible de
+> mettre quoi que ce soit à la corbeille depuis cet écran — voir
+> [la corbeille](deplacer_et_corbeille.md#la-corbeille).
+
 > **Autre différence entre les deux affichages** : en vue liste, la colonne
 > *Nom* d'un média affiche son nom de fichier physique tel que stocké sur le
 > disque (avec le suffixe aléatoire ajouté à l'upload, ex.

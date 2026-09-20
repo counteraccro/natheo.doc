@@ -24,8 +24,9 @@ sous-dossier de celui-ci, ou un dossier racine si vous êtes à la racine).
 Le bouton **Créer** valide la création. Le nom saisi est nettoyé
 automatiquement à la sortie du champ : seuls les lettres non accentuées, les
 chiffres et les tirets sont conservés. Deux dossiers ne peuvent pas porter le
-même nom dans toute la médiathèque (l'unicité n'est pas limitée au dossier
-parent) — un message d'erreur s'affiche sinon.
+même nom **au sein d'un même dossier parent** (l'unicité est vérifiée dossier
+par dossier, pas sur toute la médiathèque : deux dossiers différents peuvent
+tout à fait s'appeler pareil) — un message d'erreur s'affiche sinon.
 
 Si l'option système de création physique des dossiers est activée (réglage
 par défaut), un dossier réel est également créé sur le serveur, dans lequel
@@ -41,11 +42,12 @@ ses sous-dossiers et de tous les médias qu'il contient — directement en base
 de données, et sur le disque si la création physique des dossiers est
 activée.
 
-> **Comportement à connaître** : la vérification d'unicité du nom s'applique
-> même en renommage, sans exclure le dossier en cours d'édition. Valider le
-> formulaire **sans changer le nom** déclenche donc l'erreur « nom déjà
-> utilisé » — il faut modifier le nom (même légèrement) pour que
-> l'enregistrement passe.
+> Valider le formulaire **sans changer le nom** est sans effet : le message
+> de succès s'affiche, mais aucune écriture n'est faite (ni en base, ni sur
+> le disque). Ce n'est plus le cas de deux dossiers frères portant le même
+> nom : la vérification d'unicité exclut le dossier en cours d'édition, donc
+> renommer un dossier vers son propre nom actuel ne déclenche pas non plus
+> d'erreur.
 
 ## Voir aussi
 - [Ajouter, informer et modifier un média](medias.md)
