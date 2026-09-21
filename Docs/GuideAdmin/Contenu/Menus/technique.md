@@ -67,7 +67,7 @@ Suppression en cascade : supprimer un `menu` supprime tous ses
 | [`Menu`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Menu/Menu.php) | Entité Doctrine (`menu`) |
 | [`MenuElement`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Menu/MenuElement.php) | Entité Doctrine (`menu_element`), arborescence auto-référencée |
 | [`MenuElementTranslation`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Menu/MenuElementTranslation.php) | Entité Doctrine (`menu_element_translation`) |
-| [`MenuRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Menu/MenuRepository.php) | Requêtes : listing paginé, menus par défaut d'une position, requêtes dédiées à l'API front (voir [Dépendance : l'API front](#dépendance-croisée--lapi-front)) |
+| [`MenuRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Menu/MenuRepository.php) | Requêtes : listing paginé (recherche sur le nom uniquement), menus par défaut d'une position, requêtes dédiées à l'API front (voir [Dépendance : l'API front](#dépendance-croisée--lapi-front)). Contient aussi une méthode `search()` (nom, auteur, label d'élément) **jamais appelée** par aucun controller ou service |
 | [`MenuElementRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Menu/MenuElementRepository.php) | Requêtes : éléments d'un menu par parent |
 | [`MenuService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Menu/MenuService.php) | Listing/Grid, listes position/type, calcul des positions sans défaut, bascule du menu par défaut |
 | [`MenuFactory`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Menu/MenuFactory.php) | Crée un `MenuElement` vide avec ses traductions (une par langue) |
@@ -128,21 +128,53 @@ laissé en place lors de la réécriture Vue 3 de l'écran.
 
 ### Dépendance croisée : l'API front
 
-`ApiMenuController` / `ApiMenuService` exposent les menus au front public
-(recherche par position + URL de page, ou menu par défaut de la position),
-via les mêmes entités que ce module. C'est ce qui détermine réellement quel
-menu s'affiche pour une page donnée : le menu associé explicitement à la
-page (table `page_menu`) prime, sinon le menu par défaut de la position est
-utilisé.
+`ApiMenuController` / `ApiMenuService` (route `/api/{version}/menu/find`,
+voir [Find menu](../../../API/References/find_menu.md)) exposent un menu
+individuel au front public, par `id` ou par `page_slug` + `position` — mais
+**sans aucune notion de menu par défaut** : par slug de page, seul un menu
+**explicitement associé** à cette page pour cette position (table
+`page_menu`) est renvoyé ; sans association, la réponse est vide (erreur
+« Menu non disponible »).
+
+La résolution « menu associé sinon menu par défaut » a en réalité lieu
+ailleurs, côté [Find page](../../../API/References/find_page.md)
+(`ApiPageService::getPageForApi()`, domaine *Pages*, hors périmètre de ce
+module) quand celle-ci est appelée avec l'option `show_menus` : pour chaque
+position sans menu explicitement associé à la page, le menu par défaut de
+cette position est ajouté — **à une exception près** : si la page a un menu
+**explicite** en position *à droite*, le défaut de la position *à gauche*
+n'est **pas** ajouté (et inversement) — en pratique une page ne peut donc
+afficher un menu latéral des deux côtés que si **aucun des deux côtés** n'a
+de menu explicitement associé (auquel cas les deux défauts, s'ils existent,
+s'appliquent). Cette exclusion mutuelle ne concerne que *à gauche* / *à
+droite* : haut de page et pied de page suivent la simple règle « explicite
+sinon défaut », indépendamment l'un de l'autre.
 
 ## Traductions
 
 Toutes les chaînes sont dans le domaine de traduction `menu` :
-`translations/menu+intl-icu.{fr,en,es}.yaml`. Plusieurs clés n'ont plus de
-correspondance dans l'écran actuel — reliquats de traductions non nettoyés
-lors de la réécriture Vue 3 : `menu.form.parent.*` et
-`menu.form.position.column/row.label` (pas de sélecteur de parent ni de
-saisie manuelle de colonne/ligne, uniquement le glisser-déposer), et
-`menu.checkbox.default.menu.false.label` (« Menu classique », jamais
-affiché — le libellé du switch *Menu par défaut* reste fixe quel que soit son
-état).
+`translations/menu+intl-icu.{fr,en,es}.yaml`. De nombreuses clés n'ont plus
+de correspondance dans l'écran actuel — reliquats de traductions non
+nettoyés lors de la réécriture Vue 3 :
+- `menu.form.parent.*`, `menu.form.title.position` et
+  `menu.form.position.column/row.label` : aucun sélecteur de parent ni
+  saisie manuelle de colonne/ligne dans le formulaire d'élément actuel,
+  uniquement le glisser-déposer (voir [Architecture du menu](ajouter_editer.md#architecture-du-menu)).
+- `menu.select.page.*` (label/no.page/info) : traductions générées et
+  transmises au front (racine du tableau, pas dans `menu_form`) mais jamais
+  utilisées — reliquat probable d'un ancien sélecteur de pages associées
+  directement sur l'écran Menu, remplacé depuis par l'onglet *Menu* de
+  l'écran d'édition d'une page (voir [Le menu par défaut](ajouter_editer.md#le-menu-par-défaut)).
+- `menu.help.*` (title/edition/delete/new/disabled) et `menu.select.type`
+  (à ne pas confondre avec `menu.select.type.label`, bien utilisé) :
+  probables reliquats d'une ancienne info-bulle générique sur le bloc
+  Architecture. Les info-bulles réellement affichées aujourd'hui sur les
+  boutons d'un élément (`MenuTree.vue`, attribut `data-tooltip`) sont du
+  français **codé en dur dans le template**, pas passées par le système de
+  traduction.
+- `menu.error.empty.value`, `menu.msg.wait.loading`,
+  `menu.error.no.element`, `menu.msg.no.element.new.menu` : générées mais
+  non consommées par le composant actuel.
+- `menu.checkbox.default.menu.false.label` (« Menu classique », jamais
+  affiché — le libellé du switch *Menu par défaut* reste fixe quel que soit
+  son état).

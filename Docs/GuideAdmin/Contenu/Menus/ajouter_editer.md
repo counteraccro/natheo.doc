@@ -115,9 +115,9 @@ panneau **Édition du menuElement**, à droite de l'arborescence.
 | Champ | Obligatoire | Description |
 |---|---|---|
 | Label | Oui | Texte affiché dans le menu, **par langue** (voir ci-dessous) |
-| Type d'url | Oui | Onglets **Lien interne** / **Lien externe** |
-| Page (lien interne) | Oui si lien interne | Recherche par autocomplétion parmi les pages du site ; l'URL interne résultante s'affiche juste en dessous, en lecture seule |
-| URL externe (lien externe) | Oui si lien externe | Saisie libre |
+| Type d'url | Oui | Onglets **Lien interne** / **Lien externe**, **commun à toutes les langues** de l'élément (voir [Contenu multilingue](#contenu-multilingue)) |
+| Page (lien interne) | Oui si lien interne | Recherche par autocomplétion parmi les pages du site, **commune à toutes les langues** ; l'URL interne résultante s'affiche juste en dessous, en lecture seule (recalculée par langue à partir de l'URL propre à chaque traduction de la page) |
+| URL externe (lien externe) | Oui si lien externe | Saisie libre, **indépendante par langue** |
 | Cible du lien | — | *Même page* (`_self`) ou *Nouvel onglet* (`_blank`) |
 | Élément visible | — | Équivalent à l'action 👁️ **Masquer** de l'arborescence, cascade comprise sur les enfants |
 
@@ -130,8 +130,17 @@ d'un type de lien à l'autre réinitialise le lien courant.
 
 ### Contenu multilingue
 
-Le label et le lien d'un élément sont **indépendants pour chaque langue** du
-site. Une fois un élément sélectionné, des pastilles FR / EN / ES apparaissent
+Le **label** et, pour un lien externe, l'**URL** sont **indépendants pour
+chaque langue** du site. En revanche, le **type de lien** (interne/externe)
+et, pour un lien interne, la **page associée** sont **partagés par
+l'ensemble des langues** de l'élément : basculer vers un lien externe ou
+changer de page cible pendant l'édition d'une langue s'applique aussitôt aux
+autres. Seuls le label et l'URL externe de la langue en cours d'édition sont
+réinitialisés au moment du basculement de type (voir plus haut) — ceux déjà
+saisis pour les autres langues restent inchangés, même si l'onglet actif
+change pour toutes.
+
+Une fois un élément sélectionné, des pastilles FR / EN / ES apparaissent
 en haut du panneau (✓ vert si la langue est valide, ✗ rouge sinon) : cliquer
 dessus (ou utiliser le sélecteur de langue du bloc **Gestion du menu**)
 change la langue en cours d'édition sans perdre les saisies des autres
