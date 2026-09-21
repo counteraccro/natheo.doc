@@ -96,11 +96,6 @@ la place.
 | `admin_media_list_trash` | GET | Contenu de la corbeille (ajax) |
 | `admin_media_remove` | POST | Supprime définitivement un élément de la corbeille (ajax) — refuse tout élément dont `trash` n'est pas déjà à `true` |
 
-Deux routes ont été supprimées lors de l'audit du 20/09 : `load-folder` et
-`load-media/{id}` (nom de route `load_media_edit`), générées côté back mais
-jamais appelées par le front (`MediaEdit.vue` se pré-remplit directement
-depuis les données déjà chargées par le listing).
-
 ## Fixtures
 
 | | |
