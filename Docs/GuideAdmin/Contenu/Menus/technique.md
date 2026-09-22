@@ -138,8 +138,8 @@ individuel au front public, par `id` ou par `page_slug` + `position` — mais
 
 La résolution « menu associé sinon menu par défaut » a en réalité lieu
 ailleurs, côté [Find page](../../../API/References/find_page.md)
-(`ApiPageService::getPageForApi()`, domaine *Pages*, hors périmètre de ce
-module) quand celle-ci est appelée avec l'option `show_menus` : pour chaque
+(`ApiPageService::getPageForApi()`, domaine [Pages](../Pages/seo_tags_menus.md))
+quand celle-ci est appelée avec l'option `show_menus` : pour chaque
 position sans menu explicitement associé à la page, le menu par défaut de
 cette position est ajouté — **à une exception près** : si la page a un menu
 **explicite** en position *à droite*, le défaut de la position *à gauche*
