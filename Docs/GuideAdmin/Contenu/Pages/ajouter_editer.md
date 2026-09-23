@@ -6,11 +6,12 @@ nav_order: 1
 ---
 
 La création et l'édition d'une page se font sur un seul écran, organisé en
-6 onglets : **Informations**, **Contenu**, **SEO**, **Les tags**, **Menus**
-et **Historique**. Cette page décrit l'organisation générale de l'écran et le
-détail de l'onglet **Informations** ; les autres onglets sont détaillés dans
-[Le contenu de la page](contenu.md), [SEO, tags et menus](seo_tags_menus.md)
-et [Historique et aperçu](historique_apercu.md).
+7 onglets : **Informations**, **Contenu**, **SEO**, **Les tags**, **Menus**,
+**Commentaires** et **Historique**. Cette page décrit l'organisation
+générale de l'écran et le détail des onglets **Informations** et
+**Commentaires** ; les autres onglets sont détaillés dans [Le contenu de la
+page](contenu.md), [SEO, tags et menus](seo_tags_menus.md) et [Historique et
+aperçu](historique_apercu.md).
 
 ## Accès
 
@@ -34,9 +35,7 @@ actif :
 - à gauche, l'état de la sauvegarde automatique (voir
   [Historique et aperçu](historique_apercu.md#sauvegarde-automatique)), ou,
   si un ou plusieurs champs sont invalides, un résumé cliquable des erreurs
-  qui est censé vous amener directement à l'onglet et à la langue concernés
-  (en pratique peu fiable pour certaines erreurs, voir la [référence
-  technique](technique.md#résumé-des-erreurs-de-la-barre-de-statut-peu-fiable)) ;
+  qui vous amène directement à l'onglet et à la langue concernés ;
 - à droite, les boutons **Retour** (liste), **Voir le rendu** (aperçu, désactivé
   tant que la page n'a jamais été sauvegardée) et **Sauvegarder** (désactivé
   tant qu'une erreur de validation subsiste).
@@ -81,8 +80,25 @@ utilisée pour une autre page de l'application ») est le même que pour une
 URL réellement en doublon — un champ vide n'a pas de message dédié, c'est un
 raccourci de copie côté CMS plutôt qu'une vraie erreur d'unicité.
 
+## Onglet Commentaires
+
+Permet de paramétrer les commentaires pour cette page spécifiquement :
+
+| Champ | Description |
+|---|---|
+| Autoriser les commentaires sur cette page *(interrupteur)* | Ouvre ou ferme les commentaires pour la page |
+| Statut par défaut du commentaire à sa soumission | Statut appliqué à tout nouveau commentaire déposé sur cette page (voir les [statuts de modération](../Commentaires/listing.md)) |
+
+Un encart rappelle le paramétrage **global** des commentaires (module
+[Commentaires](../Commentaires/listing.md), options système) : celui-ci est
+prioritaire sur la configuration de la page — par exemple, si la
+configuration globale impose « en attente de validation », les commentaires
+de la page restent en attente de validation même si son propre statut par
+défaut est réglé sur « validé ».
+
 ## Voir aussi
 - [Le contenu de la page](contenu.md)
 - [SEO, tags et menus](seo_tags_menus.md)
 - [Historique et aperçu](historique_apercu.md)
+- [Commentaires](../Commentaires/listing.md)
 - [Référence technique](technique.md)

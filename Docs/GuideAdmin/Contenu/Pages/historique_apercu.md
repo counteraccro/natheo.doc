@@ -55,18 +55,9 @@ comparer deux versions entre elles (pas de « diff »).
 ## Aperçu
 
 Le bouton **Voir le rendu**, toujours visible dans la barre de statut, ouvre
-dans un nouvel onglet un aperçu de la page dans la langue actuellement
-sélectionnée, avec un sélecteur pour changer de langue. Il est désactivé
-tant que la page n'a jamais été sauvegardée (elle n'a pas encore d'identifiant).
-
-> ⚠️ **Point relevé lors de la rédaction de cette page (2026-09-22)** :
-> l'écran d'aperçu tel que trouvé dans le code affiche uniquement le bandeau
-> et l'avertissement « Ceci est une préview... », sans aucun contenu de
-> page — le composant Vue attendu par le template
-> (`Admin/Content/Page/PagePreview`) est introuvable dans le code source
-> (seul `Admin/Content/Page/Page` existe). Aucune erreur n'est visible côté
-> utilisateur, la page reste simplement vide. À vérifier avant de s'appuyer
-> sur cette fonctionnalité.
+dans un nouvel onglet la page réelle du site public, dans la langue
+actuellement sélectionnée dans l'éditeur. Il est désactivé tant que la page
+n'a jamais été sauvegardée (elle n'a pas encore d'identifiant).
 
 ## Voir aussi
 - [Créer et éditer une page](ajouter_editer.md)

@@ -147,78 +147,32 @@ couple mise en page (`render`) + `renderBlock`, réordonnés uniquement par
 reliquat, probablement prévu pour un tri plus fin au sein d'un même bloc qui
 n'a jamais été implémenté côté V2.
 
-### `is_open_comment` / `rule_comment` non éditables depuis l'éditeur
-
-L'entité `Page` porte `isOpenComment`/`ruleComment` (paramétrage des
-commentaires par page), et `PagePopulate::populatePage()` sait bien lire ces
-deux clés (avec repli sur une clé `openComment` si `isOpenComment` est
-absente). Le controller `add()` fournit même `options_commentaire` et
-`list_comments_status` au front, et les traductions (`page.onglet.comments`,
-`page.page_comment.*`) existent toujours dans le fichier de langue. Mais
-**aucun onglet « Commentaires » n'est présent** dans `Page.vue` (seuls les 6
-onglets Informations/Contenu/SEO/Tags/Menus/Historique le sont) : ces deux
-champs ne sont modifiables nulle part dans l'éditeur V2, ils gardent
-simplement la valeur donnée à la création (`isOpenComment: true`,
-`ruleComment` = statut « en attente de validation »). Reliquat d'une V1 avec
-un onglet « Commentaires » par page, à garder en tête si ce paramétrage
-semble manquant.
-
-### Recherche du Grid : le filtre de langue est perdu
-
-`PageRepository::getAllPaginate()` construit la requête avec
-`->where('page_translation.locale = :locale')`, puis, si un terme de
-recherche est fourni, rappelle **`->where(...)`** (au lieu de `andWhere`)
-pour les conditions de recherche sur le titre/les tags. En Doctrine,
-`where()` **remplace** la clause précédente : dès qu'une recherche est
-saisie dans le [listing](listing.md), le filtre de langue disparaît de la
-requête — la pagination peut alors renvoyer plusieurs fois la même page (une
-fois par traduction) et faire correspondre la recherche sur un titre dans
-une langue différente de celle affichée. Comportement observé dans le code,
-pas corrigé ici.
-
-### Résumé des erreurs de la barre de statut peu fiable
+### Résumé des erreurs de la barre de statut
 
 Chaque onglet fait remonter ses erreurs à `Page.vue` via l'évènement
 `update:section-errors`, sous une clé de section : `PageInformation.vue`
-utilise la clé **`content`**, `PageContent.vue` (blocs) la clé **`blocks`**,
-`PageSeo.vue` la clé **`seo`**. Ce triplet pilote correctement le point rouge
-affiché sur chaque onglet (Informations/Contenu/SEO) : ce mécanisme-là est
-fiable et documenté plus haut dans [Créer et éditer une
-page](ajouter_editer.md).
+utilise la clé **`information`**, `PageContent.vue` (blocs) la clé
+**`content`**, `PageSeo.vue` la clé **`seo`**. Ce triplet pilote à la fois le
+point rouge affiché sur chaque onglet concerné (Informations/Contenu/SEO,
+voir [Créer et éditer une page](ajouter_editer.md)) et, de façon cohérente,
+le résumé cliquable de la barre de statut (bas de l'écran) :
+`PageStatusBar.sectionLabels` associe chaque clé au bon libellé traduit
+(`onglet_information`/`onglet_content`/`onglet_seo`), et
+`Page.vue::handleGoToError()` route chaque clé vers le bon onglet
+(`information` → `nav-0-tab`, `content` → `nav-1-tab`, `seo` → `nav-2-tab`).
 
-En revanche, le résumé cliquable de la barre de statut (bas de l'écran) s'appuie
-sur deux mappings distincts et incohérents avec ces clés :
-- `PageStatusBar.sectionLabels` (`assets/vue/Components/Page/PageStatusBar.vue`)
-  ne connaît que `content` → `translate.onglet_content` et `seo` →
-  `translate.onglet_seo`. Or `translate.onglet_content` vaut **« Contenu »**
-  (`page.onglet.content`), alors que la clé `content` correspond en réalité
-  aux erreurs de l'onglet **Informations** (titre/URL) : une erreur de titre
-  vide s'affiche donc dans la barre de statut sous le libellé « Contenu »
-  au lieu de « Informations ». Pour la clé `blocks` (les vraies erreurs de
-  l'onglet Contenu, ex. aucun bloc rempli), aucun libellé n'est défini : le
-  résumé affiche la clé technique brute **« blocks »**, non traduite.
-- La navigation au clic (`Page.vue::handleGoToError()`) utilise un troisième
-  mapping, encore différent : `{ content: 'nav-0-tab', seo: 'nav-1-tab' }`.
-  `nav-1-tab` est en réalité l'onglet **Contenu** (`nav-2-tab` est le vrai id
-  de l'onglet SEO) : cliquer sur une erreur SEO dans la barre de statut
-  ouvre donc l'onglet Contenu au lieu de l'onglet SEO. Et comme `blocks`
-  n'a pas d'entrée dans ce mapping, cliquer sur une erreur « aucun bloc
-  rempli » ne fait rien (aucun onglet ne s'ouvre).
-- Seule la clé `content` (Informations) fonctionne correctement de bout en
-  bout pour la navigation (`nav-0-tab` est bien l'onglet Informations),
-  même si son libellé affiché reste erroné.
+### Route `admin_page_preview` : code mort
 
-`PageStatusBar.sectionTabIds` (un quatrième mapping, `{ content: 'nav-0-tab',
-seo: 'nav-2-tab' }`, cette fois correct) est calculé mais jamais utilisé nulle
-part dans le composant : code mort.
-
-### Aperçu : composant Vue manquant
-
-Voir la note dans [Historique et aperçu](historique_apercu.md#aperçu) :
-`templates/admin/content/page/preview.html.twig` appelle
-`vue_component('Admin/Content/Page/PagePreview', ...)`, mais seul
-`Admin/Content/Page/Page` existe sous `assets/vue/controllers/Admin/Content/Page/`.
-L'écran d'aperçu se charge sans erreur visible, simplement vide de contenu.
+Le bouton **Voir le rendu** (voir [Historique et aperçu](historique_apercu.md#aperçu))
+n'appelle plus cette route : `Page.vue::openPreview()` construit directement
+l'URL publique de la page (`{OS_ADRESSE_SITE}/{locale}/{categorie}/{url}`) et
+l'ouvre dans un nouvel onglet (`window.open`). La route `admin_page_preview`
+(`PageController::preview()`, template `templates/admin/content/page/preview.html.twig`,
+qui appelle `vue_component('Admin/Content/Page/PagePreview', ...)`) reste
+définie côté backend mais n'est plus appelée par aucun bouton de
+l'interface — probable reliquat d'un ancien écran d'aperçu dédié (le
+composant Vue `PagePreview` attendu par le template n'existe d'ailleurs plus
+sous `assets/vue/controllers/Admin/Content/Page/`, seul `Page.vue` y est présent).
 
 ### Routes principales
 
@@ -240,42 +194,34 @@ L'écran d'aperçu se charge sans erreur visible, simplement vide de contenu.
 | `admin_page_update_disabled` | PUT | Active/désactive une page (ajax) |
 | `admin_page_delete` | DELETE | Supprime une page et son historique (ajax) |
 | `admin_page_switch_Landing_page` | PUT | Définit la page comme landing page (ajax) |
-| `admin_page_preview` | GET | Écran d'aperçu (voir ci-dessus) |
+| `admin_page_preview` | GET | Ancien écran d'aperçu, plus appelé par le bouton **Voir le rendu** (voir ci-dessus, code mort) |
 
 ## Frontend
 
 | Composant | Rôle |
 |---|---|
-| `Admin/Content/Page/Page` (`assets/vue/controllers/Admin/Content/Page/Page.vue`) | Point d'entrée, monté via `vue_component()` ; gère le chargement, les 6 onglets, la barre de statut et la sauvegarde |
+| `Admin/Content/Page/Page` (`assets/vue/controllers/Admin/Content/Page/Page.vue`) | Point d'entrée, monté via `vue_component()` ; gère le chargement, les 7 onglets, la barre de statut et la sauvegarde |
 | `PageInformation` | Onglet **Informations** (voir [créer et éditer une page](ajouter_editer.md)) |
 | `PageContent` + `PageContentBlock` | Onglet **Contenu** : mise en page et blocs (voir [le contenu de la page](contenu.md)) |
 | `PageSeo` | Onglet **SEO** |
 | `PageTag` | Onglet **Les tags** |
 | `PageMenu` | Onglet **Menus** |
+| `PageComment` | Onglet **Commentaires** : ouverture des commentaires (`openComment`) et statut par défaut à la soumission (`ruleComment`) pour cette page, avec rappel du paramétrage global des commentaires |
 | `PageHistory` | Onglet **Historique** |
 | `PageStatusBar` | Barre de statut fixe : sauvegarde automatique, résumé d'erreurs, boutons Retour/Aperçu/Sauvegarder |
 | `Admin/GenericGrid` | Composant Grid générique réutilisé pour le listing — voir [Tableau GRID](../../../Architecture/composants/grid.md) |
 | `MarkdownEditor` | Éditeur utilisé pour un bloc de contenu de type Texte — voir [Éditeur Markdown](../../Modules/editeur_markdown.md) |
 | `MediathequeModale` | Sélecteur d'image pour l'image d'entête — voir [La médiathèque](../Mediatheque/mediatheque.md) |
 
-Chaque onglet (sauf Tags/Menus) fait remonter ses erreurs de validation au
-composant `Page` via un évènement `update:section-errors`, agrégées ensuite
-par `PageStatusBar` pour construire le résumé d'erreurs et désactiver le
-bouton **Sauvegarder**.
+Chaque onglet (sauf Tags/Menus/Commentaires) fait remonter ses erreurs de
+validation au composant `Page` via un évènement `update:section-errors`,
+agrégées ensuite par `PageStatusBar` pour construire le résumé d'erreurs et
+désactiver le bouton **Sauvegarder**.
 
 ## Traductions
 
 Toutes les chaînes (labels, messages de confirmation, aide) sont dans le
 domaine de traduction `page` : `translations/page+intl-icu.{fr,en,es}.yaml`.
-
-Deux clés sont orphelines : `page.page_content_block.btn.change_content`
-(« Changer ») et `page.page_content_block.btn.move_content` (« Déplacer »),
-construites par `PageTranslate.php` et envoyées au composant Vue
-(`translate.page_content.page_content_block.btn_change_content`/
-`btn_move_content`), mais jamais lues par `PageContentBlock.vue` : seuls le
-bouton **Supprimer** et les 4 flèches de réordonnancement existent
-réellement dans le template. Reliquat, comme d'autres clés orphelines déjà
-notées sur d'autres domaines (Menus, Faq).
 
 Dans `PageService::getAllFormatToGrid()`, la variable locale `$isDisabled`
 (pensée pour afficher un badge « désactivée » à côté du numéro dans le Grid,
