@@ -29,13 +29,6 @@ ne propose pas de bouton de validation dédié). Vous êtes redirigé vers la pa
 > FAQ et les utilisateurs sont eux aussi cherchés, simplement absents du
 > texte.
 
-> ⚠️ Un critère contenant un caractère **`/`** fait échouer silencieusement
-> la recherche sur les cinq onglets (chacun affiche alors « Aucun résultat »,
-> sans message d'erreur). Un correctif est en cours côté code (branche
-> `bug/B-335-fix-recherche-globale`) mais ne suffit pas à lui seul sur cet
-> environnement de développement — voir le détail technique dans la
-> [référence technique](technique.md#points-notés-comportements-réels-du-code-pas-des-stubs).
-
 ## La page de résultats
 
 ![Résultats de recherche, onglet Pages](files/listing_pages.png)
