@@ -49,14 +49,6 @@ la même signature.
 | [`TagRepository::search()`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Tag/TagRepository.php) | Libellé du tag (langue courante) |
 | [`UserRepository::search()`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/System/UserRepository.php) | Login, e-mail, prénom, nom (paramètre `locale` reçu mais inutilisé, un utilisateur n'étant pas traduit) |
 
-> ⚠️ **Correction (2026-09-23)** : ces deux méthodes avaient été notées à
-> tort comme du code mort lors de la rédaction initiale des domaines
-> [Menus](../Contenu/Menus/technique.md) et [Faq](../Contenu/Faq/technique.md)
-> (« jamais appelée par aucun controller/service »). Elles sont en réalité
-> **le seul point d'entrée de la recherche globale** pour ces deux entités —
-> la recherche transverse n'avait simplement pas été identifiée comme
-> appelante lors de ces relectures. Corrigé dans les deux pages concernées.
-
 ### Formatage et mise en avant
 
 `GlobalSearchService::formatResult()` transforme chaque entité trouvée en un
