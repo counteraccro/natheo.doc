@@ -43,7 +43,7 @@ vue d'ensemble de toutes les tables du CMS.
 |---|---|
 | [`Tag`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Tag/Tag.php) | Entité Doctrine (`tag`) |
 | [`TagTranslation`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Tag/TagTranslation.php) | Entité Doctrine (`tag_translation`) |
-| [`TagRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Tag/TagRepository.php) | Requêtes : pagination/tri (`getAllPaginate`), recherche pour l'auto-complete (`searchByName`) |
+| [`TagRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Tag/TagRepository.php) | Requêtes : pagination/tri (`getAllPaginate`), recherche pour l'auto-complete (`searchByName`). Contient aussi une méthode `search()` (libellé) utilisée par la [recherche globale](../../RechercheGlobale/technique.md) |
 | [`TagService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Tag/TagService.php) | Logique métier : formatage pour le Grid, recherche, création à la volée (`newTagByNameAndLocale`) |
 | [`TagController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/TagController.php) | Routes admin (`/admin/{_locale}/tag/...`) |
 | [`TagTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/TagTranslate.php) | Construit le tableau de traductions passé au composant Vue `TagForm` |
