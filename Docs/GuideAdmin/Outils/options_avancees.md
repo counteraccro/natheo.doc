@@ -54,7 +54,7 @@ Les deux actions ci-dessous ouvrent une modale de confirmation avant d'agir :
 | **Réinstaller les données pré-installées** | Route `reset-data` (POST) : `dropDatabase()` → `createDatabase()` → `createSchema()` → `loadFixtures()` — la base est recréée avec les données définies lors de l'installation |
 | **Réinitialiser mon site** | Route `reset-database` (POST) : `dropDatabase()` seul, puis redirection vers `/`, qui renvoie vers l'écran d'installation puisque la base n'existe plus |
 
-Chaque bouton envoie son propre jeton CSRF, distinct l'un de l'autre (`csrf_token('reset_data')` /
+Chaque bouton envoie son propre jeton CSRF, distinct l'un de l'autre (`csrf_token('reset_data')`
 `csrf_token('reset_database')`, générés séparément côté Twig et revérifiés côté serveur chacun contre son propre id
 : `isCsrfTokenValid('reset_data', ...)` pour la route `reset-data`, `isCsrfTokenValid('reset_database', ...)` pour
 `reset-database`).
