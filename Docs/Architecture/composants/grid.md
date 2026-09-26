@@ -267,7 +267,7 @@ syntaxique, copiable en un clic, et peut être enregistrée en tant que
 requête personnalisée par un `ROLE_SUPER_ADMIN` (route
 `admin_sql_manager_save_generic_query`, ajoutée automatiquement par
 `GridService::addAllDataRequiredGrid()`) — voir le
-[Gestionnaire SQL](../../GuideAdmin/Outils/gestionnaire_sql.md) *(page 🚧, à rédiger)*.
+[Gestionnaire SQL](../../GuideAdmin/Outils/gestionnaire_sql.md#sauvegarder-la-requête-sql-générée-par-un-tableau).
 
 ## Traductions
 
