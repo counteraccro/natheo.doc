@@ -1,6 +1,8 @@
-## Authentification
-
-[Index](../../../index.md) > [API](../index.md) > User authentication
+---
+title: "Authentification utilisateur"
+parent: "API"
+nav_order: 2
+---
 
 Permet d'authentifier un utilisateur, si tout est ok renvoi un user token pour identifier l'utilisateur
 Ce token à une date de validité défini par l'option ``OS_API_TIME_VALIDATE_USER_TOKEN``

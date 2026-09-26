@@ -1,6 +1,8 @@
-## Liste des commentaires en fonction d'une page
-
-[Index](../../../index.md) > [API](../index.md) > Liste des commentaires en fonction d'une page
+---
+title: "Liste des commentaires en fonction d'une page"
+parent: "API"
+nav_order: 6
+---
 
 Retourne une liste de commentaires paginée en fonction de l'id ou du slug de la page et de la langue
 

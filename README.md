@@ -13,7 +13,9 @@
 </div>
 
 > [!WARNING]  
-> La documentation actuelle est basé sur la V1 du CMS, elle sera mise à jour plus tard pour correspondre à la V2
+> La documentation est en cours de refonte pour correspondre à la V2 du CMS.
+> L'arborescence a été réorganisée ; certaines pages sont encore des pages-jalons
+> (🚧) en attente de rédaction — voir la [roadmap](Docs/Projet/roadmap.md).
 
 ---
 
@@ -109,17 +111,15 @@ Les contributions pour améliorer la documentation sont les bienvenues !
 
 ### Structure des fichiers
 ```
-natheo.doc/
-├── docs/
-│   ├── installation/
-│   ├── guide-utilisateur/
-│   ├── documentation-technique/
-│   ├── design-system/
-│   ├── modules/
-│   └── tutoriels/
-├── assets/
-│   ├── images/
-│   └── styles/
+natheo_doc/
+├── Docs/
+│   ├── Demarrage/          # Installation, configuration, bases de données
+│   ├── Architecture/       # Documentation technique (stack, backend, frontend, composants)
+│   ├── GuideAdmin/         # Documentation fonctionnelle du back-office
+│   ├── Front/              # Documentation de la partie publique du site
+│   ├── API/                # Documentation des API
+│   └── Projet/             # Description générale, roadmap, changelog, versions
+├── index.md
 └── _config.yml
 ```
 

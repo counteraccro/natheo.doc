@@ -1,12 +1,14 @@
-## Find menu
-
-[Index](../../../index.md) > [API](../index.md) > Listing page catégorie
+---
+title: "Listing pages par catégorie"
+parent: "API"
+nav_order: 9
+---
 
 Permet de retourner un listing de pages par catégorie en fonction de différents paramètres
 
 
 
-Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+Pour plus d'information sur les références globales, [cliquez ici](../../Architecture/references_globales.md)
 
 Paramètres attendus :
 

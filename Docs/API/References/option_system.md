@@ -1,6 +1,8 @@
-## Options Systems
-
-[Index](../../../index.md) > [API](../index.md) > Options Systems
+---
+title: "Options système (API)"
+parent: "API"
+nav_order: 11
+---
 
 Permet de récupérer une liste ou une option system en particulier
 
