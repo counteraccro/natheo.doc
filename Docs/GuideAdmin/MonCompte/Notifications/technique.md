@@ -47,9 +47,10 @@ titre/contenu :
 | Clé | Catégorie | Déclencheur | Destinataire(s) |
 |---|---|---|---|
 | `NOTIFICATION_WELCOME` | admin | Création d'un compte par un administrateur ([`UserController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/System/UserController.php)) | Le nouvel utilisateur |
-| `NOTIFICATION_SELF_DISABLED` | admin | Un utilisateur désactive lui-même son compte ([`UserController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/System/UserController.php)) | Les super-administrateurs |
-| `NOTIFICATION_SELF_DELETE` / `NOTIFICATION_SELF_ANONYMOUS` | admin | Un utilisateur supprime / anonymise lui-même son compte ([`UserController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/System/UserController.php)) | Les super-administrateurs |
-| `NOTIFICATION_DUMP_SQL` | SQL | Un dump SQL demandé est terminé ([`DumpSqlHandler`](https://github.com/counteraccro/natheo/blob/master/src/MessageHandler/Tools/DumpSqlHandler.php)) | L'utilisateur ayant lancé la sauvegarde |
+| `NOTIFICATION_SELF_DISABLED` | admin | Un utilisateur désactive lui-même son compte ([`UserController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/System/UserController.php)) | Le compte fondateur (voir note ci-dessous) |
+| `NOTIFICATION_SELF_DELETE` / `NOTIFICATION_SELF_ANONYMOUS` | admin | Un utilisateur supprime / anonymise lui-même son compte ([`UserController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/System/UserController.php)) | Le compte fondateur (voir note ci-dessous) |
+| `NOTIFICATION_DUMP_SQL` | SQL | Un dump SQL demandé s'est terminé avec succès ([`DumpSqlHandler`](https://github.com/counteraccro/natheo/blob/master/src/MessageHandler/Tools/DumpSqlHandler.php)) | L'utilisateur ayant lancé la sauvegarde |
+| `NOTIFICATION_DUMP_SQL_ERROR` | SQL | La génération d'un dump SQL a échoué ([`DumpSqlHandler`](https://github.com/counteraccro/natheo/blob/master/src/MessageHandler/Tools/DumpSqlHandler.php)) | L'utilisateur ayant lancé la sauvegarde |
 | `NOTIFICATION_NEW_FONDATEUR` | admin | Fin de l'installation ([`InstallationService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Installation/InstallationService.php)) | Le compte fondateur |
 | `new_comment` | comment | Nouveau commentaire déposé ([`ApiCommentService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Api/Content/ApiCommentService.php)) | L'auteur (propriétaire) de la page commentée |
 

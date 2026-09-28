@@ -112,4 +112,4 @@ elle n'affiche aucune donnée pour le moment.
 ## Voir aussi
 - [Notifications](Notifications/notifications.md)
 - [Options système](../Systeme/options.md)
-- [Gestion des utilisateurs](../Systeme/utilisateurs.md)
+- [Gestion des utilisateurs](../Systeme/Utilisateurs/listing.md)
