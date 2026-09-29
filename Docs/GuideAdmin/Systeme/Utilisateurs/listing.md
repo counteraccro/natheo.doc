@@ -51,8 +51,7 @@ Deux affichages particuliers dans la liste, décrits par le bandeau d'aide (icô
 
 ### Suppression vs anonymisation
 
-Le comportement du bouton de suppression dépend de deux options système (page *Options système*, non encore
-rédigée) :
+Le comportement du bouton de suppression dépend de deux options système (voir [Options système](../options.md#administration)) :
 
 | `Autoriser la suppression de données` | `Remplacer par un compte anonyme` | Résultat |
 |---|---|---|
