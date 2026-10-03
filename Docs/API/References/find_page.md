@@ -1,6 +1,8 @@
-## Find menu
-
-[Index](../../../index.md) > [API](../index.md) > Find page
+---
+title: "Find page"
+parent: "API"
+nav_order: 4
+---
 
 Permet de renvoyer une page formatée en fonction de différents paramètres.
 
@@ -8,7 +10,7 @@ Si le User-Token est présent dans le header et valide, permet de voir une page 
 
 Si slug n'est pas précisé ou vide renvoi la landingPage si elle existe
 
-Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+Pour plus d'information sur les références globales, [cliquez ici](../../Architecture/references_globales.md)
 
 Paramètres attendus :
 

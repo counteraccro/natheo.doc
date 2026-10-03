@@ -1,0 +1,806 @@
+<style>
+  /* Mise en page façon back-office : sidebar collée à gauche, contenu fluide.
+     On ne touche à rien avant le point où just-the-docs se met lui-même à
+     centrer sidebar+contenu (son breakpoint "lg" = content-width + nav-width,
+     soit 66.5rem par défaut) : avant ça, son mode "md" (sidebar fixe déjà
+     collée à gauche) est correct tel quel, pas besoin d'intervenir plus tôt. */
+  @media (min-width: 66.5rem) {
+    .side-bar {
+      width: 18rem !important; /* un peu plus large que le CMS (256px) pour les libellés longs */
+      left: 0 !important;
+    }
+
+    .main {
+      margin-left: 18rem !important;
+    }
+  }
+
+  .main,
+  .main-content {
+    max-width: none !important; /* .main a lui aussi un max-width fixe dans le thème,
+                                    pas seulement .main-content : sans ce correctif,
+                                    la page ne devient jamais vraiment fluide */
+  }
+
+  .side-bar,
+  .site-header,
+  .site-nav,
+  .site-footer {
+    border: 0 !important; /* pas de ligne de séparation entre le titre et le menu */
+  }
+
+  /* Titre "Nathéo CMS V2" en haut de la sidebar (le thème le colore avec
+     $body-heading-color, sombre chez nous → invisible sur fond sombre) */
+  .side-bar .site-title {
+    color: #fff !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* Items de nav façon "pilule" (back-office Nathéo CMS). Le survol est posé
+     sur la LIGNE entière (li), pas sur le lien seul : le bouton d'ouverture
+     du sous-menu partage ainsi le même survol que le lien, au lieu d'avoir
+     son propre fond qui se chevauchait avec celui du lien. */
+  .side-bar .nav-list-item {
+    border-radius: 8px;
+    margin: 2px 1rem;
+  }
+
+  .side-bar .nav-list-item .nav-list-item {
+    margin: 2px 1rem; /* même largeur de pilule que le niveau 1 */
+  }
+
+  .side-bar .nav-list-link,
+  .side-bar .nav-list-expander {
+    background-image: none !important;
+    border-radius: 8px;
+  }
+
+  .side-bar .nav-list-link {
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0.7rem 0.75rem !important;
+    color: #e5e7eb !important; /* couleur par défaut identique à tous les niveaux */
+    font-size: 1rem !important;
+  }
+
+  .side-bar .nav-list-item .nav-list .nav-list-link {
+    padding: 0.55rem 0.75rem 0.55rem 1.75rem !important; /* indentation par le texte, pas par la pilule */
+    font-size: 0.9rem !important;
+  }
+
+  /* Survol = gris, page courante = violet plein (comme le CMS) */
+  .side-bar .nav-list-item:hover > .nav-list-link,
+  .side-bar .nav-list-item:hover > .nav-list-expander {
+    background-color: #374151 !important;
+    color: #fff !important;
+  }
+
+  .side-bar .nav-list-link.active {
+    background-color: #8b5cf6 !important;
+    color: #fff !important;
+  }
+
+  .side-bar .nav-list-expander {
+    color: #e5e7eb !important;
+  }
+
+  .side-bar .nav-list-item > .nav-list {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* laisse de la place pour le chevron sur les items dépliables */
+  .side-bar .nav-list-item:has(> .nav-list-expander) > .nav-list-link {
+    padding-right: 2.5rem !important;
+  }
+
+  /* Champ de recherche façon back-office : bordure + fond blanc visibles,
+     au lieu de la simple ombre portée par défaut de just-the-docs */
+  .search {
+    padding: 0 1rem !important; /* évite que le champ touche les bords de l'entête */
+  }
+
+  .search-input-wrap {
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    border: 1px solid #d1d5db;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important; /* centre le champ dans l'espace disponible de l'entête */
+    height: 2.5rem !important; /* au lieu de 100% de l'entête, qui colle le champ aux bords */
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+
+  .search-input {
+    border: none !important;
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    color: #111827 !important;
+  }
+
+  .search-input:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px #8b5cf6 !important;
+  }
+
+  .search-icon {
+    color: #9ca3af !important;
+  }
+
+  /* Panneau de résultats de recherche : le thème utilise $feedback-color
+     (une teinte dérivée de la sidebar sombre) pour le survol des résultats,
+     ce qui jure sur un panneau blanc — on harmonise avec le reste (gris clair
+     au survol, coins arrondis à 8px, léger espace sous le champ). */
+  .search-results {
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0.4rem auto 0 !important; /* même centrage que le champ juste au-dessus */
+    border: 1px solid #d1d5db;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08) !important;
+  }
+
+  .search-result:hover,
+  .search-result.active {
+    background-color: #f3f4f6 !important;
+  }
+
+  .search-result-highlight {
+    color: #8b5cf6;
+  }
+
+  /* Lien GitHub de l'entête : le style "site-button" par défaut de
+     just-the-docs est pensé pour la sidebar sombre (bouton menu mobile),
+     pas pour un lien sur fond blanc — d'où le hover sombre "horrible" ici.
+     On le restreint au lien GitHub et on le refait en lien classique. */
+  .aux-nav .site-button {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    gap: 0.4em;
+    padding: 0.4em 0.75em;
+    border-radius: 6px;
+    color: #6b7280;
+  }
+
+  .aux-nav .site-button:hover {
+    background-image: none !important;
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+  }
+
+  .aux-nav .site-button .gh-icon {
+    width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
+  }
+
+  /* Bloc "Pages de cette section" : un unique conteneur (voir la surcharge
+     de components/children_nav.html), sorti de main-content-wrap par le
+     script ci-dessous et posé en position fixe par rapport à la fenêtre —
+     complètement indépendant du flux du contenu, ne peut plus traîner en
+     bas de page ni être comprimé par lui. */
+  .page-toc {
+    box-sizing: border-box;
+    width: 260px;
+    padding: 0.75rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+  }
+
+  @media (min-width: 66.5rem) {
+    .page-toc {
+      position: fixed;
+      top: 5.5rem;
+      right: 1.5rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
+      z-index: 5;
+      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+    }
+  }
+
+  @media (max-width: 66.4rem) {
+    .page-toc {
+      margin: 2rem 0;
+    }
+  }
+
+  /* Le bloc étant en position fixe (donc hors du flux), le contenu ne lui
+     réserve pas de place tout seul : on l'ajoute nous-même, uniquement sur
+     les pages qui ont ce bloc (classe posée par le script ci-dessous), pour
+     que le texte ne passe pas dessous. Ailleurs, le contenu reste fluide. */
+  @media (min-width: 66.5rem) {
+    .main-content-wrap.has-page-toc {
+      padding-right: 300px;
+      box-sizing: border-box;
+    }
+  }
+
+  .page-toc h2.text-delta {
+    margin: 0 0 0 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+  }
+
+  .page-toc ul {
+    padding: 0 !important;
+    margin: 0.4rem 0 0 !important;
+    list-style: none !important;
+    list-style-type: none !important;
+  }
+
+  .page-toc li {
+    padding: 0 !important;
+    margin: 2px 0 !important;
+    list-style: none !important;
+    list-style-type: none !important;
+  }
+
+  .page-toc li::marker {
+    content: none;
+  }
+
+  .page-toc li::before {
+    content: none !important;
+  }
+
+  .page-toc a {
+    display: block;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    color: #374151;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .page-toc a:hover {
+    background-color: #f3f4f6; /* même logique de survol que la recherche/le lien GitHub */
+  }
+
+  /* Icônes de nav façon back-office Nathéo CMS (nav_icon en front-matter) */
+  .nav-list-link {
+    display: flex !important;
+    flex-wrap: nowrap !important; /* icône + libellé restent sur la même ligne */
+    align-items: center !important;
+  }
+
+  .nav-label {
+    display: inline-block;
+    flex: 1 1 auto;
+    min-width: 0; /* autorise le texte à se réduire/passer à la ligne DANS son propre bloc plutôt que de pousser l'icône */
+    line-height: 1.2;
+  }
+
+  .nav-icon {
+    display: block; /* évite les décalages liés au rendu "inline" par défaut d'un svg */
+    width: 1.05em;
+    height: 1.05em;
+    margin-right: 0.55em;
+    flex-shrink: 0 !important;
+    opacity: 0.85;
+  }
+
+  /* just-the-docs génère le fil d'Ariane en réutilisant le HTML du menu
+     (découpage de la chaîne autour de <a class="nav-list-link">) : notre
+     icône s'y retrouve donc capturée aussi. On la masque à cet endroit,
+     le fil d'Ariane n'a jamais été prévu pour en afficher. */
+  .breadcrumb-nav-list-item .nav-icon {
+    display: none !important;
+  }
+
+  /* Captures d'écran : hauteur uniforme + clic pour agrandir. La bordure
+     n'entoure que l'image elle-même (largeur naturelle à cette hauteur),
+     centrée dans la page — pas une bordure pleine largeur. */
+  .main-content img {
+    display: block;
+    height: 300px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: zoom-in;
+    margin: 1.25rem auto;
+  }
+
+  #img-lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    padding: 3rem;
+  }
+
+  #img-lightbox-overlay.is-open {
+    display: flex;
+  }
+
+  #img-lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Rangée de captures d'écran côte à côte, chacune avec sa légende alignée
+     juste en dessous (au lieu d'empiler des images pleine largeur). */
+  .screenshot-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.25rem 0;
+  }
+
+  .screenshot-row figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .screenshot-row img {
+    margin: 0 0 0.5rem 0 !important; /* remplace la marge verticale par défaut des images */
+  }
+
+  .screenshot-row figcaption {
+    max-width: 280px;
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: center;
+  }
+
+  /* Changelog : une carte par entrée, avec badges Issue/PR au lieu de liens bruts. */
+  .changelog-entry {
+    border-left: 3px solid #8b5cf6;
+    background: #f9fafb;
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.15rem;
+    margin: 0 0 0.9rem 0;
+  }
+
+  .changelog-entry-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 0.35rem 0;
+    color: #111827;
+  }
+
+  .changelog-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    position: relative;
+    top: -0.1rem;
+  }
+
+  .changelog-tag-feature {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  .changelog-tag-bug {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  .changelog-entry-desc {
+    margin: 0 0 0.65rem 0;
+    color: #374151;
+  }
+
+  .changelog-entry-links {
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .changelog-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    text-decoration: none !important;
+    line-height: 1.6;
+  }
+
+  .changelog-badge-issue {
+    background: #ede9fe;
+    color: #6d28d9;
+  }
+
+  .changelog-badge-pr {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .changelog-badge:hover {
+    opacity: 0.8;
+  }
+
+  /* Grille de cartes pour les pages d'index (Architecture, Guide d'admin...) :
+     une carte par page enfant, même logique visuelle que changelog/versions,
+     rangées en grille responsive plutôt qu'empilées en liste à puce. */
+  .doc-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.85rem;
+    margin: 1.5rem 0;
+  }
+
+  .doc-card {
+    display: block;
+    border-left: 3px solid #8b5cf6;
+    background: #f9fafb;
+    border-radius: 0 8px 8px 0;
+    padding: 0.85rem 1.1rem;
+    text-decoration: none !important;
+    transition: background-color 0.15s ease;
+  }
+
+  .doc-card:hover {
+    background: #f5f3ff;
+  }
+
+  .doc-card-title {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+    margin: 0 0 0.3rem 0;
+  }
+
+  .doc-card-desc {
+    margin: 0;
+    color: #374151;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  /* Versions : une carte par release GitHub, avec statut (stable/bêta) et
+     badges vers le code source et les notes de version. Même logique
+     visuelle que le changelog, avec un ruban pour la dernière version. */
+  .version-entry {
+    position: relative;
+    border-left: 3px solid #d1d5db;
+    background: #f9fafb;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .version-entry.is-latest {
+    border-left-color: #8b5cf6;
+    background: #f5f3ff;
+  }
+
+  .version-entry-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .version-entry-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #111827;
+    font-family: var(--mono-font, monospace);
+  }
+
+  .version-date {
+    color: #6b7280;
+    font-size: 0.85rem;
+  }
+
+  .version-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .version-tag-stable {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .version-tag-beta {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  .version-badge-latest {
+    background: #8b5cf6;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .version-entry-desc {
+    margin: 0 0 0.65rem 0;
+    color: #374151;
+  }
+
+  .version-entry-links {
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .version-badge-tree {
+    background: #e5e7eb;
+    color: #374151;
+  }
+
+  .version-badge-release {
+    background: #ede9fe;
+    color: #6d28d9;
+  }
+
+  /* Bandeau "version actuelle" sur la page d'accueil : version compacte
+     des badges ci-dessus, en pilule. */
+  .home-current-version {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem 0.4rem 0.6rem;
+    margin: 0.25rem 0 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .home-current-version .version-entry-title {
+    font-size: 0.95rem;
+  }
+
+  .home-current-version a {
+    color: #6d28d9;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .home-current-version a:hover {
+    text-decoration: underline;
+  }
+
+  /* Date de dernière mise à jour d'une page (roadmap...) */
+  .last-update {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: -0.5rem 0 1.5rem 0;
+  }
+
+  /* Roadmap : une carte par catégorie, avec une checklist visuelle
+     (terminé / à venir) au lieu de puces markdown brutes + barré. */
+  .roadmap-section {
+    margin: 0 0 1.75rem 0;
+  }
+
+  .roadmap-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.85rem 0;
+    padding: 0 0 0.5rem 0;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .roadmap-section-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .roadmap-empty {
+    color: #6b7280;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .roadmap-list,
+  .roadmap-sublist {
+    list-style: none !important;
+    list-style-type: none !important;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .roadmap-list li,
+  .roadmap-sublist li {
+    list-style: none !important;
+  }
+
+  .roadmap-list li::marker,
+  .roadmap-sublist li::marker {
+    content: none;
+  }
+
+  .roadmap-list li::before,
+  .roadmap-sublist li::before {
+    content: none !important;
+  }
+
+  .roadmap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.6rem 0.85rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 3px solid #d1d5db;
+  }
+
+  .roadmap-item.is-done {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+  }
+
+  .roadmap-item.is-pending {
+    border-left-color: #8b5cf6;
+  }
+
+  .roadmap-item-icon {
+    flex-shrink: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .roadmap-item.is-done > .roadmap-item-icon {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+
+  .roadmap-item.is-done > .roadmap-item-icon::before {
+    content: "\2713";
+  }
+
+  .roadmap-item.is-pending > .roadmap-item-icon {
+    background: #ede9fe;
+    color: #8b5cf6;
+  }
+
+  .roadmap-item.is-pending > .roadmap-item-icon::before {
+    content: "\25CB";
+    font-size: 0.6rem;
+  }
+
+  .roadmap-item-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .roadmap-item-text {
+    color: #374151;
+  }
+
+  .roadmap-item.is-done > .roadmap-item-body > .roadmap-item-text {
+    color: #166534;
+  }
+
+  .roadmap-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .roadmap-sublist .roadmap-item {
+    background: transparent;
+    border-left: none;
+    padding: 0 0 0 0.1rem;
+    font-size: 0.92rem;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var overlay = document.createElement('div');
+    overlay.id = 'img-lightbox-overlay';
+    var overlayImg = document.createElement('img');
+    overlay.appendChild(overlayImg);
+    document.body.appendChild(overlay);
+
+    function closeLightbox() {
+      overlay.classList.remove('is-open');
+      overlayImg.src = '';
+    }
+
+    overlay.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.querySelectorAll('.main-content img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        overlayImg.src = img.currentSrc || img.src;
+        overlay.classList.add('is-open');
+      });
+    });
+
+    /* Sort le bloc "Pages de cette section" de main-content-wrap : tant
+       qu'il reste dedans, il ne peut que suivre le flux du contenu (rester
+       en bas). On le rattache directement à .main, en position fixe. */
+    var pageToc = document.querySelector('.page-toc');
+    var mainEl = document.querySelector('.main');
+    var mainContentWrap = document.querySelector('.main-content-wrap');
+    if (pageToc && mainEl) {
+      mainEl.appendChild(pageToc);
+      if (mainContentWrap) {
+        mainContentWrap.classList.add('has-page-toc');
+      }
+    }
+
+    /* Icône GitHub devant le lien "Nathéo CMS sur GitHub" de l'entête */
+    var ghLink = document.querySelector('.aux-nav .site-button');
+    if (ghLink && !ghLink.querySelector('.gh-icon')) {
+      ghLink.insertAdjacentHTML(
+        'afterbegin',
+        '<svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">' +
+          '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 ' +
+          '0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15' +
+          '-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51' +
+          '-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 ' +
+          '0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-' +
+          '.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25' +
+          '.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0' +
+          '-4.42-3.58-8-8-8Z"></path>' +
+        '</svg>'
+      );
+    }
+  });
+</script>

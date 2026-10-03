@@ -1,11 +1,13 @@
-## Find menu
-
-[Index](../../../index.md) > [API](../index.md) > Find page content
+---
+title: "Find page content"
+parent: "API"
+nav_order: 5
+---
 
 Permet de renvoyer une le block d'une page formatée en fonction de différents paramètres
 
 
-Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+Pour plus d'information sur les références globales, [cliquez ici](../../Architecture/references_globales.md)
 
 Paramètres attendus :
 

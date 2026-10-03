@@ -1,6 +1,8 @@
-## Find menu
-
-[Index](../../../index.md) > [API](../index.md) > Listing pages par tag
+---
+title: "Listing pages par tag"
+parent: "API"
+nav_order: 10
+---
 
 Permet de retourner un listing de pages par tag en fonction de différents paramètres
 

@@ -1,11 +1,13 @@
-## Find menu
-
-[Index](../../../index.md) > [API](../index.md) > Find menu
+---
+title: "Find menu"
+parent: "API"
+nav_order: 3
+---
 
 Permet de renvoyer un menu formaté en fonction de différents paramètres
 Si le User-Token est présent dans le header et valide, renvoi le menu même si celui-ci est désactivé
 
-Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+Pour plus d'information sur les références globales, [cliquez ici](../../Architecture/references_globales.md)
 
 
 Paramètres attendus :

@@ -1,6 +1,8 @@
-## Authentification
-
-[Index](../../../index.md) > [API](../index.md) > Sitemap
+---
+title: "Sitemap"
+parent: "API"
+nav_order: 12
+---
 
 Permet de retourner l'ensemble des pages (toutes les langues) publiées pour générer le sitemap du site
 Le retour est formaté pour la génération d'un sitemap
