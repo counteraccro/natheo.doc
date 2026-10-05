@@ -104,7 +104,7 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 
 | Option | À l'installation | Effet réel |
 |---|---|---|
-| **Temps de validation du token de connexion en tant que administrateur sur le front** | 1 heure | Durée de validité du jeton obtenu par un utilisateur qui se connecte via l'API (30 min à 3 h, ou « sans limite » — en fait 10 ans) |
+| **Temps de validation du token de connexion en tant que administrateur sur le front** | 1 heure | Durée de validité du jeton obtenu par un utilisateur qui se connecte via l'API : 30 min, 1 h, 2 h, 3 h, 12 h ou 24 h. **24 h est un maximum** : l'ancien choix « Sans limite » n'existe plus (une installation qui l'utilisait est passée à 24 h lors de la mise à jour) |
 
 ## Commentaire
 

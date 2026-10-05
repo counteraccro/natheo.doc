@@ -5,7 +5,16 @@ nav_order: 2
 ---
 
 Permet d'authentifier un utilisateur, si tout est ok renvoi un user token pour identifier l'utilisateur
-Ce token à une date de validité défini par l'option ``OS_API_TIME_VALIDATE_USER_TOKEN``
+Ce token à une date de validité défini par l'option ``OS_API_TIME_VALIDATE_USER_TOKEN`` (24 heures maximum, voir
+[options système](../../GuideAdmin/Systeme/options.md#api)).
+
+Le token utilisateur est refusé :
+* une fois sa durée de validité dépassée ;
+* si le compte a été désactivé ou anonymisé entre-temps ;
+* après un changement de mot de passe du compte (le token est alors supprimé, il faut se reconnecter).
+
+Comme les jetons API, le token utilisateur n'est jamais stocké en clair : seule son empreinte (SHA-256) est
+conservée en base.
 
 Paramètres attendus :
 
