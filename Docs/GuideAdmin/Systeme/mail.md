@@ -84,7 +84,7 @@ Le second bloc contient les champs à modifier :
 | Champ | Obligatoire | Contenu |
 |---|---|---|
 | **Objet du mail** | Oui | Objet reçu par le destinataire. Texte brut : les mots-clés n'y sont **pas** remplacés |
-| **Contenu** | Oui | Corps de l'email, rédigé en Markdown dans l'[éditeur Markdown](../../Architecture/composants/editeur_markdown.md) (aperçu, liens internes, médiathèque) |
+| **Contenu** | Oui | Corps de l'email, rédigé en Markdown dans l'[éditeur Markdown](../Modules/editeur_markdown.md) (aperçu, liens internes, médiathèque) |
 
 ### Mots-clés
 
@@ -107,8 +107,9 @@ supprimé ou anonymisé son compte, et non le super-administrateur qui reçoit l
 
 ### Points d'attention
 
-- **Le bouton *Sauvegarder* de la barre d'outils de l'éditeur n'enregistre rien en base** : il valide seulement le
-  contenu saisi dans le formulaire. Seul le bouton **Sauvegarder** du bloc du haut enregistre l'email.
+- **Le bouton *Sauvegarder* de la barre d'outils de l'éditeur n'enregistre rien en base** : sur cet écran, le contenu
+  est déjà pris en compte à chaque frappe, ce bouton n'a donc aucun effet visible. Seul le bouton **Sauvegarder** du
+  bloc du haut enregistre l'email.
 - **Changer de langue recharge l'email sans avertissement** : les modifications non sauvegardées de la langue
   affichée sont perdues. Sauvegardez avant de changer de langue.
 - **Les emails partent toujours dans la langue par défaut du site** (option *Langue par défaut du site*), quelle que soit
