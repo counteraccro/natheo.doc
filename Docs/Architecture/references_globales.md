@@ -58,9 +58,11 @@ Enum [`PageCategory`](https://github.com/counteraccro/natheo/blob/master/src/Enu
 
 > 💡 Contrairement aux autres valeurs de cette page, le paramètre `category`
 > de [Listing des pages par catégorie](../API/References/listing_pages_category.md)
-> ne prend pas l'identifiant numérique ci-dessus, mais le **libellé traduit**
-> de la catégorie (ex. `blog`), comparé sans tenir compte de la casse au
-> texte du domaine de traduction `page` (clé `page.category.*`).
+> ne prend pas l'identifiant numérique ci-dessus, mais le **slug** de la
+> catégorie, c'est-à-dire le nom du cas PHP en minuscules (`evenement`,
+> `news`… — `PageCategory::getSlug()`), ou son libellé français (clé
+> `page.category.*`), sans tenir compte de la casse ni des accents. Ce même
+> slug forme le segment de catégorie des URL du [sitemap](../API/References/sitemap.md).
 
 ## Statistiques de page
 

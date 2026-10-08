@@ -20,7 +20,7 @@ Réservée aux **super-administrateurs** (`ROLE_SUPER_ADMIN`), via *Système > A
 Un jeton s'envoie dans l'en-tête HTTP `Authorization` de chaque appel à l'API :
 
 ```shell
-curl --location 'https://mon-site.fr/api/v1/authentication' \
+curl --location 'https://mon-site.fr/api/v1/authentication/' \
 --header 'Authorization: Bearer [mon-token]'
 ```
 
@@ -28,10 +28,10 @@ L'appel est accepté si **toutes** les conditions suivantes sont remplies :
 
 | Condition | Sinon |
 |---|---|
-| L'option système **Ouvrir le site** est activée ([options système](../options.md)) | `403` « Ressource non accessible - API fermée » |
+| L'option système **Ouvrir l'API ?** est activée ([options système](../options.md#api)) | `403` « Ressource non accessible - API fermée » |
 | L'IP de l'appelant est autorisée (`app.ip_api_authorize` dans `config/services.yaml`, si `app.ip_api_active_filter` vaut `true` — par défaut seules `127.0.0.1` et `::1` le sont) | `401` « Token Invalide » |
 | Le jeton existe, n'est **pas désactivé** et n'a **pas dépassé sa date d'expiration** | `401` « Token Invalide » |
-| Le rôle du jeton permet d'accéder à la route appelée | `403` |
+| Le rôle du jeton permet d'accéder à la route appelée (voir ci-dessous) | `403` |
 
 Un jeton désactivé, expiré, supprimé ou régénéré est refusé **immédiatement**, dès l'appel suivant.
 
@@ -52,11 +52,15 @@ précédent :
 | **Lecture + Écriture** | `ROLE_WRITE_API` | Lecture |
 | **Admin** | `ROLE_ADMIN_API` | Lecture + Écriture |
 
-> 📝 **Dans la version actuelle, les trois rôles donnent exactement les mêmes accès** : toutes les routes de l'API
-> (pages, menus, commentaires, options, sitemap, authentification) n'exigent que le rôle *Lecture*, y compris
-> celles qui écrivent (ajout et modération de commentaires, connexion d'un utilisateur). Les rôles *Lecture +
-> Écriture* et *Admin* sont prévus pour de futures API. Donnez malgré tout à chaque jeton le rôle qui correspond
-> à son usage réel, pour qu'il ne gagne pas de droits le jour où ces API arriveront.
+| Ce que le jeton permet | Rôle minimum |
+|---|---|
+| Lire pages, menus, commentaires, options, sitemap ; connecter un utilisateur | **Lecture** |
+| Ajouter un commentaire, modérer un commentaire | **Lecture + Écriture** |
+
+> 📝 Le rôle **Admin** n'apporte aujourd'hui rien de plus que *Lecture + Écriture* ; il est prévu pour de futures
+> API. Donnez à chaque jeton le rôle qui correspond à son usage réel : un front qui ne fait qu'afficher le site
+> n'a besoin que de *Lecture*, un front qui permet de déposer des commentaires a besoin de *Lecture + Écriture*.
+> Le détail par endpoint est dans la [présentation de l'API](../../../API/index.md#rôles-des-jetons).
 
 Les droits liés à un **utilisateur** connecté via l'API (voir les pages en brouillon, modérer un commentaire...)
 dépendent du rôle de ce compte, pas de celui du jeton : voir [Les rôles côté site et

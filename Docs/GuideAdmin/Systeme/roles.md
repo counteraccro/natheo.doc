@@ -68,8 +68,9 @@ Les rôles ont aussi un effet en dehors de l'administration :
   message générique à la place.
 
 > 📝 Les **jetons API** ont leurs propres rôles, distincts de ceux des comptes : *Lecture* (`ROLE_READ_API`),
-> *Lecture + Écriture* (`ROLE_WRITE_API`) et *Admin* (`ROLE_ADMIN_API`), chacun héritant du précédent. Voir
-> [Jetons API](ApiToken/jetons_api.md).
+> *Lecture + Écriture* (`ROLE_WRITE_API`) et *Admin* (`ROLE_ADMIN_API`), chacun héritant du précédent. Modérer un
+> commentaire via l'API exige donc **à la fois** un jeton *Lecture + Écriture* et un utilisateur au moins
+> Contributeur. Voir [Jetons API](ApiToken/jetons_api.md).
 
 ## Référence technique
 

@@ -37,7 +37,7 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 | Option | À l'installation | Effet réel |
 |---|---|---|
 | **Nom de votre site** * | `Nathéo CMS` | Titre des onglets de l'administration, en-tête et footer du thème public, mots-clés des emails, tableau de bord |
-| **Ouvrir le site au public ?** | Oui | Si non : le site public affiche une page « site fermé » **et toute l'API renvoie une erreur 403**. L'administration reste accessible |
+| **Ouvrir le site au public ?** | Oui | Si non : le site public affiche une page « site fermé ». L'administration reste accessible. **Sans effet sur l'API**, qui a sa propre option (voir [API](#api)) |
 | **URL du site** * | `http://dev.natheo:8888` (à adapter) | URL racine utilisée pour tous les liens vers le site public (aperçu des pages, emails, recherche globale, éditeur Markdown, API…) |
 | **Thème de votre site** | Natheo-Horizon | Thème utilisé par le site public — voir l'avertissement ci-dessous |
 | **Langue par défaut du site** | Français | Langue du site pour les visiteurs non connectés, et langue attribuée à chaque **nouvel** utilisateur créé |
@@ -104,6 +104,7 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 
 | Option | À l'installation | Effet réel |
 |---|---|---|
+| **Ouvrir l'API ?** | Oui | Si non, **toutes** les routes `/api` renvoient une erreur `403` « Ressource non accessible - API fermée », quel que soit le jeton. Indépendant de l'ouverture du site au public. Sur une installation antérieure où l'option n'existe pas encore en base, l'API est considérée comme ouverte. Voir [API](../../API/index.md) |
 | **Temps de validation du token de connexion en tant que administrateur sur le front** | 1 heure | Durée de validité du jeton obtenu par un utilisateur qui se connecte via l'API : 30 min, 1 h, 2 h, 3 h, 12 h ou 24 h. **24 h est un maximum** : l'ancien choix « Sans limite » n'existe plus (une installation qui l'utilisait est passée à 24 h lors de la mise à jour) |
 
 ## Commentaire
