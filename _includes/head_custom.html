@@ -598,6 +598,104 @@
     text-decoration: underline;
   }
 
+  /* Page d'accueil : bandeau d'introduction (titre, accroche, version, stack) */
+  .home-hero {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 70%);
+    border: 1px solid #ede9fe;
+    border-radius: 12px;
+    padding: 1.75rem 1.75rem 1.25rem 1.75rem;
+    margin: 0 0 2rem 0;
+  }
+
+  .home-hero-title {
+    margin: 0 0 0.6rem 0 !important;
+    font-size: 2rem !important;
+    color: #111827;
+  }
+
+  .home-hero-lead {
+    margin: 0 0 1rem 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #374151;
+    max-width: 52rem;
+  }
+
+  .home-hero .home-current-version {
+    margin: 0 0 1rem 0;
+    background: #ffffff;
+  }
+
+  .home-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .home-stack li {
+    margin: 0;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: #ede9fe;
+    color: #6d28d9;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .home-stack li::before {
+    content: none !important;
+  }
+
+  /* Page d'accueil : parcours par profil (une carte = un besoin + liens) */
+  .home-paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.85rem;
+    margin: 1.25rem 0 2rem 0;
+  }
+
+  .home-path {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-top: 3px solid #8b5cf6;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+
+  .home-path-icon {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .home-path-title {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+    margin-bottom: 0.3rem;
+  }
+
+  .home-path-desc {
+    margin: 0 0 0.6rem 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .home-path ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .home-path li {
+    margin: 0.15rem 0;
+  }
+
   /* Date de dernière mise à jour d'une page (roadmap...) */
   .last-update {
     display: inline-flex;
