@@ -78,6 +78,8 @@ voulez garder son nom, son commentaire, son rôle et sa date d'expiration.
 - La régénération est **enregistrée immédiatement**, sans passer par le bouton *Editer*.
 - **L'ancienne valeur cesse de fonctionner aussitôt** : mettez à jour toutes les applications concernées, sans
   quoi elles reçoivent une erreur `401` « Token Invalide ».
+  Pour le jeton **Front du site**, il s'agit de l'option
+  [Token API utilisé par le front du site](../options.md#le-jeton-du-front).
 - Comme à la création, la nouvelle valeur n'est affichée **qu'une seule fois**, avec un bouton **Copier**.
 - La date de dernière utilisation est remise à « Jamais utilisé ».
 

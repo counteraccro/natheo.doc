@@ -37,7 +37,7 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 | Option | À l'installation | Effet réel |
 |---|---|---|
 | **Nom de votre site** * | `Nathéo CMS` | Titre des onglets de l'administration, en-tête et footer du thème public, mots-clés des emails, tableau de bord |
-| **Ouvrir le site au public ?** | Oui | Si non : le site public affiche une page « site fermé ». L'administration reste accessible. **Sans effet sur l'API**, qui a sa propre option (voir [API](#api)) |
+| **Ouvrir le site au public ?** | Oui | Si non : le site public affiche une page « site fermé », avec le code HTTP `503` (service indisponible) pour que les moteurs de recherche ne la prennent pas pour le vrai contenu. L'administration reste accessible. **Sans effet sur l'API**, qui a sa propre option (voir [API](#api)) |
 | **URL du site** * | `http://dev.natheo:8888` (à adapter) | URL racine utilisée pour tous les liens vers le site public (aperçu des pages, emails, recherche globale, éditeur Markdown, API…) |
 | **Thème de votre site** | Natheo-Horizon | Thème utilisé par le site public — voir l'avertissement ci-dessous |
 | **Langue par défaut du site** | Français | Langue du site pour les visiteurs non connectés, et langue attribuée à chaque **nouvel** utilisateur créé |
@@ -54,8 +54,10 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 
 | Option | À l'installation | Effet réel |
 |---|---|---|
-| **Bloquer l'indexation de votre site** | Non | Ajoute une balise `<meta name="robots" content="noindex">` à toutes les pages du site public |
-| **Bloquer le suivi des liens** | Non | Ajoute une balise `<meta name="robots" content="nofollow">` à toutes les pages du site public |
+| **Bloquer l'indexation de votre site** | Non | Ajoute `noindex` à la balise `<meta name="robots">` de toutes les pages du site public |
+| **Bloquer le suivi des liens** | Non | Ajoute `nofollow` à la balise `<meta name="robots">` de toutes les pages du site public |
+
+Si les deux options sont activées, une seule balise est générée : `<meta name="robots" content="noindex, nofollow">`.
 
 ## Administration
 
@@ -105,7 +107,29 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 | Option | À l'installation | Effet réel |
 |---|---|---|
 | **Ouvrir l'API ?** | Oui | Si non, **toutes** les routes `/api` renvoient une erreur `403` « Ressource non accessible - API fermée », quel que soit le jeton. Indépendant de l'ouverture du site au public. Sur une installation antérieure où l'option n'existe pas encore en base, l'API est considérée comme ouverte. Voir [API](../../API/index.md) |
+| **Token API utilisé par le front du site** | Jeton généré à l'installation | Valeur **en clair** du jeton API que le thème front envoie pour appeler l'API. **Sans jeton valide, le site public ne peut pas s'afficher.** Voir [le jeton du front](#le-jeton-du-front) ci-dessous |
 | **Temps de validation du token de connexion en tant que administrateur sur le front** | 1 heure | Durée de validité du jeton obtenu par un utilisateur qui se connecte via l'API : 30 min, 1 h, 2 h, 3 h, 12 h ou 24 h. **24 h est un maximum** : l'ancien choix « Sans limite » n'existe plus (une installation qui l'utilisait est passée à 24 h lors de la mise à jour) |
+
+### Le jeton du front
+
+L'installation crée un jeton API nommé **Front du site**, avec le rôle **écriture** (nécessaire pour que les visiteurs
+puissent poster des commentaires), et recopie sa valeur dans cette option. Le thème front la lit et l'utilise pour
+tous ses appels à l'API.
+
+> ⚠️ Ce jeton est **visible publiquement** : il est envoyé au navigateur de chaque visiteur. N'importe qui peut donc
+> l'utiliser pour lire l'API et ajouter des commentaires (dans la limite anti-spam). Il ne permet pas de modérer sans
+> être connecté en tant que contributeur. Ne lui donnez jamais le rôle administrateur.
+
+Pour remplacer ce jeton (fuite, changement de rôle...) :
+
+1. [créez un nouveau jeton](ApiToken/nouveau_jeton.md) avec le rôle écriture, ou régénérez **Front du site**, et
+   copiez sa valeur : elle n'est affichée qu'une fois ;
+2. collez-la dans cette option ;
+3. désactivez ou supprimez l'ancien jeton s'il y en avait un.
+
+Tant que l'option ne contient pas un jeton actif, le site public ne s'affiche plus. C'est le cas sur une
+installation mise à jour depuis une version antérieure : l'option y est vide, il faut créer un jeton et le coller
+ici.
 
 ## Commentaire
 
@@ -128,7 +152,9 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 
 Les valeurs sont stockées dans la table `option_system` (clé / valeur, toujours en texte ; les booléens valent
 `0` ou `1`). Le formulaire est entièrement piloté par le YAML : ajouter une option consiste à ajouter sa clé à
-l'enum, sa définition au YAML et sa ligne en base. Une clé absente du YAML est refusée à l'enregistrement.
+l'enum et sa définition au YAML. Si la ligne n'existe pas encore en base (option ajoutée après l'installation), le
+formulaire affiche la valeur `default` du YAML et la ligne est créée au premier enregistrement. Une clé absente du
+YAML est refusée à l'enregistrement.
 
 > 📝 Les valeurs posées à l'installation viennent des fixtures
 > (`src/DataFixtures/data/system/option_system_fixtures_data.yaml`, chargées par `natheo:install`)

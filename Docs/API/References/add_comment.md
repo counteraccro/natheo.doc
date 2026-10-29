@@ -21,13 +21,14 @@ Il est enregistré avec le statut :
   activée, ou si le statut par défaut des commentaires de la page est « En attente de validation » ou « Modéré » ;
 - **Validé** sinon.
 
-Les envois sont **limités à 5 toutes les 10 minutes par IP de visiteur** (fenêtre glissante), qu'ils aboutissent ou
-non : au-delà, l'API répond `429`. L'IP prise en compte est celle du paramètre `ip` ; s'il est absent, c'est l'IP
-de l'appelant, c'est-à-dire **celle de votre serveur front**.
+Les envois sont **limités à 5 toutes les 10 minutes par IP** (fenêtre glissante), qu'ils aboutissent ou non :
+au-delà, l'API répond `429`. L'IP prise en compte est toujours **celle de la requête** (l'appelant), jamais le
+paramètre `ip`, qui pourrait être choisi librement.
 
-> ⚠️ Transmettez toujours le paramètre `ip` du visiteur : sans lui, tous les visiteurs de votre site partagent la
-> même limite de 5 commentaires en 10 minutes. À l'inverse, comme cette IP est fournie par le front, la limite ne
-> protège que si votre front transmet la vraie IP et ne laisse pas le visiteur la choisir.
+> ⚠️ Si votre front appelle l'API **depuis son serveur** et non depuis le navigateur des visiteurs, tous les visiteurs
+> partagent l'IP de ce serveur, donc la même limite. Dans ce cas, déclarez le serveur front comme proxy de confiance
+> (`SYMFONY_TRUSTED_PROXIES`) et transmettez l'IP du visiteur dans l'en-tête `X-Forwarded-For`. Le thème front fourni
+> appelle l'API depuis le navigateur : chaque visiteur a sa propre limite.
 
 L'auteur de la page reçoit une [notification](../../GuideAdmin/MonCompte/Notifications/notifications.md) pour chaque
 nouveau commentaire.
@@ -42,14 +43,15 @@ Paramètres attendus (corps JSON) :
 | author     | String  | OUI         |                   | Nom affiché de l'auteur, 255 caractères maximum           |
 | email      | String  | NON         |                   | Email de l'auteur, 255 caractères maximum. S'il est fourni, il doit être valide |
 | comment    | String  | OUI         |                   | Texte du commentaire (Markdown), 10 000 caractères maximum |
-| ip         | String  | NON         |                   | IP du visiteur. Si elle est fournie, elle doit être valide. Sert aussi à la limite d'envoi |
+| ip         | String  | NON         | IP de la requête  | IP du visiteur, enregistrée avec le commentaire. Si elle est fournie, elle doit être valide |
 | user_agent | String  | NON         |                   | User-agent du navigateur du visiteur, 1 000 caractères maximum |
 
 `page_id` et `page_slug` sont exclusifs : il en faut exactement un. Le slug est cherché dans toutes les langues.
 
-> 📝 `ip` et `user_agent` doivent être ceux du **visiteur**, transmis par votre front : l'API ne les déduit pas de
-> la requête (qui vient de votre serveur). Ils sont affichés aux modérateurs dans la
-> [fiche du commentaire](../../GuideAdmin/Contenu/Commentaires/moderation.md).
+> 📝 `ip` et `user_agent` sont affichés aux modérateurs dans la
+> [fiche du commentaire](../../GuideAdmin/Contenu/Commentaires/moderation.md). Sans paramètre `ip`, c'est l'IP de la
+> requête qui est enregistrée : la bonne si l'appel vient du navigateur du visiteur, celle de votre serveur si l'appel
+> vient d'un front côté serveur. Le `user_agent`, lui, n'est jamais déduit : sans paramètre, il reste vide.
 
 > 📝 Les balises HTML sont retirées du texte du commentaire et du nom de l'auteur avant l'enregistrement
 > (`<b>Bonjour</b>` devient `Bonjour`) ; le Markdown, lui, est conservé.

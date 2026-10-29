@@ -105,6 +105,16 @@ minute pour un même jeton.
 Pour couper temporairement un accès (fuite suspectée, maintenance d'un front...), préférez la **désactivation** :
 elle est réversible et conserve le jeton tel quel.
 
+## Jeton du front
+
+Chaque installation crée un jeton **Front du site**, de rôle écriture, avec une valeur aléatoire propre à
+l'installation. Le site public s'en sert pour appeler l'API : sa valeur est recopiée dans l'option
+[Token API utilisé par le front du site](../options.md#le-jeton-du-front).
+
+> ⚠️ **Ne le désactivez pas et ne le supprimez pas** sans avoir d'abord mis un autre jeton dans cette option : le
+> site public ne pourrait plus s'afficher. De même, si vous le [régénérez](nouveau_jeton.md#régénérer-un-jeton),
+> collez aussitôt la nouvelle valeur dans l'option.
+
 ## Jetons de démonstration
 
 Si le mode debug (`NATHEO_DEBUG=true`, voir [configuration](../../../Demarrage/configuration_installation.md)) est
@@ -152,8 +162,10 @@ test : renommer un jeton de test ne le fait pas disparaître de l'avertissement,
   `ApiTokenService::CSRF_TOKEN_*`) ; en cas de jeton CSRF invalide, la réponse est un `403` « Jeton de sécurité
   invalide, veuillez recharger la page ». La route de suppression ne revérifie pas l'option *Autoriser la
   suppression des données*.
-- Jetons de test : `ApiTokenFixture` (chargée seulement si `app.debug_mode`), données dans
-  `src/DataFixtures/data/system/api_token_fixtures_data.yaml`, valeurs dans `ApiTokenConst::API_TOKEN_READ` /
+- Jeton du front et jetons de test : `ApiTokenFixture`. Le jeton du front (clé `api_token_front`) est toujours créé,
+  avec une valeur tirée par `TokenGenerator::generate()` et recopiée dans l'option `OS_FRONT_API_TOKEN` ; les jetons
+  de test ne sont créés que si `app.debug_mode`. Données dans
+  `src/DataFixtures/data/system/api_token_fixtures_data.yaml`, valeurs des jetons de test dans `ApiTokenConst::API_TOKEN_READ` /
   `_WRITE` / `_ADMIN` (hashées à l'insertion), contrôlées par `DashboardService` qui compare leurs hash.
 - Code concerné : `ApiTokenController`, `ApiTokenService`, entité `ApiToken` et `ApiTokenRepository`,
   `ApiTokenConst`, `TokenHasher`, `ApiTokenTranslate`, templates `templates/admin/system/api_token/`, composant Vue
