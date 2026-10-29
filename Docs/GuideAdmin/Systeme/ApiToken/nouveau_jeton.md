@@ -75,6 +75,8 @@ voulez garder son nom, son commentaire, son rôle et sa date d'expiration.
 
 ![Jeton régénéré](../files/api_token/regeneration.png)
 
+- Le message « Nouveau token généré avec succès » s'affiche et la nouvelle valeur apparaît dans le champ **Token**,
+  avec le bouton **Copier** et le même avertissement qu'à la création : elle ne sera plus jamais affichée.
 - La régénération est **enregistrée immédiatement**, sans passer par le bouton *Editer*.
 - **L'ancienne valeur cesse de fonctionner aussitôt** : mettez à jour toutes les applications concernées, sans
   quoi elles reçoivent une erreur `401` « Token Invalide ».
