@@ -6,7 +6,7 @@ nav_order: 1
 
 Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'évolution.
 
-<p class="last-update">Dernière mise à jour le 09/09/2026</p>
+<p class="last-update">Dernière mise à jour le 29/10/2026</p>
 
 <div class="roadmap-section">
 <h3 class="roadmap-section-title"><span class="roadmap-section-icon">🐛</span> Bugs</h3>
@@ -41,6 +41,7 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
     <ul class="roadmap-sublist">
       <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Derniers commentaires <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/49">PR #49</a></span></li>
       <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Mes dernières pages <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/329">PR #329</a></span></li>
+      <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Pages les plus vues <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/329">PR #329</a></span></li>
       <li class="roadmap-item is-pending"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Mes notifications</span></li>
     </ul>
   </div>
@@ -56,6 +57,14 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
 <li class="roadmap-item is-done">
   <span class="roadmap-item-icon"></span>
   <span class="roadmap-item-text">Mise en place API pour les options systems <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/68">PR #68</a></span>
+</li>
+<li class="roadmap-item is-pending">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Rattacher une ou plusieurs pages à un menu depuis la gestion des menus (v2.1.0) <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/286">Issue #286</a></span>
+</li>
+<li class="roadmap-item is-pending">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Évolutions de la médiathèque : recherche, sélection multiple, corbeille (v2.1.0) <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/236">Issue #236</a></span>
 </li>
 </ul>
 </div>
@@ -82,6 +91,10 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
     </ul>
   </div>
 </li>
+<li class="roadmap-item is-pending">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Statistiques d'utilisation des API, consultables dans le back-office (v2.1.0) <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/96">Issue #96</a></span>
+</li>
 </ul>
 </div>
 
@@ -107,6 +120,10 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
       <li class="roadmap-item is-pending"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Gérer le contenu de celui-ci + les réponses possibles</span></li>
     </ul>
   </div>
+</li>
+<li class="roadmap-item is-pending">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Gestion de carrousels d'images intégrables dans une page (v2.1.0) <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/250">Issue #250</a></span>
 </li>
 </ul>
 </div>
