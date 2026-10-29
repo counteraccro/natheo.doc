@@ -33,7 +33,7 @@ Le rôle d'un compte se choisit dans le [formulaire d'ajout / modification d'un 
 | [Pages](../Contenu/Pages/listing.md), [Menus](../Contenu/Menus/listing.md), [FAQ](../Contenu/Faq/listing.md), [Tags](../Contenu/Tags/listing.md), [Médiathèque](../Contenu/Mediatheque/mediatheque.md) | — | ✅ | ✅ | ✅ |
 | [Commentaires](../Contenu/Commentaires/listing.md) (y compris modération) | — | ✅ | ✅ | ✅ |
 | [Éditeur Markdown](../Modules/editeur_markdown.md) | — | ✅ | ✅ | ✅ |
-| Système : [utilisateurs](Utilisateurs/listing.md), [sidebar](sidebar.md), [options](options.md), [jetons API](ApiToken/jetons_api.md), [emails](mail.md), [traductions](traductions.md), [logs](logs.md), informations | — | — | — | ✅ |
+| Système : [utilisateurs](Utilisateurs/listing.md), [sidebar](sidebar.md), [options](options.md), [jetons API](ApiToken/jetons_api.md), [emails](mail.md), [traductions](traductions.md), [logs](logs.md), [informations](information.md) | — | — | — | ✅ |
 | Outils développeur : [options avancées](../Outils/options_avancees.md), [gestionnaire SQL](../Outils/gestionnaire_sql.md), [gestionnaire BDD](../Outils/gestionnaire_bdd.md), éléments HTML | — | — | — | ✅ |
 | Se connecter en tant qu'un autre utilisateur | — | — | — | ✅ |
 

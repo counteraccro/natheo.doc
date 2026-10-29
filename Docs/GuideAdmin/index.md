@@ -99,6 +99,10 @@ l'utilisateur connecté.
     <span class="doc-card-title">Jetons API</span>
     <p class="doc-card-desc">Créer et administrer les jetons qui donnent accès à l'API du CMS</p>
   </a>
+  <a class="doc-card" href="Systeme/information.html">
+    <span class="doc-card-title">Information</span>
+    <p class="doc-card-desc">Versions du serveur, de PHP et du CMS, base de données utilisée et accès à phpinfo</p>
+  </a>
 </div>
 
 ## Outils

@@ -6,7 +6,7 @@ has_children: true
 nav_order: 10
 ---
 
-Fonctionnalités liées au fonctionnement du CMS : utilisateurs, options, traductions, emails, logs et jetons d'accès API.
+Fonctionnalités liées au fonctionnement du CMS : utilisateurs, options, traductions, emails, logs, jetons d'accès API et informations techniques.
 
 <div class="doc-card-grid" markdown="0">
   <a class="doc-card" href="Utilisateurs/listing.html">
@@ -44,5 +44,9 @@ Fonctionnalités liées au fonctionnement du CMS : utilisateurs, options, traduc
   <a class="doc-card" href="ApiToken/nouveau_jeton.html">
     <span class="doc-card-title">Créer et éditer un jeton</span>
     <p class="doc-card-desc">Créer, modifier ou régénérer un jeton API (valeur affichée une seule fois)</p>
+  </a>
+  <a class="doc-card" href="information.html">
+    <span class="doc-card-title">Information</span>
+    <p class="doc-card-desc">Versions du serveur, de PHP et du CMS, base de données utilisée et accès à phpinfo</p>
   </a>
 </div>
