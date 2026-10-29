@@ -13,12 +13,13 @@ Voici les options qui peuvent influencer l'installation et le comportement de Na
 | `app.supported_locales` | `fr\|en\|es` | Langues supportées par le CMS |
 | `app.default_locale` | `fr` | Langue utilisée quand aucune n'est précisée dans l'URL |
 | `app.api_version` | `v1` | Version de l'API exposée |
-| `app.ip_api_active_filter` | `true` | Si `true`, filtre l'accès à l'API par IP (voir `app.ip_api_authorize`) |
+| `app.ip_api_active_filter` | `false` | Si `true`, filtre l'accès à l'API par IP (voir `app.ip_api_authorize`). Désactivé par défaut : le front appelle l'API depuis le navigateur des visiteurs |
 | `app.ip_api_authorize` | `[127.0.0.1, ::1]` | Liste des IP autorisées à appeler l'API quand le filtre est actif |
 | `app.default_database_prefix` | *(vide)* | Préfixe ajouté devant chaque table (`_` est ajouté automatiquement si non vide) |
 | `app.default_database_name` | `%env(NATHEO_DBNAME)%` | Nom de la base de données, lu depuis la variable d'env `NATHEO_DBNAME` |
 | `app.debug_mode` | `%env(bool:NATHEO_DEBUG)%` | Lu depuis `NATHEO_DEBUG` — voir l'encadré ci-dessous |
-| `app.version` | `2.0.0-beta.1` | Version affichée du CMS |
+| `app.dump_directory` | `%kernel.project_dir%/var/dump/` | Dossier de stockage des sauvegardes SQL, hors du dossier public |
+| `app.version` | `2.0.0-beta.2` | Version affichée du CMS |
 | `app.natheo_horizon.version` | `Natheo-Horizon v1.0.0` | Version du thème front par défaut |
 | `app.current_branche` | `master` | Branche Git courante (affichage/diagnostic) |
 

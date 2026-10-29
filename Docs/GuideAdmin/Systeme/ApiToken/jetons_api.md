@@ -29,7 +29,7 @@ L'appel est accepté si **toutes** les conditions suivantes sont remplies :
 | Condition | Sinon |
 |---|---|
 | L'option système **Ouvrir l'API ?** est activée ([options système](../options.md#api)) | `403` « Ressource non accessible - API fermée » |
-| L'IP de l'appelant est autorisée (`app.ip_api_authorize` dans `config/services.yaml`, si `app.ip_api_active_filter` vaut `true` — par défaut seules `127.0.0.1` et `::1` le sont) | `401` « Token Invalide » |
+| L'IP de l'appelant est autorisée (`app.ip_api_authorize` dans `config/services.yaml`, uniquement si `app.ip_api_active_filter` vaut `true`, ce qui n'est pas le cas par défaut) | `401` « Token Invalide » |
 | Le jeton existe, n'est **pas désactivé** et n'a **pas dépassé sa date d'expiration** | `401` « Token Invalide » |
 | Le rôle du jeton permet d'accéder à la route appelée (voir ci-dessous) | `403` |
 

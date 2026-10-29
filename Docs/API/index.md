@@ -61,14 +61,19 @@ Le filtrage par IP se règle dans `config/services.yaml` :
 
 ```yaml
 parameters:
-    app.ip_api_active_filter: true # Si true alors filtre l'accès à l'API par les IP défini dans app.ip_api_authorize
+    # Si true, filtre l'accès à l'API par les IP de app.ip_api_authorize.
+    # Désactivé par défaut : le front appelle l'API depuis le navigateur des visiteurs
+    app.ip_api_active_filter: false
     app.ip_api_authorize: [127.0.0.1, ::1]
 ```
 
-Par défaut, seules les IP locales sont autorisées : ajoutez l'IP du serveur qui héberge votre front avant la mise
-en production. Si le CMS est derrière un **reverse proxy**, déclarez-le dans la variable d'environnement
-`SYMFONY_TRUSTED_PROXIES` (exemple commenté dans `.env`) : sinon c'est l'IP du proxy, et non celle du client, qui est
-comparée à la liste.
+Le filtre est **désactivé par défaut** : le thème front fourni appelle l'API directement depuis le navigateur des
+visiteurs, dont les IP ne sont pas connues à l'avance. Ne l'activez que si l'API n'est appelée que par des serveurs
+connus (un front rendu côté serveur, par exemple), en listant leurs IP dans `app.ip_api_authorize`.
+
+Si le filtre est actif et que le CMS est derrière un **reverse proxy**, déclarez ce proxy dans la variable
+d'environnement `SYMFONY_TRUSTED_PROXIES` (exemple commenté dans `.env`) : sinon c'est l'IP du proxy, et non celle du
+client, qui est comparée à la liste.
 
 > 📝 L'ouverture de l'API (**Ouvrir l'API ?**) est indépendante de l'ouverture du site au public (**Ouvrir le site au
 > public ?**) : un site fermé peut continuer à servir son API, et inversement.

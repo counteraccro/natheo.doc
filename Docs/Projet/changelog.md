@@ -7,7 +7,105 @@ nav_order: 2
 > ℹ️ Ce changelog n'est pas complet. Le
 > reste est consultable sur les [issues fermées du projet](https://github.com/counteraccro/natheo/issues?q=is%3Aissue+is%3Aclosed).
 
+## Octobre 2026
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit du tableau de bord</p>
+<p class="changelog-entry-desc">Droits contrôlés côté serveur sur les blocs et les statistiques (statistiques réservées aux contributeurs, aide à la configuration réservée aux super-administrateurs), « Pages les plus vues » limité aux pages publiées ayant au moins une vue, liens de l'aide toujours affichés, libellé « Vues des pages », gestion des pages non traduites et des statuts inconnus.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/363">Issue #363</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/364">PR #364</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span><span class="changelog-tag changelog-tag-bug">Bug</span>Audit du front</p>
+<p class="changelog-entry-desc">Thème Natheo-Horizon passé en TypeScript et nettoyé, nouvelle pagination, filtre IP de l'API désactivé par défaut, et nouvelle option système contenant le jeton API utilisé par le front (généré à l'installation avec le droit d'écriture, nécessaire aux commentaires).</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/218">Issue #218</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/361">Issue #361</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/362">PR #362</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de l'API</p>
+<p class="changelog-entry-desc">Codes HTTP revus (400, 404, 405, 429) et messages d'erreur détaillés, nouvelle option « Ouvrir l'API ? », droit d'écriture du jeton exigé pour ajouter et modérer un commentaire, limitation du nombre de tentatives (authentification utilisateur, ajout de commentaire), slash final optionnel et pages non visibles filtrées.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/359">Issue #359</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/360">PR #360</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de l'éditeur Markdown</p>
+<p class="changelog-entry-desc">Liens internes vers les pages convertis uniquement en cible de lien, infobulles traduites, fenêtres propres à chaque éditeur d'une même page, mise en forme sur plusieurs lignes, annulation (Ctrl+Z), rendu Markdown unifié côté administration, passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/357">Issue #357</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/358">PR #358</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de la gestion des jetons API</p>
+<p class="changelog-entry-desc">Jetons stockés sous forme hachée en base (valeur affichée une seule fois à la création), corrections de l'écran de gestion et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/355">Issue #355</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/356">PR #356</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de la gestion des logs</p>
+<p class="changelog-entry-desc">Corrections remontées par l'audit et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/353">Issue #353</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/354">PR #354</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de la gestion des emails</p>
+<p class="changelog-entry-desc">Nouveau design des emails, correction de dépréciations et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/351">Issue #351</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/352">PR #352</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de la gestion des traductions</p>
+<p class="changelog-entry-desc">Suppression des langues codées en dur et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/349">Issue #349</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/350">PR #350</a></p>
+</div>
+
 ## Septembre 2026
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de la sidebar</p>
+<p class="changelog-entry-desc">Corrections remontées par l'audit de la gestion de la sidebar.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/346">Issue #346</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/347">PR #347</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit des options système</p>
+<p class="changelog-entry-desc">Suppression de configurations inutilisées, renforcement de la sécurité et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/344">Issue #344</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/345">PR #345</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit de la gestion des utilisateurs</p>
+<p class="changelog-entry-desc">Correction d'une faille de sécurité et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/342">Issue #342</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/343">PR #343</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit du gestionnaire de base de données</p>
+<p class="changelog-entry-desc">Correction de failles de sécurité et des sauvegardes SQL qui ne pouvaient pas être restaurées, nouvelle notification, passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/340">Issue #340</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/341">PR #341</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Corrections des options avancées</p>
+<p class="changelog-entry-desc">Corrections diverses et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/337">Issue #337</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/338">PR #338</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/339">PR #339</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Corrections de la recherche globale</p>
+<p class="changelog-entry-desc">Correction d'un ensemble de bugs, dont l'injection de caractères spéciaux, et passage en TypeScript.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/335">Issue #335</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/336">PR #336</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Corrections sur les pages</p>
+<p class="changelog-entry-desc">Correction de la recherche de page et suppression de code inutilisé.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/333">Issue #333</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/334">PR #334</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span><span class="changelog-tag changelog-tag-bug">Bug</span>Nettoyage du code de la médiathèque</p>
+<p class="changelog-entry-desc">Correction d'une faille de sécurité, contrôle des extensions de fichiers et corrections diverses.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/330">Issue #330</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/331">PR #331</a></p>
+</div>
 
 <div class="changelog-entry" markdown="1">
 <p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Nouveaux blocs sur le tableau de bord</p>
