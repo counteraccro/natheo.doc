@@ -46,6 +46,10 @@ rouge avec un message d'erreur, et la valeur n'est pas sauvegardée :
 | **Script dans la balise HEAD** / **juste après l'ouverture de BODY** / **juste avant la fermeture de BODY** | vide | Exposés par l'API des options — voir la note ci-dessous |
 
 
+> ⚠️ **Thème de votre site** propose aussi **FrontStorm**, mais ce thème n'est pas encore livré : le choisir rend le
+> site public inaccessible (erreur serveur) tant que Natheo-Horizon n'est pas resélectionné. Voir
+> [Le thème Natheo-Horizon](../../Front/theme_natheo_horizon.md#créer-un-autre-thème).
+
 > 📝 Les trois champs de **scripts** (analytics, tag manager…) sont enregistrés et renvoyés par l'API des options
 > système, mais le thème fourni **Natheo-Horizon ne les injecte pas** dans ses pages. Ils ne servent donc qu'à un
 > front externe qui les récupère via l'API.

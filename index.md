@@ -55,6 +55,7 @@ nav_order: 1
       <li><a href="Docs/GuideAdmin/Systeme/ApiToken/jetons_api.html">Créer un jeton d'accès</a></li>
       <li><a href="Docs/API/References/find_page.html">Récupérer une page</a></li>
       <li><a href="Docs/API/References/find_menu.html">Récupérer un menu</a></li>
+      <li><a href="Docs/Front/theme_natheo_horizon.html#utiliser-un-front-externe">Remplacer le thème par son propre front</a></li>
     </ul>
   </div>
   <div class="home-path">
