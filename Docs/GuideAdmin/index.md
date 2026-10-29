@@ -9,6 +9,15 @@ Documentation fonctionnelle du back-office de Nathéo CMS, écran par écran : �
 accéder, et ce que fait chaque champ ou bouton. L'accès aux écrans dépend du [rôle](Systeme/roles.md) de
 l'utilisateur connecté.
 
+## Tableau de bord
+
+<div class="doc-card-grid" markdown="0">
+  <a class="doc-card" href="TableauDeBord/tableau_de_bord.html">
+    <span class="doc-card-title">Tableau de bord</span>
+    <p class="doc-card-desc">La page d'accueil de l'administration : chiffres clés, derniers commentaires et pages, aide à la configuration</p>
+  </a>
+</div>
+
 ## Mon compte
 
 <div class="doc-card-grid" markdown="0">

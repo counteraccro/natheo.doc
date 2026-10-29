@@ -102,7 +102,7 @@ super-administrateur, cette carte remplace la zone de danger juste après **Séc
 section **Sécurité** plus haut).
 
 Un unique bouton, **Afficher l'aide de configuration** / **Masquer l'aide de configuration**, contrôle si le bloc
-d'aide de première connexion s'affiche sur le tableau de bord.
+d'aide de première connexion s'affiche sur le [tableau de bord](../TableauDeBord/tableau_de_bord.md#aide-pour-la-configuration).
 
 ## Mes statistiques
 
