@@ -6,7 +6,7 @@ nav_order: 3
 
 ### Versions disponibles
 
-Historique des releases publiées sur le [dépôt GitHub](https://github.com/counteraccro/natheo/releases) de Nathéo CMS, de la plus récente à la plus ancienne. Pour le détail des changements au fil de l'eau, voir le [Changelog](changelog).
+Historique des releases publiées sur le [dépôt GitHub](https://github.com/counteraccro/natheo/releases) de Nathéo CMS, de la plus récente à la plus ancienne. Pour le détail des changements au fil de l'eau, voir le [Changelog](changelog.md).
 
 <div class="version-entry is-latest" markdown="1">
 <p class="version-entry-header"><span class="version-badge-latest">Dernière version</span><span class="version-entry-title">v2.0.0-beta.2</span><span class="version-tag version-tag-beta">Bêta</span><span class="version-date">13/10/2026</span></p>

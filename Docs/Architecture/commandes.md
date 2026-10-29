@@ -46,7 +46,7 @@ rattaché à un ou plusieurs groupes (`tag`, `content`, `system`, `mail`...) :
 php bin/console doctrine:fixtures:load --group=tag
 ```
 
-Voir la [liste complète des groupes existants](composants/index.md#groupe-de-fixtures-existant),
+Voir la [liste complète des groupes existants](composants/index.md#groupes-existants),
 et [Référence technique des Tags](../GuideAdmin/Contenu/Tags/technique.md) pour
 un exemple concret de fichier de fixtures.
 

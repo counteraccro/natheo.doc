@@ -153,7 +153,7 @@ admin.
 | [`DatabaseActivityListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/DatabaseActivityListener.php) | Intercepte les évènements Doctrine (création/mise à jour/suppression d'entité) |
 | [`DatabaseTablePrefixListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/DatabaseTablePrefixListener.php) | Ajoute un préfixe et un schéma aux tables de la base de données |
 | [`ExceptionListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/ExceptionListener.php) | Intercepte les exceptions non gérées |
-| [`OverwriteListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/OverwriteListener.php) | Surcharge un contrôleur en fonction de ce qui est défini dans `overwrite.yaml` — voir [Surcharge de controller](../surcharge_controller.md) |
+| [`OverwriteListener`](https://github.com/counteraccro/natheo/blob/master/src/EventListener/OverwriteListener.php) | Surcharge un contrôleur en fonction de ce qui est défini dans `overwrite.yaml` — voir [Surcharge de controller](../surcharge_controllers.md) |
 
 ## Fixtures
 

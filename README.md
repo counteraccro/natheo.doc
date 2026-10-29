@@ -4,7 +4,7 @@
 
 [![Documentation](https://img.shields.io/badge/Docs-En%20ligne-blue?style=flat-square)](https://counteraccro.github.io/natheo.doc/)
 [![CMS Version](https://img.shields.io/badge/NatheoCMS-v2.0.0-8b5cf6?style=flat-square)](https://github.com/counteraccro/natheo)
-[![License](https://img.shields.io/badge/License-GNU-green?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-GNU-green?style=flat-square)](https://github.com/counteraccro/natheo/blob/master/LICENSE)
 
 **Documentation technique et fonctionnelle complète de Nathéo CMS**
 
@@ -149,7 +149,7 @@ Vous avez trouvé une erreur, une information obsolète ou un lien cassé dans l
 
 Cette documentation est sous licence GNU-V3, comme le projet Nathéo CMS.
 
-Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Voir le fichier [LICENSE](https://github.com/counteraccro/natheo/blob/master/LICENSE) pour plus de détails.
 
 ---
 
