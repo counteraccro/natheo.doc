@@ -1,9 +1,11 @@
-## Authentification
+---
+title: "Sitemap"
+parent: "API"
+nav_order: 12
+---
 
-[Index](../../../index.md) > [API](../index.md) > Sitemap
-
-Permet de retourner l'ensemble des pages (toutes les langues) publiées pour générer le sitemap du site
-Le retour est formaté pour la génération d'un sitemap
+Renvoie une entrée par page **publiée** et **active**, et par langue, pour générer le sitemap du site. Les pages sont triées de
+la plus récemment modifiée à la plus ancienne.
 
 **Requête CURL**
 `````shell
@@ -20,61 +22,42 @@ curl --request GET \
   "message": "success",
   "data": [
     {
-      "loc": "/fr/page/bienvenue",
+      "loc": "/fr/page/home",
       "priority": "1.00",
-      "lastmod": "2025-07-25T06:09:18+00:00"
+      "lastmod": "2026-10-03T20:58:10+00:00"
     },
     {
-      "loc": "/en/page/welcome",
+      "loc": "/en/page/home",
       "priority": "1.00",
-      "lastmod": "2025-07-25T06:09:18+00:00"
+      "lastmod": "2026-10-03T20:58:10+00:00"
     },
     {
-      "loc": "/es/page/bienvenido",
+      "loc": "/es/page/home",
       "priority": "1.00",
-      "lastmod": "2025-07-25T06:09:18+00:00"
+      "lastmod": "2026-10-03T20:58:10+00:00"
     },
     {
-      "loc": "/fr/page/pages",
+      "loc": "/fr/blog/blog",
       "priority": "1.00",
-      "lastmod": "2025-07-24T19:41:06+00:00"
-    },
-    {
-      "loc": "/es/page/paginas",
-      "priority": "1.00",
-      "lastmod": "2025-07-24T19:41:06+00:00"
-    },
-    {
-      "loc": "/en/page/page",
-      "priority": "1.00",
-      "lastmod": "2025-07-24T19:41:06+00:00"
+      "lastmod": "2026-10-03T20:58:10+00:00"
     }
   ]
 }
 ````
 
-**Réponse 401**
+| Champ | Description |
+|---|---|
+| `loc` | Chemin relatif de la page : `/{locale}/{catégorie}/{slug}` (à préfixer par l'URL de votre front) |
+| `priority` | Toujours `"1.00"` |
+| `lastmod` | Date de dernière modification de la page, au format ISO 8601 |
 
-*Si le token est invalide*
-````json
-{
-  "code_http": 401,
-  "message": "Accès non autorisé",
-  "errors": [
-    "Token Invalide"
-  ]
-}
-````
+Le segment `{catégorie}` est le **slug** de la catégorie de la page, sans accent ni majuscule, identique dans toutes
+les langues : `page`, `article`, `projet`, `blog`, `evenement`, `news`, `evolution`, `documentation`, `faq` (par
+exemple `/en/blog/...`, `/es/blog/...`). C'est aussi une valeur acceptée par le paramètre `category` du
+[listing par catégorie](listing_pages_category.md).
 
-**Réponse 403**
+Les erreurs communes (jeton invalide, API fermée) sont décrites dans la [présentation de l'API](../index.md#format-des-réponses).
 
-*Si l'API est fermée*
-````json
-{
-  "code_http": 403,
-  "message": "Ressource non accessible",
-  "errors": [
-    "Ressource non accessible - API fermée"
-  ]
-}
-````
+## Voir aussi
+- [Find page](find_page.md)
+- [Références globales](../../Architecture/references_globales.md#catégorie-de-page)

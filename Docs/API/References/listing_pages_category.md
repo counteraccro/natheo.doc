@@ -1,46 +1,61 @@
-## Find menu
+---
+title: "Listing pages par catégorie"
+parent: "API"
+nav_order: 9
+---
 
-[Index](../../../index.md) > [API](../index.md) > Listing page catégorie
+Renvoie la liste paginée des pages **publiées** et **actives** d'une catégorie, de la plus récemment modifiée à la
+plus ancienne.
 
-Permet de retourner un listing de pages par catégorie en fonction de différents paramètres
+Paramètres attendus (query string) :
 
+| nom      | type    | obligatoire | valeur par défaut | commentaire                                  |
+|----------|---------|-------------|-------------------|----------------------------------------------|
+| category | String  | OUI         |                   | **Libellé** de la catégorie (voir ci-dessous) |
+| locale   | String  | NON         | fr                | Langue des titres et slugs renvoyés          |
+| page     | Integer | NON         | 1                 | Page de résultats                            |
+| limit    | Integer | NON         | 25                | Nombre de pages par page de résultats (1 à 100) |
 
+Le paramètre `category` n'est pas l'identifiant numérique de la catégorie mais son **nom**, comparé sans tenir
+compte de la casse ni des accents. Deux formes sont acceptées :
 
-Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+| Catégorie | Slug (recommandé) | Libellé français également accepté |
+|---|---|---|
+| Page | `page` | `Page` |
+| Article | `article` | `Article` |
+| Projet | `projet` | `Projet` |
+| Blog | `blog` | `Blog` |
+| Évènement | `evenement` | `Évènement`, `évènement` |
+| News | `news` | `Nouveauté`, `nouveaute` |
+| Évolution | `evolution` | `Evolution` |
+| Documentation | `documentation` | `Documentation` |
+| FAQ | `faq` | `FAQ` |
 
-Paramètres attendus :
+Le slug est celui utilisé dans les URL du [sitemap](sitemap.md). Les libellés anglais ou espagnols ne sont pas
+reconnus (`project` est refusé), même quand `locale` vaut `en` ou `es`. Voir aussi les
+[références globales](../../Architecture/references_globales.md#catégorie-de-page).
 
-| nom      | type   | obligatoire | valeur par défaut | commentaire |
-|----------|--------|-------------|-------------------|-------------|
-| category | String | OUI         |                   | Obligatoire |
-| locale   | String | NON         | fr                |             |
-| page     | int    | NON         | 1                 |             |
-| limit    | int    | NON         | 20                |             |
-
-
-### Informations
-
+> 📝 Le `User-Token` est vérifié s'il est envoyé, mais il est **sans effet** : les brouillons ne sont jamais
+> listés.
 
 **Requêtes CURL**
 `````shell
 curl --request GET \
---url --location '[url-de-mon-site]/api/v1/page/category?category=blog \
+--url '[url-de-mon-site]/api/v1/page/category?category=blog' \
 --header 'Accept: application/json' \
---header 'User-Token: [user-token' \
 --header 'Authorization: Bearer [mon-token]'
 `````
 
 `````shell
 curl --request GET \
---url --location '[url-de-mon-site/api/v1/page/category?category=blog&locale=es&page=5&limit=1 \
+--url '[url-de-mon-site]/api/v1/page/category?category=evenement&locale=en&page=2&limit=1' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer [mon-token]'
 `````
 
 **Réponse 200**
 
-Pour un listing de page de type blog
-url : [url-de-mon-site]/api/v1/page/category?category=blog
+url : `[url-de-mon-site]/api/v1/page/category?category=blog&limit=2`
 ````json
 {
   "code_http": 200,
@@ -48,85 +63,78 @@ url : [url-de-mon-site]/api/v1/page/category?category=blog
   "data": {
     "pages": [
       {
-        "title": "Dernières articles du blog",
-        "slug": "blogs",
-        "author": "contributeur@natheo.com",
-        "created": 1730096624,
-        "update": 1730096624
+        "title": "Mon blog",
+        "slug": "blog",
+        "author": "user.demo@mail.fr",
+        "created": 1791061090,
+        "update": 1791061090
       },
       {
-        "title": "Article de blog",
-        "slug": "article-blog",
-        "author": "contributeur@natheo.com",
-        "created": 1730096624,
-        "update": 1730096624
+        "title": "Blog - 1 bloc",
+        "slug": "blog-1-bloc",
+        "author": "user.demo@mail.fr",
+        "created": 1791061090,
+        "update": 1791061090
       }
     ],
-    "limit": 25,
+    "limit": 2,
     "current_page": 1,
-    "rows": 2
+    "rows": 4
   }
 }
 ````
 
-**Réponse 401**
+| Champ | Description |
+|---|---|
+| `pages` | Pages de la page de résultats : titre et slug dans la `locale`, auteur, dates de création et de modification (timestamp Unix) |
+| `limit` / `current_page` | Pagination appliquée |
+| `rows` | Nombre **total** de pages de la catégorie |
 
-*Si le token n'est pas valide*
-````json
-{
-    "code_http": 401,
-    "message": "Accès non autorisé",
-    "errors": [
-        "Token Invalide"
-    ]
-}
-````
+Une catégorie existante mais sans page publiée renvoie un `200` avec `pages` vide et `rows` à `0`.
 
-**Réponse 403**
-
-
-*Si le paramètre locale n'est pas valide*
-````json
-{
-  "code_http": 403,
-  "message": "Ressource non accessible",
-  "errors": [
-    "Choisir une locale entre fr (français) ou es (espagnol) ou en (anglais) "
-  ]
-}
-````
-
-*Si le User-Token est présent mais faux et/ou périmé*
-````json
-{
-    "code_http": 403,
-    "message": "Ressource non accessible",
-    "errors": [
-        "Utilisateur non trouvé"
-    ]
-}
-````
+**Réponse 404**
 
 *Si la catégorie n'existe pas*
 ````json
 {
-  "code_http": 403,
-  "message": "Ressource non accessible",
+  "code_http": 404,
+  "message": "Ressource non disponible",
   "errors": [
     "La catégorie recherchée n'existe pas"
   ]
 }
 ````
 
+**Réponse 400**
+
+*Si `category` est absent ou vide*
+````json
+{
+  "code_http": 400,
+  "message": "Requête invalide",
+  "errors": [
+    "Cette valeur ne doit pas être vide."
+  ]
+}
+````
+
 **Réponse 403**
 
-*Si l'API est fermée*
+*Si le `User-Token` est présent mais invalide ou expiré*
 ````json
 {
   "code_http": 403,
   "message": "Ressource non accessible",
   "errors": [
-    "Ressource non accessible - API fermée"
+    "Utilisateur non trouvé"
   ]
 }
 ````
+
+Les erreurs communes (jeton invalide, API fermée, locale invalide, `limit` hors limites) sont décrites dans la
+[présentation de l'API](../index.md#format-des-réponses).
+
+## Voir aussi
+- [Listing pages par tag](listing_pages_tags.md)
+- [Find page content](find_page_content.md) (bloc Listing)
+- [Find page](find_page.md)

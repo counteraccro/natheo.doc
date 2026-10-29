@@ -1,359 +1,243 @@
-## Find menu
+---
+title: "Find page"
+parent: "API"
+nav_order: 4
+---
 
-[Index](../../../index.md) > [API](../index.md) > Find page
+Renvoie une page à partir de son slug : titre, auteur, rendu, tags, statistiques, SEO, liste de ses blocs de contenu
+et, par défaut, tous ses menus. Le contenu de chaque bloc se récupère ensuite avec
+[Find page content](find_page_content.md).
 
-Permet de renvoyer une page formatée en fonction de différents paramètres.
+- Sans `slug` (ou avec un slug vide), renvoie la **page d'accueil** (*landing page*) si elle existe.
+- Seules les pages **publiées** et **actives** sont renvoyées. Avec un `User-Token` valide d'un compte
+  **Contributeur** ou plus, les pages en **brouillon** le sont aussi.
+- Le slug est cherché dans **toutes les langues** ; la `locale` ne sert qu'à choisir la langue des textes
+  renvoyés.
 
-Si le User-Token est présent dans le header et valide, permet de voir une page en brouillon
+> ⚠️ Chaque appel réussi sur une page **publiée** **incrémente son compteur de lectures** (`PAGE_NB_READ`) ; la
+> consultation d'un brouillon avec un `User-Token` ne compte pas. Évitez d'appeler cet endpoint pour autre chose
+> qu'un affichage réel de la page (pré-chargement, tests…), sous peine de fausser la statistique.
 
-Si slug n'est pas précisé ou vide renvoi la landingPage si elle existe
+Pour plus d'information sur les valeurs numériques renvoyées, voir les
+[références globales](../../Architecture/references_globales.md).
 
-Pour plus d'information sur les références globales, [cliquez ici](../../Techniques/Références_globales.md)
+Paramètres attendus (query string) :
 
-Paramètres attendus :
+| nom               | type    | obligatoire | valeur par défaut | commentaire                                                         |
+|-------------------|---------|-------------|-------------------|---------------------------------------------------------------------|
+| slug              | String  | NON         |                   | Slug de la page. Absent ou vide : page d'accueil                    |
+| locale            | String  | NON         | fr                | Langue des textes renvoyés                                          |
+| show_menus        | Boolean | NON         | true              | `false` pour ne pas renvoyer les menus                              |
+| show_tags         | Boolean | NON         | true              | `false` pour ne pas renvoyer les tags                               |
+| show_statistiques | Boolean | NON         | true              | `false` pour ne pas renvoyer les statistiques                       |
+| menu_positions    | String  | NON         | 0                 | Positions des menus à renvoyer, séparées par des virgules (ex. `1,3`) : `0` tous, `1` en-tête, `2` droite, `3` pied de page, `4` gauche |
 
-| nom               | type    | obligatoire | valeur par défaut | commentaire                                                                         |
-|-------------------|---------|-------------|-------------------|-------------------------------------------------------------------------------------|
-| slug              | String  | NON         |                   | Obligatoire                                                                         |
-| locale            | String  | NON         | fr                |                                                                                     |
-| show_menus        | boolean | NON         | true              | remonte ou non les menus associés à la page                                         |
-| show_tags         | boolean | NON         | true              | remonte ou non les tags associés à la page                                          |
-| show_statistiques | boolean | NON         | true              | remonte ou non les statistiques associés à la page                                  |
-| menu_position     | array   | NON         | 0                 | remonte uniquement les menus dans les positions demandés                            |
-
-
-### Informations
-
+Les paramètres `show_*` acceptent `true`/`false`, `1`/`0`, `yes`/`no` et `on`/`off` ; toute autre valeur est refusée
+(`400`).
 
 **Requêtes CURL**
 `````shell
 curl --request GET \
---url --location '[url-de-mon-site]/api/v1/page/find?slug=bienvenue' \
+--url '[url-de-mon-site]/api/v1/page/find?slug=a-propos' \
 --header 'Accept: application/json' \
---header 'User-Token: [user-token' \
 --header 'Authorization: Bearer [mon-token]'
 `````
 
 `````shell
 curl --request GET \
---url --location '[url-de-mon-site/api/v1/page/find?slug=bienvenue&locale=es&page=10&limit=250&show_menu=false&menu_positions=2%2C3%2C4' \
+--url '[url-de-mon-site]/api/v1/page/find?slug=a-propos&locale=en&show_statistiques=false&menu_positions=1,3' \
 --header 'Accept: application/json' \
+--header 'User-Token: [user-token]' \
 --header 'Authorization: Bearer [mon-token]'
 `````
 
 **Réponse 200**
 
-url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue
+url : `[url-de-mon-site]/api/v1/page/find?slug=a-propos` (menus raccourcis)
 ````json
 {
   "code_http": 200,
   "message": "success",
   "data": {
     "page": {
-      "title": "Bienvenue sur NatheoCMS",
-      "render": 6,
-      "author": "user.demo@mail.fr",
-      "created": 1730096624,
-      "update": 1730096626,
+      "title": "A propos",
+      "slug": "a-propos",
+      "status": 1,
+      "render": 5,
+      "author": {
+        "author": "user.demo@mail.fr",
+        "description": "Je suis un compte de démonstration généré à l'installation du CMS",
+        "avatar": "avatar-2.png"
+      },
+      "created": 1791061090,
+      "update": 1791061090,
+      "headerImg": "http://dev.natheo:8888/assets/natheotheque//medias/paysage/road.jpg",
       "tags": [
         {
-          "label": "Natheo",
-          "color": "#6F42C1"
+          "label": "FAQ",
+          "color": "#262cdf"
         },
         {
-          "label": "Article",
-          "color": "#1188b4"
-        },
-        {
-          "label": "Evolution",
-          "color": "#b61114"
+          "label": "Démo",
+          "color": "#F0C847"
         }
       ],
       "statistiques": {
-        "PAGE_NB_READ": "49"
+        "PAGE_NB_READ": "1"
       },
       "contents": [
         {
-          "id": 92,
+          "id": 32,
           "type": 1,
           "position": 1
         },
         {
-          "id": 93,
+          "id": 33,
           "type": 1,
           "position": 2
         },
         {
-          "id": 94,
+          "id": 34,
           "type": 1,
           "position": 3
         }
       ],
+      "seo": [
+        {
+          "name": "description",
+          "value": "La Faq de Natheo CMS",
+          "balise": "<meta name=\"description\" content=\"La Faq de Natheo CMS\">"
+        },
+        {
+          "name": "keywords",
+          "value": "Natheo-CMS, demo, FAQ",
+          "balise": "<meta name=\"keywords\" content=\"Natheo-CMS, demo, FAQ\">"
+        }
+      ],
+      "openComment": true,
       "menus": {
+        "HEADER": {
+          "id": 1,
+          "position": "HEADER",
+          "type": 2,
+          "elements": [
+            {
+              "id": 1,
+              "target": "_self",
+              "label": "Index",
+              "url": "",
+              "slug": "home",
+              "category": 1,
+              "columnPosition": 1,
+              "rowPosition": 1
+            }
+          ]
+        },
         "LEFT": {
+          "id": 2,
           "position": "LEFT",
           "type": 12,
-          "elements": [
-            {
-              "target": "_blank",
-              "label": "Pages",
-              "url": "#",
-              "slug": "",
-              "elements": [
-                {
-                  "target": "_blank",
-                  "label": "Listing des pages",
-                  "url": "",
-                  "slug": "pages"
-                },
-                {
-                  "target": "_blank",
-                  "label": "Les nouveautées",
-                  "url": "",
-                  "slug": "new-in-natheo-cms"
-                },
-                {
-                  "target": "_blank",
-                  "label": "Démonstration",
-                  "url": "",
-                  "slug": "demo-page"
-                }
-              ]
-            }
-          ]
-        },
-        "HEADER": {
-          "position": "HEADER",
-          "type": 3,
-          "elements": [
-            {
-              "target": "_blank",
-              "label": "Contenu",
-              "url": "",
-              "slug": "",
-              "elements": [
-                {
-                  "target": "_blank",
-                  "label": "Listing des pages",
-                  "url": "",
-                  "slug": "pages",
-                  "elements": [
-                    {
-                      "target": "_blank",
-                      "label": "Les nouveautées",
-                      "url": "",
-                      "slug": "new-in-natheo-cms"
-                    },
-                    {
-                      "target": "_blank",
-                      "label": "Démonstration",
-                      "url": "",
-                      "slug": "demo-page"
-                    }
-                  ]
-                },
-                {
-                  "target": "_blank",
-                  "label": "Liste des articles de blogs",
-                  "url": "",
-                  "slug": "blogs",
-                  "elements": [
-                    {
-                      "target": "_blank",
-                      "label": "Page de blog",
-                      "url": "",
-                      "slug": "article-blog"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "target": "_blank",
-              "label": "Documentation",
-              "url": "https://counteraccro.github.io/natheo.doc/",
-              "slug": ""
-            },
-            {
-              "target": "_blank",
-              "label": "Autre",
-              "url": "#",
-              "slug": "",
-              "elements": [
-                {
-                  "target": "_blank",
-                  "label": "Natheo",
-                  "url": "#",
-                  "slug": "",
-                  "elements": [
-                    {
-                      "target": "_blank",
-                      "label": "GitHub",
-                      "url": "https://github.com/counteraccro/natheo",
-                      "slug": ""
-                    },
-                    {
-                      "target": "_blank",
-                      "label": "Site officiel",
-                      "url": "#",
-                      "slug": ""
-                    }
-                  ]
-                },
-                {
-                  "target": "_blank",
-                  "label": "Partenaires",
-                  "url": "https://www.google.fr/",
-                  "slug": "",
-                  "elements": [
-                    {
-                      "target": "_blank",
-                      "label": "Natheo agency",
-                      "url": "https://www.natheo-agency.fr/",
-                      "slug": ""
-                    },
-                    {
-                      "target": "_blank",
-                      "label": "Natheo community",
-                      "url": "https://www.natheo-community.fr/",
-                      "slug": ""
-                    },
-                    {
-                      "target": "_blank",
-                      "label": "Natheo Book",
-                      "url": "https://www.natheo-book.fr/",
-                      "slug": ""
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "elements": []
         },
         "FOOTER": {
+          "id": 3,
           "position": "FOOTER",
-          "type": 17,
-          "elements": [
-            {
-              "target": "_blank",
-              "label": "Site officiel",
-              "url": "https://www.google.fr",
-              "slug": ""
-            },
-            {
-              "target": "_blank",
-              "label": "Documentation",
-              "url": "https://github.com/counteraccro/natheo",
-              "slug": ""
-            },
-            {
-              "target": "_blank",
-              "label": "GitHub",
-              "url": "https://github.com/counteraccro/natheo",
-              "slug": ""
-            }
-          ]
+          "type": 16,
+          "elements": []
         }
       }
     }
   }
 }
 ````
-**Réponse 200**
 
-url : [url-de-mon-site]/api/v1/page/find?slug=bienvenue&locale=es&show_menus=false&show_tags=false,&show_statistiques=false
+### Champs renvoyés
+
+| Champ | Description |
+|---|---|
+| `title` / `slug` | Titre et slug de la page dans la `locale` demandée |
+| `status` | `1` publiée, `2` brouillon (visible uniquement avec un `User-Token`) |
+| `render` | Mise en page des blocs ([références](../../Architecture/references_globales.md#rendu-de-la-page)) |
+| `author.author` | Nom de l'auteur, affiché selon sa préférence de rendu des données personnelles |
+| `author.description` / `author.avatar` | Description et nom de fichier de l'avatar de l'auteur |
+| `created` / `update` | Dates de création et de dernière modification (timestamp Unix, en secondes) |
+| `headerImg` | URL de l'image d'en-tête de la page |
+| `tags` | Tags de la page : libellé dans la `locale` et couleur (absent si `show_tags=false`) |
+| `statistiques` | Compteur de lectures `PAGE_NB_READ`, en texte (absent si `show_statistiques=false`) |
+| `contents` | Blocs de la page : `id` (à passer à [Find page content](find_page_content.md)), `type` ([références](../../Architecture/references_globales.md#type-de-contenu-de-page)) et `position` (emplacement dans le rendu) |
+| `seo` | Balises meta : nom, valeur dans la `locale` et balise HTML prête à insérer |
+| `openComment` | `true` si les commentaires sont ouverts sur cette page |
+| `menus` | Menus de la page indexés par position (absent si `show_menus=false`), même format que [Find menu](find_menu.md) |
+
+### Menus renvoyés
+
+Le bloc `menus` contient au plus un menu par position :
+
+1. les menus **actifs** rattachés à la page ;
+2. complétés, pour chaque position restée vide, par le **menu par défaut** de cette position ;
+3. sauf qu'un menu **gauche** par défaut n'est pas ajouté si la page a déjà un menu **droite**, et inversement ;
+4. enfin, seules les positions demandées par `menu_positions` sont conservées.
+
+Si aucun menu ne correspond, la clé `menus` est absente de la réponse.
+
+> 📝 L'URL de `headerImg` contient un double slash (`natheotheque//medias`), dû à une concaténation de chemin
+> dans le CMS. Le lien fonctionne malgré tout.
+
+**Réponse 404**
+
+*Si la page n'existe pas, n'est pas publiée ou est désactivée*
 ````json
 {
-    "code_http": 200,
-    "message": "success",
-    "data": {
-        "page": {
-            "title": "[ES] Bienvenue sur NatheoCMS",
-            "render": 6,
-            "author": "user.demo@mail.fr",
-            "created": 1730096624,
-            "update": 1730096626,
-            "contents": [
-                {
-                    "id": 92,
-                    "type": 1,
-                    "position": 1
-                },
-                {
-                    "id": 93,
-                    "type": 1,
-                    "position": 2
-                },
-                {
-                    "id": 94,
-                    "type": 1,
-                    "position": 3
-                }
-            ]
-        }
-    }
+  "code_http": 404,
+  "message": "Ressource non disponible",
+  "errors": [
+    "Page non disponible"
+  ]
 }
 ````
 
+**Réponse 400**
 
-**Réponse 401**
-
-*Si le token n'est pas valide*
+*Si un paramètre `show_*` n'est pas un booléen*
 ````json
 {
-    "code_http": 401,
-    "message": "Accès non autorisé",
-    "errors": [
-        "Token Invalide"
-    ]
+  "code_http": 400,
+  "message": "Requête invalide",
+  "errors": [
+    "Le paramètre show_tags doit être un booléen (true/false, 1/0)"
+  ]
+}
+````
+
+*Si `menu_positions` contient une valeur hors de 0 à 4*
+````json
+{
+  "code_http": 400,
+  "message": "Requête invalide",
+  "errors": [
+    "Choisi une position entre 0 (tout) - 1 (haut) - 2 (droite) - 3 (bas) - 4 (gauche). Plusieurs choix possible"
+  ]
 }
 ````
 
 **Réponse 403**
 
-
-*Si le paramètre menu_position n'est pas valide*
+*Si le `User-Token` est présent mais invalide ou expiré*
 ````json
 {
   "code_http": 403,
   "message": "Ressource non accessible",
   "errors": [
-    "Choisi une position entre 0 (tout) - 1 (haut) - 2 (droite) - 3 (bas) - 4 (gauche). Plusieurs choix possible "
+    "Utilisateur non trouvé"
   ]
 }
 ````
 
-*Si le User-Token est présent mais faux et/ou périmé*
-````json
-{
-    "code_http": 403,
-    "message": "Ressource non accessible",
-    "errors": [
-        "Utilisateur non trouvé"
-    ]
-}
-````
+Les erreurs communes (jeton invalide, API fermée, locale invalide) sont décrites dans la
+[présentation de l'API](../index.md#format-des-réponses).
 
-*Si la page n'existe pas*
-````json
-{
-    "code_http": 403,
-    "message": "Ressource non accessible",
-    "errors": [
-        "Page non disponible"
-    ]
-}
-````
-
-**Réponse 403**
-
-*Si l'API est fermée*
-````json
-{
-  "code_http": 403,
-  "message": "Ressource non accessible",
-  "errors": [
-    "Ressource non accessible - API fermée"
-  ]
-}
-````
+## Voir aussi
+- [Find page content](find_page_content.md)
+- [Find menu](find_menu.md)
+- [Gestion des pages](../../GuideAdmin/Contenu/Pages/listing.md)
+- [Références globales](../../Architecture/references_globales.md)
