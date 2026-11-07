@@ -35,7 +35,7 @@ La page est découpée en quatre cartes.
 
 | Ligne | Contenu |
 |---|---|
-| **Version** | Version de Nathéo CMS installée (par exemple `2.0.0-beta.2`) |
+| **Version** | Version de Nathéo CMS installée (par exemple `2.0.0`) |
 | **Url** | Adresse à laquelle l'administration est consultée (protocole + nom de domaine + port), cliquable |
 
 L'URL affichée est celle de la requête en cours, pas l'option **URL du site** des

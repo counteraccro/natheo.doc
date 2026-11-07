@@ -12,16 +12,16 @@
 
 </div>
 
-> [!WARNING]  
-> La documentation est en cours de refonte pour correspondre à la V2 du CMS.
-> L'arborescence a été réorganisée ; certaines pages sont encore des pages-jalons
-> (🚧) en attente de rédaction — voir la [roadmap](Docs/Projet/roadmap.md).
+> [!NOTE]  
+> La documentation correspond à la version stable `v2.0.0` du CMS.
+> Le suivi du projet se trouve dans la [roadmap](Docs/Projet/roadmap.md), le
+> [changelog](Docs/Projet/changelog.md) et l'[historique des versions](Docs/Projet/versions.md).
 
 ---
 
 ## 📖 À propos
 
-Ce repository contient l'ensemble de la documentation de **Nathéo CMS**, hébergée via GitHub Pages. Il regroupe la documentation technique, fonctionnelle et les tutoriels sur tous les modules du CMS.
+Ce repository contient l'ensemble de la documentation de **Nathéo CMS**, un CMS headless open source. Le site est généré par Jekyll avec le thème [just-the-docs](https://github.com/just-the-docs/just-the-docs), puis publié par GitHub Pages à partir de la branche `main`.
 
 🌐 **Accéder à la documentation** : [https://counteraccro.github.io/natheo.doc/](https://counteraccro.github.io/natheo.doc/)
 
@@ -31,50 +31,41 @@ Ce repository contient l'ensemble de la documentation de **Nathéo CMS**, héber
 
 La documentation est organisée en plusieurs sections :
 
-### 🚀 Installation & Configuration
-- Guide d'installation (développement et production)
-- Configuration de la base de données
-- Configuration du serveur web
-- Variables d'environnement
-
-### 👨‍💻 Documentation technique
-- Architecture du CMS
-- Structure du projet
-- Système de modules
-- API et endpoints
-- Base de données et modèles
-
-### 📝 Guide utilisateur
-- Gestion du contenu (articles, pages, médias)
-- Système de commentaires
-- Gestion des utilisateurs et permissions
-- Traductions et multilingue
+| Section | Contenu |
+|---|---|
+| [Nathéo CMS](Docs/Projet/index.md) | Présentation du projet, roadmap, changelog et versions |
+| [Démarrage](Docs/Demarrage/index.md) | Pré-requis, installation (installeur graphique ou CLI), configuration et base de données |
+| [Architecture](Docs/Architecture/index.md) | Stack, backend Symfony, frontend Vue/Vite, traductions, modèle de données, composants, commandes et tests |
+| [Guide d'administration](Docs/GuideAdmin/index.md) | Chaque écran du back-office : contenu, système, outils, modules, compte et recherche globale |
+| [Front](Docs/Front/index.md) | Le rendu public du site et le thème de démonstration Natheo-Horizon |
+| [API](Docs/API/index.md) | Authentification, format des réponses, pagination et référence de chaque endpoint |
 
 ---
 
 ## 🛠️ Développement local
 
-### Prérequis
+Le site est construit par GitHub Pages à chaque push sur `main` : aucun workflow ni `Gemfile` n'est versionné dans ce repository.
 
-- Node.js 18+ ou Python 3.8+ (selon le générateur utilisé)
-- Git
+Pour prévisualiser en local, il faut Ruby et Bundler, ainsi qu'un `Gemfile` à créer à la racine, sans le commiter :
 
-### Lancer la documentation localement
+```ruby
+source "https://rubygems.org"
+gem "github-pages", group: :jekyll_plugins
+```
 
-> **Note** : Remplacez les commandes ci-dessous selon votre générateur de documentation (Jekyll, MkDocs, Docusaurus, etc.)
 ```bash
 # Cloner le repository
 git clone https://github.com/counteraccro/natheo.doc.git
 cd natheo.doc
 
-# Installer les dépendances (exemple pour Jekyll)
+# Installer les dépendances
 bundle install
 
 # Lancer le serveur local
 bundle exec jekyll serve
 
 # Accéder à la documentation
-# http://localhost:4000
+# http://localhost:4000/natheo.doc/
 ```
 
 ---
@@ -99,7 +90,7 @@ Les contributions pour améliorer la documentation sont les bienvenues !
 ```bash
    git push origin docs/amelioration-section-x
 ```
-6. **Ouvrez** une Pull Request
+6. **Ouvrez** une Pull Request vers `main`
 
 ### Guidelines de contribution
 
@@ -109,18 +100,27 @@ Les contributions pour améliorer la documentation sont les bienvenues !
 - ✅ Vérifiez l'orthographe et la grammaire
 - ✅ Testez vos modifications en local avant de soumettre
 
+### Points d'attention
+
+- **Menu latéral** : il est généré à partir du front-matter (`title`, `parent`, `grand_parent`, `nav_order`, `has_children`). Le `parent` doit reprendre mot pour mot le `title` de la page parente, sinon la page disparaît du menu sans erreur de build.
+- **Exemples de code** : un bloc contenant une syntaxe à accolades de type Twig ou Vue doit être encadré des balises Liquid `raw` et `endraw`, sinon le build peut échouer.
+- **JavaScript de `_includes/head_custom.html`** : utilisez uniquement des commentaires `/* */`. Le HTML publié est minifié sur une seule ligne, et un commentaire `//` y désactiverait tout le reste du script.
+
 ### Structure des fichiers
 ```
-natheo_doc/
+natheo.doc/
 ├── Docs/
-│   ├── Demarrage/          # Installation, configuration, bases de données
+│   ├── Projet/             # Présentation, roadmap, changelog, versions
+│   ├── Demarrage/          # Pré-requis, installation, configuration, bases de données
 │   ├── Architecture/       # Documentation technique (stack, backend, frontend, composants)
 │   ├── GuideAdmin/         # Documentation fonctionnelle du back-office
 │   ├── Front/              # Documentation de la partie publique du site
-│   ├── API/                # Documentation des API
-│   └── Projet/             # Description générale, roadmap, changelog, versions
-├── index.md
-└── _config.yml
+│   └── API/                # Règles communes et référence des endpoints
+├── _includes/              # Personnalisation du thème (CSS, JS, navigation)
+├── _layouts/               # Gabarits surchargés
+├── _sass/color_schemes/    # Palette de couleurs du thème
+├── index.md                # Page d'accueil
+└── _config.yml             # Configuration Jekyll
 ```
 
 ---
@@ -141,7 +141,6 @@ Vous avez trouvé une erreur, une information obsolète ou un lien cassé dans l
 - 🏠 [Site de documentation](https://counteraccro.github.io/natheo.doc/)
 - 💻 [Repository du CMS](https://github.com/counteraccro/natheo)
 - 🐛 [Issues CMS](https://github.com/counteraccro/natheo/issues)
-- 📧 [Contact](#)
 
 ---
 
@@ -171,4 +170,4 @@ Merci à tous ceux qui contribuent à améliorer cette documentation !
 
 </div>
 
-*Dernière mise à jour le 05/05/2026*
+*Dernière mise à jour le 07/11/2026*

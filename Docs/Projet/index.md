@@ -5,7 +5,7 @@ has_children: true
 nav_order: 2
 ---
 
-Nathéo CMS est un CMS développé avec [Symfony 8.1 (PHP 8.2+) côté back-office
+Nathéo CMS est un CMS développé avec [Symfony 8.1 (PHP 8.4+) côté back-office
 et Vue 3 / TypeScript / Vite / Tailwind 4 côté interface][1].
 
 ### Un CMS headless

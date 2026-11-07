@@ -19,7 +19,7 @@ Voici les options qui peuvent influencer l'installation et le comportement de Na
 | `app.default_database_name` | `%env(NATHEO_DBNAME)%` | Nom de la base de données, lu depuis la variable d'env `NATHEO_DBNAME` |
 | `app.debug_mode` | `%env(bool:NATHEO_DEBUG)%` | Lu depuis `NATHEO_DEBUG` — voir l'encadré ci-dessous |
 | `app.dump_directory` | `%kernel.project_dir%/var/dump/` | Dossier de stockage des sauvegardes SQL, hors du dossier public |
-| `app.version` | `2.0.0-beta.2` | Version affichée du CMS |
+| `app.version` | `2.0.0` | Version affichée du CMS |
 | `app.natheo_horizon.version` | `Natheo-Horizon v1.0.0` | Version du thème front par défaut |
 | `app.current_branche` | `master` | Branche Git courante (affichage/diagnostic) |
 

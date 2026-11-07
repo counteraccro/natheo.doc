@@ -10,10 +10,10 @@ nav_order: 1
     Nathéo est un CMS <strong>headless</strong> open source : un back-office complet pour gérer pages, menus,
     médias, commentaires et utilisateurs, et une API JSON pour afficher ce contenu sur le front de votre choix.
   </p>
-  <p class="home-current-version"><span class="version-badge-latest">Version actuelle</span><span class="version-entry-title">v2.0.0-beta.1</span><span class="version-tag version-tag-beta">Bêta</span><a href="Docs/Projet/versions.html">Voir toutes les versions →</a></p>
+  <p class="home-current-version"><span class="version-badge-latest">Version actuelle</span><span class="version-entry-title">v2.0.0</span><span class="version-tag version-tag-stable">Stable</span><a href="Docs/Projet/versions.html">Voir toutes les versions →</a></p>
   <ul class="home-stack">
     <li>Symfony 8.1</li>
-    <li>PHP 8.2+</li>
+    <li>PHP 8.4+</li>
     <li>Vue 3 + TypeScript</li>
     <li>Vite</li>
     <li>Tailwind 4</li>
