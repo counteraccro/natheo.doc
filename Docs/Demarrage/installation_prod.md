@@ -14,9 +14,12 @@ Nathéo CMS propose un installeur graphique en 5 étapes pour accompagner l'inst
 ### Étape 1 : cloner le dépôt Git
 
 ```bash
-git clone https://github.com/counteraccro/natheo.git
+git clone --branch v2.0.0 https://github.com/counteraccro/natheo.git
 cd natheo
 ```
+
+> ⚠️ Gardez l'option `--branch` : sans elle, le clone récupère la branche `master`, qui porte la version en
+> développement (`2.1.0-dev`).
 
 ### Étape 2 : installer les dépendances PHP
 
