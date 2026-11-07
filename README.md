@@ -4,7 +4,7 @@
 
 [![Documentation](https://img.shields.io/badge/Docs-En%20ligne-blue?style=flat-square)](https://counteraccro.github.io/natheo.doc/)
 [![CMS Version](https://img.shields.io/badge/NatheoCMS-v2.0.0-8b5cf6?style=flat-square)](https://github.com/counteraccro/natheo)
-[![License](https://img.shields.io/badge/License-GNU-green?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-GNU-green?style=flat-square)](https://github.com/counteraccro/natheo/blob/master/LICENSE)
 
 **Documentation technique et fonctionnelle complète de Nathéo CMS**
 
@@ -13,7 +13,9 @@
 </div>
 
 > [!WARNING]  
-> La documentation actuelle est basé sur la V1 du CMS, elle sera mise à jour plus tard pour correspondre à la V2
+> La documentation est en cours de refonte pour correspondre à la V2 du CMS.
+> L'arborescence a été réorganisée ; certaines pages sont encore des pages-jalons
+> (🚧) en attente de rédaction — voir la [roadmap](Docs/Projet/roadmap.md).
 
 ---
 
@@ -109,17 +111,15 @@ Les contributions pour améliorer la documentation sont les bienvenues !
 
 ### Structure des fichiers
 ```
-natheo.doc/
-├── docs/
-│   ├── installation/
-│   ├── guide-utilisateur/
-│   ├── documentation-technique/
-│   ├── design-system/
-│   ├── modules/
-│   └── tutoriels/
-├── assets/
-│   ├── images/
-│   └── styles/
+natheo_doc/
+├── Docs/
+│   ├── Demarrage/          # Installation, configuration, bases de données
+│   ├── Architecture/       # Documentation technique (stack, backend, frontend, composants)
+│   ├── GuideAdmin/         # Documentation fonctionnelle du back-office
+│   ├── Front/              # Documentation de la partie publique du site
+│   ├── API/                # Documentation des API
+│   └── Projet/             # Description générale, roadmap, changelog, versions
+├── index.md
 └── _config.yml
 ```
 
@@ -149,7 +149,7 @@ Vous avez trouvé une erreur, une information obsolète ou un lien cassé dans l
 
 Cette documentation est sous licence GNU-V3, comme le projet Nathéo CMS.
 
-Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Voir le fichier [LICENSE](https://github.com/counteraccro/natheo/blob/master/LICENSE) pour plus de détails.
 
 ---
 
