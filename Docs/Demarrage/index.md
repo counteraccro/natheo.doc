@@ -28,4 +28,8 @@ Tout ce qu'il faut pour installer et configurer Nathéo CMS.
     <span class="doc-card-title">Bases de données prises en charge</span>
     <p class="doc-card-desc">Basculer de MySQL vers PostgreSQL : DSN dans le .env et stratégie de génération des identifiants Doctrine</p>
   </a>
+  <a class="doc-card" href="mise_a_jour.html">
+    <span class="doc-card-title">Mise à jour</span>
+    <p class="doc-card-desc">Passer à une version plus récente de la V2 : sauvegarde, commandes, migrations Doctrine et traductions à reprendre</p>
+  </a>
 </div>

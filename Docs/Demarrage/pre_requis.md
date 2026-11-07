@@ -10,7 +10,7 @@ Voici les pré-requis pour installer et faire fonctionner Nathéo CMS dans les m
 
 | Composant | Version requise | Notes |
 |---|---|---|
-| **PHP** | 8.2 ou supérieur | Version lue depuis `composer.json` (`"php": ">=8.2"`) et vérifiée automatiquement par l'installeur graphique — extensions requises ci-dessous |
+| **PHP** | 8.4 ou supérieur | 8.4.1 au minimum, exigé par Symfony 8.1. L'installeur graphique contrôle la valeur de `composer.json` et affiche `>=8.2` : ce contrôle ne suffit donc pas à garantir que la version convient — extensions requises ci-dessous |
 | **Composer** | 2.8.9 ou supérieur | Gestionnaire de dépendances PHP |
 | **Yarn** | 1.22.22 ou supérieur | Gestionnaire de paquets JavaScript |
 | **Apache** | 2.4.58 ou supérieur | Version testée ; un autre serveur web compatible PHP-FPM devrait fonctionner |

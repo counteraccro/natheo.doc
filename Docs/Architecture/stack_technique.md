@@ -12,7 +12,7 @@ public, base de données, asynchrone et outillage de build.
 
 | Techno | Version | Rôle |
 |---|---|---|
-| [PHP](https://www.php.net/) | 8.2+ | Langage backend |
+| [PHP](https://www.php.net/) | 8.4+ | Langage backend |
 | [Symfony](https://symfony.com/) | 8.1 | Framework principal |
 | [Doctrine ORM](https://www.doctrine-project.org/projects/orm.html) | 3.x (DBAL 4, migrations-bundle 3.2) | Mapping objet-relationnel, migrations |
 | [Twig](https://twig.symfony.com/) | 2.12 / 3.x | Moteur de templates |
@@ -43,8 +43,8 @@ Nathéo supporte deux SGBD au choix, via `DATABASE_URL` :
 
 | SGBD | Version | Notes |
 |---|---|---|
-| MySQL / MariaDB | MySQL 8.0+ / MariaDB 10.11+ | Valeur par défaut en `.env` |
-| PostgreSQL | 15+ (16 en environnement Docker) | Fonctions Doctrine dédiées via `martin-georgiev/postgresql-for-doctrine` |
+| MySQL / MariaDB | MySQL 8.2+ / MariaDB 10.11+ | Valeur par défaut en `.env` |
+| PostgreSQL | 15.2+ (16 en environnement Docker) | Fonctions Doctrine dédiées via `martin-georgiev/postgresql-for-doctrine` |
 
 L'environnement de développement fourni (`docker-compose.yml`) démarre un
 conteneur PostgreSQL. Le détail des tables est dans le

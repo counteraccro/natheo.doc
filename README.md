@@ -3,7 +3,7 @@
 # 📚 Documentation Nathéo CMS
 
 [![Documentation](https://img.shields.io/badge/Docs-En%20ligne-blue?style=flat-square)](https://counteraccro.github.io/natheo.doc/)
-[![CMS Version](https://img.shields.io/badge/NatheoCMS-v2.0.0--beta.2-8b5cf6?style=flat-square)](https://github.com/counteraccro/natheo)
+[![CMS Version](https://img.shields.io/badge/NatheoCMS-v2.0.0-8b5cf6?style=flat-square)](https://github.com/counteraccro/natheo)
 [![License](https://img.shields.io/badge/License-GNU-green?style=flat-square)](https://github.com/counteraccro/natheo/blob/master/LICENSE)
 
 **Documentation technique et fonctionnelle complète de Nathéo CMS**
@@ -13,7 +13,7 @@
 </div>
 
 > [!NOTE]  
-> La documentation correspond à la V2 du CMS, actuellement en bêta (`v2.0.0-beta.2`).
+> La documentation correspond à la version stable `v2.0.0` du CMS.
 > Le suivi du projet se trouve dans la [roadmap](Docs/Projet/roadmap.md), le
 > [changelog](Docs/Projet/changelog.md) et l'[historique des versions](Docs/Projet/versions.md).
 
