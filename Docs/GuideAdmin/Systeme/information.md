@@ -29,7 +29,7 @@ La page est découpée en quatre cartes.
 | **Serveur** | Logiciel du serveur web, tel qu'il se présente (par exemple `Apache/2.4.62 (Unix) OpenSSL/1.1.1w`) |
 | **Version PHP** | Version de PHP. Elle est cliquable : le lien ouvre la page [phpinfo](#page-phpinfo) dans un nouvel onglet |
 | **Limite mémoire** | Valeur de `memory_limit` dans la configuration PHP (par exemple `512M`) |
-| **Taille max upload** | Censée afficher `upload_max_filesize`. N'affiche en pratique qu'un tiret (voir [Points d'attention](#points-dattention)) |
+| **Taille max. d'upload** | Censée afficher `upload_max_filesize`. N'affiche en pratique qu'un tiret (voir [Points d'attention](#points-dattention)) |
 
 ### Mon site
 

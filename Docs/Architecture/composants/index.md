@@ -142,7 +142,8 @@ admin.
 
 | Composant | Rôle |
 |---|---|
-| [`ModaleComponent`](https://github.com/counteraccro/natheo/blob/master/src/Twig/Components/Admin/ModaleComponent.php) | Génère une modale Bootstrap 5.3 (`TwigComponent`) |
+| [`PageHeaderComponent`](https://github.com/counteraccro/natheo/blob/master/src/Twig/Components/Admin/PageHeaderComponent.php) | En-tête commun des pages de l'admin : fil d'Ariane, titre, icône, description et boutons (`TwigComponent`) |
+| [`ModaleComponent`](https://github.com/counteraccro/natheo/blob/master/src/Twig/Components/Admin/ModaleComponent.php) | Génère une modale (`TwigComponent`) |
 
 ## EventSubscriber / EventListener
 

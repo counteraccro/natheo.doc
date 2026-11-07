@@ -18,7 +18,7 @@ super-administrateurs, à l'URL `/admin/{locale}/page/`.
 
 Le tableau liste toutes les pages du site, avec pour chacune : son numéro,
 son titre, son statut, ses tags, son nombre de commentaires, son nombre
-d'affichages, sa date de dernière modification et son auteur. Une petite
+de vues, sa date de dernière modification et son auteur. Une petite
 icône 📌 à côté du numéro identifie la page définie comme **landing page**
 (page d'accueil par défaut du site). Vous pouvez trier chaque colonne en cliquant sur son
 en-tête, et rechercher une page par titre ou par tag associé. Le filtre
@@ -30,13 +30,20 @@ ligne :
 - ✏️ **Modifier** — ouvre la page dans l'éditeur (voir
   [Créer et éditer une page](ajouter_editer.md))
 - 👁️ **Activer / Désactiver** — une page désactivée devient inaccessible sur
-  le site, sans être supprimée
+  le site, sans être supprimée. N'apparaît pas pour la landing page
 - 🗑️ **Supprimer** — retire définitivement la page ainsi que son historique
   de modifications ; n'apparaît que si la suppression définitive est
-  autorisée dans les [options système](../../Systeme/options.md)
-- 📌 **Définir comme landing page** — n'apparaît que si la page n'est pas déjà
-  la landing page ; bascule automatiquement l'ancienne landing page en page
-  normale (une seule page peut avoir ce statut à la fois)
+  autorisée dans les [options système](../../Systeme/options.md), et jamais pour
+  la landing page
+- 📌 **Définir comme landing page** — n'apparaît que sur une page **publiée et
+  active** qui n'est pas déjà la landing page ; bascule automatiquement l'ancienne
+  landing page en page normale (une seule page peut avoir ce statut à la fois)
+
+Le site doit toujours avoir une landing page. Pour désactiver ou supprimer la
+page qui a ce statut, définissez d'abord une autre landing page.
+
+Un **Contributeur** ne dispose de ces actions que sur ses propres pages (voir
+[les droits sur les contenus](../../Systeme/roles.md#les-droits-sur-les-contenus)).
 
 Et en haut de page, le bouton **Nouvelle page** ouvre l'éditeur de création.
 

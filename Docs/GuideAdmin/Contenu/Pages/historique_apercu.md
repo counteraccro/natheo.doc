@@ -48,6 +48,9 @@ contenu de cette version dans le formulaire, dans **tous** les onglets, sans
 recharger la page — pensez à cliquer sur **Sauvegarder** ensuite si vous
 voulez conserver cette restauration.
 
+L'historique conserve les **50 dernières** sauvegardes automatiques de chaque
+page : les plus anciennes sont retirées au-delà.
+
 Cet historique est propre aux sauvegardes automatiques : il ne s'agit pas
 d'un suivi de chaque clic sur **Sauvegarder**, et il n'existe aucun moyen de
 comparer deux versions entre elles (pas de « diff »).

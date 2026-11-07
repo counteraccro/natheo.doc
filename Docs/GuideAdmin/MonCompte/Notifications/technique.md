@@ -60,7 +60,7 @@ titre/contenu :
 > ⚠️ `NOTIFICATION_SELF_DISABLED`, `NOTIFICATION_SELF_DELETE` et
 > `NOTIFICATION_SELF_ANONYMOUS` ne sont envoyées que si l'utilisateur qui agit
 > sur son propre compte n'a pas le rôle `ROLE_SUPER_ADMIN` (condition
-> `!$role->isSuperAdmin()` dans `UserController`). Les deux dernières exigent
+> `!Role::SUPER_ADMIN->isGrantedTo($user)` dans `UserController`). Les deux dernières exigent
 > en plus que l'option système `OS_ALLOW_DELETE_DATA` (`canDelete()`) soit
 > active.
 
@@ -72,8 +72,8 @@ titre/contenu :
 | [`NotificationRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/NotificationRepository.php) | Requêtes : comptage, pagination, purge (SQL brut), passage en lu de masse |
 | [`NotificationService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/NotificationService.php) | Logique métier : création (`add`), lecture paginée avec traduction à la volée, statistiques, purge, passage en lu/suppression |
 | [`NotificationController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/NotificationController.php) | Routes (`/admin/{_locale}/notification/...`) |
-| [`NotificationFactory`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Notification/NotificationFactory.php) | Construit une entité `Notification` à partir d'une clé de l'enum `Notification` et d'un tableau de paramètres, sans flush — l'appelant sauvegarde ensuite le `User` (cascade persist) |
-| [`NotificationTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/NotificationTranslate.php) | Construit le tableau de traductions (libellés de l'interface) passé au composant Vue `NotificationList` |
+| [`NotificationFactory`](https://github.com/counteraccro/natheo/blob/master/src/Factory/Admin/Global/Notification/NotificationFactory.php) | Construit une entité `Notification` à partir d'une clé de l'enum `Notification` et d'un tableau de paramètres, sans flush — l'appelant sauvegarde ensuite le `User` (cascade persist) |
+| [`NotificationTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Global/NotificationTranslate.php) | Construit le tableau de traductions (libellés de l'interface) passé au composant Vue `NotificationList` |
 
 Le controller est protégé par `#[IsGranted('ROLE_USER')]` : contrairement aux
 autres modules du back-office, chaque utilisateur authentifié gère ses
@@ -96,7 +96,7 @@ l'en-tête n'affiche pas l'icône (test `os_notification` dans
 | `admin_notification_update` | POST | Passe une liste de notifications en lu / non lu (ajax) |
 | `admin_notification_delete` | POST | Supprime une liste de notifications (ajax) |
 | `admin_notification_purge` | POST | Purge les notifications lues trop anciennes (ajax) |
-| `admin_notification_read_all` | GET | Passe toutes les notifications non lues en lu (ajax) |
+| `admin_notification_read_all` | POST | Passe toutes les notifications non lues en lu (ajax) |
 | `admin_notification_statistics` | GET | Statistiques (non lu / aujourd'hui / total) (ajax) |
 
 ### Purge
@@ -136,7 +136,7 @@ des fixtures, ou de l'installation), on peut passer directement par
 |---|---|
 | `Admin/Notification/NotificationBadge` (`assets/vue/controllers/Admin/Notification/NotificationBadge.vue`) | Pastille rouge sur l'icône cloche de l'en-tête ; un seul appel à `admin_notification_number` au montage, pas de rafraîchissement automatique |
 | `Admin/Notification/NotificationList` (`assets/vue/controllers/Admin/Notification/NotificationList.vue`) | Page complète : statistiques, onglets, sélection multiple, actions groupées, modale de confirmation, toasts |
-| `Admin/Notification/Notification` (`assets/vue/controllers/Admin/Notification/Notification.vue`) | Une ligne de notification (icône, titre, contenu, temps relatif, actions marquer lu / supprimer) |
+| `Notification/Notification` (`assets/vue/Components/Notification/Notification.vue`) | Une ligne de notification (icône, titre, contenu, temps relatif, actions marquer lu / supprimer) |
 
 ## Traductions
 
@@ -150,6 +150,6 @@ de traduction `notification` :
 | Fichier | Contenu |
 |---|---|
 | [`NotificationServiceTest`](https://github.com/counteraccro/natheo/blob/master/tests/Service/Admin/NotificationServiceTest.php) | Tests du service (ajout, pagination, statistiques, purge, lu/non lu) |
-| [`NotificationFactoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Utils/Notification/NotificationFactoryTest.php) | Tests de la fabrique de notifications |
+| [`NotificationFactoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Factory/Admin/Global/Notification/NotificationFactoryTest.php) | Tests de la fabrique de notifications |
 | [`NotificationControllerTest`](https://github.com/counteraccro/natheo/blob/master/tests/Controller/Admin/NotificationControllerTest.php) | Tests des routes du contrôleur |
 | `NotificationFixturesTrait` (`tests/Helper/Fixtures/System/NotificationFixturesTrait.php`) | Aide de test pour créer une notification factice — il n'existe pas de fixtures de données dédiées (les notifications sont toujours générées dynamiquement, jamais en seed) |

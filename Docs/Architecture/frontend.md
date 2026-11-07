@@ -54,26 +54,23 @@ rôle :
   plusieurs blocs (une fenêtre modale, une notification, un bouton...). Elles
   ne sont jamais posées directement sur une page, seulement importées par un
   autre composant.
+- **`assets/vue/Composables/`** : les fonctions utilitaires sans affichage, rangées
+  en `Admin/`, `Front/` et `Global/` (jeton CSRF, toasts, copie dans le
+  presse-papier, client de l'API du front...).
 
 Dans ce second dossier, un sous-dossier `Skeleton/` regroupe les
 « squelettes de chargement » : ces silhouettes grisées qui s'affichent
 brièvement avant que les vraies données arrivent, comme sur beaucoup de
 sites et d'applications modernes.
 
-## Du JavaScript classique... et du TypeScript
+## Tous les composants sont en TypeScript
 
-Le projet a évolué au fil du temps, et deux façons d'écrire un composant
-Vue coexistent aujourd'hui :
+Tous les composants Vue sont écrits en **TypeScript**, une version du JavaScript
+qui décrit précisément la forme attendue de chaque donnée. L'intérêt : une erreur
+(une donnée manquante, un mauvais type) est détectée immédiatement à l'écriture du
+code, plutôt que découverte plus tard par un utilisateur.
 
-- les composants les plus anciens sont écrits en JavaScript classique,
-  sans vérification particulière sur la forme des données reçues ;
-- les composants récents sont écrits en **TypeScript**, une version du
-  JavaScript qui décrit précisément la forme attendue de chaque donnée.
-  L'intérêt : une erreur (une donnée manquante, un mauvais type) est
-  détectée immédiatement à l'écriture du code, plutôt que découverte plus
-  tard par un utilisateur.
-
-Pour cela, chaque composant récent a un petit fichier voisin qui décrit ses
+Pour cela, un composant a en général un petit fichier voisin qui décrit ses
 données, rangé dans `assets/ts/` :
 
 ```ts
@@ -84,9 +81,20 @@ export interface DashboardUrls {
 }
 ```
 
-Tout nouveau composant doit être écrit dans ce style TypeScript, sur le
-modèle des composants récents (`Dashboard`, `Menu`, l'éditeur Markdown...),
-plutôt que reproduire l'ancien style.
+Tout nouveau composant doit suivre ce style TypeScript. La commande `yarn build`
+le vérifie avec `vue-tsc`.
+
+## Les conventions communes de l'administration
+
+| Sujet | Convention |
+|---|---|
+| **Toasts** | Un seul conteneur, `ToastContainer`, monté dans la base Twig. Les composants appellent `toastSuccess(msg)`, `toastError(msg)` ou `toastRequestError(error)` depuis `assets/vue/Composables/Global/toast.ts` |
+| **Erreurs AJAX** | `toastRequestError(error)` affiche le message renvoyé par le serveur, sinon un message générique traduit |
+| **Jeton CSRF** | `withCsrf(token)` (`assets/vue/Composables/Admin/csrf.ts`) ajoute l'en-tête `X-CSRF-TOKEN` à l'appel axios |
+| **Couleurs du thème** | Utilitaires Tailwind (`text-primary`, `text-fg-muted`, `border-line`, `bg-card`…) exposés par `assets/styles/admin/theme.scss`, qui suivent le thème de couleur et le mode sombre |
+| **En-tête de page** | Composant Twig `<twig:Admin:PageHeaderComponent>` : fil d'Ariane, titre, icône, description et boutons |
+| **Sidebar** | Le lien actif vient de la route courante et du fil d'Ariane : une page fille doit citer sa page de liste dans son fil d'Ariane |
+| **Boutons** | Classes de `assets/styles/admin/global/button.scss`. Dans une modale : Annuler puis Confirmer. Dans un formulaire : Retour puis l'action principale à droite, Supprimer à gauche |
 
 ## Une différence de fonctionnement entre l'admin et le site public
 

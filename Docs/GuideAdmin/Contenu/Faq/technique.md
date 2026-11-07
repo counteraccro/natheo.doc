@@ -99,21 +99,26 @@ vue d'ensemble de toutes les tables du CMS.
 | [`FaqRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Faq/FaqRepository.php) | Requêtes : pagination/tri/recherche (`getAllPaginate`), liste `id => titre` (`getListeFaq`, utilisée par l'éditeur de pages, voir plus bas). Une méthode `search()` existe aussi (recherche transverse FAQ/catégories/questions) utilisée par la [recherche globale](../../RechercheGlobale/technique.md) |
 | [`FaqService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Faq/FaqService.php) | Logique métier : formatage pour le Grid, mise à jour des statistiques (`updateFaqStatistique`) |
 | [`FaqController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/FaqController.php) | Routes admin (`/admin/{_locale}/faq/...`) |
-| [`FaqFactory`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Faq/FaqFactory.php) | Construit une FAQ vide avec sa première catégorie et sa première question, dans toutes les locales du site |
-| [`FaqPopulate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Faq/FaqPopulate.php) | Reconstruit l'arbre catégories/questions à partir du tableau reçu du composant Vue (efface puis recrée les catégories à chaque sauvegarde) |
-| [`FaqConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Faq/FaqConst.php) | Constantes des actions sur les statistiques (`add`, `sub`, `overwrite`) |
-| [`FaqStatistiqueKey`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Faq/FaqStatistiqueKey.php) | Clés des statistiques (`KEY_STAT_NB_CATEGORIES`, `KEY_STAT_NB_QUESTIONS`) |
-| [`FaqTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/FaqTranslate.php) | Construit le tableau de traductions passé aux composants Vue `NewFaq` et `EditFaq` |
+| [`FaqFactory`](https://github.com/counteraccro/natheo/blob/master/src/Factory/Admin/Content/Faq/FaqFactory.php) | Construit une FAQ vide avec sa première catégorie et sa première question, dans toutes les locales du site |
+| [`FaqPopulate`](https://github.com/counteraccro/natheo/blob/master/src/Populate/Admin/Content/Faq/FaqPopulate.php) | Applique à la FAQ le tableau reçu du composant Vue : catégories, questions et traductions mises à jour par id |
+| [`FaqStatistiqueAction`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Faq/FaqStatistiqueAction.php) | Enum des actions sur les statistiques (`add`, `sub`, `overwrite`) |
+| [`FaqStatistiqueKey`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Faq/FaqStatistiqueKey.php) | Enum des clés des statistiques (`KEY_STAT_NB_CATEGORIES`, `KEY_STAT_NB_QUESTIONS`) |
+| [`FaqTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Content/FaqTranslate.php) | Construit le tableau de traductions passé aux composants Vue `NewFaq` et `EditFaq` |
 
 Le controller est protégé par `#[IsGranted('ROLE_CONTRIBUTEUR')]` (voir la
-hiérarchie des rôles dans `config/packages/security.yaml`).
+hiérarchie des rôles dans `config/packages/security.yaml`). La page d'édition et
+les routes `load-faq`, `save`, `disabled` et `delete` contrôlent en plus les
+[droits sur le contenu](../../Systeme/roles.md#les-droits-sur-les-contenus) avec
+`ContentVoter`. `delete`, `disabled`, `save` et `new-faq` exigent un jeton CSRF
+(enum `FaqCsrfToken`, en-tête `X-CSRF-TOKEN`).
 
-`FaqPopulate::populate()` ne fait pas un merge fin champ par champ sur les
-catégories/questions existantes : à chaque sauvegarde, il **vide puis
-reconstruit entièrement** `Faq::$faqCategories` (et, en cascade, leurs
-questions) à partir du tableau reçu du front — `orphanRemoval: true` sur ces
-relations se charge de supprimer en base les catégories/questions qui ne
-sont plus présentes.
+À chaque sauvegarde, `FaqPopulate` met à jour les catégories, questions et
+traductions **par id** :
+
+- un élément nouveau (id temporaire négatif) est créé ;
+- un élément absent du tableau reçu est supprimé ;
+- une question déplacée vers une autre catégorie garde son id ;
+- un id appartenant à une autre FAQ est traité comme un nouvel élément.
 
 ### Routes principales
 
@@ -216,7 +221,7 @@ domaine de traduction `faq` : `translations/faq+intl-icu.{fr,en,es}.yaml`.
 | Fichier | Contenu |
 |---|---|
 | [`FaqServiceTest`](https://github.com/counteraccro/natheo/blob/master/tests/Service/Admin/Content/Faq/FaqServiceTest.php) | Tests du service (Grid, statistiques) |
-| [`FaqFactoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Utils/Content/Faq/FaqFactoryTest.php) | Tests de la création d'une FAQ vide |
-| [`FaqPopulateTest`](https://github.com/counteraccro/natheo/blob/master/tests/Utils/Content/Faq/FaqPopulateTest.php) | Tests de la reconstruction de l'arbre catégories/questions |
+| [`FaqFactoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Factory/Admin/Content/Faq/FaqFactoryTest.php) | Tests de la création d'une FAQ vide |
+| [`FaqPopulateTest`](https://github.com/counteraccro/natheo/blob/master/tests/Populate/Admin/Content/Faq/FaqPopulateTest.php) | Tests de la mise à jour de l'arbre catégories/questions |
 | [`FaqControllerTest`](https://github.com/counteraccro/natheo/blob/master/tests/Controller/Admin/Content/FaqControllerTest.php) | Tests des routes du contrôleur admin |
 | `FaqFixturesTrait` (`tests/Helper/Fixtures/Content/FaqFixturesTrait.php`) | Aide de test pour créer des FAQ factices |

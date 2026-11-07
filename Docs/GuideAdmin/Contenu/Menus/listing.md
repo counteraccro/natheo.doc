@@ -32,13 +32,23 @@ Pour chaque menu, les actions suivantes sont disponibles depuis la ligne :
 
 | Action | Effet |
 |---|---|
-| 👁️ **Activer / Désactiver** | Un menu désactivé n'apparaît plus sur le site, mais rien n'est supprimé ; une confirmation est demandée uniquement pour la désactivation |
-| 🗑️ **Supprimer** | Retire définitivement le menu (irréversible) — n'apparaît que si l'option système *Autoriser la suppression des données* est activée |
+| 👁️ **Activer / Désactiver** | Un menu désactivé n'apparaît plus sur le site, mais rien n'est supprimé ; une confirmation est demandée uniquement pour la désactivation. N'apparaît pas pour le menu par défaut |
+| 🗑️ **Supprimer** | Retire définitivement le menu (irréversible) — n'apparaît que si l'option système *Autoriser la suppression des données* est activée, et jamais pour le menu par défaut |
 | ✏️ **Éditer** | Ouvre le menu en édition |
-| 🟩 **Définir par défaut** | N'apparaît que si le menu n'est pas déjà par défaut ; demande confirmation, puis retire automatiquement le statut par défaut de tout autre menu de la **même position** |
+| 🟩 **Définir par défaut** | N'apparaît que si le menu est actif et n'est pas déjà par défaut ; demande confirmation, puis retire automatiquement le statut par défaut de tout autre menu de la **même position** |
 
 Une icône ☰ à côté du numéro `#` d'un menu indique qu'il s'agit du menu par
 défaut de sa position.
+
+Quelques règles protègent le site :
+
+- Le **menu par défaut** ne peut être ni désactivé ni supprimé : définissez
+  d'abord un autre menu par défaut pour cette position.
+- Un menu **utilisé par au moins une page** ne peut pas être supprimé : le
+  message d'erreur indique le nombre de pages concernées. Supprimer un menu
+  ne supprime donc jamais de page.
+- Un **Contributeur** ne dispose de ces actions que sur ses propres menus (voir
+  [les droits sur les contenus](../../Systeme/roles.md#les-droits-sur-les-contenus)).
 
 Et en haut de page, le bouton **Nouveau menu** ouvre le formulaire de
 création.

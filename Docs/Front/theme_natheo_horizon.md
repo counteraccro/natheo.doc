@@ -62,14 +62,14 @@ que pour la personne connectée.
 | Entrée Vite | `front_natheo_horizon` → `assets/app_front.ts` (CSS `assets/styles/app_front_natheo_horizon.css` et `styles/front/natheoHorizon/global.css`) |
 | Composant racine | `assets/vue/controllers/Front/NatheoHorizon/Structure.vue` |
 | Composants | `assets/vue/Components/Front/NatheoHorizon/` : `Nav/` (en-tête, menus déroulants et méga-menu), `Main/` (menus latéraux, `Content/` avec les blocs texte, FAQ, listing, commentaires, fil d'Ariane, pagination), `Footer/`, `Skeleton.vue` |
-| Client API | `assets/utils/Front/FrontApi.ts` (ajoute les en-têtes, extrait `data` de la réponse, convertit les erreurs) |
-| Utilitaires | `assets/utils/Front/UtilsFront.ts` (construction des URL, dates, initiales) et constantes `assets/utils/Front/Const/` (types de contenu, mises en page, statuts) |
+| Client API | `assets/vue/Composables/Front/FrontApi.ts` (ajoute les en-têtes, extrait `data` de la réponse, convertit les erreurs) |
+| Utilitaires | `assets/vue/Composables/Front/UtilsFront.ts` (construction des URL, dates, initiales) et constantes `assets/vue/Composables/Front/Const/` (types de contenu, mises en page, statuts) |
 | Types | `assets/ts/Front/NatheoHorizon/` |
-| Traductions | Domaines `front` et `front_error` (`translations/front*+intl-icu.*.yaml`), servies par `App\Utils\Translate\Front\FrontTranslate` |
+| Traductions | Domaines `front` et `front_error` (`translations/front*+intl-icu.*.yaml`), servies par `App\Translate\Front\FrontTranslate` |
 
 ### Mises en page et blocs
 
-Le champ `render` de la page choisit la grille (`assets/utils/Front/Const/PageRender.ts`) et le type de chaque bloc
+Le champ `render` de la page choisit la grille (`assets/vue/Composables/Front/Const/PageRender.ts`) et le type de chaque bloc
 choisit le composant (`ContentType.ts`) :
 
 | `render` | Grille | | `type` de bloc | Composant |

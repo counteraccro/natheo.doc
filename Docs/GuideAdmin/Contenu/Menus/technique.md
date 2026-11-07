@@ -58,7 +58,9 @@ contrôle correspondant côté écran Menu.
 Suppression en cascade : supprimer un `menu` supprime tous ses
 `menu_element` (`orphanRemoval`), qui suppriment eux-mêmes leurs
 `menu_element_translation` (`orphanRemoval`) et leurs enfants
-(`ON DELETE CASCADE` en base sur `parent_id`).
+(`ON DELETE CASCADE` en base sur `parent_id`). Cette cascade ne touche pas les
+pages : la suppression est d'ailleurs refusée tant que le menu est utilisé par
+une page (`MenuRepository::countPages()`) ou s'il est le menu par défaut.
 
 ## Backend
 
@@ -70,17 +72,27 @@ Suppression en cascade : supprimer un `menu` supprime tous ses
 | [`MenuRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Menu/MenuRepository.php) | Requêtes : listing paginé (recherche sur le nom uniquement), menus par défaut d'une position, requêtes dédiées à l'API front (voir [Dépendance : l'API front](#dépendance-croisée--lapi-front)). Contient aussi une méthode `search()` (nom, auteur, texte des liens) utilisée par la [recherche globale](../../RechercheGlobale/technique.md) |
 | [`MenuElementRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Menu/MenuElementRepository.php) | Requêtes : éléments d'un menu par parent |
 | [`MenuService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Menu/MenuService.php) | Listing/Grid, listes position/type, calcul des positions sans défaut, bascule du menu par défaut |
-| [`MenuFactory`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Menu/MenuFactory.php) | Crée un `MenuElement` vide avec ses traductions (une par langue) |
-| [`MenuPopulate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Menu/MenuPopulate.php) | Fusionne le tableau reçu du front dans l'entité `Menu` (menu, arborescence d'éléments récursive, association pages) à la sauvegarde |
-| [`MenuConvertToArray`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Menu/MenuConvertToArray.php) | Convertit un `Menu` en tableau pour le front (sens inverse de `MenuPopulate`) |
+| [`MenuFactory`](https://github.com/counteraccro/natheo/blob/master/src/Factory/Admin/Content/Menu/MenuFactory.php) | Crée un `MenuElement` vide avec ses traductions (une par langue) |
+| [`MenuPopulate`](https://github.com/counteraccro/natheo/blob/master/src/Populate/Admin/Content/Menu/MenuPopulate.php) | Applique le tableau reçu du front à l'entité `Menu` à la sauvegarde : éléments mis à jour par id avec leurs traductions, nouveaux créés, absents supprimés |
+| [`MenuConvertToArray`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Menu/MenuConvertToArray.php) | Convertit un `Menu` en tableau pour le front (sens inverse de `MenuPopulate`) |
 | [`MenuController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/MenuController.php) | Routes admin (`/admin/{_locale}/menu/...`) |
-| [`MenuTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/MenuTranslate.php) | Construit le tableau de traductions passé au composant Vue `Menu` |
+| [`MenuTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Content/MenuTranslate.php) | Construit le tableau de traductions passé au composant Vue `Menu` |
 
 Le controller est protégé par `#[IsGranted('ROLE_CONTRIBUTEUR')]` (voir la
 hiérarchie des rôles dans `config/packages/security.yaml`), au niveau de la
-classe entière. L'action de suppression n'est proposée dans le Grid que si
-l'option système *Autoriser la suppression des données* est activée
-(`OptionSystemService::canDelete()`).
+classe entière. Les routes d'écriture et `load-menu` contrôlent en plus les
+[droits sur le contenu](../../Systeme/roles.md#les-droits-sur-les-contenus)
+avec `ContentVoter` : `CONTENT_EDIT` (édition, sauvegarde, menu par défaut),
+`CONTENT_DISABLE` et `CONTENT_DELETE`. Les actions du Grid suivent ces mêmes
+droits. `CONTENT_DELETE` exige aussi que l'option système *Autoriser la
+suppression des données* soit activée.
+
+`delete`, `update-disabled`, `switch-default` et `save-menu` exigent un jeton
+CSRF (enum `MenuCsrfToken`, en-tête `X-CSRF-TOKEN`). Les liens externes sont
+revérifiés côté serveur, enfants compris
+(`MenuService::isAllowedExternalLink()`, erreur 400). La même règle est
+appliquée dans `MenuElementForm` par le composable
+`assets/vue/Composables/Admin/Menu/externalLink.ts`.
 
 ### Routes principales
 
@@ -122,10 +134,6 @@ php bin/console doctrine:fixtures:load --group=menu
 la [Médiathèque](../Mediatheque/technique.md), ce domaine n'a pas de grille
 dédiée.
 
-`assets/utils/Admin/Content/Menu/MenuElementsTools.js` (classe
-`MenuElementTools`) n'est importé par aucun composant du module : code mort
-laissé en place lors de la réécriture Vue 3 de l'écran.
-
 ### Dépendance croisée : l'API front
 
 `ApiMenuController` / `ApiMenuService` (route `/api/{version}/menu/find`,
@@ -153,28 +161,6 @@ sinon défaut », indépendamment l'un de l'autre.
 ## Traductions
 
 Toutes les chaînes sont dans le domaine de traduction `menu` :
-`translations/menu+intl-icu.{fr,en,es}.yaml`. De nombreuses clés n'ont plus
-de correspondance dans l'écran actuel — reliquats de traductions non
-nettoyés lors de la réécriture Vue 3 :
-- `menu.form.parent.*`, `menu.form.title.position` et
-  `menu.form.position.column/row.label` : aucun sélecteur de parent ni
-  saisie manuelle de colonne/ligne dans le formulaire d'élément actuel,
-  uniquement le glisser-déposer (voir [Architecture du menu](ajouter_editer.md#architecture-du-menu)).
-- `menu.select.page.*` (label/no.page/info) : traductions générées et
-  transmises au front (racine du tableau, pas dans `menu_form`) mais jamais
-  utilisées — reliquat probable d'un ancien sélecteur de pages associées
-  directement sur l'écran Menu, remplacé depuis par l'onglet *Menu* de
-  l'écran d'édition d'une page (voir [Le menu par défaut](ajouter_editer.md#le-menu-par-défaut)).
-- `menu.help.*` (title/edition/delete/new/disabled) et `menu.select.type`
-  (à ne pas confondre avec `menu.select.type.label`, bien utilisé) :
-  probables reliquats d'une ancienne info-bulle générique sur le bloc
-  Architecture. Les info-bulles réellement affichées aujourd'hui sur les
-  boutons d'un élément (`MenuTree.vue`, attribut `data-tooltip`) sont du
-  français **codé en dur dans le template**, pas passées par le système de
-  traduction.
-- `menu.error.empty.value`, `menu.msg.wait.loading`,
-  `menu.error.no.element`, `menu.msg.no.element.new.menu` : générées mais
-  non consommées par le composant actuel.
-- `menu.checkbox.default.menu.false.label` (« Menu classique », jamais
-  affiché — le libellé du switch *Menu par défaut* reste fixe quel que soit
-  son état).
+`translations/menu+intl-icu.{fr,en,es}.yaml`. Les info-bulles des boutons d'un
+élément (`MenuTree.vue`, attribut `data-tooltip`) font exception : elles sont
+en français, **codées en dur dans le template**.

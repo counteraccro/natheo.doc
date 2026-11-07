@@ -10,7 +10,7 @@ Documentation technique du projet : stack, architecture backend/frontend, traduc
 <div class="doc-card-grid" markdown="0">
   <a class="doc-card" href="stack_technique.html">
     <span class="doc-card-title">Stack technique</span>
-    <p class="doc-card-desc">Technologies utilisées : backend PHP/Symfony, frontend Vue/Tailwind, thèmes Bootstrap, base de données, asynchrone et outillage de build</p>
+    <p class="doc-card-desc">Technologies utilisées : backend PHP/Symfony, frontend Vue/Tailwind, thèmes du site public, base de données, asynchrone et outillage de build</p>
   </a>
   <a class="doc-card" href="backend.html">
     <span class="doc-card-title">Architecture backend</span>

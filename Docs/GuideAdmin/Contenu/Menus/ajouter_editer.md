@@ -34,7 +34,7 @@ Le bloc **Gestion du menu** regroupe les réglages globaux :
 | Champ | Obligatoire | Description |
 |---|---|---|
 | Nom du menu | Oui | Nom interne, affiché dans le [listing](listing.md) — n'apparaît pas sur le site |
-| Position du menu | Oui | `Haut de page`, `Pied de page`, `A gauche` ou `A droite` |
+| Position du menu | Oui | `Haut de page`, `Pied de page`, `À gauche` ou `À droite` |
 | Type du menu | Oui | Liste dépendante de la position choisie (voir ci-dessous) |
 | Menu par défaut | — | Voir [Le menu par défaut](#le-menu-par-défaut) |
 | Menu désactivé | — | Un menu désactivé n'apparaît plus nulle part sur le site |
@@ -44,7 +44,7 @@ Les types disponibles selon la position :
 | Position | Types |
 |---|---|
 | Haut de page | Menu side-bar, Menu déroulant classique, Menu déroulant géant (1, 2, 3 ou 4 colonnes) |
-| A gauche / A droite | Menu side-bar, Menu side-bar avec accordéons |
+| À gauche / À droite | Menu side-bar, Menu side-bar avec accordéons |
 | Pied de page | Pied de page 1 ligne à droite, Pied de page 1 ligne centrée, Pied de page avec colonnes |
 
 Changer la position réinitialise le type sélectionné si celui-ci n'existe pas
@@ -62,6 +62,10 @@ par défaut pour cette position. Activer ce réglage sur un menu retire
 **automatiquement** ce statut à tout autre menu de la même position — il ne
 peut jamais y en avoir plus d'un à la fois par position, sans confirmation
 supplémentaire au moment de l'enregistrement.
+
+Un menu ne peut pas être à la fois **par défaut** et **désactivé** :
+l'enregistrement est refusé dans ce cas. Pour désactiver le menu par défaut,
+définissez d'abord un autre menu par défaut pour cette position.
 
 Le [listing](listing.md) affiche une alerte en haut de page si une position
 n'a aucun menu par défaut, ou en a plusieurs par erreur (base incohérente).
@@ -102,22 +106,21 @@ Le bouton **+ Nouveau** en bas du bloc ajoute un nouvel élément à la racine.
 Un élément invalide (voir validation plus bas) est entouré en rouge et une
 pastille **« {n} erreur(s) »** apparaît dans l'en-tête du bloc. Un élément dont
 les modifications n'ont pas encore été enregistrées porte une pastille orange
-(le texte affiché sur cette pastille est littéralement *update*, non
-traduit).
+**modifié**.
 
 ## Éditer un élément de menu
 
 Cliquer sur ✏️ ou sur le bouton ➕ ouvre le formulaire de l'élément dans le
-panneau **Édition du menuElement**, à droite de l'arborescence.
+panneau **Édition de l'élément du menu**, à droite de l'arborescence.
 
 ![Formulaire d'édition d'un élément, lien interne](files/edition_element.png)
 
 | Champ | Obligatoire | Description |
 |---|---|---|
-| Label | Oui | Texte affiché dans le menu, **par langue** (voir ci-dessous) |
-| Type d'url | Oui | Onglets **Lien interne** / **Lien externe**, **commun à toutes les langues** de l'élément (voir [Contenu multilingue](#contenu-multilingue)) |
+| Libellé | Oui | Texte affiché dans le menu, **par langue** (voir ci-dessous) |
+| Type d'URL | Oui | Onglets **Lien interne** / **Lien externe**, **commun à toutes les langues** de l'élément (voir [Contenu multilingue](#contenu-multilingue)) |
 | Page (lien interne) | Oui si lien interne | Recherche par autocomplétion parmi les pages du site, **commune à toutes les langues** ; l'URL interne résultante s'affiche juste en dessous, en lecture seule (recalculée par langue à partir de l'URL propre à chaque traduction de la page) |
-| URL externe (lien externe) | Oui si lien externe | Saisie libre, **indépendante par langue** |
+| URL externe (lien externe) | Oui si lien externe | **Indépendante par langue**. Seuls `http://`, `https://`, `mailto:`, `tel:` ou un chemin commençant par `/` sont acceptés (`//domaine` est refusé). La règle est vérifiée dans le formulaire et à l'enregistrement |
 | Cible du lien | — | *Même page* (`_self`) ou *Nouvel onglet* (`_blank`) |
 | Élément visible | — | Équivalent à l'action 👁️ **Masquer** de l'arborescence, cascade comprise sur les enfants |
 

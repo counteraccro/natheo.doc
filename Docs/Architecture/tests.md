@@ -47,7 +47,7 @@ controller ou d'un service se trouve au même chemin relatif que la classe
 qu'il teste (`tests/Controller/Admin/DashboardControllerTest.php` teste
 `src/Controller/Admin/DashboardController.php`, etc.). On y retrouve
 notamment `Controller/Admin`, `Controller/Api`, `Service/Admin`,
-`Service/Api` et `Utils/...`.
+`Service/Api`, `Factory`, `Populate`, `Formatter` et `Translation`.
 
 Le dossier `Helper/` sort de ce principe : il regroupe les outils communs à
 tous les tests plutôt que les tests d'une classe précise (voir ci-dessous).

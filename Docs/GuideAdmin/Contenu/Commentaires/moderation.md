@@ -23,7 +23,7 @@ listing.
 ## Contenu
 
 Le contenu du commentaire s'édite dans l'[éditeur Markdown](../../Modules/editeur_markdown.md).
-Un bouton **Annuler** ramène au listing sans enregistrer, **Éditer le
+Un bouton **Retour** ramène au listing sans enregistrer, **Modifier le
 commentaire** sauvegarde les modifications.
 
 ## Statut
@@ -47,6 +47,9 @@ Trois blocs complètent l'écran :
 - **Créé le** — date de dépôt du commentaire
 - **IP** et **Autres infos** (user-agent) — pour identifier l'origine du
   commentaire
+
+Ces informations sont en lecture seule : seuls le texte du commentaire, son statut
+et le commentaire de modération peuvent être modifiés depuis l'administration.
 
 ## Page associée
 

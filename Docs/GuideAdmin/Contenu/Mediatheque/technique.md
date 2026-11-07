@@ -34,7 +34,7 @@ backend/frontend et routes. Pour l'usage côté back-office, voir
 | `name` | text | Nom physique du fichier sur le disque (généré à l'upload, avec suffixe aléatoire) |
 | `title` | varchar(255) | Titre affiché (voir [modifier un média](medias.md#modifier-un-média)) |
 | `description` | text, nullable | Description libre |
-| `type` | varchar(50) | `img` ou `file` (`MediaConst`) |
+| `type` | varchar(50) | `img` ou `file` (enum `MediaType`) |
 | `extension` | varchar(50) | Extension du fichier |
 | `size` | int | Poids en octets |
 | `thumbnail` | varchar(255), nullable | Nom du fichier miniature (images uniquement) |
@@ -60,9 +60,9 @@ dossier supprime tous ses sous-dossiers et médias.
 | [`MediaFolderService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Media/MediaFolderService.php) | Gestion des dossiers : création/renommage/déplacement (BDD + disque), calcul de taille, arborescence |
 | [`MediaService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Media/MediaService.php) (étend `MediaFolderService`) | Gestion des médias : upload, déplacement, corbeille, miniatures |
 | [`MediaController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/MediaController.php) | Routes admin (`/admin/{_locale}/media/...`) |
-| [`MediaTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/MediaTranslate.php) | Construit le tableau de traductions passé au composant Vue `Mediatheque` |
-| [`Thumbnail`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/Thumbnail.php) | Génère une miniature JPEG (200px de large) pour les images (`jpg`, `jpeg`, `png`, `gif`) |
-| [`MediaConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/MediaConst.php) / [`MediaFolderConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Media/MediaFolderConst.php) | Constantes (types de média, extensions/MIME autorisées à l'upload, taille max 20 Mo, chemins racine, dossier par défaut `natheotheque`) |
+| [`MediaTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Content/MediaTranslate.php) | Construit le tableau de traductions passé au composant Vue `Mediatheque` |
+| [`Thumbnail`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Media/Thumbnail.php) | Génère une miniature JPEG (200px de large) pour les images (`jpg`, `jpeg`, `png`, `gif`) |
+| [`MediaType`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Media/MediaType.php) / [`MediaFolderPath`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/Content/Media/MediaFolderPath.php) | Enums des types de média et des chemins racine. Les règles d'upload sont des constantes de `MediaService` : `UPLOAD_ALLOWED_MIMES_BY_EXTENSION` et `MAX_UPLOAD_SIZE_BYTES` (20 Mo) |
 
 Le controller est protégé par `#[IsGranted('ROLE_CONTRIBUTEUR')]` (voir la
 hiérarchie des rôles dans `config/packages/security.yaml`), au niveau de la

@@ -6,7 +6,7 @@ grand_parent: "Guide d'administration"
 nav_order: 8
 ---
 
-La page **Gestion des tokens** permet de créer et d'administrer les jetons (tokens) qui donnent accès aux
+La page **Gestion des tokens API** permet de créer et d'administrer les jetons (tokens) qui donnent accès aux
 [API](../../../API/index.md) du CMS. Toute application qui interroge l'API (par exemple le front de votre site)
 doit présenter un jeton valide : sans jeton, aucune donnée n'est servie.
 
@@ -78,10 +78,10 @@ Le tableau (composant [Grid](../../../Architecture/composants/grid.md)) affiche 
 | Colonne | Contenu |
 |---|---|
 | **ID** | Identifiant du jeton |
-| **Label** | Nom du jeton |
+| **Libellé** | Nom du jeton |
 | **Commentaire** | Commentaire libre saisi à la création |
 | **Token** | Toujours masqué (`******`) : la valeur n'est affichée qu'une seule fois, à sa [création](nouveau_jeton.md#créer-un-jeton) ou à sa [régénération](nouveau_jeton.md#régénérer-un-jeton) |
-| **Roles** | Codes des rôles du jeton, rôle hérité inclus (ex. `ROLE_WRITE_API, ROLE_READ_API`) |
+| **Rôles** | Codes des rôles du jeton, rôle hérité inclus (ex. `ROLE_WRITE_API, ROLE_READ_API`) |
 | **Expiration** | Date d'expiration (`JJ/MM/AA`), « Aucune » si le jeton n'expire pas, ou « Expiré le *date* » une fois la date passée |
 | **Dernière utilisation** | Date du dernier appel à l'API accepté avec ce jeton (`JJ/MM/AA HH:MM`), ou « Jamais » |
 | **Création** / **Mise à jour** | Dates au format `JJ/MM/AA HH:MM` |
@@ -150,11 +150,11 @@ test : renommer un jeton de test ne le fait pas disparaître de l'avertissement,
   jeton non désactivé dont le hash correspond, refus s'il est expiré (`ApiToken::isExpired()`), puis mise à jour de
   `last_used_at` (au plus une écriture par minute, `LAST_USED_REFRESH_INTERVAL`). Le jeton est converti en un
   `User` anonyme portant ses rôles.
-- Hash : `App\Utils\System\ApiToken\TokenHasher::hash()` (SHA-256, colonne `token` de 64 caractères, unique).
+- Hash : `App\Service\Global\Token\TokenHasher::hash()` (SHA-256, colonne `token` de 64 caractères, unique).
   Les jetons étant aléatoires et longs, un hash rapide et déterministe suffit et permet la recherche directe en
-  base. La migration `Version20261003081354` a hashé les jetons existants (ils restent donc valides) et ajouté les
-  colonnes `expires_at` et `last_used_at` ; un retour arrière de cette migration ne restaure pas les valeurs en
-  clair, les jetons devront alors être recréés.
+  base. La migration `Version20261103090000` (une version par SGBD) a hashé les jetons existants (ils restent donc
+  valides) et ajouté les colonnes `expires_at` et `last_used_at` ; un retour arrière de cette migration ne restaure
+  pas les valeurs en clair, les jetons devront alors être recréés.
 - Hiérarchie des rôles (`role_hierarchy`) : `ROLE_ADMIN_API` → `ROLE_WRITE_API` → `ROLE_READ_API` → `ROLE_USER`.
   `ApiToken::getRoles()` ajoute toujours `ROLE_READ_API`.
 - Les actions de la liste (`PUT ajax/update-disabled/{id}`, `DELETE ajax/delete/{id}`) sont protégées par un jeton
@@ -165,10 +165,10 @@ test : renommer un jeton de test ne le fait pas disparaître de l'avertissement,
 - Jeton du front et jetons de test : `ApiTokenFixture`. Le jeton du front (clé `api_token_front`) est toujours créé,
   avec une valeur tirée par `TokenGenerator::generate()` et recopiée dans l'option `OS_FRONT_API_TOKEN` ; les jetons
   de test ne sont créés que si `app.debug_mode`. Données dans
-  `src/DataFixtures/data/system/api_token_fixtures_data.yaml`, valeurs des jetons de test dans `ApiTokenConst::API_TOKEN_READ` /
-  `_WRITE` / `_ADMIN` (hashées à l'insertion), contrôlées par `DashboardService` qui compare leurs hash.
+  `src/DataFixtures/data/system/api_token_fixtures_data.yaml`, valeurs des jetons de test dans l'enum `ApiTokenDefault` (`READ`,
+  `WRITE`, `ADMIN`) (hashées à l'insertion), contrôlées par `DashboardService` qui compare leurs hash.
 - Code concerné : `ApiTokenController`, `ApiTokenService`, entité `ApiToken` et `ApiTokenRepository`,
-  `ApiTokenConst`, `TokenHasher`, `ApiTokenTranslate`, templates `templates/admin/system/api_token/`, composant Vue
+  enums `ApiTokenRole` et `ApiTokenDefault`, `TokenGenerator`, `TokenHasher`, `ApiTokenTranslate`, templates `templates/admin/system/api_token/`, composant Vue
   `assets/vue/controllers/Admin/System/ApiToken.vue` (types dans `assets/ts/ApiToken/ApiToken.type.ts`), textes dans `translations/api_token+intl-icu.*.yaml`.
 
 ## Voir aussi

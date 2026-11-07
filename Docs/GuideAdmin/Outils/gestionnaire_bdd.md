@@ -26,7 +26,7 @@ Le tableau liste **toutes** les tables réellement présentes en base (lecture d
 
 | Colonne | Détail |
 |---|---|
-| Nombre d'éléments | Compte des lignes de la table. Si le comptage échoue pour une table donnée, la cellule affiche « données indisponible » à la place d'un nombre |
+| Nombre d'éléments | Compte des lignes de la table. Si le comptage échoue pour une table donnée, la cellule affiche « données indisponibles » à la place d'un nombre |
 | Taille | Taille sur disque de la table, déjà mise en forme (Ko/Mo/Go) |
 | Action | 👁️ Charge le schéma détaillé de cette table dans l'onglet *Schéma de la table* (voir ci-dessous) |
 

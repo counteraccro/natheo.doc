@@ -24,10 +24,10 @@ Depuis la [liste des jetons](jetons_api.md#liste-des-jetons), bouton **Nouveau t
 | **Commentaire** | Non | Note libre (usage, contact, date de mise en service...) |
 | **Token** | — | Rien à saisir : le jeton est généré par le serveur au moment de la création |
 | **Date d'expiration** | Non | Au-delà de cette date, le jeton est refusé. Il reste valide jusqu'à 23:59:59 le jour indiqué. Laisser vide pour un jeton sans expiration |
-| **Role associé au token** | Oui | *Lecture* (par défaut), *Lecture + Écriture* ou *Admin*. Voir [Les rôles d'un jeton](jetons_api.md#les-rôles-dun-jeton) |
+| **Rôle associé au token** | Oui | *Lecture* (par défaut), *Lecture + Écriture* ou *Admin*. Voir [Les rôles d'un jeton](jetons_api.md#les-rôles-dun-jeton) |
 
 **Créer le token** enregistre le jeton (sans fenêtre de confirmation). Le jeton est **actif dès sa création**.
-**Annuler** revient à la page précédente sans rien enregistrer. Si le nom est vide, un message « Vous devez saisir
+**Retour** revient à la page précédente sans rien enregistrer. Si le nom est vide, un message « Vous devez saisir
 un nom pour votre token » s'affiche sous le champ et le bouton reste grisé jusqu'à correction ; le serveur refuse
 lui aussi un nom vide.
 
@@ -57,7 +57,7 @@ On retrouve les mêmes champs, avec en plus :
 - Un bouton **Supprimer**, qui demande confirmation puis supprime le jeton **définitivement** et revient à la
   liste. Toute application qui l'utilisait perd son accès immédiatement.
 
-**Editer** ouvre une fenêtre de confirmation avant d'enregistrer :
+**Modifier** ouvre une fenêtre de confirmation avant d'enregistrer :
 
 ![Confirmation de l'édition](../files/api_token/confirmation_edition.png)
 
@@ -77,7 +77,7 @@ voulez garder son nom, son commentaire, son rôle et sa date d'expiration.
 
 - Le message « Nouveau token généré avec succès » s'affiche et la nouvelle valeur apparaît dans le champ **Token**,
   avec le bouton **Copier** et le même avertissement qu'à la création : elle ne sera plus jamais affichée.
-- La régénération est **enregistrée immédiatement**, sans passer par le bouton *Editer*.
+- La régénération est **enregistrée immédiatement**, sans passer par le bouton *Modifier*.
 - **L'ancienne valeur cesse de fonctionner aussitôt** : mettez à jour toutes les applications concernées, sans
   quoi elles reçoivent une erreur `401` « Token Invalide ».
   Pour le jeton **Front du site**, il s'agit de l'option
@@ -109,10 +109,10 @@ voulez garder son nom, son commentaire, son rôle et sa date d'expiration.
 - Ces trois routes d'écriture exigent un jeton CSRF dans l'en-tête `X-CSRF-TOKEN` (ids `api_token_save`,
   `api_token_regenerate`, `api_token_delete`), sinon réponse `403`.
 - Contrôles côté serveur (`hydrateApiToken()`) : nom nettoyé des espaces, rôle filtré sur la liste
-  `ApiTokenConst::API_TOKEN_ROLES` (un seul rôle conservé, *Lecture* par défaut si aucun n'est valide), date
+  l'enum `ApiTokenRole` (un seul rôle conservé, *Lecture* par défaut si aucun n'est valide), date
   d'expiration attendue au format `AAAA-MM-JJ` et fixée à 23:59:59 (ignorée si invalide).
-- Génération : `ApiTokenService::generateToken()` via `ByteString::fromRandom()`, constantes dans
-  `ApiTokenConst` (`API_TOKEN_SEGMENT = 4`, `API_TOKEN_LENGTH = 24`), hash par `TokenHasher`.
+- Génération : `ApiTokenService::generateToken()` via `TokenGenerator` (`SEGMENT_COUNT = 4`,
+  `SEGMENT_LENGTH = 24`), hash par `TokenHasher`.
 
 ## Voir aussi
 - [Jetons API](jetons_api.md)

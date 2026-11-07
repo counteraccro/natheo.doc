@@ -152,10 +152,11 @@ directement : il ne modifie pas l'instance globale de marked et garantit le
 passage par DOMPurify.
 
 Côté serveur, les emails et le contenu des blocs de texte renvoyé par l'API
-sont convertis par [`App\Utils\Markdown`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Markdown.php)
+sont convertis par [`App\Service\Global\MarkdownService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Global/MarkdownService.php)
 (league/commonmark, extensions tableaux, barré et attributs `{.classe}`),
 sans `breaks` : un simple retour à la ligne n'y produit pas de `<br>`,
-contrairement à l'aperçu.
+contrairement à l'aperçu. Pour un contenu saisi par un visiteur, son mode strict
+échappe le HTML, refuse les liens dangereux et retire les attributs.
 
 ## Liens internes en Markdown
 
@@ -324,7 +325,7 @@ modules sur leur `label`, mais les tooltips des boutons simples affichent le
 **nom de la clé** (`btnBold`...) : pensez à toujours passer l'objet complet.
 
 Plutôt que de reconstruire cet objet à la main, la classe
-[`MarkdownEditorTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/MarkdownEditorTranslate.php)
+[`MarkdownEditorTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Global/MarkdownEditorTranslate.php)
 (domaine `editor_markdown`, fichiers `translations/editor_markdown+intl-icu.{fr,en,es}.yaml`)
 génère déjà ce tableau côté PHP — voir [Traductions & multilingue](../traductions_i18n.md)
 pour le fonctionnement général de ce pattern.

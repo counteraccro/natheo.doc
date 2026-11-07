@@ -17,9 +17,10 @@ Un tag se compose de deux choses toutes simples :
 
 - **Une couleur**, à choisir librement (au format `#rrggbb`) — un lien vous
   propose des exemples si vous manquez d'inspiration
-- **Un libellé**, à saisir dans chacune des langues du site. Pour aller plus
-  vite, une case à cocher permet de dupliquer automatiquement le libellé
-  saisi vers les autres langues
+- **Un libellé**, obligatoire dans chacune des langues du site (255 caractères
+  maximum). Il doit être unique dans sa langue : un libellé déjà utilisé par un
+  autre tag est refusé. Pour aller plus vite, une case à cocher permet de
+  dupliquer automatiquement le libellé saisi vers les autres langues
 
 Au fur et à mesure de la saisie, un aperçu vous montre à quoi ressemblera le
 tag une fois publié.
@@ -30,12 +31,14 @@ et quand il a été modifié pour la dernière fois.
 ![Édition d'un tag](files/edition.png)
 
 Une fois satisfait, il ne reste plus qu'à valider avec le bouton **Créer le
-tag** (ou **Modifier**), ou à cliquer sur **Annuler** pour revenir au listing
-sans rien changer. En édition, un bouton **Supprimer** est également
-disponible — une confirmation vous sera demandée avant toute suppression.
+tag** (ou **Modifier**), ou à cliquer sur **Retour** pour revenir à la page
+précédente sans rien changer. En édition, un bouton **Supprimer** est également
+disponible si vous en avez le droit — une confirmation vous sera demandée avant
+toute suppression, et celle-ci est refusée si le tag est utilisé par au moins
+une page.
 
-> 💡 Modifier ou supprimer un tag n'a aucun impact sur les contenus (pages)
-> qui lui sont associés : seul le tag lui-même est concerné.
+> 💡 Modifier un tag n'a aucun impact sur le contenu des pages qui lui sont
+> associées : seul le tag lui-même change.
 
 ## Voir aussi
 - [Listing des tags](listing.md)

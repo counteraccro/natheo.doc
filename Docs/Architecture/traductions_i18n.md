@@ -66,21 +66,37 @@ quel domaine il tire sa traduction, ce qui évite qu'un même mot-clé entre
 deux zones fonctionnelles ne se marche dessus.
 
 ```php
-$this->translator->trans('tag.form.title.create', domain: 'tag');
+$this->translator->trans('tag.form.submit.create', domain: 'tag');
 ```
+
+### Nommage des clés
+
+Une clé suit le format `<domaine>.<écran>.<élément>` :
+
+- le nom du domaine (le nom du fichier) vient en premier ;
+- tout est en minuscules, avec des points entre les niveaux et des tirets bas dans
+  un nom (`grid.search.placeholder_table`) ;
+- les niveaux sont en anglais ;
+- une clé n'est jamais aussi le préfixe d'une autre : `dashboard.index.title`, et
+  pas `dashboard.index` en plus de `dashboard.index.description`.
+
+Les libellés courants (Annuler, Supprimer, Oui, Non...) ont une clé par domaine,
+jamais une clé partagée : comme les traductions se modifient depuis le CMS, chaque
+bouton doit pouvoir changer seul. Les domaines `security` et `validators` font
+exception : ce sont des catalogues Symfony dont les clés sont les messages anglais.
 
 ### De Symfony jusqu'au composant Vue
 
 Twig peut appeler `trans()` directement dans un template, mais côté Vue les
 composants n'ont pas accès au traducteur Symfony : chaque zone fonctionnelle
 a donc une petite classe `XxxTranslate` (héritant de
-[`AppTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/AppTranslate.php))
+[`AppTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/AppTranslate.php))
 qui traduit à l'avance tous les textes dont son composant aura besoin, et
 les regroupe dans un tableau simple :
 
 ```php
 // TagTranslate.php
-'formInputColorLabel' => $this->translator->trans('tag.form.input.color.label', domain: 'tag'),
+'formInputColorHelp' => $this->translator->trans('tag.form.input.color.help', domain: 'tag'),
 'btnSubmitCreate' => $this->translator->trans('tag.form.submit.create', domain: 'tag'),
 ```
 
@@ -121,6 +137,17 @@ php bin/console natheo:translations:update
 Elle enchaîne simplement `translation:extract --force --format=yaml` pour
 chacune des trois langues — voir [`UpdateTranslationsCommand`](https://github.com/counteraccro/natheo/blob/master/src/Command/UpdateTranslationsCommand.php)
 et [Commandes Symfony](commandes.md).
+
+L'interface est entièrement traduite dans les trois langues. Deux tests protègent
+cet état :
+
+| Test | Ce qu'il vérifie |
+|---|---|
+| [`TranslationKeyConventionTest`](https://github.com/counteraccro/natheo/blob/master/tests/Translation/TranslationKeyConventionTest.php) | Format et préfixe des clés, mêmes clés en français, anglais et espagnol |
+| [`TranslationCompletenessTest`](https://github.com/counteraccro/natheo/blob/master/tests/Translation/TranslationCompletenessTest.php) | Aucune valeur laissée avec un marqueur `__`, mêmes paramètres ICU que le français |
+
+Une clé ajoutée doit donc être traduite dans les trois langues avant de lancer les
+tests.
 
 ## Voir aussi
 - [Architecture frontend](frontend.md) *(la prop `translate` passée aux composants Vue)*

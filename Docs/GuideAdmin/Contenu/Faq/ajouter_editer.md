@@ -55,12 +55,12 @@ En haut de l'écran, un bandeau reste visible en permanence (il suit le défilem
 - **Rouge** — une ou plusieurs erreurs de validation empêchent
   l'enregistrement (voir plus bas)
 
-Il porte aussi les boutons **Annuler** (retour au listing sans enregistrer)
+Il porte aussi les boutons **Retour** (retour au listing sans enregistrer)
 et **Sauvegarder**, désactivé tant qu'une erreur de validation subsiste.
 
 ### Données globales
 
-- **Faq visible sur le site** — bascule qui active/désactive l'ensemble de la
+- **FAQ visible sur le site** — bascule qui active/désactive l'ensemble de la
   FAQ (équivalent à l'action 👁️ du listing)
 - **Titre de la FAQ** — texte affiché en haut de la FAQ publiée
 - Un sélecteur de langue, en haut à droite de la carte, permet de basculer
@@ -100,7 +100,7 @@ bas de l'écran, **Ajouter une catégorie** crée une nouvelle catégorie vide.
 | Bouton / action | Effet |
 |---|---|
 | Sauvegarder | Enregistre la FAQ, ses catégories et ses questions ; recharge ensuite les données depuis le serveur |
-| Annuler | Revient au listing sans enregistrer |
+| Retour | Revient au listing sans enregistrer |
 | 👁️ (FAQ, catégorie, question) | Bascule la visibilité de l'élément |
 | 🗑️ (catégorie, question) | Supprime l'élément, après confirmation dans une fenêtre modale |
 | Ajouter une question / Ajouter une catégorie | Ajoute un nouvel élément vide, prêt à être édité |

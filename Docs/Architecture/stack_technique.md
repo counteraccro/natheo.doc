@@ -5,7 +5,7 @@ nav_order: 1
 ---
 
 Vue d'ensemble des technologies utilisées par Nathéo : backend PHP/Symfony,
-frontend Vue/Tailwind pour le back-office, thèmes Bootstrap pour le site
+frontend Vue/Tailwind pour le back-office comme pour le site
 public, base de données, asynchrone et outillage de build.
 
 ## Backend
@@ -77,9 +77,8 @@ php bin/console messenger:consume async -vv
 | [Flowbite](https://flowbite.com/) | 3.1 | Composants UI (plugin Tailwind) |
 | [Stimulus](https://stimulus.hotwired.dev/) | 3.x (`@symfony/stimulus-bundle`) | Glue JS légère, notamment pour monter les composants Vue |
 
-Autres dépendances JS notables : `axios`/`vue-axios` (appels API),
-`sortablejs`/`vue-draggable-plus` (drag & drop), `marked` (rendu Markdown
-côté client), `dompurify` (sanitation HTML).
+Autres dépendances JS notables : `axios` (appels API), `sortablejs` (drag &
+drop), `marked` (rendu Markdown côté client), `dompurify` (sanitation HTML).
 
 Le détail du mécanisme d'intégration Vue ⇄ Twig (convention des props
 `urls`/`translate`/`datas`, arborescence `assets/vue/controllers` vs
@@ -89,16 +88,11 @@ Le détail du mécanisme d'intégration Vue ⇄ Twig (convention des props
 
 Le rendu public est piloté par un système de thèmes Twig (le thème fourni
 par défaut est `natheoHorizon`, sous `assets/styles/front/`). Le thème par
-défaut s'appuie sur :
-
-| Techno | Version | Rôle |
-|---|---|---|
-| [Bootstrap](https://getbootstrap.com/) | 5.3 | Grille et composants CSS du site public |
-| Bootstrap Icons | 1.10 | Iconographie |
-| [Popper.js](https://popper.js.org/) | 2.11 | Positionnement des dropdowns/tooltips Bootstrap |
+défaut s'appuie sur les mêmes technologies que l'administration : **Vue.js**
+pour les composants et **Tailwind CSS** pour les styles.
 
 Un thème étant un ensemble de templates/assets indépendant, un autre thème
-peut faire des choix différents (ex. ne pas utiliser Bootstrap).
+peut faire des choix différents.
 
 ## Tests & qualité
 

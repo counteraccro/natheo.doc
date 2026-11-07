@@ -30,10 +30,14 @@ ligne :
 - 👁️ **Activer / Désactiver** — une FAQ désactivée disparaît du site, mais
   rien n'est supprimé : vous pouvez la réactiver à tout moment
 - 🗑️ **Supprimer** — retire définitivement la FAQ, avec l'ensemble de ses
-  catégories et questions
+  catégories et questions. Elle est refusée si la FAQ est utilisée dans au moins
+  une page : le message indique le nombre de pages concernées
 - ✏️ **Modifier** — ouvre la FAQ pour l'éditer
 
-Et en haut de page, le bouton **Nouvelle Faq** ouvre le formulaire de
+Un **Contributeur** ne dispose de ces actions que sur ses propres FAQ (voir
+[les droits sur les contenus](../../Systeme/roles.md#les-droits-sur-les-contenus)).
+
+Et en haut de page, le bouton **Nouvelle FAQ** ouvre le formulaire de
 création.
 
 ## Voir aussi

@@ -6,7 +6,7 @@ nav_order: 3
 ---
 
 Trois onglets de l'éditeur (voir [Créer et éditer une page](ajouter_editer.md))
-complètent les informations et le contenu de la page : **SEO**, **Les tags**
+complètent les informations et le contenu de la page : **SEO**, **Tags**
 et **Menus**.
 
 ## Onglet SEO
@@ -43,7 +43,7 @@ clic sur le ✕ d'un tag l'enlève de la page (sans le supprimer du site).
 ![Onglet Menus](files/menus.png)
 
 Permet d'associer un ou plusieurs [menus](../Menus/listing.md) à la page,
-un par position : **Haut de page**, **Menu Gauche**, **Menu droite** et
+un par position : **Haut de page**, **Menu de gauche**, **Menu de droite** et
 **Pied de page**. Un menu désactivé apparaît dans la liste avec la mention
 *(Désactivé)* mais reste sélectionnable (il n'apparaîtra simplement pas dans
 le rendu final tant qu'il reste désactivé).
@@ -51,7 +51,7 @@ le rendu final tant qu'il reste désactivé).
 Le choix **Menu par défaut (si défini)** ne sélectionne aucun menu explicite
 pour cette page : c'est alors le menu marqué *par défaut* pour la position
 concernée (s'il en existe un) qui s'affiche sur le site public. Pour les
-positions **Menu Gauche** et **Menu droite** spécifiquement, associer un
+positions **Menu de gauche** et **Menu de droite** spécifiquement, associer un
 menu explicite sur l'un des deux côtés désactive le menu par défaut de
 l'**autre** côté (comportement propre à ces deux positions, détaillé dans la
 [référence technique des menus](../Menus/technique.md)).

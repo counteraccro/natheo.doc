@@ -25,7 +25,7 @@ compte de la casse ni des accents. Deux formes sont acceptées :
 | Article | `article` | `Article` |
 | Projet | `projet` | `Projet` |
 | Blog | `blog` | `Blog` |
-| Évènement | `evenement` | `Évènement`, `évènement` |
+| Événement | `evenement` | `Évènement`, `évènement` |
 | News | `news` | `Nouveauté`, `nouveaute` |
 | Évolution | `evolution` | `Evolution` |
 | Documentation | `documentation` | `Documentation` |

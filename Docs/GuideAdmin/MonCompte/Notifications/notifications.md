@@ -37,7 +37,7 @@ purge s'exécute discrètement à chaque ouverture de la page.
 Les notifications sont ensuite réparties dans des onglets :
 
 - **Toutes** — l'ensemble de vos notifications
-- **Non lu** — uniquement celles pas encore lues, avec leur nombre en badge
+- **Non lues** — uniquement celles pas encore lues, avec leur nombre en badge
 - un onglet par catégorie (**Commentaire**, **Administration**, **Dump**…)
 
 Pour chaque notification affichée, vous retrouvez :

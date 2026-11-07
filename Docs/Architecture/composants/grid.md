@@ -195,12 +195,13 @@ private function generateTabAction(Tag $tag): array
 {
     $actionDisabled = [
         'label' => ['M3.933 13.909A4.357...'], // 1 ou 2 chemins SVG (path d="...")
-        'color' => 'primary',                   // classe bootstrap : primary, danger...
+        'color' => 'primary',                   // couleur de l'action : primary, danger...
         'type' => 'put',                        // verbe HTTP de l'appel ajax
         'url' => $this->getRouter()->generate('admin_tag_update_disabled', ['id' => $tag->getId()]),
         'ajax' => true,
         'confirm' => true,                      // false ou absent = action directe, sans confirmation
-        'msgConfirm' => $this->getTranslator()->trans('tag.confirm.disabled.msg', ['label' => $tag->getLabel()], 'tag'),
+        'msgConfirm' => $this->getTranslator()->trans('tag.confirm.disabled.message', ['label' => $label], 'tag'),
+        'csrf' => $csrfTokens[TagCsrfToken::DISABLED->value], // envoyé dans l'en-tête X-CSRF-TOKEN
     ];
 
     // Bouton non-ajax : redirige simplement le navigateur vers `url`
@@ -225,10 +226,17 @@ private function generateTabAction(Tag $tag): array
 | `ajax` | `true` : appel en arrière-plan puis rechargement du grid. `false` : redirection classique du navigateur |
 | `confirm` | Si `true`, ouvre une modale de confirmation avant d'exécuter l'action |
 | `msgConfirm` | Message affiché dans la modale de confirmation (pris en compte seulement si `confirm` est à `true`) |
+| `csrf` | Jeton CSRF optionnel, envoyé par `GenericGrid.vue` dans l'en-tête `X-CSRF-TOKEN` |
 
 Chaque action ajax attend en retour un JSON `{'success': true|false, 'msg': '...'}`
 (`Controller` classique) — `GenericGrid.vue` affiche `msg` dans un toast puis
 recharge automatiquement les données de la page courante.
+
+> ⚠️ `Grid.vue` affiche chaque cellule avec `v-html` : toute valeur saisie par un
+> utilisateur (titre, libellé, auteur…), y compris dans `msgConfirm`, doit être
+> échappée côté serveur. Pour les pages, FAQ, menus et tags, chaque action n'est
+> ajoutée que si `ContentVoter` l'autorise (voir
+> [les droits sur les contenus](../../GuideAdmin/Systeme/roles.md#les-droits-sur-les-contenus)).
 
 ## Recherche
 
@@ -273,7 +281,7 @@ requête personnalisée par un `ROLE_SUPER_ADMIN` (route
 
 Tous les libellés natifs du composant (placeholder de recherche, textes de
 confirmation, pagination...) sont déjà fournis par
-[`GridTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/GridTranslate.php)
+[`GridTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Global/GridTranslate.php)
 (domaine `grid`, fichiers `translations/grid+intl-icu.{fr,en,es}.yaml`) et
 injectés automatiquement par `GridService::addAllDataRequiredGrid()`. Il n'y
 a rien à faire côté domaine métier pour ces textes-là : seuls les libellés

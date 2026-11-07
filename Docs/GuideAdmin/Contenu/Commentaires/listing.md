@@ -30,7 +30,7 @@ attente de validation**.
 ![Listing des commentaires](files/listing.png)
 
 Le tableau liste l'ensemble des commentaires du site, avec pour chacun : son
-contenu (tronqué, converti du Markdown vers HTML), son auteur, la page sur
+contenu (tronqué, en texte brut, sans mise en forme), son auteur, la page sur
 laquelle il a été déposé (lien direct vers l'édition de cette page), son
 statut et sa date de création. Vous pouvez trier chaque colonne en cliquant
 sur son en-tête, et retrouver un commentaire grâce à la barre de recherche

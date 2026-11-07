@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 La création et l'édition d'une page se font sur un seul écran, organisé en
-7 onglets : **Informations**, **Contenu**, **SEO**, **Les tags**, **Menus**,
+7 onglets : **Informations**, **Contenu**, **SEO**, **Tags**, **Menus**,
 **Commentaires** et **Historique**. Cette page décrit l'organisation
 générale de l'écran et le détail des onglets **Informations** et
 **Commentaires** ; les autres onglets sont détaillés dans [Le contenu de la
@@ -56,17 +56,20 @@ Premier onglet, il regroupe les informations générales de la page.
 
 | Champ | Description |
 |---|---|
-| Image en entête de la page | Image optionnelle, choisie depuis la [médiathèque](../Mediatheque/mediatheque.md), affichée en haut du rendu de la page |
-| Catégorie de la page | Une des 9 catégories (Page, Article, Projet, Blog, Évènement, Nouveauté, Evolution, Documentation, FAQ) ; entre dans la construction de l'URL publique de la page (`/{locale}/{categorie}/{url}`) |
+| Image d'en-tête de la page | Image optionnelle, choisie depuis la [médiathèque](../Mediatheque/mediatheque.md), affichée en haut du rendu de la page |
+| Catégorie de la page | Une des 9 catégories (Page, Article, Projet, Blog, Événement, Nouveauté, Évolution, Documentation, FAQ) ; entre dans la construction de l'URL publique de la page (`/{locale}/{categorie}/{url}`) |
 | Titre de la page *(obligatoire)* | Propre à chaque langue ; ne peut pas être vide |
-| Générer automatiquement l'url *(case à cocher)* | Recalcule l'URL à partir du titre à chaque frappe (suppression des accents/caractères spéciaux) ; se décoche automatiquement dès que vous modifiez l'URL à la main |
-| Url de la page *(obligatoire)* | Propre à chaque langue ; ne peut pas être vide et doit être unique sur l'ensemble du site (vérifié en direct, avec un indicateur de chargement) |
-| Landing page | *Landing Page* ou *Page normale* ; il ne peut y avoir qu'une seule landing page à la fois (voir le [listing](listing.md)) |
-| Etat de la page | *Brouillon*, *Publiée* ou *Archivée* |
+| Générer automatiquement l'URL *(case à cocher)* | Recalcule l'URL à partir du titre à chaque frappe (suppression des accents/caractères spéciaux) ; se décoche automatiquement dès que vous modifiez l'URL à la main |
+| URL de la page *(obligatoire)* | Propre à chaque langue ; ne peut pas être vide et doit être unique **dans sa langue** (vérifié en direct, avec un indicateur de chargement, puis de nouveau à l'enregistrement) |
+| Landing page | *Landing Page* ou *Page normale* ; il ne peut y avoir qu'une seule landing page à la fois, et seule une page publiée et active peut l'être (voir le [listing](listing.md)) |
+| État de la page | *Brouillon*, *Publiée* ou *Archivée* |
 
-L'unicité de l'URL est revérifiée à chaque langue séparément : deux langues
-différentes de la **même** page peuvent tout à fait partager la même URL,
-seules deux pages différentes ne le peuvent pas.
+L'unicité de l'URL s'applique langue par langue : une même URL peut donc exister
+en français et en anglais, sur la même page comme sur deux pages différentes. Deux
+pages ne peuvent pas partager la même URL dans une même langue.
+
+Vous ne pouvez pas retirer le statut de landing page depuis ce formulaire :
+définissez une autre landing page depuis le [listing](listing.md).
 
 Sur une page toute neuve, avant la première saisie, le titre et l'URL sont
 vides : les deux onglets concernés (**Informations** et **Contenu**, ce
@@ -87,7 +90,7 @@ Permet de paramétrer les commentaires pour cette page spécifiquement :
 | Champ | Description |
 |---|---|
 | Autoriser les commentaires sur cette page *(interrupteur)* | Ouvre ou ferme les commentaires pour la page |
-| Statut par défaut du commentaire à sa soumission | Statut appliqué à tout nouveau commentaire déposé sur cette page (voir les [statuts de modération](../Commentaires/listing.md)) |
+| Statut par défaut d'un commentaire à sa soumission | Statut appliqué à tout nouveau commentaire déposé sur cette page (voir les [statuts de modération](../Commentaires/listing.md)) |
 
 Un encart rappelle le paramétrage **global** des commentaires (module
 [Commentaires](../Commentaires/listing.md), options système) : celui-ci est

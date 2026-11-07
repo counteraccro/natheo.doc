@@ -35,7 +35,7 @@ ne propose pas de bouton de validation dédié). Vous êtes redirigé vers la pa
 
 En haut de page, un compteur annonce le nombre total de résultats toutes
 catégories confondues, suivi du terme recherché. Les résultats sont répartis
-dans **cinq onglets** (Pages, Menu, Faq, Tag, User), chacun affichant en badge
+dans **cinq onglets** (Pages, Menus, FAQ, Tags, Utilisateurs), chacun affichant en badge
 le nombre de résultats trouvés pour ce type ; les onglets sans résultat
 n'affichent pas de badge.
 
@@ -50,10 +50,10 @@ autres continuent de charger.
 | Onglet | Champs interrogés (langue courante, sauf mention contraire) |
 |---|---|
 | **Pages** | Titre de la page, texte des blocs de contenu **de type Texte uniquement** (un bloc FAQ ou Liste de pages n'est pas parcouru), identifiant de connexion de l'auteur (toutes langues) |
-| **Menu** | Nom du menu (non traduit), texte des liens du menu, identifiant de connexion de l'auteur (toutes langues) |
-| **Faq** | Titre de la FAQ, titre de chaque catégorie, titre et réponse de chaque question, identifiant de connexion de l'auteur (toutes langues) |
-| **Tag** | Libellé du tag |
-| **User** | Identifiant de connexion, e-mail, prénom, nom (aucune notion de langue) |
+| **Menus** | Nom du menu (non traduit), texte des liens du menu, identifiant de connexion de l'auteur (toutes langues) |
+| **FAQ** | Titre de la FAQ, titre de chaque catégorie, titre et réponse de chaque question, identifiant de connexion de l'auteur (toutes langues) |
+| **Tags** | Libellé du tag |
+| **Utilisateurs** | Identifiant de connexion, e-mail, prénom, nom (aucune notion de langue) |
 
 ### Une fiche de résultat
 
@@ -76,9 +76,9 @@ Selon l'onglet, chaque résultat est présenté sous forme de carte avec :
   d'édition dans un nouvel onglet, disponible partout) et **aperçu** (ouvre la
   page publique correspondante, uniquement pour l'onglet Pages).
 
-![Résultats de recherche, onglet Menu — extraits de contenu et icône générique](files/onglet_menu.png)
+![Résultats de recherche, onglet Menus — extraits de contenu et icône générique](files/onglet_menu.png)
 
-![Résultats de recherche, onglet Tag — fiche minimale sans extrait de contenu](files/onglet_tag.png)
+![Résultats de recherche, onglet Tags — fiche minimale sans extrait de contenu](files/onglet_tag.png)
 
 ### Pagination
 

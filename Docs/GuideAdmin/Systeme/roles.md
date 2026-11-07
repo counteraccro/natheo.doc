@@ -18,8 +18,8 @@ Le rôle d'un compte se choisit dans le [formulaire d'ajout / modification d'un 
 |---|---|---|---|
 | **Utilisateur** | `ROLE_USER` | Donne le droit de se connecter à l'application (rôle par défaut) | Tableau de bord, notifications, gestion de son propre compte |
 | **Contributeur** | `ROLE_CONTRIBUTEUR` | Donne le droit d'ajouter du contenu sur le site | Accès à **tout le menu Contenu** (pages, menus, FAQ, tags, médiathèque, commentaires), à la recherche globale et au bouton *Nouveau* |
-| **Administrateur** | `ROLE_ADMIN` | Donne le droit d'administrer les contenus du site (commentaires, membres…) | **Aucun droit supplémentaire** par rapport au Contributeur pour l'instant (voir ci-dessous) |
-| **Super Administrateur** | `ROLE_SUPER_ADMIN` | Permet de gérer l'ensemble du CMS | Menus **Système** et **Outils développeur**, prise de contrôle d'un autre compte |
+| **Administrateur** | `ROLE_ADMIN` | Donne le droit d'administrer les contenus du site (commentaires, membres…) | Peut modifier, désactiver et supprimer **toutes** les pages, FAQ, menus et tags, y compris ceux des autres (voir ci-dessous) |
+| **Super Administrateur** | `ROLE_SUPER_ADMIN` | Permet de gérer l'ensemble du CMS | Menus **Système** et **Outils**, prise de contrôle d'un autre compte |
 
 ## Qui accède à quoi
 
@@ -34,12 +34,28 @@ Le rôle d'un compte se choisit dans le [formulaire d'ajout / modification d'un 
 | [Commentaires](../Contenu/Commentaires/listing.md) (y compris modération) | — | ✅ | ✅ | ✅ |
 | [Éditeur Markdown](../Modules/editeur_markdown.md) | — | ✅ | ✅ | ✅ |
 | Système : [utilisateurs](Utilisateurs/listing.md), [sidebar](sidebar.md), [options](options.md), [jetons API](ApiToken/jetons_api.md), [emails](mail.md), [traductions](traductions.md), [logs](logs.md), [informations](information.md) | — | — | — | ✅ |
-| Outils développeur : [options avancées](../Outils/options_avancees.md), [gestionnaire SQL](../Outils/gestionnaire_sql.md), [gestionnaire BDD](../Outils/gestionnaire_bdd.md), éléments HTML | — | — | — | ✅ |
+| Outils : [options avancées](../Outils/options_avancees.md), [gestionnaire SQL](../Outils/gestionnaire_sql.md), [gestionnaire BDD](../Outils/gestionnaire_bdd.md), éléments HTML | — | — | — | ✅ |
 | Se connecter en tant qu'un autre utilisateur | — | — | — | ✅ |
 
-> 📝 Un Contributeur a accès à **tous** les contenus, pas seulement aux siens : le filtre « mes pages / mes
-> commentaires… » des listings est une simple aide à l'affichage, pas une restriction de droits. Il peut donc
-> modifier ou supprimer une page créée par un autre compte.
+## Les droits sur les contenus
+
+Un Contributeur **voit** toutes les pages, FAQ, menus et tags dans les listings, mais n'agit que sur **les siens** :
+
+| Action sur une page, une FAQ, un menu ou un tag | Contributeur | Administrateur et Super Admin |
+|---|:---:|:---:|
+| Modifier, activer ou désactiver | Ses contenus | Tous |
+| Supprimer | Ses contenus | Tous |
+
+- **Boutons masqués** : sur la ligne d'un contenu qui n'est pas le sien, le Contributeur ne voit pas les actions
+  correspondantes. Le serveur refuse aussi ces actions s'il les appelle directement.
+- **Suppression** : quel que soit le rôle, elle exige que l'option système *Autoriser la suppression des données* soit
+  activée.
+- **Contenu sans auteur** : il n'est géré que par un Administrateur. C'est le cas des tags créés avant l'ajout de
+  l'auteur, ou d'un tag dont l'auteur a été supprimé.
+- **Tags sur une page** : un Contributeur peut rattacher à sa page un tag créé par quelqu'un d'autre.
+
+La [médiathèque](../Contenu/Mediatheque/mediatheque.md) et les [commentaires](../Contenu/Commentaires/listing.md) ne
+suivent pas cette règle : tout Contributeur peut agir sur l'ensemble des médias et des commentaires.
 
 ## Particularités à connaître
 
@@ -92,15 +108,16 @@ réservée de fait aux Super Administrateurs. Tout le préfixe `/admin` exige au
 
 | Classe / fichier | Rôle |
 |---|---|
-| [`Role`](https://github.com/counteraccro/natheo/blob/master/src/Utils/System/User/Role.php) | Constantes des 4 rôles, `getListRole()` (liste proposée dans les formulaires), tests `isSuperAdmin()`/`isAdmin()`… sur une instance `User` |
+| [`Role`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/System/User/Role.php) | Enum des 4 rôles, `choices()` (liste proposée dans les formulaires), `isGrantedTo()` (test sur une instance `User`) |
+| [`ContentVoter`](https://github.com/counteraccro/natheo/blob/master/src/Security/Voter/ContentVoter.php) | Droits `CONTENT_EDIT`, `CONTENT_DISABLE` et `CONTENT_DELETE` sur les pages, FAQ, menus et tags. Ordre des contrôles : option de suppression (pour `CONTENT_DELETE`), `ROLE_ADMIN`, puis propriétaire |
 | [`User::getRoles()`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/System/User.php) | Retourne les rôles stockés (champ JSON `roles`) en ajoutant toujours `ROLE_USER` |
 | Contrôleurs `src/Controller/Admin/**` | Protégés par `#[IsGranted(...)]` au niveau de la classe (ou de chaque action pour `UserController`) : `ROLE_CONTRIBUTEUR` pour le contenu, `ROLE_SUPER_ADMIN` pour Système et Outils |
 | [`SidebarExtension`](https://github.com/counteraccro/natheo/blob/master/src/Twig/Extension/Admin/System/SidebarExtension.php) | Masque les entrées de sidebar dont le rôle n'est pas accordé |
 | `templates/admin/includes/header.html.twig` | Recherche globale et bouton *Nouveau* conditionnés à `ROLE_CONTRIBUTEUR` |
 
 > 📝 Les rôles sont vérifiés avec `isGranted()`, qui tient compte de la hiérarchie. En revanche,
-> `Role::isAdmin()`/`isSuperAdmin()`… comparent seulement les rôles stockés sur le compte, **sans** hiérarchie :
-> `isAdmin()` renvoie `false` pour un Super Administrateur.
+> `Role::…->isGrantedTo($user)` compare seulement les rôles stockés sur le compte, **sans** hiérarchie :
+> `Role::ADMIN->isGrantedTo($user)` renvoie `false` pour un Super Administrateur qui n'a pas aussi le rôle Administrateur.
 
 ## Voir aussi
 - [Gestion des utilisateurs](Utilisateurs/listing.md)

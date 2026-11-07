@@ -39,7 +39,7 @@ aperçu](historique_apercu.md).
 | `page_id` | int, FK → `page.id`, NOT NULL | Page parente |
 | `locale` | varchar(10) | Langue |
 | `titre` | varchar(255) | Titre dans cette langue |
-| `url` | varchar(255) | Url dans cette langue, unique tous locales confondues (voir plus bas) |
+| `url` | varchar(255) | Url dans cette langue, unique avec `locale` (contrainte `UNIQ_PAGE_TRANSLATION_LOCALE_URL`) |
 | `created_at` | datetime | Date de création |
 | `update_at` | datetime, nullable | Date de dernière modification |
 
@@ -89,7 +89,7 @@ aperçu](historique_apercu.md).
 | `key` | varchar(255) | `PAGE_NB_VISITEUR` ou `PAGE_NB_READ` (`PageStatistics`) |
 | `value` | varchar(255) | Valeur de la statistique |
 
-`PAGE_NB_READ` alimente la colonne **Affichage** du [listing](listing.md).
+`PAGE_NB_READ` alimente la colonne **Vues** du [listing](listing.md).
 Deux tables de liaison many-to-many complètent le modèle : `page_tag`
 (tags, voir [Tags](../Tags/technique.md#tables)) et `page_menu` (menus, voir
 [Menus](../Menus/technique.md#tables)). Voir le [modèle de données
@@ -108,17 +108,21 @@ toutes les tables du CMS.
 | [`PageMetaTranslation`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Page/PageMetaTranslation.php) | Entité Doctrine (`page_meta_translation`) |
 | [`PageStatistique`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/Content/Page/PageStatistique.php) | Entité Doctrine (`page_statistique`) |
 | [`PageRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Page/PageRepository.php) | Requêtes : pagination/tri/recherche (`getAllPaginate`), liste par catégorie pour le front (`getPagesByCategoryPaginate`). Contient aussi une méthode `search()` (titre, texte des blocs, auteur) utilisée par la [recherche globale](../../RechercheGlobale/technique.md) |
-| [`PageTranslationRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Page/PageTranslationRepository.php) | `isUniqueUrl()` : vérifie l'unicité de l'URL tous locales confondues |
+| [`PageTranslationRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Page/PageTranslationRepository.php) | `isUniqueUrl()` : vérifie l'unicité de l'URL dans une locale, en excluant la page en cours d'édition |
 | [`PageService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Page/PageService.php) | Logique métier : formatage pour le Grid, listes de choix (statuts/rendus/catégories/contenus), bascule de la landing page |
 | [`PageController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/PageController.php) | Routes admin (`/admin/{_locale}/page/...`) |
-| [`PageFactory`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Page/PageFactory.php) | Construit une page vide (traductions, 1 statistique par clé, 1 bloc texte, 4 metas vides) dans toutes les locales |
-| [`PagePopulate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Page/PagePopulate.php) | Merge les données reçues du composant Vue dans l'entité `Page` à la sauvegarde |
-| [`PageHistory`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Page/PageHistory.php) | Sauvegarde/restauration/listing des snapshots de sauvegarde automatique (voir plus bas) |
-| [`PageConst`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Page/PageConst.php) | Constante `DEFAULT_LANDING_PAGE` |
-| [`PageTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/PageTranslate.php) | Construit le tableau de traductions passé au composant Vue `Page` |
+| [`PageFactory`](https://github.com/counteraccro/natheo/blob/master/src/Factory/Admin/Content/Page/PageFactory.php) | Construit une page vide (traductions, 1 statistique par clé, 1 bloc texte, 4 metas vides) dans toutes les locales |
+| [`PagePopulate`](https://github.com/counteraccro/natheo/blob/master/src/Populate/Admin/Content/Page/PagePopulate.php) | Merge les données reçues du composant Vue dans l'entité `Page` à la sauvegarde. `render`, `status`, `category` et `ruleComment` sont validés par leur enum (erreur 400 sinon) ; les tags et menus invalides sont ignorés |
+| [`PageHistory`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Page/PageHistory.php) | Sauvegarde/restauration/listing des snapshots de sauvegarde automatique (voir plus bas) |
+| [`PageTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Content/PageTranslate.php) | Construit le tableau de traductions passé au composant Vue `Page` |
 
 Le controller est protégé par `#[IsGranted('ROLE_CONTRIBUTEUR')]` (voir la
-hiérarchie des rôles dans `config/packages/security.yaml`).
+hiérarchie des rôles dans `config/packages/security.yaml`). La page d'édition et les
+routes de chargement, de sauvegarde, d'historique, de désactivation, de suppression
+et de bascule de la landing page contrôlent en plus les
+[droits sur le contenu](../../Systeme/roles.md#les-droits-sur-les-contenus) avec
+`ContentVoter`. `delete`, `update-disabled`, `switch-landing-page`, `save` et
+`auto-save` exigent un jeton CSRF (enum `PageCsrfToken`, en-tête `X-CSRF-TOKEN`).
 
 ### Sauvegarde automatique : `PageHistory`
 
@@ -132,9 +136,9 @@ de test). Pour une page pas encore créée, le fichier est nommé
 nom). Chaque ligne du fichier est un enregistrement JSON
 `{time, user, pageH}` (`pageH` = l'état complet de la page). Supprimer une
 page (`PageController::delete()`) supprime aussi son fichier d'historique.
-Ce mécanisme est entièrement indépendant de la table `page` : il n'y a
-aucune purge automatique, le fichier grandit à chaque sauvegarde
-automatique.
+Ce mécanisme est entièrement indépendant de la table `page`. Le fichier garde
+au plus 50 entrées (`PageHistory::MAX_ENTRIES`) : les plus anciennes sont
+retirées au-delà.
 
 ### `render_order` non exploité
 
@@ -161,18 +165,12 @@ le résumé cliquable de la barre de statut (bas de l'écran) :
 `Page.vue::handleGoToError()` route chaque clé vers le bon onglet
 (`information` → `nav-0-tab`, `content` → `nav-1-tab`, `seo` → `nav-2-tab`).
 
-### Route `admin_page_preview` : code mort
+### Bouton « Voir le rendu »
 
 Le bouton **Voir le rendu** (voir [Historique et aperçu](historique_apercu.md#aperçu))
-n'appelle plus cette route : `Page.vue::openPreview()` construit directement
+n'appelle aucune route d'aperçu : `Page.vue::openPreview()` construit directement
 l'URL publique de la page (`{OS_ADRESSE_SITE}/{locale}/{categorie}/{url}`) et
-l'ouvre dans un nouvel onglet (`window.open`). La route `admin_page_preview`
-(`PageController::preview()`, template `templates/admin/content/page/preview.html.twig`,
-qui appelle `vue_component('Admin/Content/Page/PagePreview', ...)`) reste
-définie côté backend mais n'est plus appelée par aucun bouton de
-l'interface — probable reliquat d'un ancien écran d'aperçu dédié (le
-composant Vue `PagePreview` attendu par le template n'existe d'ailleurs plus
-sous `assets/vue/controllers/Admin/Content/Page/`, seul `Page.vue` y est présent).
+l'ouvre dans un nouvel onglet (`window.open`).
 
 ### Routes principales
 
@@ -194,7 +192,6 @@ sous `assets/vue/controllers/Admin/Content/Page/`, seul `Page.vue` y est présen
 | `admin_page_update_disabled` | PUT | Active/désactive une page (ajax) |
 | `admin_page_delete` | DELETE | Supprime une page et son historique (ajax) |
 | `admin_page_switch_Landing_page` | PUT | Définit la page comme landing page (ajax) |
-| `admin_page_preview` | GET | Ancien écran d'aperçu, plus appelé par le bouton **Voir le rendu** (voir ci-dessus, code mort) |
 
 ## Frontend
 
@@ -204,7 +201,7 @@ sous `assets/vue/controllers/Admin/Content/Page/`, seul `Page.vue` y est présen
 | `PageInformation` | Onglet **Informations** (voir [créer et éditer une page](ajouter_editer.md)) |
 | `PageContent` + `PageContentBlock` | Onglet **Contenu** : mise en page et blocs (voir [le contenu de la page](contenu.md)) |
 | `PageSeo` | Onglet **SEO** |
-| `PageTag` | Onglet **Les tags** |
+| `PageTag` | Onglet **Tags** |
 | `PageMenu` | Onglet **Menus** |
 | `PageComment` | Onglet **Commentaires** : ouverture des commentaires (`openComment`) et statut par défaut à la soumission (`ruleComment`) pour cette page, avec rappel du paramétrage global des commentaires |
 | `PageHistory` | Onglet **Historique** |
@@ -251,9 +248,9 @@ Les menus associés à une page sont dans une fixture séparée
 | Fichier | Contenu |
 |---|---|
 | [`PageServiceTest`](https://github.com/counteraccro/natheo/blob/master/tests/Service/Admin/Content/Page/PageServiceTest.php) | Tests du service (Grid, listes de choix, bascule landing page) |
-| [`PageFactoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Utils/Content/Page/PageFactoryTest.php) | Tests de la création d'une page vide |
-| [`PagePopulateTest`](https://github.com/counteraccro/natheo/blob/master/tests/Utils/Content/Page/PagePopulateTest.php) | Tests du merge des données reçues du front |
-| [`PageHistoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Utils/Content/Page/PageHistoryTest.php) | Tests de la sauvegarde automatique (fichiers plats) |
+| [`PageFactoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Factory/Admin/Content/Page/PageFactoryTest.php) | Tests de la création d'une page vide |
+| [`PagePopulateTest`](https://github.com/counteraccro/natheo/blob/master/tests/Populate/Admin/Content/Page/PagePopulateTest.php) | Tests du merge des données reçues du front |
+| [`PageHistoryTest`](https://github.com/counteraccro/natheo/blob/master/tests/Service/Admin/Content/Page/PageHistoryTest.php) | Tests de la sauvegarde automatique (fichiers plats) |
 | [`PageControllerTest`](https://github.com/counteraccro/natheo/blob/master/tests/Controller/Admin/Content/PageControllerTest.php) | Tests des routes du contrôleur admin |
 | `PageFixturesTrait` (`tests/Helper/Fixtures/Content/PageFixturesTrait.php`) | Aide de test pour créer des pages factices |
 

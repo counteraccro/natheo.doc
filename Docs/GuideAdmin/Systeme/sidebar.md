@@ -25,9 +25,9 @@ triés par id décroissant :
 | Colonne | Contenu |
 |---|---|
 | **Id** | Identifiant de l'élément |
-| **Parent** | Groupe auquel appartient l'élément (*Content*, *Système*, *Tools*), ou `---` pour un élément de premier niveau |
-| **Label** | Icône et libellé tels qu'affichés dans la sidebar |
-| **Rôle accès** | Rôle minimal pour voir l'élément (voir [Les rôles](roles.md)) |
+| **Parent** | Groupe auquel appartient l'élément (*Contenus*, *Système*, *Outils*), ou `---` pour un élément de premier niveau |
+| **Libellé** | Icône et libellé tels qu'affichés dans la sidebar |
+| **Rôle d'accès** | Rôle minimal pour voir l'élément (voir [Les rôles](roles.md)) |
 | **Description** | Description courte du module |
 | **Création** / **Mise à jour** | Dates de création et de dernière modification (la mise à jour change à chaque masquage/réaffichage) |
 
@@ -61,15 +61,15 @@ de les masquer, ce qui évite par exemple de retirer du menu la page *Sidebar* e
 | Élément | Groupe |
 |---|---|
 | Membres | — (premier niveau) |
-| FAQ | Content |
+| FAQ | Contenus |
 | Emails | Système |
 | Logs | Système |
-| Tools (le groupe entier) | — (premier niveau) |
-| Options avancées, Gestionnaire SQL, Base de données, Exemple Surcharge | Tools |
+| Outils (le groupe entier) | — (premier niveau) |
+| Options avancées, Gestionnaire SQL, Base de données, Exemple de surcharge | Outils |
 
 ## Comportement dans la sidebar
 
-- **Masquer un groupe masque tout son contenu** : si *Tools* est masqué, ses quatre sous-éléments disparaissent
+- **Masquer un groupe masque tout son contenu** : si *Outils* est masqué, ses quatre sous-éléments disparaissent
   aussi, quel que soit leur propre état. Les réafficher individuellement n'a aucun effet tant que le groupe reste
   masqué.
 - **Un groupe dont aucun élément n'est visible disparaît aussi** : si tous ses sous-éléments sont masqués (ou
@@ -77,7 +77,7 @@ de les masquer, ce qui évite par exemple de retirer du menu la page *Sidebar* e
 - **Masquer n'est pas interdire** : l'élément disparaît du menu, mais la page correspondante reste accessible par
   son URL, avec les mêmes droits qu'avant. Pour restreindre réellement l'accès, voir [Les rôles](roles.md).
 - En plus du masquage, chaque élément n'est affiché que si l'utilisateur connecté possède son **rôle d'accès** (un
-  contributeur ne voit ni *Système* ni *Tools*). Ce rôle est fixé à l'installation et non modifiable depuis l'écran.
+  contributeur ne voit ni *Système* ni *Outils*). Ce rôle est fixé à l'installation et non modifiable depuis l'écran.
 - L'ordre des éléments dans le menu suit leur id (ordre d'installation) et n'est pas modifiable.
 - Deux éléments pointent vers `#` et ne mènent nulle part en V2 : **Membres** et **Mise à jour**. La pastille
   rouge **« 1 »** affichée à côté de *Mise à jour* est codée en dur : elle ne correspond à aucune mise à jour

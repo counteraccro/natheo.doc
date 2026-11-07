@@ -16,6 +16,7 @@ routes. Pour l'usage côté back-office, voir le [listing](listing.md) et le
 | Colonne | Type | Description |
 |---|---|---|
 | `id` | int, PK | Identifiant |
+| `user_id` | int, FK → `user.id`, nullable, `ON DELETE SET NULL` | Auteur du tag, renseigné à la création. Sans auteur, le tag n'est géré que par un administrateur |
 | `color` | varchar(7) | Couleur au format `#rrggbb` |
 | `disabled` | bool | Visibilité du tag (voir le [listing](listing.md)) |
 | `created_at` | datetime | Date de création |
@@ -28,7 +29,7 @@ routes. Pour l'usage côté back-office, voir le [listing](listing.md) et le
 | `id` | int, PK | Identifiant |
 | `tag_id` | int, FK → `tag.id` | Tag parent |
 | `locale` | varchar(10) | Langue (`fr`, `en`, `es`) |
-| `label` | varchar(255) | Libellé du tag dans cette langue |
+| `label` | varchar(255) | Libellé du tag dans cette langue, unique avec `locale` (contrainte `UNIQ_TAG_TRANSLATION_LOCALE_LABEL`) |
 
 ### Relation avec `page`
 
@@ -46,11 +47,15 @@ vue d'ensemble de toutes les tables du CMS.
 | [`TagRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/Content/Tag/TagRepository.php) | Requêtes : pagination/tri (`getAllPaginate`), recherche pour l'auto-complete (`searchByName`). Contient aussi une méthode `search()` (libellé) utilisée par la [recherche globale](../../RechercheGlobale/technique.md) |
 | [`TagService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Tag/TagService.php) | Logique métier : formatage pour le Grid, recherche, création à la volée (`newTagByNameAndLocale`) |
 | [`TagController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Content/TagController.php) | Routes admin (`/admin/{_locale}/tag/...`) |
-| [`TagTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/Content/TagTranslate.php) | Construit le tableau de traductions passé au composant Vue `TagForm` |
-| [`TagRender`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Content/Tag/TagRender.php) | Génère le HTML d'un tag (pastille colorée) affiché dans le Grid |
+| [`TagTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Content/TagTranslate.php) | Construit le tableau de traductions passé au composant Vue `TagForm` |
+| [`TagRender`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/Content/Tag/TagRender.php) | Génère le HTML d'un tag (pastille colorée) affiché dans le Grid ; le libellé est échappé et une couleur invalide est remplacée par une couleur par défaut |
 
 Le controller est protégé par `#[IsGranted('ROLE_CONTRIBUTEUR')]` (voir la
-hiérarchie des rôles dans `config/packages/security.yaml`).
+hiérarchie des rôles dans `config/packages/security.yaml`). Les routes d'écriture
+contrôlent en plus les
+[droits sur le contenu](../../Systeme/roles.md#les-droits-sur-les-contenus) avec
+`ContentVoter`. `delete`, `update-disabled`, `save` et `tag-by-name` exigent un jeton
+CSRF (enum `TagCsrfToken`, en-tête `X-CSRF-TOKEN`).
 
 ### Routes principales
 
@@ -64,7 +69,7 @@ hiérarchie des rôles dans `config/packages/security.yaml`).
 | `admin_tag_save` | POST | Sauvegarde le formulaire (ajax) |
 | `admin_tag_stats` | GET | Bloc statistiques (ajax) |
 | `admin_tag_search` | GET | Auto-complete par label + locale (ajax) |
-| `admin_tag_tag_by_name` | GET | Récupère (ou crée) un tag par son nom (ajax) |
+| `admin_tag_tag_by_name` | POST | Récupère (ou crée) un tag par son nom, corps JSON `{label, locale}` (ajax) |
 
 ## Fixtures
 
@@ -100,7 +105,7 @@ tag:
 
 | Composant | Rôle |
 |---|---|
-| `Admin/Content/TagForm` (`assets/vue/controllers/Admin/Content/TagForm.vue`) | Formulaire de création/édition, monté via `vue_component()` |
+| `Admin/Content/Tag/TagForm` (`assets/vue/controllers/Admin/Content/Tag/TagForm.vue`) | Formulaire de création/édition, monté via `vue_component()` |
 | `Admin/GenericGrid` | Composant Grid générique réutilisé pour le listing — voir [Tableau GRID](../../../Architecture/composants/grid.md) |
 
 ### Dépendance croisée : l'éditeur de pages
@@ -110,7 +115,8 @@ seulement à l'écran Tags : elles sont aussi consommées par l'onglet **Tags**
 du formulaire d'édition d'une page (`assets/vue/Components/Page/PageTag.vue`),
 qui permet de rattacher des tags à une page depuis un champ auto-complete —
 avec création à la volée d'un tag si celui-ci n'existe pas encore
-(`TagService::newTagByNameAndLocale`).
+(`TagService::newTagByNameAndLocale`). Les libellés générés pour les autres langues
+sont numérotés (`label (es 2)`) s'ils sont déjà pris.
 
 ## Traductions
 

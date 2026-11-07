@@ -77,7 +77,7 @@ src/Controller/Admin/Content/TagController.php
 src/Service/Admin/Content/Tag/TagService.php
 src/Repository/Admin/Content/Tag/TagRepository.php
 src/Entity/Admin/Content/Tag/Tag.php
-src/Utils/Translate/Content/TagTranslate.php
+src/Translate/Admin/Content/TagTranslate.php
 ```
 
 Autrement dit : pas un gros dossier « tout le code des tags », mais un
@@ -86,6 +86,33 @@ même nom de dossier (`Tag`) répété sous `Controller/`, `Service/`,
 domaine existant demande donc de toucher plusieurs de ces arborescences en
 parallèle, chacune à son endroit habituel. La liste des services déjà
 existants (non exhaustive) est recensée dans [Composants](composants/index.md).
+
+### Où ranger le code qui n'est pas un service
+
+Il n'existe pas de dossier fourre-tout `Utils` : chaque classe est rangée selon
+son rôle.
+
+| Dossier | Contenu |
+|---|---|
+| `src/Enum/` | Constantes, écrites sous forme d'enums |
+| `src/Factory/<Couche>/<Domaine>/` | Classes `*Factory`, qui construisent une entité vide |
+| `src/Populate/<Couche>/<Domaine>/` | Classes `*Populate`, qui reportent sur une entité les données reçues du front |
+| `src/Formatter/<Couche>/<Domaine>/` | Formateurs (`*Formatter` / `*Formater`) |
+| `src/Translate/<Couche>/<Domaine>/` | Classes `*Translate` (voir [Traductions](traductions_i18n.md)) |
+| `src/Entity/Trait/`, `src/Repository/Trait/` | Traits d'entité et de repository |
+
+`src/Factory/`, `src/Populate/` et `src/Formatter/` sont exclus de l'autowiring
+dans `config/services.yaml` : ces classes s'instancient directement.
+
+### Sécurité des actions de l'administration
+
+`AppAdminController` centralise les contrôles communs aux actions AJAX :
+
+| Méthode | Rôle |
+|---|---|
+| `checkCsrf()` | Vérifie le jeton de l'en-tête `X-CSRF-TOKEN` (envoyé par `withCsrf()` côté Vue) |
+| `checkContentAccess()` | Contrôle un droit de `ContentVoter`, voir [les droits sur les contenus](../GuideAdmin/Systeme/roles.md#les-droits-sur-les-contenus). Renvoie la 403 traduite `<domaine>.error.forbidden` |
+| `jsonError()`, `jsonCsrfError()`, `jsonNotFound()` | Réponses d'erreur JSON (404 traduite `<domaine>.error.not_found`) |
 
 ## Préparer les textes envoyés à l'écran
 

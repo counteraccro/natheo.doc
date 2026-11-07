@@ -21,7 +21,7 @@ blocs compose la page et comment ils sont disposés :
 | 3 blocs côte à côte | 3 blocs sur une ligne |
 | 2 blocs l'un en dessous de l'autre | 2 blocs, un par ligne |
 | 3 blocs l'un en dessous de l'autre | 3 blocs, un par ligne |
-| Un bloc au dessus + 2 blocs côte à côte en dessous | 1 bloc, puis 2 blocs sur la ligne suivante |
+| 1 bloc au-dessus + 2 blocs côte à côte en dessous | 1 bloc, puis 2 blocs sur la ligne suivante |
 | 2 blocs côte à côte + 1 bloc en dessous | 2 blocs, puis 1 bloc sur la ligne suivante |
 | 2 blocs côte à côte + 2 blocs côte à côte en dessous | 4 blocs, 2 par ligne |
 
@@ -48,7 +48,7 @@ contenu à y placer :
 | Faq | Insère une FAQ existante ([voir FAQ](../Faq/listing.md)) ; seules les FAQ non désactivées sont proposées |
 | Listing | Insère une liste paginée des pages d'une catégorie donnée (voir [Pages](listing.md)) |
 
-Pour un bloc **Faq** ou **Listing**, une seconde liste déroulante apparaît
+Pour un bloc **FAQ** ou **Listing**, une seconde liste déroulante apparaît
 pour choisir la FAQ ou la catégorie à afficher. Un bloc déjà rempli affiche
 son type et, pour Faq/Listing, l'identifiant choisi ; il peut être vidé avec
 le bouton **Supprimer** (rouge, en haut du bloc) pour en choisir un autre

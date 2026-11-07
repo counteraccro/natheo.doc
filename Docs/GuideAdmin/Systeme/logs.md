@@ -23,7 +23,7 @@ Réservée aux **super-administrateurs** (`ROLE_SUPER_ADMIN`), via *Système > L
 | Fichier | Contenu | Niveaux |
 |---|---|---|
 | `cms/{env}/auth-AAAA-MM-JJ.log` | Connexions à l'administration : « Connexion de *email* - IP *ip* » en cas de succès, « Tentative de Connexion de *email* - IP *ip* » en cas d'échec (l'email est celui saisi, même s'il ne correspond à aucun compte). Prises de contrôle d'un compte via [Se connecter en tant que](Utilisateurs/listing.md#se-connecter-en-tant-que-prise-de-contrôle) | `INFO` (succès), `WARNING` (échec, prise de contrôle) |
-| `cms/{env}/doctrine-AAAA-MM-JJ.log` | Chaque création, modification et suppression d'une entité en base : « l'entité *Tag* #12 à été modifiée par *email* (#*id*) ». Uniquement si l'option **Enregistrer tout changement dans la base de donnée** est activée (c'est le cas à l'installation) | `NOTICE` (création), `INFO` (modification), `WARNING` (suppression) |
+| `cms/{env}/doctrine-AAAA-MM-JJ.log` | Chaque création, modification et suppression d'une entité en base : « l'entité *Tag* #12 à été modifiée par *email* (#*id*) ». Uniquement si l'option **Enregistrer tous les changements de la base de données** est activée (c'est le cas à l'installation) | `NOTICE` (création), `INFO` (modification), `WARNING` (suppression) |
 | `{env}-AAAA-MM-JJ.log` | Journal général Symfony (routes appelées, requêtes, erreurs, dépréciations...), en environnements `dev` et `prod` | Tous |
 
 `{env}` est l'environnement d'exécution (`prod`, `dev` ou `test`). Les fichiers sont créés **un par jour** et seuls
@@ -48,7 +48,7 @@ Le premier bloc permet de choisir le fichier :
 
 | Champ | Effet |
 |---|---|
-| **Choix de la temporalité** | Filtre la liste des fichiers : *Aujourd'hui* (par défaut à l'ouverture), *Hier* ou *Tous les logs*. Changer ce choix vide la sélection du fichier |
+| **Période** | Filtre la liste des fichiers : *Aujourd'hui* (par défaut à l'ouverture), *Hier* ou *Tous les logs*. Changer ce choix vide la sélection du fichier |
 | **Fichiers de logs** | Liste les fichiers correspondants avec leur chemin dans `var/log/` (ex. `cms/prod/doctrine-2026-09-14.log`). Choisir un fichier l'affiche immédiatement |
 
 *Aujourd'hui* et *Hier* ne retiennent que les fichiers datés (`*-AAAA-MM-JJ.log`) : un fichier sans date dans son nom

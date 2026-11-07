@@ -15,7 +15,7 @@ back-office, voir la [page fonctionnelle](recherche_globale.md).
 |---|---|
 | [`GlobalSearchController`](https://github.com/counteraccro/natheo/blob/master/src/Controller/Admin/Global/GlobalSearchController.php) | Routes admin (`/admin/{_locale}/search/...`) |
 | [`GlobalSearchService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/GlobalSearchService.php) | Aiguille la recherche vers le bon repository selon l'entité, formate les résultats et surligne les correspondances |
-| [`GlobalSearchTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Utils/Translate/GlobalSearchTranslate.php) | Construit le tableau de traductions passé au composant Vue `GlobalSearch` |
+| [`GlobalSearchTranslate`](https://github.com/counteraccro/natheo/blob/master/src/Translate/Admin/Global/GlobalSearchTranslate.php) | Construit le tableau de traductions passé au composant Vue `GlobalSearch` |
 
 Le controller est protégé par `#[IsGranted('ROLE_USER')]` (le rôle minimal de
 la hiérarchie) — c'est la présence conditionnelle du champ de recherche dans
@@ -77,7 +77,7 @@ toujours vide) : seul le titre/libellé porte la mise en évidence.
 |---|---|
 | `Admin/Global/GlobalSearch` (`assets/vue/controllers/Admin/Global/GlobalSearch.vue`) | Composant racine, monté via `vue_component()` sur `templates/admin/global_search/index.html.twig` ; lance les 5 recherches en parallèle au montage et gère les onglets |
 | `Global/Search/TabSearchResult` (`assets/vue/Components/Global/Search/TabSearchResult.vue`) | Affiche la liste des fiches résultat d'un onglet |
-| `Global/Search/SearchPaginate` (`assets/vue/Components/Global/Search/SearchPaginate.vue`) | Pagination propre à chaque onglet |
+| `Grid/GridPaginate` (`assets/vue/Components/Grid/GridPaginate.vue`) | Pagination de chaque onglet, commune avec le Grid |
 | `Skeleton/SearchResult` (`assets/vue/Components/Skeleton/SearchResult.vue`) | Squelette de chargement affiché pendant l'appel ajax d'un onglet |
 
 Chaque onglet appelle indépendamment `GET admin_search_global` au montage du
@@ -90,7 +90,7 @@ l'absence de badge sur cet onglet, pas un badge à `0`.
 
 Domaine `global_search` : `translations/global_search+intl-icu.{fr,en,es}.yaml`
 (textes propres à la page et aux onglets). Le texte du champ de recherche
-dans l'en-tête (`global.header.search.input`) appartient lui au domaine
+dans l'en-tête (`global.header.search.placeholder`) appartient lui au domaine
 `global` (`translations/global+intl-icu.{fr,en,es}.yaml`).
 
 ## Voir aussi

@@ -5,7 +5,7 @@ parent: "Guide d'administration"
 nav_order: 0
 ---
 
-Le **tableau de bord** (libellé *Dashboard* dans l'interface) est la page d'accueil de l'administration : c'est
+Le **tableau de bord** est la page d'accueil de l'administration : c'est
 l'écran affiché juste après la connexion, après une prise de contrôle d'un compte
 ([Se connecter en tant que](../Systeme/Utilisateurs/listing.md#se-connecter-en-tant-que-prise-de-contrôle)) et quand
 on clique sur le lien d'administration depuis le site public.
@@ -19,8 +19,8 @@ correspondant.
 
 ## Accès
 
-Accessible à **tous les utilisateurs connectés** (`ROLE_USER`), via *Dashboard* en haut de la sidebar ou directement
-à l'URL `/admin/{locale}/dashboard/`. L'élément *Dashboard* de la sidebar est verrouillé : il ne peut pas être masqué
+Accessible à **tous les utilisateurs connectés** (`ROLE_USER`), via *Tableau de bord* en haut de la sidebar ou directement
+à l'URL `/admin/{locale}/dashboard/`. L'élément *Tableau de bord* de la sidebar est verrouillé : il ne peut pas être masqué
 depuis la [gestion de la sidebar](../Systeme/sidebar.md).
 
 Le contenu affiché dépend du rôle :
@@ -70,7 +70,7 @@ sinon :
 | Ouverture du site | L'option **Ouvrir le site au public ?** est à *Non* | [Options système](../Systeme/options.md#site-web) |
 | Jetons API | Un ou plusieurs **jetons de test** (*Test ROLE READ*, *Test ROLE WRITE*, *Test ROLE ADMIN*) sont présents : chacun est listé avec l'invitation à le supprimer. Ou bien aucun jeton n'existe | [Jetons API](../Systeme/ApiToken/jetons_api.md) |
 
-Les liens **Options systèmes** et **Gérer les tokens**, toujours affichés en bas du bloc, mènent aux deux écrans
+Les liens **Options système** et **Gérer les tokens**, toujours affichés en bas du bloc, mènent aux deux écrans
 concernés.
 
 | Bouton | Effet |
@@ -80,7 +80,7 @@ concernés.
 
 ![Confirmation avant de masquer l'aide](files/tableau_de_bord/confirmation_masquer.png)
 
-Une fois l'action confirmée, le message *Block masqué avec succès* s'affiche, puis le bloc disparaît au bout de
+Une fois l'action confirmée, le message *Bloc masqué avec succès* s'affiche, puis le bloc disparaît au bout de
 3 secondes. Le réglage est enregistré pour le compte : le bloc ne revient pas aux connexions suivantes, tant qu'il
 n'est pas réactivé depuis le profil.
 
@@ -92,7 +92,7 @@ Les **10 derniers commentaires** reçus, du plus récent au plus ancien, toutes 
 |---|---|
 | **#** | Identifiant du commentaire |
 | **Auteur** | Nom saisi par l'auteur du commentaire |
-| **Status** | Statut de modération : *Validé*, *En attente de validation* ou *Modéré* (*Inconnu* pour un statut non reconnu) |
+| **Statut** | Statut de modération : *Validé*, *En attente de validation* ou *Modéré* (*Inconnu* pour un statut non reconnu) |
 | **Date** | Date et heure de création (`AAAA-MM-JJ HH:MM:SS`) |
 
 Le lien **Gestion des commentaires** ouvre la [liste des commentaires](../Contenu/Commentaires/listing.md), où on peut
@@ -122,7 +122,7 @@ Les **10 dernières pages créées**, de la plus récente à la plus ancienne, q
 |---|---|
 | **#** | Identifiant de la page |
 | **Titre** | Titre de la page dans la langue de l'interface (vide si la page n'est pas traduite dans cette langue) |
-| **Status** | *Publiée*, *Brouillon* ou *Archivée* (*Inconnu* pour un statut non reconnu) |
+| **Statut** | *Publiée*, *Brouillon* ou *Archivée* (*Inconnu* pour un statut non reconnu) |
 | **Date** | Date et heure de création |
 
 Le lien **Gestion des pages** ouvre la [liste des pages](../Contenu/Pages/listing.md).
@@ -147,14 +147,14 @@ Le lien **Gestion des pages** ouvre la [liste des pages](../Contenu/Pages/listin
 | Aide | Donnée utilisateur `KEY_HELP_FIRST_CONNEXION` (`1` = affichée), posée à `1` par l'installation et modifiée via la route `admin_user_update_user_data` |
 
 Chaque bloc est chargé séparément en AJAX, après l'affichage de la page : un bloc lent ou en erreur ne bloque pas
-les autres. Un identifiant de bloc inconnu renvoie le message *Une erreur est survenue lors du chargement du block*.
+les autres. Un identifiant de bloc inconnu renvoie le message *Une erreur est survenue lors du chargement du bloc*.
 Les droits sont aussi contrôlés côté serveur : `DashboardBlock::getRole()` donne le rôle minimum de chaque bloc
 (`ROLE_SUPER_ADMIN` pour l'aide, `ROLE_CONTRIBUTEUR` pour les autres) et la route des chiffres clés exige
 `ROLE_CONTRIBUTEUR`. Un appel sans le rôle requis reçoit une erreur 403.
 
 Le même contrôleur contient une page de démonstration réservée aux super-administrateurs (`admin_dashboard_page_demo`).
 Elle sert d'exemple de [surcharge de contrôleur](../../Architecture/surcharge_controllers.md) : `config/cms/overwrite.yaml`
-la redirige vers `admin_overwrite_page_demo`, accessible dans la sidebar via *Tools > Exemple Surcharge*.
+la redirige vers `admin_overwrite_page_demo`, accessible dans la sidebar via *Outils > Exemple de surcharge*.
 
 ## Voir aussi
 - [Profil](../MonCompte/profil.md) : réactiver l'aide pour la configuration

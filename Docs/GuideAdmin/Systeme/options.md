@@ -79,14 +79,14 @@ Si les deux options sont activées, une seule balise est générée : `<meta nam
 
 | Option | À l'installation | Effet réel |
 |---|---|---|
-| **Enregistrer tout changement dans la base de donnée** | Oui | Journalise chaque ajout, modification et suppression d'entité en base. Peut produire des fichiers de log volumineux. Voir [Gestion des logs](logs.md) |
+| **Enregistrer tous les changements de la base de données** | Oui | Journalise chaque ajout, modification et suppression d'entité en base. Peut produire des fichiers de log volumineux. Voir [Gestion des logs](logs.md) |
 
 ## Emails
 
 | Option | À l'installation | Effet réel |
 |---|---|---|
 | **Recevoir un email de notification ?** | Oui | Envoie un email lorsqu'un utilisateur désactive, supprime ou anonymise son propre compte — en pratique au **compte fondateur uniquement**, et non à tous les super-administrateurs comme l'indique l'aide (voir la [référence technique des utilisateurs](Utilisateurs/technique.md#notifications-et-emails-liés)) |
-| **Délais de validité du lien de changement de mot de passe** | 20 min | Durée de validité du lien envoyé à la création d'un compte ou lors d'une réinitialisation de mot de passe |
+| **Délai de validité du lien de changement de mot de passe** | 20 min | Durée de validité du lien envoyé à la création d'un compte ou lors d'une réinitialisation de mot de passe |
 | **Email envoyé en tant que** * | `support@natheo.fr` | Adresse d'expéditeur de tous les emails du CMS. Doit être un email valide |
 | **Adresse email de réponse** * | `support@natheo.fr` | Adresse *Reply-To* de tous les emails du CMS. Doit être un email valide |
 | **Signature email** | « Cordialement, L'équipe de Natheo CMS » | Texte ajouté en pied de chaque email (HTML autorisé) |
@@ -96,13 +96,13 @@ Si les deux options sont activées, une seule balise est générée : `<meta nam
 | Option | À l'installation | Effet réel |
 |---|---|---|
 | **Activer les notifications ?** | Oui | Si non : plus aucune notification n'est créée, la cloche du header disparaît et la page des notifications redirige vers le tableau de bord. Voir [Notifications](../MonCompte/Notifications/notifications.md) |
-| **Temps en jour avant suppression des notifications** | 1 mois | Âge au-delà duquel les notifications **lues** sont supprimées lors d'une purge (1 semaine à 1 an) |
+| **Délai avant suppression des notifications** | 1 mois | Âge au-delà duquel les notifications **lues** sont supprimées lors d'une purge (1 semaine à 1 an) |
 
 ## Médiathèque
 
 | Option | À l'installation | Effet réel |
 |---|---|---|
-| **Path du dossier média** | `natheotheque` | Affiché en lecture seule (non modifiable depuis l'interface) |
+| **Chemin du dossier des médias** | `natheotheque` | Affiché en lecture seule (non modifiable depuis l'interface) |
 | **URL public pour accéder aux images stockées** | URL du site | Affiché en lecture seule (non modifiable depuis l'interface) |
 | **Création de dossiers physiques** | Oui | Crée un vrai dossier sur le disque pour chaque dossier créé dans la [médiathèque](../Contenu/Mediatheque/mediatheque.md) |
 
@@ -112,7 +112,7 @@ Si les deux options sont activées, une seule balise est générée : `<meta nam
 |---|---|---|
 | **Ouvrir l'API ?** | Oui | Si non, **toutes** les routes `/api` renvoient une erreur `403` « Ressource non accessible - API fermée », quel que soit le jeton. Indépendant de l'ouverture du site au public. Sur une installation antérieure où l'option n'existe pas encore en base, l'API est considérée comme ouverte. Voir [API](../../API/index.md) |
 | **Token API utilisé par le front du site** | Jeton généré à l'installation | Valeur **en clair** du jeton API que le thème front envoie pour appeler l'API. **Sans jeton valide, le site public ne peut pas s'afficher.** Voir [le jeton du front](#le-jeton-du-front) ci-dessous |
-| **Temps de validation du token de connexion en tant que administrateur sur le front** | 1 heure | Durée de validité du jeton obtenu par un utilisateur qui se connecte via l'API : 30 min, 1 h, 2 h, 3 h, 12 h ou 24 h. **24 h est un maximum** : l'ancien choix « Sans limite » n'existe plus (une installation qui l'utilisait est passée à 24 h lors de la mise à jour) |
+| **Durée de validité du token de connexion administrateur sur le front** | 1 heure | Durée de validité du jeton obtenu par un utilisateur qui se connecte via l'API : 30 min, 1 h, 2 h, 3 h, 12 h ou 24 h. **24 h est un maximum** : l'ancien choix « Sans limite » n'existe plus (une installation qui l'utilisait est passée à 24 h lors de la mise à jour) |
 
 ### Le jeton du front
 

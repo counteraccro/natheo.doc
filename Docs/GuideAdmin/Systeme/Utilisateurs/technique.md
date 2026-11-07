@@ -16,8 +16,8 @@ le [listing](listing.md) et le [formulaire d'ajout/édition](ajouter_editer.md).
 | [`UserService`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/User/UserService.php) | Formatage Grid, création (`addUser`), anonymisation (`anonymizer`), recherche par rôle (`getByRole`) |
 | [`User`](https://github.com/counteraccro/natheo/blob/master/src/Entity/Admin/System/User.php) | Entité (table `user`) |
 | [`UserRepository`](https://github.com/counteraccro/natheo/blob/master/src/Repository/Admin/System/UserRepository.php) | Requêtes (pagination/recherche Grid, recherche globale, résolution par rôle) |
-| [`Role`](https://github.com/counteraccro/natheo/blob/master/src/Utils/System/User/Role.php) | Constantes des 4 rôles + vérification de rôle sur une instance `User` |
-| [`Anonymous`](https://github.com/counteraccro/natheo/blob/master/src/Utils/System/User/Anonymous.php) | Logique d'anonymisation d'un compte |
+| [`Role`](https://github.com/counteraccro/natheo/blob/master/src/Enum/Admin/System/User/Role.php) | Enum des 4 rôles + vérification de rôle sur une instance `User` (`isGrantedTo()`) |
+| [`Anonymous`](https://github.com/counteraccro/natheo/blob/master/src/Service/Admin/System/User/Anonymous.php) | Logique d'anonymisation d'un compte |
 | [`UserAddType`](https://github.com/counteraccro/natheo/blob/master/src/Form/Admin/User/UserAddType.php) / [`UserType`](https://github.com/counteraccro/natheo/blob/master/src/Form/Admin/User/UserType.php) | Formulaires Symfony de création / édition |
 
 ## Table `user` (extrait des champs pertinents)
@@ -34,7 +34,7 @@ le [listing](listing.md) et le [formulaire d'ajout/édition](ajouter_editer.md).
 
 ## Rôles
 
-`Role::getListRole()` retourne les 4 rôles proposés dans les formulaires, **y compris `ROLE_SUPER_ADMIN`** : le
+`Role::choices()` retourne les 4 rôles proposés dans les formulaires, **y compris `ROLE_SUPER_ADMIN`** : le
 formulaire de création/édition ne fait aucune distinction particulière pour ce rôle — n'importe quel
 super-administrateur peut donc en créer un autre, ou promouvoir n'importe quel compte existant (hors fondateur)
 au rôle Super Administrateur, sans confirmation supplémentaire.

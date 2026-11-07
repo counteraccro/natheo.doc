@@ -7,6 +7,116 @@ nav_order: 2
 > ℹ️ Ce changelog n'est pas complet. Le
 > reste est consultable sur les [issues fermées du projet](https://github.com/counteraccro/natheo/issues?q=is%3Aissue+is%3Aclosed).
 
+## Novembre 2026
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Traductions : relecture et interface complète en anglais et en espagnol</p>
+<p class="changelog-entry-desc">Français relu sur tous les domaines, anglais et espagnol complets, test qui refuse les traductions incomplètes. Lien d'aide de la notification de bienvenue corrigé.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/421">Issue #421</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/452">PR #452</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Convention de nommage des clés de traduction</p>
+<p class="changelog-entry-desc">Toutes les clés suivent le format <code>&lt;domaine&gt;.&lt;écran&gt;.&lt;élément&gt;</code>, un test contrôle la convention et les clés mortes sont supprimées. Les clés de la sidebar stockées en base sont migrées.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/431">Issue #431</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/432">Issue #432</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/433">Issue #433</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/434">Issue #434</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/435">Issue #435</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/436">Issue #436</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/446">PR #446</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/447">PR #447</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/448">PR #448</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/449">PR #449</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/450">PR #450</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/451">PR #451</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Onglets inactifs</p>
+<p class="changelog-entry-desc">Les onglets des notifications, du gestionnaire de base de données et de la recherche globale réagissent de nouveau au clic.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/444">Issue #444</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/445">PR #445</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Flash du mode clair au changement de page</p>
+<p class="changelog-entry-desc">Le thème et le mode sombre sont appliqués avant le premier affichage de la page.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/438">Issue #438</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/443">PR #443</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Sidebar sur les pages filles</p>
+<p class="changelog-entry-desc">Sur une page d'ajout, d'édition ou de détail, le lien de la liste reste actif et son sous-menu reste ouvert.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/441">Issue #441</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/442">PR #442</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Cohérence des boutons de l'admin</p>
+<p class="changelog-entry-desc">Ordre, couleur, taille et icônes harmonisés dans les formulaires et les modales. Les « Annuler » qui faisaient un retour deviennent « Retour ».</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/439">Issue #439</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/440">PR #440</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span><span class="changelog-tag changelog-tag-bug">Bug</span>En-tête et titres des pages de l'admin</p>
+<p class="changelog-entry-desc">En-tête commun à toutes les pages, onglet du navigateur identique au titre, libellés français corrigés et sidebar entièrement en français (Tableau de bord, Contenus, Outils, Tokens API...).</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/424">Issue #424</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/425">Issue #425</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/426">Issue #426</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/428">PR #428</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/429">PR #429</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/430">PR #430</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Renforcement du compte et des notifications</p>
+<p class="changelog-entry-desc">Jetons CSRF sur les actions du compte et des notifications, « tout marquer comme lu » passe en POST.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/422">Issue #422</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/423">PR #423</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span><span class="changelog-tag changelog-tag-bug">Bug</span>Nettoyage du front de l'admin</p>
+<p class="changelog-entry-desc">Retrait complet de Bootstrap et des dépendances inutilisées, tous les composants en TypeScript, textes traduits, toasts et pagination uniques, erreurs AJAX affichées, couleurs du thème en classes Tailwind. L'option de confirmation avant de quitter un formulaire fonctionne de nouveau.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/402">Issue #402</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/403">Issue #403</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/404">Issue #404</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/405">Issue #405</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/406">Issue #406</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/407">Issue #407</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/408">Issue #408</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/409">Issue #409</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/410">Issue #410</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/412">PR #412</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/413">PR #413</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/414">PR #414</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/415">PR #415</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/416">PR #416</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/417">PR #417</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/418">PR #418</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/419">PR #419</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/420">PR #420</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Réorganisation du code</p>
+<p class="changelog-entry-desc">Les dossiers <code>src/Utils</code> et <code>assets/utils</code> disparaissent : classes rangées par rôle (services, enums, factories, populates, formateurs, composables) et classes de traduction dans <code>src/Translate</code>.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/377">Issue #377</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/379">Issue #379</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/389">Issue #389</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/391">Issue #391</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/393">Issue #393</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/395">Issue #395</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/397">Issue #397</a> <a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/399">Issue #399</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/380">PR #380</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/390">PR #390</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/392">PR #392</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/394">PR #394</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/396">PR #396</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/398">PR #398</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/400">PR #400</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/401">PR #401</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Compatibilité PostgreSQL</p>
+<p class="changelog-entry-desc">PostgreSQL est pris en charge au même titre que MySQL / MariaDB : migrations séparées par SGBD et SGBD déduit de <code>DATABASE_URL</code>, sans modification de code.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/382">Issue #382</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/388">PR #388</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit des pages</p>
+<p class="changelog-entry-desc">Droits par propriétaire, URL unique par langue, landing page protégée, historique limité à 50 entrées, valeurs validées à la sauvegarde, repli de langue sur les slugs de l'API.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/372">Issue #372</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/387">PR #387</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit des FAQ</p>
+<p class="changelog-entry-desc">Droits par propriétaire, suppression refusée pour une FAQ utilisée dans une page, identifiants des catégories et des questions conservés à la sauvegarde.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/371">Issue #371</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/386">PR #386</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit des commentaires</p>
+<p class="changelog-entry-desc">Contenus des visiteurs échappés dans l'admin, texte stocké brut, statut validé, auteur et e-mail en lecture seule. L'API masque l'auteur des commentaires en attente.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/370">Issue #370</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/385">PR #385</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit des tags</p>
+<p class="changelog-entry-desc">Auteur du tag et droits par propriétaire, suppression refusée pour un tag utilisé, libellé unique par langue, colonne Auteur et filtre « Moi / Tous » dans la liste.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/369">Issue #369</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/381">PR #381</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-bug">Bug</span>Audit des menus</p>
+<p class="changelog-entry-desc">Supprimer un menu ne supprime plus les pages liées, menu par défaut protégé, liens externes validés, droits par propriétaire, éléments mis à jour par identifiant.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/368">Issue #368</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/378">PR #378</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Socle commun des contenus</p>
+<p class="changelog-entry-desc">Droits sur les contenus (<code>ContentVoter</code>), protections communes des contrôleurs et remplissage des entités limité à une liste de champs autorisés.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/367">Issue #367</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/376">PR #376</a></p>
+</div>
+
+<div class="changelog-entry" markdown="1">
+<p class="changelog-entry-title"><span class="changelog-tag changelog-tag-feature">Feature</span>Templates d'issue et de PR</p>
+<p class="changelog-entry-desc">Formulaires d'issue, template de PR, labels, workflows de contrôle et politique de sécurité sur GitHub.</p>
+<p class="changelog-entry-links"><a class="changelog-badge changelog-badge-issue" href="https://github.com/counteraccro/natheo/issues/365">Issue #365</a> <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/366">PR #366</a></p>
+</div>
+
 ## Octobre 2026
 
 <div class="changelog-entry" markdown="1">

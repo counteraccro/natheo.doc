@@ -30,9 +30,9 @@ Paramètres attendus (query string) :
 `id` et `page_slug` sont exclusifs : il en faut exactement un. Le token utilisateur s'envoie dans l'**en-tête**
 `User-Token`, pas en paramètre.
 
-> 📝 Avec `page_slug`, la `locale` doit être celle du slug : `page_slug=about` ne trouve rien avec la `locale` par
-> défaut `fr` (réponse `200` avec une liste vide), il faut ajouter `locale=en`. La `locale` n'a pas d'autre effet :
-> les commentaires ne sont pas traduits.
+> 📝 Avec `page_slug`, le slug est d'abord cherché dans la `locale` demandée, puis dans les autres langues :
+> `page_slug=about` trouve donc la page même avec la `locale` par défaut `fr`. La `locale` n'a pas d'autre effet : les
+> commentaires ne sont pas traduits.
 
 Seuls les commentaires **actifs** d'une page **publiée** et **active** sont renvoyés ; avec le `User-Token` d'un
 Contributeur (ou plus), ceux des pages en **brouillon** aussi. Une page inexistante ou non visible ne provoque pas
@@ -123,10 +123,10 @@ curl --request GET \
 | Champ | Description |
 |---|---|
 | `comments[].id` | Id du commentaire (à passer à [Modérer un commentaire](moderate_comment.md)) |
-| `comments[].author` | Nom saisi par l'auteur du commentaire |
+| `comments[].author` | Nom saisi par l'auteur du commentaire. Remplacé par « Anonyme » pour un commentaire en attente, sauf avec le `User-Token` d'un Contributeur (ou plus) |
 | `comments[].status` | `1` en attente, `2` validé, `3` modéré |
 | `comments[].createdAt` / `updateAt` | Dates de création et de modification (timestamp Unix, en secondes) |
-| `comments[].comment` | Texte du commentaire (Markdown), ou message de remplacement selon le statut |
+| `comments[].comment` | Texte du commentaire (Markdown brut, à assainir côté client avant affichage), ou message de remplacement selon le statut |
 | `comments[].moderate` | Motif de modération (statut `3`, avec `User-Token` uniquement) |
 | `current_page` / `limit` | Pagination appliquée |
 | `rows` | Nombre **total** de commentaires de la page |

@@ -6,7 +6,7 @@ nav_order: 1
 
 Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'évolution.
 
-<p class="last-update">Dernière mise à jour le 29/10/2026</p>
+<p class="last-update">Dernière mise à jour le 07/11/2026</p>
 
 <div class="roadmap-section">
 <h3 class="roadmap-section-title"><span class="roadmap-section-icon">🐛</span> Bugs</h3>
@@ -151,6 +151,18 @@ Liste non exhaustive des futures évolutions du CMS ainsi que son historique d'�
       <li class="roadmap-item is-done"><span class="roadmap-item-icon"></span><span class="roadmap-item-text">Ne vois que ses propres contenus créés. <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/46">PR #46</a></span></li>
     </ul>
   </div>
+</li>
+<li class="roadmap-item is-done">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Droits sur les contenus : un contributeur ne modifie que ses pages, FAQ, menus et tags <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/376">PR #376</a></span>
+</li>
+<li class="roadmap-item is-done">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Compatibilité PostgreSQL complète <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/388">PR #388</a></span>
+</li>
+<li class="roadmap-item is-done">
+  <span class="roadmap-item-icon"></span>
+  <span class="roadmap-item-text">Traduction complète de l'interface en anglais et en espagnol <a class="changelog-badge changelog-badge-pr" href="https://github.com/counteraccro/natheo/pull/452">PR #452</a></span>
 </li>
 </ul>
 </div>

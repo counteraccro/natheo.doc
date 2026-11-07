@@ -40,7 +40,7 @@ clés sont les phrases anglaises d'origine plutôt que des identifiants.
 ![Édition du fichier des tags, avec une ligne modifiée non sauvegardée](files/traductions/edition.png)
 
 Une fois le fichier choisi, le second bloc affiche une ligne par traduction : la **clé** à gauche (par exemple
-`tag.index.btn.new`), la **valeur** modifiable à droite. Une valeur de moins de 120 caractères s'édite dans un champ
+`tag.index.button.new`), la **valeur** modifiable à droite. Une valeur de moins de 120 caractères s'édite dans un champ
 texte, une valeur plus longue dans une zone de texte de 3 lignes.
 
 Une valeur modifiée est prise en compte quand on quitte le champ (ou en appuyant sur *Entrée* dans un champ texte).

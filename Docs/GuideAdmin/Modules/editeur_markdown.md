@@ -51,7 +51,7 @@ texte d'exemple (dans la langue de l'administration) est inséré et sélectionn
 | Bouton | Insère | Raccourci |
 |---|---|---|
 | **H** — Titres (menu) | Un titre de niveau 1 à 6 : `# ` à `###### ` en début de ligne | — |
-| **Mots clés** (menu) | Un mot-clé remplacé automatiquement à l'envoi, ex. `[[user.login]]`. Uniquement sur les emails : voir [Gestion des emails](../Systeme/mail.md) | — |
+| **Mots-clés** (menu) | Un mot-clé remplacé automatiquement à l'envoi, ex. `[[user.login]]`. Uniquement sur les emails : voir [Gestion des emails](../Systeme/mail.md) | — |
 | **B** — Gras | `**texte en gras**` | `Ctrl`/`Cmd` + `B` |
 | ***I*** — Italique | `*texte en italique*` | `Ctrl`/`Cmd` + `I` |
 | ~~S~~ — Barré | `~~texte barré~~` | — |
@@ -68,7 +68,7 @@ texte d'exemple (dans la langue de l'administration) est inséré et sélectionn
 
 ![Menu des titres](files/editeur_markdown/titres.png)
 
-Les menus *Titres* et *Mots clés* se ferment avec la touche `Échap` ou par un clic en dehors de la barre d'outils.
+Les menus *Titres* et *Mots-clés* se ferment avec la touche `Échap` ou par un clic en dehors de la barre d'outils.
 
 ### Titres, citations et listes
 

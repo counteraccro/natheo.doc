@@ -26,7 +26,7 @@ ou `.env.local` si celui-ci existe) et permet de basculer vers l'autre mode.
 | **DEVELOPPEMENT** | Débogage facilité, réinstallation/réinitialisation du site possible (voir *Zone de danger* ci-dessous), accès aux outils internes de débogage du CMS. À ne jamais utiliser en production : ralentissements, informations critiques exposées |
 | **PRODUCTION** | Cache précis des vues et requêtes SQL, erreurs génériques uniquement, logs réduits au strict minimum pour la fluidité. Aucun outil de débogage accessible à part les logs fichiers |
 
-Le bouton **Passer en mode DEVELOPPEMENT** / **Passer en mode PRODUCTION** (le libellé s'inverse selon le mode
+Le bouton **Passer en mode DÉVELOPPEMENT** / **Passer en mode PRODUCTION** (le libellé s'inverse selon le mode
 courant) ouvre une modale de confirmation avant d'agir.
 
 ### Ce qui se passe techniquement
