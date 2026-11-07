@@ -37,8 +37,9 @@ Vérifiez aussi les [pré-requis](pre_requis.md), qui ont évolué : la V2 deman
 Ces commandes s'exécutent à la racine du projet, en production (`APP_ENV=prod`).
 
 ```bash
-# 1. Récupérer le nouveau code
-git pull
+# 1. Récupérer le code de la version visée (ici v2.0.0)
+git fetch --tags
+git checkout v2.0.0
 
 # 2. Installer les dépendances PHP
 composer install --no-dev --optimize-autoloader
@@ -53,6 +54,10 @@ php bin/console doctrine:migrations:migrate
 # 5. Vider le cache
 php bin/console cache:clear
 ```
+
+Ciblez toujours le tag d'une version publiée, listée dans [Versions](../Projet/versions.md), et non la branche `master` :
+elle porte la version en développement (`2.1.0-dev`). Si des fichiers modifiés localement bloquent le `git checkout`, par
+exemple des traductions, relevez-les puis annulez ces modifications avant de relancer la commande.
 
 `doctrine:migrations:migrate` demande une confirmation avant de s'exécuter. Seules les migrations de votre SGBD sont
 jouées : les dossiers `migrations/V2/Mysql` et `migrations/V2/Postgresql` sont distincts, et le bon est choisi

@@ -14,9 +14,12 @@ Procédure pour installer Nathéo CMS en local pour du développement, sans pass
 ### Étape 1 : cloner le dépôt Git
 
 ```bash
-git clone https://github.com/counteraccro/natheo.git
+git clone --branch v2.0.0 https://github.com/counteraccro/natheo.git
 cd natheo
 ```
+
+Cette commande installe la version stable `v2.0.0`. Pour contribuer au code ou tester la prochaine version, clonez
+plutôt sans `--branch v2.0.0` : la branche `master` porte la version en développement (`2.1.0-dev`).
 
 ### Étape 2 : installer les dépendances PHP
 

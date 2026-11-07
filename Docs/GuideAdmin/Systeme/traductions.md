@@ -94,7 +94,7 @@ de cliquer sur **Annuler**, puis de sauvegarder à nouveau.
 - Les modifications sont écrites **directement dans les fichiers YAML du dossier `translations/`** du projet, pas
   en base de données. Conséquences :
   - l'utilisateur du serveur web doit avoir les droits d'écriture sur ce dossier ;
-  - ces fichiers font partie du code source de Nathéo : une mise à jour du CMS (ou un `git pull`) peut
+  - ces fichiers font partie du code source de Nathéo : une [mise à jour du CMS](../../Demarrage/mise_a_jour.md) peut
     **écraser les traductions modifiées** depuis l'écran. Notez vos changements pour pouvoir les réappliquer.
 - À la sauvegarde, le fichier entier est relu puis réécrit (`Yaml::dump()`) : la mise en forme d'origine (style de
   guillemets, commentaires éventuels) n'est pas conservée, même pour les lignes non modifiées. L'écriture est
