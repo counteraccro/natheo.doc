@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 4
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/pages?slug=…`, puis `GET /api/v2/pages/{id}`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie une page à partir de son slug : titre, auteur, rendu, tags, statistiques, SEO, liste de ses blocs de contenu
 et, par défaut, tous ses menus. Le contenu de chaque bloc se récupère ensuite avec
 [Find page content](find_page_content.md).

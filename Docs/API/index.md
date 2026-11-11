@@ -6,13 +6,27 @@ nav_order: 7
 ---
 
 Nathéo CMS est un CMS *headless* : le contenu saisi dans le back-office (pages, menus, FAQ, commentaires, options)
-est mis à disposition d'un front externe au travers d'une API JSON. Cette page décrit les règles communes à tous
-les endpoints ; le détail de chacun est listé dans le menu à gauche.
+est mis à disposition d'un front externe au travers d'une API JSON.
+
+## Versions de l'API
+
+| Version | Préfixe | Statut | Documentation |
+|---|---|---|---|
+| **v2** | `/api/v2` | disponible à partir de la 2.1 | Swagger UI sur `[url-de-mon-site]/api/v2/docs` |
+| **v1** | `/api/v1` | dépréciée à partir de la 2.1, supprimée en 3.0 | cette page et le menu à gauche |
+
+> ⚠️ Pour un nouveau développement, utilisez la v2. Pour passer de la v1 à la v2, suivez le
+> [guide de migration](migration_v2.md).
+
+La v2 est décrite par sa documentation OpenAPI, générée à partir du code et accessible lorsque l'option
+**Ouvrir l'API ?** est activée. La suite de cette page décrit la **v1** : les règles communes à tous ses endpoints,
+le détail de chacun étant listé dans le menu à gauche.
 
 ## URL de base
 
-Toutes les routes sont préfixées par `/api/{version}/`. La seule version existante est **`v1`** (paramètre
-`app.api_version` dans `config/services.yaml`) ; toute autre version renvoie une erreur `404`.
+Toutes les routes de la v1 sont préfixées par `/api/v1/` (paramètre `app.api_version` dans `config/services.yaml`).
+Chacune de leurs réponses porte les en-têtes de dépréciation `Deprecation` et `Link` (voir le
+[guide de migration](migration_v2.md)).
 
 ```
 [url-de-mon-site]/api/v1/...
