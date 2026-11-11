@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 5
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/page_contents/{id}`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie le contenu d'un bloc de page, à partir de l'`id` donné par la liste `contents` de [Find page](find_page.md).
 Le format de `content` dépend du type du bloc :
 

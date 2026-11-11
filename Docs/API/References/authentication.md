@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 1
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/info`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Permet de vérifier qu'un jeton API est accepté (jeton valide, IP autorisée, API ouverte). Si c'est le cas, renvoie
 les rôles portés par le jeton.
 

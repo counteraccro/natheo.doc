@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 7
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `POST /api/v2/comments`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Ajoute un commentaire sur une page désignée par son id ou par son slug. Si tout est correct, renvoie l'id du
 commentaire créé.
 

@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 12
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/sitemap`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie une entrée par page **publiée** et **active**, et par langue, pour générer le sitemap du site. Les pages sont triées de
 la plus récemment modifiée à la plus ancienne.
 

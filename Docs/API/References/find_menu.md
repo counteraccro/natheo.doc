@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 3
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/menus/{id}` ou `GET /api/v2/menus?page=…&position=…`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie un menu formaté, désigné soit par son **id**, soit par le **slug d'une page** à laquelle il est rattaché
 (avec sa position). Seuls les menus **actifs** sont renvoyés, et seuls leurs éléments actifs y figurent.
 

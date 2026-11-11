@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 10
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/pages?tag=…`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie la liste paginée des pages **publiées** et **actives** portant un tag, de la plus récemment modifiée à la plus
 ancienne.
 

@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 8
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `PATCH /api/v2/comments/{id}`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Change le statut d'un commentaire et enregistre éventuellement un motif de modération. L'utilisateur identifié par
 le `User-Token` est enregistré comme **modérateur** du commentaire.
 

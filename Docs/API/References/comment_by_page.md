@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 6
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/pages/{pageId}/comments`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie la liste paginée des commentaires d'une page, désignée par son id ou par son slug.
 
 Le texte des commentaires **en attente de validation** et **modérés** est masqué, sauf pour un utilisateur

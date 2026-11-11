@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 11
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/option_systems`, `GET /api/v2/option_systems/{key}`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie les options système utiles au front, toutes ensemble ou une seule à partir de sa clé. Seule une **liste
 blanche** d'options est exposée ; les autres (emails, sécurité, réglages de l'administration…) ne sont jamais
 accessibles par l'API.

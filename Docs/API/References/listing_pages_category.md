@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 9
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `GET /api/v2/pages?category=…`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Renvoie la liste paginée des pages **publiées** et **actives** d'une catégorie, de la plus récemment modifiée à la
 plus ancienne.
 

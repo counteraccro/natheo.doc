@@ -4,6 +4,9 @@ parent: "API"
 nav_order: 2
 ---
 
+> ⚠️ Endpoint de l'API v1, dépréciée à partir de la 2.1 et supprimée en 3.0. Équivalent v2 : `POST /api/v2/user_sessions`. Voir le
+> [guide de migration](../migration_v2.md).
+
 Permet d'authentifier un utilisateur du back-office avec son email et son mot de passe. Si tout est correct,
 renvoie un **token utilisateur** à transmettre ensuite dans l'en-tête `User-Token` des autres appels (voir
 [Token utilisateur](../index.md#token-utilisateur-user-token)).
